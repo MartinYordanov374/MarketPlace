@@ -9,7 +9,7 @@ async function checkUserExists(username)
         return false
     }
     else{
-        return true
+        return userExists
     }
 }
 

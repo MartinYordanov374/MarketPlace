@@ -7,6 +7,7 @@ const mongoose = require('mongoose')
 var bodyParser = require('body-parser')
 
 const {registerUser} = require('../API/userAPI/register')
+const {loginUser} = require('../API/userAPI/login')
 
 async function startServer(){
     //#region configurations
@@ -25,6 +26,26 @@ async function startServer(){
         await registerUser(username, notHashedPassword)
 
         return res.status(200).send({username, notHashedPassword})
+    })
+
+    app.post('/login', async (req,res) => {
+        let incomingData = req.body
+        let username = incomingData.username
+        let notHashedPassword = incomingData.password
+
+        let loginResult = await loginUser(username, notHashedPassword)
+
+        if(loginResult.status == 200)
+        {
+            res.status(200).send('Login successful')
+        }
+        else if(loginResult.status == 401)
+        {
+            res.status(401).send('Wrong password')
+        }
+        else{
+            res.status(404).send('That user doesn\'t exist')
+        }
     })
 
     //#region endpoints
