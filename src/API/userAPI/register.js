@@ -22,7 +22,6 @@ async function registerUser(username, notHashedPassword)
         })
 
         await user.save()
-        console.log(`registering user`)
     }
 }
 
