@@ -5,16 +5,18 @@ let marketplaceSchema = new Schema({
 
     marketplaceOwner:{
         type: ObjectId,
-        ref: 'user'
+        ref: 'user',
+        required: true
     },
 
     marketplaceDescription:{
         type: String,
-        maxLength: 120
+        maxLength: 120,
+        required: true
     },
 
     marketplaceRating:{
-        type: Number
+        type: Number,
     },
 
     marketplaceProducts: {
