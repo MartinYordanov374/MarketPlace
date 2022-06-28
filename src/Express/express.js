@@ -17,7 +17,10 @@ async function startServer(){
     await databaseConfig(app)
     //#endregion
     app.post('/register', async (req,res) => {
-        return res.status(200).send('worked')
+        let incomingData = req.body
+        let username = incomingData.username
+        let notHashedPassword = incomingData.password
+        return res.status(200).send({username, notHashedPassword})
     })
 
     //#region endpoints
