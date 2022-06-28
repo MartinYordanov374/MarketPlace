@@ -6,19 +6,23 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },   
+    
     hashedPass: 
     { 
         type: String, 
         required: true 
     },
+
     rating:{
         type: Number,
         required: false
     },
+
     reviews:{
         type: [ObjectId],
         ref: 'review'
     },
+
     marketplaces:{
         type: [ObjectId],
         ref: 'marketplaces'
