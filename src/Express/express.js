@@ -23,9 +23,14 @@ async function startServer(){
         let username = incomingData.username
         let notHashedPassword = incomingData.password
 
-        await registerUser(username, notHashedPassword)
-
-        return res.status(200).send({username, notHashedPassword})
+        let registerResult = await registerUser(username, notHashedPassword)
+        if(registerResult.status == 401)
+        {
+            res.status(401).send(registerResult.msg.toString())
+        }
+        else {
+            res.status(200).send(registerResult.msg.toString())
+        }
     })
 
     app.post('/login', async (req,res) => {
