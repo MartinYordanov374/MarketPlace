@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 
 var bodyParser = require('body-parser')
 
+const {registerUser} = require('../API/userAPI/register')
 
 async function startServer(){
     //#region configurations
@@ -20,6 +21,9 @@ async function startServer(){
         let incomingData = req.body
         let username = incomingData.username
         let notHashedPassword = incomingData.password
+
+        await registerUser(username, notHashedPassword)
+
         return res.status(200).send({username, notHashedPassword})
     })
 
