@@ -80,7 +80,7 @@ async function startServer(){
     app.post('/deleteMarketplace', async(req,res)=>{
         let userID = req.body.userID
         let marketplaceID = req.body.marketplaceID
-        let result = deleteMarketplace(userID, marketplaceID)
+        let result = await deleteMarketplace(userID, marketplaceID)
     })
     //#region endpoints
 
