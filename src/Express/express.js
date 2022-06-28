@@ -9,6 +9,9 @@ var bodyParser = require('body-parser')
 const {registerUser} = require('../API/userAPI/register')
 const {loginUser} = require('../API/userAPI/login')
 
+const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
+
+
 async function startServer(){
     //#region configurations
     const app = express()
@@ -18,6 +21,7 @@ async function startServer(){
 
     await databaseConfig(app)
     //#endregion
+    
     app.post('/register', async (req,res) => {
         let incomingData = req.body
         let username = incomingData.username
@@ -52,7 +56,22 @@ async function startServer(){
             res.status(404).send('That user doesn\'t exist')
         }
     })
-
+    
+    app.post('/createMarketplace', async(req,res) => {
+        let incomingData = req.body
+        let username = incomingData.username
+        let description = incomingData.marketplaceDescription
+        let result = await createMarketplace(username,description)
+        
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(402).send(result.msg)
+        }
+    })
     //#region endpoints
 
 
