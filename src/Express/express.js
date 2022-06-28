@@ -8,13 +8,25 @@ var bodyParser = require('body-parser')
 
 
 async function startServer(){
-
+    //#region configurations
     const app = express()
-    app.use(cors)
+    app.use(cors())
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
 
     await databaseConfig(app)
+    //#endregion
+    app.post('/register', async (req,res) => {
+        return res.status(200).send('worked')
+    })
+
+    //#region endpoints
+
+
+
+
+    //#endregion
+
 
     app.listen(3001, () => {
         console.log('express server works!')

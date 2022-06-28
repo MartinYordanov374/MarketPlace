@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 let dbName = 'marketplaceDB'
 
 let connectionString = `mongodb://localhost:27017/${dbName}`
-
 module.exports = async(app) => {
     try{
         
