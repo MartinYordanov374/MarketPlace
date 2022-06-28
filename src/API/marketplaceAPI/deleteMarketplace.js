@@ -10,15 +10,17 @@ async function deleteMarketplace(userID, marketplaceID){
     {
         try{
             let deletedMarketplace = await marketplaceModel.findByIdAndDelete({_id: marketplaceID})
+
+            return {status: 200, msg: 'Marketplace Deleted Successfully'}
         }
         catch(e)
         {
-            console.log(e)
+            return {msg: 'Something went wrong'}
         }
     }
     else
     {
-        console.log('owner not authenticated')
+        return {status: 403, msg: 'You\'re not allowed to do that !'}
     }
 }
 

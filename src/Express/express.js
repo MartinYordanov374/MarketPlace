@@ -81,6 +81,19 @@ async function startServer(){
         let userID = req.body.userID
         let marketplaceID = req.body.marketplaceID
         let result = await deleteMarketplace(userID, marketplaceID)
+
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else if (result.status == 403)
+        {
+            res.status(403).send(result.msg)
+        }
+        else
+        {
+            res.send(result.msg)
+        }
     })
     //#region endpoints
 
