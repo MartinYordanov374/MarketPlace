@@ -21,7 +21,7 @@ const UserSchema = new Schema({
     },
     marketplaces:{
         type: [ObjectId],
-        ref: 'reviews'
+        ref: 'marketplaces'
     }
 })
 
