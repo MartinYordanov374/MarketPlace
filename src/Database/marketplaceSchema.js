@@ -9,6 +9,16 @@ let marketplaceSchema = new Schema({
         required: true
     },
 
+    marketplaceName:{
+        type: String,
+        required: true,
+    },
+
+    marketplaceTags:{
+        type: [String],
+        required: true
+    },
+
     marketplaceDescription:{
         type: String,
         maxLength: 120,
