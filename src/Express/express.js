@@ -61,7 +61,10 @@ async function startServer(){
         let incomingData = req.body
         let username = incomingData.username
         let description = incomingData.marketplaceDescription
-        let result = await createMarketplace(username,description)
+        let marketplaceTags = incomingData.marketplaceTags
+        let marketplaceName = incomingData.marketplaceName
+
+        let result = await createMarketplace(username,description, marketplaceTags, marketplaceName)
         
         if(result.status == 200)
         {
