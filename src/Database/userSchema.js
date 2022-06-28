@@ -24,3 +24,6 @@ const UserSchema = new Schema({
         ref: 'reviews'
     }
 })
+
+let user = model('user', UserSchema)
+module.exports = user
