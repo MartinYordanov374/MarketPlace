@@ -10,6 +10,7 @@ const {registerUser} = require('../API/userAPI/register')
 const {loginUser} = require('../API/userAPI/login')
 
 const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
+const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
 
 
 async function startServer(){
@@ -74,6 +75,12 @@ async function startServer(){
         {
             res.status(402).send(result.msg)
         }
+    })
+
+    app.post('/deleteMarketplace', async(req,res)=>{
+        let userID = req.body.userID
+        let marketplaceID = req.body.marketplaceID
+        let result = deleteMarketplace(userID, marketplaceID)
     })
     //#region endpoints
 
