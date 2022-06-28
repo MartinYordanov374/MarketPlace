@@ -7,7 +7,6 @@ async function createMarketplace(marketplaceOwner, marketplaceDescription, marke
         let targetUser = await checkUserExists(marketplaceOwner)
         let userID = targetUser._id
     
-
         let newMarketplace = await marketplaceModel({
             marketplaceOwner: userID,
             marketplaceDescription: marketplaceDescription,
