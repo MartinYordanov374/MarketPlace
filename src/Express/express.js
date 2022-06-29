@@ -11,6 +11,7 @@ const {loginUser} = require('../API/userAPI/login')
 
 const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
 const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
+const {createProduct} = require('../API/productAPI/createProduct')
 
 
 async function startServer(){
@@ -64,7 +65,7 @@ async function startServer(){
         let description = incomingData.marketplaceDescription
         let marketplaceTags = incomingData.marketplaceTags
         let marketplaceName = incomingData.marketplaceName
-
+        // TODO ADD CHECK IF USER EXISTS BEFORE CREATING MARKETPLACE
         let result = await createMarketplace(username,description, marketplaceTags, marketplaceName)
         
         if(result.status == 200)
@@ -94,6 +95,17 @@ async function startServer(){
         {
             res.send(result.msg)
         }
+    })
+
+    app.post('/createProduct', async(req,res) => {
+        let incomingData = req.body
+        let creatorID = incomingData.creatorID
+        let productName = incomingData.productName
+        let productDescription = incomingData.productDescription
+        let productPrice = incomingData.productPrice
+        let productMarketplaceID = incomingData.productMarketplaceID
+
+        await createProduct(creatorID,productName,productDescription,productPrice,productMarketplaceID)
     })
     //#region endpoints
 

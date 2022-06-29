@@ -2,11 +2,11 @@ let marketplaceModel = require('../../Database/marketplaceSchema')
 const {checkUserExists} = require('../userAPI/checkUserExists')
 
 async function createMarketplace(marketplaceOwner, marketplaceDescription, marketplaceTags, marketplaceName){
-
+    
+    console.log(marketplaceOwner)
     try{
         let targetUser = await checkUserExists(marketplaceOwner)
         let userID = targetUser._id
-    
         let newMarketplace = await marketplaceModel({
             marketplaceOwner: userID,
             marketplaceDescription: marketplaceDescription,

@@ -10,9 +10,10 @@ let productSchema = new Schema({
         type: String,
         required: true
     },
-    productMarketplace:{
+    productMarketplaceID:{
         type: ObjectId,
-        ref: 'marketplace'
+        ref: 'marketplace',
+        required: true
     },
     productReviews:{
         type: ObjectId,
