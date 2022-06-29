@@ -100,12 +100,20 @@ async function startServer(){
     app.post('/createProduct', async(req,res) => {
         let incomingData = req.body
         let creatorID = incomingData.creatorID
-        let productName = incomingData.productName
+        let productName = incomingData.productName  
         let productDescription = incomingData.productDescription
         let productPrice = incomingData.productPrice
         let productMarketplaceID = incomingData.productMarketplaceID
 
-        await createProduct(creatorID,productName,productDescription,productPrice,productMarketplaceID)
+        let result = await createProduct(creatorID,productName,productDescription,productPrice,productMarketplaceID)
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
+        }
     })
     //#region endpoints
 
