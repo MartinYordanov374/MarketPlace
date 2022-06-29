@@ -62,7 +62,7 @@ async function startServer(){
     app.post('/createMarketplace', async(req,res) => {
         let incomingData = req.body
         // TODO CHANGE THE USERNAME TO ID 
-        let username = incomingData.username
+        let username = incomingData.userID
         let description = incomingData.marketplaceDescription
         let marketplaceTags = incomingData.marketplaceTags
         let marketplaceName = incomingData.marketplaceName
