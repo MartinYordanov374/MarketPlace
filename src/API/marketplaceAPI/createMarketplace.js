@@ -3,7 +3,6 @@ const {checkUserExists} = require('../userAPI/checkUserExists')
 
 async function createMarketplace(marketplaceOwner, marketplaceDescription, marketplaceTags, marketplaceName){
     
-    console.log(marketplaceOwner)
     try{
         let targetUser = await checkUserExists(marketplaceOwner)
         let userID = targetUser._id
@@ -15,6 +14,9 @@ async function createMarketplace(marketplaceOwner, marketplaceDescription, marke
         })
     
         await newMarketplace.save()
+
+        await targetUser.marketplaces.push(newMarketplace._id)
+        await targetUser.save()
 
         return {status: 200, msg: 'Marketplace created successfully'}
     }
