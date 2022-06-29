@@ -12,7 +12,7 @@ const {loginUser} = require('../API/userAPI/login')
 const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
 const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
 const {createProduct} = require('../API/productAPI/createProduct')
-const {deleteProduct} = require('../API/productAPI/deleteProduct')
+const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace')
 
 async function startServer(){
     //#region configurations

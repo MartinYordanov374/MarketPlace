@@ -2,7 +2,7 @@ let product = require('../../Database/productSchema')
 
 const {checkUserExistsById} = require('../userAPI/checkUserExistsById')
 const {getMarketplaceById} = require('../marketplaceAPI/getMarketplaceByID')
-const {findProductById} = require('../productAPI/findProductById')
+const {findProductById} = require('./findProductById')
 
 
 async function deleteProduct(userID, marketplaceID, productID)
