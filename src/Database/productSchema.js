@@ -20,6 +20,10 @@ let productSchema = new Schema({
     },
     productRating:{
         type: Number,
+    },
+    productPrice:{
+        type: Number,
+        required: true
     }
 })
 
