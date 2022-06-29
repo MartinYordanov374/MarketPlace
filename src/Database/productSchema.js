@@ -24,6 +24,10 @@ let productSchema = new Schema({
     productPrice:{
         type: Number,
         required: true
+    },
+    productCreator:{
+        type: ObjectId,
+        ref: 'user'
     }
 })
 
