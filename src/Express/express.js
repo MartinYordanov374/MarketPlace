@@ -117,7 +117,7 @@ async function startServer(){
         }
     })
 
-    app.post('/deleteProduct', async(req,res) => {
+    app.post('/deleteProductFromMarketplace', async(req,res) => {
         let userID = req.body.userID
         let marketplaceID = req.body.marketplaceID
         let productID = req.body.productID
