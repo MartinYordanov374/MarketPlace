@@ -68,6 +68,7 @@ async function startServer(){
         let marketplaceTags = incomingData.marketplaceTags
         let marketplaceName = incomingData.marketplaceName
         // TODO ADD CHECK IF USER EXISTS BEFORE CREATING MARKETPLACE
+        
         let result = await createMarketplace(username,description, marketplaceTags, marketplaceName)
         
         if(result.status == 200)
@@ -124,7 +125,6 @@ async function startServer(){
         let productID = req.body.productID
 
         let result = await deleteProduct(userID, marketplaceID, productID)
-        console.log(result)
         res.send(result.msg)
     })
 

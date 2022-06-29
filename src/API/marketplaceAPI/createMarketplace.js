@@ -6,20 +6,28 @@ async function createMarketplace(marketplaceOwnerID, marketplaceDescription, mar
     
     try{
         let targetUser = await checkUserExistsById(marketplaceOwnerID)
-        let userID = targetUser._id
-        let newMarketplace = await marketplaceModel({
-            marketplaceOwner: userID,
-            marketplaceDescription: marketplaceDescription,
-            marketplaceName: marketplaceName,
-            marketplaceTags: marketplaceTags
-        })
+
+        if(targetUser)
+        {
+            let userID = targetUser._id
+            let newMarketplace = await marketplaceModel({
+                marketplaceOwner: userID,
+                marketplaceDescription: marketplaceDescription,
+                marketplaceName: marketplaceName,
+                marketplaceTags: marketplaceTags
+            })
+        
+            await newMarketplace.save()
     
-        await newMarketplace.save()
-
-        await targetUser.marketplaces.push(newMarketplace._id)
-        await targetUser.save()
-
-        return {status: 200, msg: 'Marketplace created successfully'}
+            await targetUser.marketplaces.push(newMarketplace._id)
+            await targetUser.save()
+    
+            return {status: 200, msg: 'Marketplace created successfully'}
+        }
+        else
+        {
+            throw new Error('Invalid User Credentials.')
+        }
     }
     catch(e)
     {
