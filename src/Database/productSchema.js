@@ -27,7 +27,8 @@ let productSchema = new Schema({
     },
     productCreator:{
         type: ObjectId,
-        ref: 'user'
+        ref: 'user',
+        required: true
     }
 })
 
