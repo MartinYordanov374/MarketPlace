@@ -13,6 +13,7 @@ const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
 const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
 const {createProduct} = require('../API/productAPI/createProduct')
 const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace')
+const { deleteProductAbsolutely } = require('../API/productAPI/deleteProductAbsolutely')
 
 async function startServer(){
     //#region configurations
@@ -124,6 +125,14 @@ async function startServer(){
 
         let result = await deleteProduct(userID, marketplaceID, productID)
         console.log(result)
+        res.send(result.msg)
+    })
+
+    app.post('/deleteProductAbsolutely', async(req,res) => {
+        let userID = req.body.userID
+        let productID = req.body.productID
+
+        let result = await deleteProductAbsolutely(userID, productID)
         res.send(result.msg)
     })
     //#region endpoints
