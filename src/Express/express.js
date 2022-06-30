@@ -15,6 +15,7 @@ const {createProduct} = require('../API/productAPI/createProduct')
 const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace')
 const { deleteProductAbsolutely } = require('../API/productAPI/deleteProductAbsolutely')
 const { addUserReview } = require('../API/userAPI/addUserReview')
+const { addUserRating } = require('../API/userAPI/addUserRating')
 
 
 async function startServer(){
@@ -155,6 +156,16 @@ async function startServer(){
             res.status(401).send(result.msg)
         }
 
+    })
+
+    app.post('/addUserRating', async(req,res) => {
+        let incomingData = req.body
+        let ratingAdderId = incomingData.ratingAdderId
+        let ratingReceiverId = incomingData.ratingReceiverId
+        let ratingAmount = incomingData.ratingAmount
+
+        let result = await addUserRating(ratingAdderId, ratingReceiverId, ratingAmount)
+        console.log(result)
     })
     //#region endpoints
 
