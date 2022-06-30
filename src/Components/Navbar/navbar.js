@@ -26,15 +26,15 @@ export default function Navbar() {
                     (
                         <Toolbar>
 
-                            <Typography variant="h5" >
+                            <Typography variant="h5" sx={{marginLeft: 20}}>
                                 MarketPlace 
                             </Typography>
 
-                            <Typography variant="h5" >
+                            <Typography variant="h5" sx={{marginLeft: 75}}>
                                 Buy 
                             </Typography>
 
-                            <Typography variant="h5"     >
+                            <Typography variant="h5" sx={{marginLeft: 75}}>
                                 Sell 
                             </Typography>
                         </Toolbar>
