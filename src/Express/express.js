@@ -18,6 +18,7 @@ const { addUserReview } = require('../API/userAPI/addUserReview')
 const { addUserRating } = require('../API/userAPI/addUserRating')
 const { addMarketplaceReview } = require('../API/marketplaceAPI/addMarketplaceReview')
 const { addMarketplaceRating } = require('../API/marketplaceAPI/addMarketplaceRating')
+const { addProductRating } = require('../API/productAPI/addProductRating')
 
 
 async function startServer(){
@@ -209,6 +210,24 @@ async function startServer(){
         }
         else{
             res.status(401).send('Something went wrong.')
+        }
+    })
+
+    app.post('/addProductRating', async(req,res) => {
+        let incomingData = req.body
+        let ratingAdderId = incomingData.ratingAdderId
+        let ratingReceiverId = incomingData.ratingReceiverId
+        let ratingAmount = incomingData.ratingAmount
+
+        let result = await addProductRating(ratingAdderId, ratingReceiverId, ratingAmount)
+
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else if(result.status == 401)
+        {
+            res.status(401).send(result.msg.message)
         }
     })
     //#region endpoints
