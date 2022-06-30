@@ -16,7 +16,7 @@ let productSchema = new Schema({
         required: true
     },
     productReviews:{
-        type: ObjectId,
+        type: [ObjectId],
         ref: 'review'
     },
     productRating:{
