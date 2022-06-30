@@ -1,13 +1,13 @@
 let review = require('../../Database/reviewSchema')
-const {checkUserExistsById} = require('./checkUserExistsById')
-const {getMarketplaceByID} = require('./getMarketplaceByID')
+const {checkUserExistsById} = require('../userAPI/checkUserExistsById')
+const {getMarketplaceById} = require('./getMarketplaceByID')
 
 async function addMarketplaceReview(reviewerUserId, reviewedMarketplaceID, reviewContent)
 {
     // check if both users exist
     try{
         let reviewerUserExists = await checkUserExistsById(reviewerUserId)
-        let reviewedMarketplaceExists = await getMarketplaceByID(reviewedMarketplaceID)
+        let reviewedMarketplaceExists = await getMarketplaceById(reviewedMarketplaceID)
         
         if(reviewedMarketplaceExists != null && reviewerUserExists != null)
         {
@@ -19,7 +19,7 @@ async function addMarketplaceReview(reviewerUserId, reviewedMarketplaceID, revie
 
             await newReview.save()
 
-            await reviewedMarketplaceExists.reviews.push(newReview._id)
+            await reviewedMarketplaceExists.marketplaceReviews.push(newReview._id)
             await reviewedMarketplaceExists.save()
 
             return {status: 200, msg: 'Review added successfully!'}

@@ -16,6 +16,7 @@ const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace'
 const { deleteProductAbsolutely } = require('../API/productAPI/deleteProductAbsolutely')
 const { addUserReview } = require('../API/userAPI/addUserReview')
 const { addUserRating } = require('../API/userAPI/addUserRating')
+const { addMarketplaceReview } = require('../API/marketplaceAPI/addMarketplaceReview')
 
 
 async function startServer(){
@@ -146,7 +147,6 @@ async function startServer(){
         let reviewContent = incomingData.reviewContent
 
         let result = await addUserReview(reviewerUserId, reviewedUserId,reviewContent)
-        console.log(result)
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
@@ -173,6 +173,23 @@ async function startServer(){
         else if(result.status == 401)
         {
             res.status(401).send(result.msg.message)
+        }
+    })
+
+    app.post('/addMarketplaceReview', async(req,res) => {
+        let incomingData = req.body
+        let reviewerUserId = incomingData.reviewerUserId
+        let reviewedMarketplaceId = incomingData.reviewedMarketplaceId
+        let reviewContent = incomingData.reviewContent
+
+        let result = await addMarketplaceReview(reviewerUserId, reviewedMarketplaceId,reviewContent)
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
         }
     })
     //#region endpoints
