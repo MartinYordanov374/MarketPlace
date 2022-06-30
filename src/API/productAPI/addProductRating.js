@@ -1,4 +1,3 @@
-const user = require('../../Database/userSchema')
 const {checkUserExistsById} = require('../userAPI/checkUserExistsById')
 const {findProductById} = require('./findProductById')
 

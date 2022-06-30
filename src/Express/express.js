@@ -19,6 +19,7 @@ const { addUserRating } = require('../API/userAPI/addUserRating')
 const { addMarketplaceReview } = require('../API/marketplaceAPI/addMarketplaceReview')
 const { addMarketplaceRating } = require('../API/marketplaceAPI/addMarketplaceRating')
 const { addProductRating } = require('../API/productAPI/addProductRating')
+const { addProductReview } = require('../API/productAPI/addProductReview')
 
 
 async function startServer(){
@@ -228,6 +229,23 @@ async function startServer(){
         else if(result.status == 401)
         {
             res.status(401).send(result.msg.message)
+        }
+    })
+
+    app.post('/addProductReview', async(req,res) => {
+        let incomingData = req.body
+        let reviewerUserId = incomingData.reviewerUserId
+        let reviewedProductId = incomingData.reviewedProductId
+        let reviewContent = incomingData.reviewContent
+
+        let result = await addProductReview(reviewerUserId, reviewedProductId,reviewContent)
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
         }
     })
     //#region endpoints
