@@ -10,7 +10,7 @@ export default function Navbar() {
     return (
     <div>
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar color="warning" position="static">
                 <Toolbar>
                     <Typography variant="h6">
                         MarketPlace
