@@ -1,33 +1,37 @@
 let review = require('../../Database/reviewSchema')
 const {checkUserExistsById} = require('./checkUserExistsById')
-async function addUserReviews(reviewerUserId, reviewedUserId, reviewContent, reviewRating)
+async function addUserReview(reviewerUserId, reviewedUserId, reviewContent)
 {
     // check if both users exist
-
     try{
         let reviewerUserExists = await checkUserExistsById(reviewerUserId)
         let reviewedUserExists = await checkUserExistsById(reviewedUserId)
-
-        if(reviewedUserExists && reviewerUserExists)
+        
+        if(reviewedUserExists != null && reviewerUserExists != null)
         {
             // add review content and rating
             let newReview = await review({
                 reviewOwner: reviewerUserExists,
                 reviewContent: reviewContent,
-                reviewRating: reviewRating
             })
 
             await newReview.save()
 
-            console.log(reviewedUserExists)
+            await reviewedUserExists.reviews.push(newReview._id)
+            await reviewedUserExists.save()
 
+            return {status: 200, msg: 'Review added successfully!'}
             
+        }
+        else
+        {
+            throw new Error('It seems that one of the users does not exist, could there be a mistake?')
         }
     }
     catch(e)
     {
-        return {msg: e.message}
+        return {status: 401, msg: e.message}
     }
 }
 
-module.exports = {addUserReviews}
+module.exports = {addUserReview}

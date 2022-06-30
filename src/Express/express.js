@@ -14,6 +14,8 @@ const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
 const {createProduct} = require('../API/productAPI/createProduct')
 const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace')
 const { deleteProductAbsolutely } = require('../API/productAPI/deleteProductAbsolutely')
+const { addUserReview } = require('../API/userAPI/addUserReview')
+
 
 async function startServer(){
     //#region configurations
@@ -134,6 +136,25 @@ async function startServer(){
 
         let result = await deleteProductAbsolutely(userID, productID)
         res.send(result.msg)
+    })
+
+    app.post('/addUserReview', async(req,res) => {
+        let incomingData = req.body
+        let reviewerUserId = incomingData.reviewerUserId
+        let reviewedUserId = incomingData.reviewedUserId
+        let reviewContent = incomingData.reviewContent
+
+        let result = await addUserReview(reviewerUserId, reviewedUserId,reviewContent)
+        console.log(result)
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
+        }
+
     })
     //#region endpoints
 
