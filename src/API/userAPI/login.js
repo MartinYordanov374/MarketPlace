@@ -4,6 +4,7 @@ const saltRounds = 9
 
 async function loginUser(username, notHashedPassword)
 {
+    // TODO Add JWT
     let exists = await checkUserExists(username)
 
     if(exists != null)
