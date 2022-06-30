@@ -26,7 +26,7 @@ let marketplaceSchema = new Schema({
     },
 
     marketplaceRating:{
-        type: Number,
+        type: [Number],
     },
 
     marketplaceProducts: {
