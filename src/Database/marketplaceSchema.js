@@ -36,7 +36,7 @@ let marketplaceSchema = new Schema({
 
     marketplaceReviews:{
         type: [ObjectId],
-        ref: 'product'
+        ref: 'review'
     }
     
 })
