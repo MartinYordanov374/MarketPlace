@@ -165,7 +165,15 @@ async function startServer(){
         let ratingAmount = incomingData.ratingAmount
 
         let result = await addUserRating(ratingAdderId, ratingReceiverId, ratingAmount)
-        console.log(result)
+
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else if(result.status == 401)
+        {
+            res.status(401).send(result.msg.message)
+        }
     })
     //#region endpoints
 
