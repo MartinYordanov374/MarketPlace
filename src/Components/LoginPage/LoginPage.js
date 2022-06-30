@@ -6,7 +6,6 @@ export default function Login() {
     <div>
         <Navbar/>
         <h1>Test</h1>
-        <Button variant='contained'>Test button</Button>
         <Footer/>
     </div>);
 }
