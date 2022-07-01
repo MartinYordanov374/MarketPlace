@@ -7,6 +7,20 @@ import Box from '@mui/material/Box';
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 
+import { List, ListItem, Divider, Container} from '@mui/material'
+
+function handleMenuIconClick(){
+    // show dropdown menu
+    let dropdownMenu = document.querySelector('.dropdownMenu')
+    if(dropdownMenu.style.display == 'none')
+    {
+        dropdownMenu.style.display = 'block'
+    } 
+    else{
+        dropdownMenu.style.display ='none'
+    }
+}
+
 export default function Navbar() {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -18,9 +32,18 @@ export default function Navbar() {
             <AppBar color="warning" position="static">
 
                   { isMobile ? (
-                    <IconButton>
-                        <MenuIcon style={{color:"white"}}></MenuIcon>
-                    </IconButton>
+                    <span style={{textAlign: 'center'}}>
+
+                        <IconButton onClick={(e) => handleMenuIconClick()}>
+                            <MenuIcon style={{color:"white"}} ></MenuIcon>
+                        </IconButton>
+                        <List class='dropdownMenu'>
+                            <ListItem class='dropdownOption'>Test</ListItem>
+                            <ListItem class='dropdownOption'>Test</ListItem>
+                            <ListItem class='dropdownOption'>Test</ListItem>
+                        </List>
+                    </span>
+
                     ) 
                     :
                     (

@@ -21,4 +21,14 @@ a:hover {
 .copyrightWrapper .copyrightInfo {
   font-size: small;
 }
+
+.dropdownMenu {
+  display: none;
+}
+
+.dropdownMenu .dropdownOption {
+  text-align: center;
+  list-style-type: none;
+  cursor: pointer;
+}
 /*# sourceMappingURL=footer.css.map */

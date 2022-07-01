@@ -20,3 +20,12 @@ a{
         font-size: small;
     }
 }
+
+.dropdownMenu{
+    display: none;
+    .dropdownOption{
+        text-align: center;
+        list-style-type: none;
+        cursor: pointer;
+    }
+}
