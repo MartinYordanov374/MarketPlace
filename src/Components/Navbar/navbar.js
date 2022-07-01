@@ -60,15 +60,15 @@ export default function Navbar() {
                         <Toolbar>
 
                             <Typography variant="h5" sx={{marginLeft: 20}}>
-                                MarketPlace 
+                                <a href='/home'>MarketPlace</a> 
                             </Typography>
 
                             <Typography variant="h5" sx={{marginLeft: 75}}>
-                                Buy 
+                                <a href='/buy'>Buy</a> 
                             </Typography>
 
                             <Typography variant="h5" sx={{marginLeft: 75}}>
-                                Sell 
+                                <a href='/sell'>Sell</a> 
                             </Typography>
                         </Toolbar>
 
