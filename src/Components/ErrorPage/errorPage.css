@@ -1,0 +1,24 @@
+@media screen and (max-width: 817px) {
+  .errorWrapper {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-right: -50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (min-width: 818px) and (max-width: 1920px) {
+  .errorWrapper {
+    text-align: center;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    margin-right: -50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+/*# sourceMappingURL=errorPage.css.map */
