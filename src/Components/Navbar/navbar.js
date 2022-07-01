@@ -38,9 +38,19 @@ export default function Navbar() {
                             <MenuIcon style={{color:"white"}} ></MenuIcon>
                         </IconButton>
                         <List class='dropdownMenu'>
-                            <ListItem class='dropdownOption'>Test</ListItem>
-                            <ListItem class='dropdownOption'>Test</ListItem>
-                            <ListItem class='dropdownOption'>Test</ListItem>
+
+                            <ListItem class='dropdownOption'> 
+                                <a href='/home'>MarketPlace</a> 
+                            </ListItem>
+
+                            <ListItem class='dropdownOption'> 
+                                <a href='/buy'>Buy</a> 
+                            </ListItem>
+
+                            <ListItem class='dropdownOption'> 
+                                <a href='/sell'>Sell</a> 
+                            </ListItem>
+
                         </List>
                     </span>
 
