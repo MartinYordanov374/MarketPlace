@@ -1,12 +1,12 @@
 let bcrypt = require('bcrypt')
 const { checkUserExists } = require('./checkUserExists')
+
 const saltRounds = 9
 
 async function loginUser(username, notHashedPassword)
 {
-    // TODO Add JWT
     let exists = await checkUserExists(username)
-
+    
     if(exists != null)
     {
         try{
@@ -14,6 +14,7 @@ async function loginUser(username, notHashedPassword)
             let hashedPasswordsMatch = await bcrypt.compare(notHashedPassword.toString(), exists.hashedPass)
             if(hashedPasswordsMatch)
             {
+                
                 return { status: 200 }
             }
             else

@@ -20,6 +20,7 @@ const { addMarketplaceReview } = require('../API/marketplaceAPI/addMarketplaceRe
 const { addMarketplaceRating } = require('../API/marketplaceAPI/addMarketplaceRating')
 const { addProductRating } = require('../API/productAPI/addProductRating')
 const { addProductReview } = require('../API/productAPI/addProductReview')
+let session = require('express-session');
 
 
 async function startServer(){
@@ -56,6 +57,7 @@ async function startServer(){
 
         if(loginResult.status == 200)
         {
+            req.session.user = username
             res.status(200).send('Login successful')
         }
         else if(loginResult.status == 401)
