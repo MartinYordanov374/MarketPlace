@@ -1,0 +1,24 @@
+.Directions {
+  display: -ms-grid;
+  display: grid;
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+
+a:hover {
+  color: #e2d7d7;
+}
+
+.copyrightWrapper .copyrightInfo {
+  font-size: small;
+}
+/*# sourceMappingURL=footer.css.map */

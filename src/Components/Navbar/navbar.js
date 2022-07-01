@@ -42,7 +42,6 @@ export default function Navbar() {
                     )}
             </AppBar>
         </Box>
-        <h1>Navbar</h1>
     </div>);
 }
   

@@ -1,0 +1,22 @@
+.Directions{
+    display:grid;
+    text-align: center;
+}
+ul{
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    display: block;
+
+    color: white;
+    &:hover{
+        color: rgb(226, 215, 215);
+    }
+}
+
+.copyrightWrapper{
+    .copyrightInfo{
+        font-size: small;
+    }
+}
