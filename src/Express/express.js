@@ -67,6 +67,7 @@ async function startServer(){
         else{
             res.status(404).send('That user doesn\'t exist')
         }
+        
     })
     
     app.post('/createMarketplace', async(req,res) => {

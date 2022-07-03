@@ -6,6 +6,10 @@ import './login.css'
 import {useRef, useState} from 'react'
 import Axios from 'axios'
 
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 async function loginUser(userData)
 {
     console.log('logging in...')
@@ -14,11 +18,14 @@ async function loginUser(userData)
     Axios.post('http://localhost:3001/login', userData)
     .then(res => {
         let response = res.data
-        console.log(response)
+        toast.success(response)
+
     })
     .catch(err => {
         let response = err.response.data
-        console.log(response)
+        toast.warn(response)
+
+
     })
 }
 
@@ -39,8 +46,8 @@ export default function Login() {
     return (
     <div>
         <Navbar/>
+            <ToastContainer/>
         <div className="formWrapper">
-            
             <FormControl className="FormControl">
                 <InputLabel htmlFor="usernameInput" >Username</InputLabel>
                 <Input id="usernameInput" value={username} ref={usernameRef} onChange={(e)=> setUsername(e.target.value)}/>

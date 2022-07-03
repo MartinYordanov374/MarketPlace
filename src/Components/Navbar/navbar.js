@@ -9,6 +9,7 @@ import { useTheme } from "@mui/material";
 
 import { List, ListItem, Divider, Container} from '@mui/material'
 
+
 function handleMenuIconClick(){
     // show dropdown menu
     let dropdownMenu = document.querySelector('.dropdownMenu')
