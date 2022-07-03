@@ -19,9 +19,11 @@ export default function Login() {
     const passwordRef = useRef()
 
     const handleLogin = () => {
-        console.log(usernameRef.current.firstChild.attributes.value.value)
-        console.log(passwordRef.current.firstChild.attributes.value.value)
+        const username = usernameRef.current.firstChild.attributes.value.value
+        const password = passwordRef.current.firstChild.attributes.value.value
 
+        let userObj = {username: username, password: password}
+        loginUser(userObj)
     }
     return (
     <div>
