@@ -4,7 +4,10 @@ import Button from '@mui/material/Button'
 import { FormControl, InputLabel, Input, FormHelperText, makeStyles } from '@mui/material';
 import './login.css'
 
-
+function loginUser(userData)
+{
+    console.log('logging in...')
+}
 
 export default function Login() {
     return (
@@ -23,7 +26,7 @@ export default function Login() {
                 <Input id="passInput"  type="password" />
             </FormControl>
 
-            <Button color="warning" className='loginButton'>Login</Button>
+            <Button color="warning" className='loginButton' onClick={() => loginUser()}>Login</Button>
         </div>
         <Footer/>
     </div>);
