@@ -1,0 +1,13 @@
+.FormControl {
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  margin-top: 5% !important;
+}
+
+.formWrapper {
+  display: -ms-grid;
+  display: grid;
+  width: 10%;
+}
+/*# sourceMappingURL=login.css.map */
