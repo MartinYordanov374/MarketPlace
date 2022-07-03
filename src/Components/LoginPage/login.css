@@ -8,6 +8,27 @@
 .formWrapper {
   display: -ms-grid;
   display: grid;
-  width: 10%;
+}
+
+@media screen and (max-width: 817px) {
+  .formWrapper {
+    margin-top: 20%;
+    width: 60%;
+    margin-left: 20%;
+  }
+  .formWrapper .loginButton {
+    margin-top: 5%;
+  }
+}
+
+@media screen and (min-width: 818px) and (max-width: 1920px) {
+  .formWrapper {
+    margin-top: 7%;
+    width: 25%;
+    margin-left: 36.5%;
+  }
+  .formWrapper .loginButton {
+    margin-top: 5%;
+  }
 }
 /*# sourceMappingURL=login.css.map */
