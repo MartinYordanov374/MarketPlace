@@ -1,5 +1,6 @@
 const {checkUserExistsById} = require('../userAPI/checkUserExistsById')
 const {findProductById} = require('./findProductById')
+let review = require('../../Database/reviewSchema')
 
 async function addProductReview(reviewerUserId, reviewedProductId, reviewContent)
 {

@@ -5,6 +5,7 @@ import { FormControl, InputLabel, Input } from '@mui/material';
 import './login.css'
 import {useRef, useState} from 'react'
 import Axios from 'axios'
+import {Navigate} from 'react-router-dom'
 
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,17 +16,16 @@ async function loginUser(userData)
     console.log('logging in...')
     // TODO send data to the server
     
-    Axios.post('http://localhost:3001/login', userData)
+    Axios.post('http://localhost:3001/login', userData, { withCredentials: true})
     .then(res => {
         let response = res.data
-        toast.success(response)
-
+        toast.success(response.msg)
+        console.log(res.data.session)
+        // window.location = '/'
     })
     .catch(err => {
         let response = err.response.data
         toast.warn(response)
-
-
     })
 }
 
@@ -62,6 +62,7 @@ export default function Login() {
             <Button color="warning" className='loginButton' onClick={() => handleLogin()}>Login</Button>
         </div>
         <Footer/>
+
     </div>);
 }
   
