@@ -57,7 +57,7 @@ async function startServer(){
 
         if(loginResult.status == 200)
         {
-            req.session.user = username
+            req.session = username
             res.status(200).send('Login successful')
         }
         else if(loginResult.status == 401)

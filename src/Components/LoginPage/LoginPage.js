@@ -4,11 +4,22 @@ import Button from '@mui/material/Button'
 import { FormControl, InputLabel, Input } from '@mui/material';
 import './login.css'
 import {useRef, useState} from 'react'
+import Axios from 'axios'
 
-function loginUser(userData)
+async function loginUser(userData)
 {
     console.log('logging in...')
-    console.log(userData)
+    // TODO send data to the server
+    
+    Axios.post('http://localhost:3001/login', userData)
+    .then(res => {
+        let response = res.data
+        console.log(response)
+    })
+    .catch(err => {
+        let response = err.response.data
+        console.log(response)
+    })
 }
 
 export default function Login() {
