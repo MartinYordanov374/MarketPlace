@@ -20,7 +20,7 @@ function loginUser(userData)
         let response = res.data
         toast.success(response.msg)
         console.log(res.data.session)
-        // window.location = '/'
+        window.location = '/'
     })
     .catch(err => {
         let response = err.response.data
@@ -40,6 +40,7 @@ export default function Login() {
             {
                 setLoginStatus(true)
                 window.location.href = '/'
+
             }
             else
             {
