@@ -10,8 +10,7 @@ import React, { useEffect, useState } from "react";
 import { List, ListItem, Divider, Container} from '@mui/material'
 
 import Axios from 'axios'
-
-// TODO show diff navbars for logged in and logged out users
+import { toast } from "react-toastify";
 
 
 
@@ -26,6 +25,20 @@ function handleMenuIconClick(){
     }
 }
 
+function handleLogout()
+{
+    Axios.get('http://localhost:3001/logout', {withCredentials: true})
+    .then((res) => {
+        if(res.status == 200)
+        {
+           window.location.href='/login'
+        }
+        
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
 
 export default function Navbar() {
 
@@ -89,8 +102,8 @@ function LoggedUserNavbar()
                             </ListItem>
 
 
-                            <ListItem class='dropdownOption'> 
-                                <a href='/logout'>Logut</a> 
+                            <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
+                                Logout 
                             </ListItem>
 
                         </List>
@@ -113,8 +126,8 @@ function LoggedUserNavbar()
                                 <a href='/sell'>Sell</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 45}}>
-                                <a href='/logout'>Logout</a> 
+                            <Typography variant="button" sx={{marginLeft: 45}} onClick={() => handleLogout()}>
+                                Logout
                             </Typography>
                         </Toolbar>
 

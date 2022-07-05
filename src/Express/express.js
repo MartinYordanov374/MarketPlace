@@ -92,7 +92,6 @@ async function startServer(){
         {
             req.session.user = username 
             req.session.save(() => {
-                console.log('ID: ', req.sessionID)
                 
             })
             // res.send(req.sessionID)
@@ -248,7 +247,6 @@ async function startServer(){
 
         let result = await addMarketplaceRating(ratingAdderId, ratingReceiverId,ratingAmount)
 
-        console.log(result)
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
@@ -295,18 +293,24 @@ async function startServer(){
 
     app.get('/isUserLoggedIn', (req,res) => {
         console.log(req.session)
-        
         if(req.session.user)
         {
-            console.log('User logged in')
             res.send(true)
         }
         else
         {
-            console.log('User not logged in')
             res.send(false)
         }
 
+    })
+
+    app.get('/logout', (req,res) => {
+        if(req.session)
+        {
+            req.session.destroy()
+            res.clearCookie('connect.sid', {path: '/'})
+            res.status(200).send({status: 200, msg: 'logging out'})
+        }
     })
     //#region endpoints
 

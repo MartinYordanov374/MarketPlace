@@ -39,6 +39,7 @@ export default function Login() {
             if(res.data == true)
             {
                 setLoginStatus(true)
+                window.location.href = '/'
             }
             else
             {
