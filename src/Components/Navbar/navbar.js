@@ -88,6 +88,11 @@ function LoggedUserNavbar()
                                 <a href='/sell'>Sell</a> 
                             </ListItem>
 
+
+                            <ListItem class='dropdownOption'> 
+                                <a href='/logout'>Logut</a> 
+                            </ListItem>
+
                         </List>
                     </span>
 
@@ -96,7 +101,7 @@ function LoggedUserNavbar()
                     (
                         <Toolbar>
 
-                            <Typography variant="h5" sx={{marginLeft: 20}}>
+                            <Typography variant="h5" sx={{marginLeft: 0}}>
                                 <a href='/home'> MarketPlace</a> 
                             </Typography>
 
@@ -106,6 +111,10 @@ function LoggedUserNavbar()
 
                             <Typography variant="h5" sx={{marginLeft: 75}}>
                                 <a href='/sell'>Sell</a> 
+                            </Typography>
+
+                            <Typography variant="h5" sx={{marginLeft: 45}}>
+                                <a href='/logout'>Logout</a> 
                             </Typography>
                         </Toolbar>
 
