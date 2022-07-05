@@ -3,9 +3,8 @@ import Footer from "../Footer/footer"
 import Button from '@mui/material/Button'
 import { FormControl, InputLabel, Input } from '@mui/material';
 import './login.css'
-import {useRef, useState} from 'react'
 import Axios from 'axios'
-import {Navigate} from 'react-router-dom'
+import React, { useEffect, useState, useRef} from "react";
 
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,6 +29,43 @@ function loginUser(userData)
 }
 
 export default function Login() {
+
+    // check if logged in
+    let [loginStatus, setLoginStatus] = useState('')
+
+    useEffect(() => {
+        Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
+        .then((res)=>{
+            if(res.data == true)
+            {
+                setLoginStatus(true)
+            }
+            else
+            {
+                setLoginStatus(false)
+            }
+        })
+        .catch((error)=>{
+            // console.log(error)
+        })
+    })
+
+        
+    if(loginStatus == false)
+    {
+        return <LoginPage/>
+    }
+    else
+    {
+        window.location.href = '/'
+    }
+        
+    
+}
+  
+function LoginPage()
+{
+        
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
@@ -43,26 +79,27 @@ export default function Login() {
         let userObj = {username: username, password: password}
         loginUser(userObj)
     }
+
     return (
-    <div>
-        <Navbar/>
-            <ToastContainer/>
-        <div className="formWrapper">
-            <FormControl className="FormControl">
-                <InputLabel htmlFor="usernameInput" >Username</InputLabel>
-                <Input id="usernameInput" value={username} ref={usernameRef} onChange={(e)=> setUsername(e.target.value)}/>
-            </FormControl>
+        <div>
+            <Navbar/>
+                <ToastContainer/>
+            <div className="formWrapper">
+                <FormControl className="FormControl">
+                    <InputLabel htmlFor="usernameInput" >Username</InputLabel>
+                    <Input id="usernameInput" value={username} ref={usernameRef} onChange={(e)=> setUsername(e.target.value)}/>
+                </FormControl>
 
-            <FormControl className="FormControl">
+                <FormControl className="FormControl">
 
-                <InputLabel htmlFor="passInput">Password</InputLabel>
-                <Input id="passInput"  type="password"  value={password} ref={passwordRef} onChange={(e)=> setPassword(e.target.value)}/>
-            </FormControl>
+                    <InputLabel htmlFor="passInput">Password</InputLabel>
+                    <Input id="passInput" type={"password"}  value={password} ref={passwordRef} onChange={(e)=> setPassword(e.target.value)}/>
+                </FormControl>
 
-            <Button color="warning" className='loginButton' onClick={() => handleLogin()}>Login</Button>
+                <Button color="warning" className='loginButton' onClick={() => handleLogin()}>Login</Button>
+            </div>
+            <Footer/>
+
         </div>
-        <Footer/>
-
-    </div>);
+    )
 }
-  
