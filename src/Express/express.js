@@ -25,40 +25,46 @@ let cookieParser = require('cookie-parser');
 let session = require('express-session');
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
-const store = new mongoDB_Session({
-    uri: 'mongodb://localhost:27017/marketplaceDB',
-    collection: 'sessions'
-})
+
+
+const corsOptions = {
+    origin: 'http://localhost:3000',  //Your Client, do not write '*'
+    credentials: true,
+};
 
 async function startServer(){
     //#region configurations
     const app = express()
-
-    app.use(cookieParser());
+    
+    const store = new mongoDB_Session({
+        uri: 'mongodb://localhost:27017/marketplaceDB',
+        collection: 'sessions',
+    })
+    
+    app.use(cookieParser('secret'))
     app.use(session({
         secret: 'secret',
         store: store,
+        saveUninitialized: false,
         resave: false,
-        saveUninitialized: false
-      }))
+        cookie: {
+            sameSite: false,
+            secure: false,
+            expires: new Date(Date.now() + 3600000),
+            httpOnly: true,
+            path: '/'
+            },
+        }))
 
-    app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
+        
+    app.use(cors(corsOptions))
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
 
-    await databaseConfig(app)
-    //#endregion
 
-    const isAuthenticated = (req,res,next) => {
-        if(req.session.user)
-        {
-            next()
-        }
-        else
-        {
-            res.send('Access Denied. User not logged in.')
-        }
-    }
+    await databaseConfig(app)
+
+    //#endregion
     
     app.post('/register', async (req,res) => {
         let incomingData = req.body
@@ -84,9 +90,12 @@ async function startServer(){
 
         if(loginResult.status == 200)
         {
-            req.session.user = {username: username}  
-            req.session.save()
-            res.status(200).send({msg: 'Login successful', session: req.session})
+            req.session.user = username 
+            req.session.save(() => {
+                console.log('ID: ', req.sessionID)
+                
+            })
+            res.send(req.sessionID)
 
         }
         else if(loginResult.status == 401)
@@ -96,6 +105,8 @@ async function startServer(){
         else{
             res.status(404).send('That user doesn\'t exist')
         }
+
+
         
     })
     
@@ -281,20 +292,16 @@ async function startServer(){
         }
     })
 
-    app.post('/isUserLoggedIn', (req,res) => {
-        store.all((err,data)=>{
-            if(data[0].session.user != undefined)
-            {
-                 res.send({isLogged: true})
-            }
-            else{
-                 res.send({isLogged: false})
-            }
-        })
+    app.get('/isUserLoggedIn', (req,res) => {
+        console.log(req.session)
+        console.log('Target id: ', req.session.id)
+
     })
     //#region endpoints
 
-
+    app.get('/', (req,res) => {
+       console.log(req.session)
+    })
 
 
     //#endregion

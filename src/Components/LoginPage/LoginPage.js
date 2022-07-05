@@ -11,7 +11,7 @@ import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-async function loginUser(userData)
+function loginUser(userData)
 {
     console.log('logging in...')
     // TODO send data to the server

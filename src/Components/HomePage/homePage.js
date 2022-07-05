@@ -2,21 +2,28 @@ import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 import { ToastContainer } from "react-toastify";
 import Axios from "axios";
-
-
+import React from "react";
+Axios.defaults.withCrendentails = true
 function checkIfUserIsLoggedIn()
 {
-    Axios.post('http://localhost:3001/isUserLoggedIn')
-    .then((res)=>{
-        console.log(res.data)
-    })
-    .catch((error)=>{
-        console.log(error)
-    })
-}
 
+    Axios.get('http://localhost:3001/', {withCredentials: true})
+    .then()
+    .catch()
+    // .then((res)=>{
+    //     console.log(res.data)
+    // })
+    // .catch((error)=>{
+    //     console.log(error)
+    // })
+
+}
 export default function Home() {
-    checkIfUserIsLoggedIn()
+
+    React.useEffect(() => {
+        checkIfUserIsLoggedIn()
+    })
+
     return (
     <div>
         <Navbar/>

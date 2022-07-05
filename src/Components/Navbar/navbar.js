@@ -11,10 +11,11 @@ import { List, ListItem, Divider, Container} from '@mui/material'
 
 import Axios from 'axios'
 
+// TODO show diff navbars for logged in and logged out users
+
 
 
 function handleMenuIconClick(){
-    // show dropdown menu
     let dropdownMenu = document.querySelector('.dropdownMenu')
     if(dropdownMenu.style.display == 'none')
     {
