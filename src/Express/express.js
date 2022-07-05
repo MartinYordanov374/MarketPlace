@@ -95,7 +95,8 @@ async function startServer(){
                 console.log('ID: ', req.sessionID)
                 
             })
-            res.send(req.sessionID)
+            // res.send(req.sessionID)
+            res.status(200).send({msg: 'Login successful!', status: 200})
 
         }
         else if(loginResult.status == 401)
@@ -294,14 +295,20 @@ async function startServer(){
 
     app.get('/isUserLoggedIn', (req,res) => {
         console.log(req.session)
-        console.log('Target id: ', req.session.id)
+        
+        if(req.session.user)
+        {
+            console.log('User logged in')
+            res.send(true)
+        }
+        else
+        {
+            console.log('User not logged in')
+            res.send(false)
+        }
 
     })
     //#region endpoints
-
-    app.get('/', (req,res) => {
-       console.log(req.session)
-    })
 
 
     //#endregion
