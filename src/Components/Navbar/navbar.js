@@ -147,17 +147,14 @@ function NotLoggedUserNavabr()
                     (
                         <Toolbar>
 
-                            <Typography variant="h5" sx={{marginLeft: 20}}>
-                                <a href='/home'> MarketPlace</a> 
+                            <Typography variant="h5" sx={{marginLeft: 70}}>
+                                <a href='/login'> Login </a> 
                             </Typography>
 
                             <Typography variant="h5" sx={{marginLeft: 75}}>
-                                <a href='/buy'>Buy</a> 
+                                <a href='/register'>Register</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 75}}>
-                                <a href='/sell'>Sell</a> 
-                            </Typography>
                         </Toolbar>
 
                     )}

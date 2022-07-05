@@ -28,7 +28,7 @@ const mongoDB_Session = require('connect-mongodb-session')(session)
 
 
 const corsOptions = {
-    origin: 'http://localhost:3000',  //Your Client, do not write '*'
+    origin: 'http://localhost:3000', 
     credentials: true,
 };
 
