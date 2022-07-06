@@ -11,9 +11,15 @@ async function registerUser(username, notHashedPassword, confirmationPassword)
 
     if(notHashedPassword == confirmationPassword)
     {
-        try{
-            if(userExists){
+        try
+        {
+            if(userExists)
+            {
                 throw new Error('That user already exists!')
+            }
+            if(username == notHashedPassword || username == confirmationPassword)
+            {
+                return { msg:'Password cannot be the same as the username!', status: 401 }
             }
             else
             {
@@ -23,7 +29,7 @@ async function registerUser(username, notHashedPassword, confirmationPassword)
                     hashedPass: hashedPass,
                     rating: 0
                 })
-        
+                
                 let userData = await user.save()
                 return {msg: 'Registration successful', status: 200, userData: userData}
             }
@@ -33,13 +39,9 @@ async function registerUser(username, notHashedPassword, confirmationPassword)
             return {msg: e, status: 401}
         }
     }
-    else if(username == notHashedPassword || confirmationPassword == username)
-    {
-        throw new Error('Password cannot be the same as the username!')
-    }
     else
     {
-        throw new Error('Passwords do not match!')
+        return { msg:'Passwords do not match!', status: 401 }
     }
 
 }
