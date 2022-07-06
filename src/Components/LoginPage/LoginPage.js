@@ -12,8 +12,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function loginUser(userData)
 {
-    console.log('logging in...')
-    // TODO send data to the server
     
     Axios.post('http://localhost:3001/login', userData, { withCredentials: true})
     .then(res => {

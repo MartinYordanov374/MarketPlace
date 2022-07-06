@@ -10,6 +10,40 @@ import 'react-toastify/dist/ReactToastify.css';
 import Axios from 'axios'
 export default function RegisterPage()
 {
+
+    const [loginStatus, setLoginStatus] = useState('')
+
+    useEffect(() => {
+        Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
+        .then((res)=>{
+            if(res.data == true)
+            {
+                setLoginStatus(true)
+                window.location.href = '/'
+
+            }
+            else
+            {
+                setLoginStatus(false)
+            }
+        })
+        .catch((error)=>{
+            // console.log(error)
+        })})
+
+    if(loginStatus == false)
+    {
+        return <RegisterView/>
+    }
+    else
+    {
+        window.location.href = '/'
+    }
+
+}
+
+function RegisterView()
+{
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [repass, setRePass] = useState('')
@@ -19,7 +53,7 @@ export default function RegisterPage()
     const passwordRef = useRef()
     const rePasswordRef = useRef()
 
-    
+        
     const handleRegister = () => {
         
         const pass = passwordRef.current.firstChild.attributes.value.value
@@ -38,7 +72,7 @@ export default function RegisterPage()
 
     }
 
-    return (
+    return(
         <div>
             <Navbar></Navbar>
             <div className="formWrapper">
@@ -67,4 +101,3 @@ export default function RegisterPage()
         </div>
     )
 }
-    
