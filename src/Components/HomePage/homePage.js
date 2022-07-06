@@ -3,8 +3,10 @@ import Footer from "../Footer/footer";
 import { ToastContainer } from "react-toastify";
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+import StorefrontIcon from '@mui/icons-material/Storefront';
 
-
+import './homepageStyling.css'
 Axios.defaults.withCrendentails = true
 
 
@@ -29,8 +31,6 @@ export default function Home() {
         })
     })
 
-    console.log(`isLoggedIn = ${loginStatus}`)
-
     if(loginStatus)
     {
         return <LoggedUser/>
@@ -44,12 +44,67 @@ export default function Home() {
 function LoggedUser()
 {
     return (
-        <div>
+        <div class='wrapper'>
             <Navbar/>
+            <div class='marketplacesWrapper'>
                 <ToastContainer/>
-                <div>
-                    <h1>Logged user</h1>
+                <div class='addMarketplaceWrapper'>
+                    <AddBusinessIcon className="addMarketplaceIcon"/>      
+                    <p class='addMarketplaceCallToAction'>Add Marketplace</p>              
                 </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+            </div>
             <Footer/>
         </div>
     )

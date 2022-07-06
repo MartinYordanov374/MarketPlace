@@ -1,0 +1,69 @@
+.marketplacesWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.marketplacesWrapper .addMarketplaceWrapper {
+  text-align: center;
+  margin-top: 2%;
+  margin-left: 2%;
+  border-style: solid;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-box-flex: 10%;
+      -ms-flex: 10%;
+          flex: 10%;
+}
+
+.marketplacesWrapper .addMarketplaceWrapper .addMarketplaceIcon {
+  font-size: 200px;
+  color: #51ff00;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  cursor: pointer;
+}
+
+.marketplacesWrapper .addMarketplaceWrapper .addMarketplaceIcon:hover {
+  color: #44d600;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.marketplacesWrapper .addMarketplaceWrapper .addMarketplaceCallToAction {
+  text-align: center;
+  margin-right: 10%;
+}
+
+.marketplacesWrapper .marketplaceWrapper {
+  text-align: center;
+  -webkit-box-flex: 10%;
+      -ms-flex: 10%;
+          flex: 10%;
+  margin-top: 2%;
+  margin-left: 2%;
+  border-style: solid;
+}
+
+.marketplacesWrapper .marketplaceWrapper .MarketplaceIcon {
+  font-size: 200px;
+  color: #51ff00;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  cursor: pointer;
+}
+
+.marketplacesWrapper .marketplaceWrapper .MarketplaceIcon:hover {
+  color: #44d600;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.marketplacesWrapper .marketplaceWrapper .MarketplaceCallToAction {
+  text-align: center;
+  margin-right: 10%;
+}
+/*# sourceMappingURL=homepageStyling.css.map */
