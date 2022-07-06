@@ -104,6 +104,38 @@ function LoggedUser()
                     <StorefrontIcon className="MarketplaceIcon"/>      
                     <p class='MarketplaceCallToAction'>Add Marketplace</p>              
                 </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
+                <div class='marketplaceWrapper'>
+                    <StorefrontIcon className="MarketplaceIcon"/>      
+                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
+                </div>
             </div>
             <Footer/>
         </div>
