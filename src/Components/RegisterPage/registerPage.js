@@ -29,6 +29,7 @@ export default function RegisterPage()
         Axios.post('http://localhost:3001/register', userData)
         .then((res) => {
             toast.success(res.data)
+            window.location.href='/login'
         })
         .catch((err) => {
             toast.warn(err.response.data)
