@@ -9,41 +9,48 @@ async function registerUser(username, notHashedPassword, confirmationPassword)
 {
     let userExists = await checkUserExists(username)
 
-    if(notHashedPassword == confirmationPassword)
+    if(notHashedPassword.length >= 6)
     {
-        try
+        if(notHashedPassword == confirmationPassword)
         {
-            if(userExists)
+            try
             {
-                throw new Error('That user already exists!')
+                if(userExists)
+                {
+                    throw new Error('That user already exists!')
+                }
+                if(username == notHashedPassword || username == confirmationPassword)
+                {
+                    return { msg:'Password cannot be the same as the username!', status: 401 }
+                }
+
+                else
+                {
+                    let hashedPass =  await bcrypt.hash(notHashedPassword.toString(), saltRounds)
+                    let user = await userModel({
+                        username: username,
+                        hashedPass: hashedPass,
+                        rating: 0
+                    })
+
+                    let userData = await user.save()
+                    return {msg: 'Registration successful', status: 200, userData: userData}
+                }
             }
-            if(username == notHashedPassword || username == confirmationPassword)
+            catch(e)
             {
-                return { msg:'Password cannot be the same as the username!', status: 401 }
-            }
-            else
-            {
-                let hashedPass =  await bcrypt.hash(notHashedPassword.toString(), saltRounds)
-                let user = await userModel({
-                    username: username,
-                    hashedPass: hashedPass,
-                    rating: 0
-                })
-                
-                let userData = await user.save()
-                return {msg: 'Registration successful', status: 200, userData: userData}
+                return {msg: e, status: 401}
             }
         }
-        catch(e)
+        else
         {
-            return {msg: e, status: 401}
+            return { msg:'Passwords do not match!', status: 401 }
         }
     }
     else
     {
-        return { msg:'Passwords do not match!', status: 401 }
+        return {msg: 'Your password must be at least 6 symbols!', status: 401}
     }
-
 }
 
 
