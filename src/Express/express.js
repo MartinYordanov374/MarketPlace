@@ -71,8 +71,12 @@ async function startServer(){
         let username = incomingData.username
         let notHashedPassword = incomingData.password
         let confirmationPassword = incomingData.repass
+        console.log('registering')
 
         let registerResult = await registerUser(username, notHashedPassword, confirmationPassword)
+
+        console.log(registerResult.status)
+        
         if(registerResult.status == 401)
         {
             res.status(401).send(registerResult.msg.toString())
@@ -293,7 +297,6 @@ async function startServer(){
     })
 
     app.get('/isUserLoggedIn', (req,res) => {
-        console.log(req.session)
         if(req.session.user)
         {
             res.send(true)
