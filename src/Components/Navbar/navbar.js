@@ -126,8 +126,8 @@ function LoggedUserNavbar()
                                 <a href='/sell'>Sell</a> 
                             </Typography>
 
-                            <Typography variant="button" sx={{marginLeft: 45}} onClick={() => handleLogout()}>
-                                Logout
+                            <Typography variant="h5" sx={{marginLeft: 45}} onClick={() => handleLogout()}>
+                                <a href='#'>Logout</a>
                             </Typography>
                         </Toolbar>
 
