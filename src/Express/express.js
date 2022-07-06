@@ -70,8 +70,9 @@ async function startServer(){
         let incomingData = req.body
         let username = incomingData.username
         let notHashedPassword = incomingData.password
+        let confirmationPassword = incomingData.repass
 
-        let registerResult = await registerUser(username, notHashedPassword)
+        let registerResult = await registerUser(username, notHashedPassword, confirmationPassword)
         if(registerResult.status == 401)
         {
             res.status(401).send(registerResult.msg.toString())
