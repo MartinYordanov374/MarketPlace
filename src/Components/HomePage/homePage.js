@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 
-import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions} from '@mui/material'
+import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link} from '@mui/material'
 
 import './homepageStyling.css'
 
@@ -64,27 +64,24 @@ function LoggedUser()
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
 
-                <Card className='addMarketplaceWrapper' href={`/AddMarketplace`} sx={{height: "240px", width: "240px"}}>
-                    
-
-                    <CardActionArea>
-                        <CardMedia>
-                            <AddBusinessIcon className="addMarketplaceIcon"/> 
-                        </CardMedia>
-                        <CardContent>
-                            <Typography className='addMarketplaceCallToAction'>Add Marketplace</Typography>
-                        </CardContent>
-                    </CardActionArea>
-                </Card>
+                <Link href='/AddMarketplace'>
+                    <Card className='addMarketplaceWrapper' sx={{height: "240px", width: "240px"}}>
+                        <CardActionArea>
+                            <CardMedia>
+                                <AddBusinessIcon className="addMarketplaceIcon"/> 
+                            </CardMedia>
+                            <CardContent>
+                                <Typography className='addMarketplaceCallToAction'>Add Marketplace</Typography>
+                            </CardContent>
+                        </CardActionArea>
+                    </Card>
+                </Link>
 
                  {marketplaces.map(marketplace => {
                    
                         return(
-                            // <div class='marketplaceWrapper'>
-                            //     <StorefrontIcon  href={`marketplace/${marketplace._id}`} className="MarketplaceIcon"/>      
-                            //     <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
-                            // </div>
-                            <div class='marketplaceWrapper' href={`marketplace/${marketplace._id}`}>
+                            <div class='marketplaceWrapper'>
+                             <Link href={`marketplace/${marketplace._id}`}>
                                 <Card sx={{height: "240px", width: "240px"}}>
                                     <CardActionArea>
                                         <CardMedia>
@@ -94,10 +91,9 @@ function LoggedUser()
                                         <CardContent>
                                             <Typography>{marketplace.marketplaceName}</Typography>
                                         </CardContent>
-
                                     </CardActionArea>
-
                                 </Card>
+                             </Link>
                             </div>
                         )
                     
