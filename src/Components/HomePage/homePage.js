@@ -75,7 +75,7 @@ function LoggedUser()
                             //     <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
                             // </div>
                             <div class='marketplaceWrapper' href={`marketplace/${marketplace._id}`}>
-                                <Card>
+                                <Card sx={{height: "240px", width: "240px"}}>
                                     <CardActionArea>
                                         <CardMedia>
                                             <StorefrontIcon className="MarketplaceIcon"/> 

@@ -6,6 +6,12 @@
       flex-wrap: wrap;
 }
 
+@media screen and (min-width: 818px) and (max-width: 1920px) {
+  .marketplacesWrapper {
+    margin-bottom: 2%;
+  }
+}
+
 .marketplacesWrapper .addMarketplaceWrapper {
   text-align: center;
   margin-top: 2%;

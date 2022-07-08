@@ -1,5 +1,8 @@
 .marketplacesWrapper
 {
+    @media screen and (min-width: 818px) and (max-width: 1920px) {
+        margin-bottom: 2%;
+    }
     display: flex;
     flex-wrap:wrap;
     .addMarketplaceWrapper{
@@ -81,3 +84,4 @@
         // box-shadow: 0px 0px 8px 0px black;
     }
 }
+
