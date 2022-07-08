@@ -149,7 +149,7 @@ function LoggedOutUser()
             <Navbar/>
                 <ToastContainer/>
                 <div class='loggedOut'>
-                    <h1>Logged out user</h1>
+                    <h1 class='userMessage'>Sorry, this page is accessible by registered users only.</h1>
                 </div>
             <Footer/>
         </div>

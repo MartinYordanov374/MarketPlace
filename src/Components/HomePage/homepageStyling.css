@@ -68,6 +68,11 @@
 }
 
 .loggedOut {
-  margin-bottom: 28%;
+  margin-bottom: 13%;
+  text-align: center;
+}
+
+.loggedOut .userMessage {
+  margin-top: 15%;
 }
 /*# sourceMappingURL=homepageStyling.css.map */
