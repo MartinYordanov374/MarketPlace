@@ -78,30 +78,18 @@ function LoggedUser()
 
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
-
-                {/* <Link href='/AddMarketplace' underline='none'>
-                    <Card className='addMarketplaceWrapper' sx={{height: "240px", width: "240px"}}>
-                        <CardActionArea>
-                            <CardMedia>
-                                <AddBusinessIcon className="addMarketplaceIcon"/> 
-                            </CardMedia>
-                            <CardContent>
-                                <Typography className='addMarketplaceCallToAction'>Add Marketplace</Typography>
-                            </CardContent>
-                        </CardActionArea>
-                    </Card>
-                </Link> */}
                  {marketplaces.map(marketplace => {
                    
                         return(
                             <div class='marketplaceWrapper'>
                              <Link href={`marketplace/${marketplace._id}`} underline='none'>
-                                <Card sx={{height: "240px", width: "240px"}}>
+                                <Card sx={{height: "260px", width: "240px"}}>
                                     <CardActionArea>
                                         <CardMedia>
                                             <StorefrontIcon className="MarketplaceIcon"/> 
                                             {/* // TODO LOAD IMAGES HERE */}
                                         </CardMedia>
+                                        <Divider/>
                                         <CardContent>
                                             <Typography>{marketplace.marketplaceName}</Typography>
                                         </CardContent>
