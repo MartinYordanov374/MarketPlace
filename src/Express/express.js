@@ -18,6 +18,8 @@ const { addUserReview } = require('../API/userAPI/addUserReview')
 const { addUserRating } = require('../API/userAPI/addUserRating')
 const { addMarketplaceReview } = require('../API/marketplaceAPI/addMarketplaceReview')
 const { addMarketplaceRating } = require('../API/marketplaceAPI/addMarketplaceRating')
+const { getAllMarketplaces } = require('../API/marketplaceAPI/getAllMarketplaces')
+
 const { addProductRating } = require('../API/productAPI/addProductRating')
 const { addProductReview } = require('../API/productAPI/addProductReview')
 
@@ -313,6 +315,11 @@ async function startServer(){
             res.clearCookie('connect.sid', {path: '/'})
             res.status(200).send({status: 200, msg: 'logging out'})
         }
+    })
+
+    app.get('/getAllMarketplaces', async (req,res) => {
+        let result = await getAllMarketplaces()
+        res.status(200).send(result)
     })
     //#region endpoints
 

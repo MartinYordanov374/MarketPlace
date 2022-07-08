@@ -7,6 +7,7 @@ import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 
 import './homepageStyling.css'
+
 Axios.defaults.withCrendentails = true
 
 
@@ -42,7 +43,19 @@ export default function Home() {
 }
 
 function LoggedUser()
-{
+{   
+    let [marketplaces, setMarketplaces] = useState([])
+
+    // let marketplaces = []
+    const getData = async () => {
+        let res = await getMarketplaces()
+
+        setMarketplaces(res)
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
     return (
         <div class='wrapper'>
             <Navbar/>
@@ -52,90 +65,15 @@ function LoggedUser()
                     <AddBusinessIcon className="addMarketplaceIcon"/>      
                     <p class='addMarketplaceCallToAction'>Add Marketplace</p>              
                 </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
-                <div class='marketplaceWrapper'>
-                    <StorefrontIcon className="MarketplaceIcon"/>      
-                    <p class='MarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
+                 {marketplaces.map(marketplace => {
+                   
+                        return(<div class='marketplaceWrapper'>
+                            <StorefrontIcon className="MarketplaceIcon"/>      
+                            <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
+                        </div>)
+                    
+                })}
+               
             </div>
             <Footer/>
         </div>
@@ -154,4 +92,10 @@ function LoggedOutUser()
             <Footer/>
         </div>
     )
+}
+
+async function getMarketplaces(){
+    const result = await Axios.get('http://localhost:3001/getAllMarketplaces')
+    
+    return result.data
 }
