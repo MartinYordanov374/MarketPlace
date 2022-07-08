@@ -82,25 +82,48 @@ function LoggedUserNavbar()
             <AppBar color="warning" position="static">
 
                   { isMobile ? (
+                    // <span style={{textAlign: 'center'}}>
+
+                    //     <IconButton onClick={(e) => handleMenuIconClick()}>
+                    //         <MenuIcon style={{color:"white"}} ></MenuIcon>
+                    //     </IconButton>
+                    //     <List class='dropdownMenu'>
+
+                    //         <ListItem class='dropdownOption'> 
+                    //             <a href='/home'>MarketPlace</a> 
+                    //         </ListItem>
+
+                    //         <ListItem class='dropdownOption'> 
+                    //             <a href='/buy'>Buy</a> 
+                    //         </ListItem>
+
+                    //         <ListItem class='dropdownOption'> 
+                    //             <a href='/sell'>Sell</a> 
+                    //         </ListItem>
+
+
+                    //         <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
+                    //             Logout 
+                    //         </ListItem>
+
+                    //     </List>
+                    // </span>
                     <span style={{textAlign: 'center'}}>
 
                         <IconButton onClick={(e) => handleMenuIconClick()}>
                             <MenuIcon style={{color:"white"}} ></MenuIcon>
                         </IconButton>
+
                         <List class='dropdownMenu'>
 
                             <ListItem class='dropdownOption'> 
                                 <a href='/home'>MarketPlace</a> 
                             </ListItem>
 
-                            <ListItem class='dropdownOption'> 
-                                <a href='/buy'>Buy</a> 
+                            
+                            <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
+                                <a href='/profile'>My Profile</a> 
                             </ListItem>
-
-                            <ListItem class='dropdownOption'> 
-                                <a href='/sell'>Sell</a> 
-                            </ListItem>
-
 
                             <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
                                 Logout 
@@ -112,25 +135,39 @@ function LoggedUserNavbar()
                     ) 
                     :
                     (
+                        // <Toolbar>
+
+                        //     <Typography variant="h5" sx={{marginLeft: 0}}>
+                        //         <a href='/home'> MarketPlace</a> 
+                        //     </Typography>
+
+                        //     <Typography variant="h5" sx={{marginLeft: 75}}>
+                        //         <a href='/buy'>Buy</a> 
+                        //     </Typography>
+
+                        //     <Typography variant="h5" sx={{marginLeft: 75}}>
+                        //         <a href='/sell'>Sell</a> 
+                        //     </Typography>
+
+                        //     <Typography variant="h5" sx={{marginLeft: 45}} onClick={() => handleLogout()}>
+                        //         <a href='#'>Logout</a>
+                        //     </Typography>
+                        // </Toolbar>
+                        
                         <Toolbar>
 
                             <Typography variant="h5" sx={{marginLeft: 0}}>
                                 <a href='/home'> MarketPlace</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 75}}>
-                                <a href='/buy'>Buy</a> 
+                            <Typography variant="h5" sx={{marginLeft: 180}}>
+                                <a href='/profile'> My profile</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 75}}>
-                                <a href='/sell'>Sell</a> 
-                            </Typography>
-
-                            <Typography variant="h5" sx={{marginLeft: 45}} onClick={() => handleLogout()}>
+                            <Typography variant="h5" sx={{marginLeft: 10}} onClick={() => handleLogout()}>
                                 <a href='#'>Logout</a>
                             </Typography>
                         </Toolbar>
-
                     )}
             </AppBar>
         </Box>
