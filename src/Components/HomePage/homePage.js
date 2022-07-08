@@ -64,7 +64,7 @@ function LoggedUser()
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
 
-                <Link href='/AddMarketplace'>
+                <Link href='/AddMarketplace' underline='none'>
                     <Card className='addMarketplaceWrapper' sx={{height: "240px", width: "240px"}}>
                         <CardActionArea>
                             <CardMedia>
@@ -81,7 +81,7 @@ function LoggedUser()
                    
                         return(
                             <div class='marketplaceWrapper'>
-                             <Link href={`marketplace/${marketplace._id}`}>
+                             <Link href={`marketplace/${marketplace._id}`} underline='none'>
                                 <Card sx={{height: "240px", width: "240px"}}>
                                     <CardActionArea>
                                         <CardMedia>
