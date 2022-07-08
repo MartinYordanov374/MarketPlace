@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACI,MAAM,CAAC,MAAM,MAAM,SAAS,EAAE,KAAK;EADvC,AAAA,YAAY,CAAA;IAEJ,aAAa,EAAE,GAAG;GAOzB",
+    "sources": [
+        "registerPageStyles.scss"
+    ],
+    "names": [],
+    "file": "registerPageStyles.css"
+}

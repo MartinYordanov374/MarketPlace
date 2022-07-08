@@ -8,6 +8,8 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import Axios from 'axios'
+
+import './registerPageStyles.css'
 export default function RegisterPage()
 {
 
