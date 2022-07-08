@@ -119,7 +119,7 @@ function LoggedUserNavbar()
 
                             <TextField 
                                 hiddenLabel
-                                variant="filled" 
+                                variant="outlined" 
                                 size="small"
                                 color="warning"
                                 sx={{
@@ -128,7 +128,6 @@ function LoggedUserNavbar()
                                     width: 1200,
                                     backgroundColor: "white",
                                     borderRadius: 10,
-                                    borderStyle: 'none',
                                     height: 40
                                 }}
                                 InputProps={{
