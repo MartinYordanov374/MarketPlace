@@ -74,7 +74,7 @@ function LoggedUser()
                             //     <StorefrontIcon  href={`marketplace/${marketplace._id}`} className="MarketplaceIcon"/>      
                             //     <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
                             // </div>
-                            <div class='marketplaceWrapper'>
+                            <div class='marketplaceWrapper' href={`marketplace/${marketplace._id}`}>
                                 <Card>
                                     <CardActionArea>
                                         <CardMedia>
