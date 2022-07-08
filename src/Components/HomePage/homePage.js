@@ -6,6 +6,8 @@ import React, { useEffect, useState } from "react";
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import StorefrontIcon from '@mui/icons-material/Storefront';
 
+import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions} from '@mui/material'
+
 import './homepageStyling.css'
 
 Axios.defaults.withCrendentails = true
@@ -68,9 +70,24 @@ function LoggedUser()
                  {marketplaces.map(marketplace => {
                    
                         return(
-                            <div class='marketplaceWrapper' href={`marketplace/${marketplace._id}`}>
-                                <StorefrontIcon className="MarketplaceIcon"/>      
-                                <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
+                            // <div class='marketplaceWrapper'>
+                            //     <StorefrontIcon  href={`marketplace/${marketplace._id}`} className="MarketplaceIcon"/>      
+                            //     <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
+                            // </div>
+                            <div class='marketplaceWrapper'>
+                                <Card>
+                                    <CardActionArea>
+                                        <CardMedia>
+                                            <StorefrontIcon className="MarketplaceIcon"/> 
+                                            {/* // TODO LOAD IMAGES HERE */}
+                                        </CardMedia>
+                                        <CardContent>
+                                            <Typography>{marketplace.marketplaceName}</Typography>
+                                        </CardContent>
+
+                                    </CardActionArea>
+
+                                </Card>
                             </div>
                         )
                     

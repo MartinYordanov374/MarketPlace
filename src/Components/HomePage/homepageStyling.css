@@ -10,7 +10,6 @@
   text-align: center;
   margin-top: 2%;
   margin-left: 2%;
-  border-style: solid;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
@@ -45,7 +44,6 @@
           flex: 10%;
   margin-top: 2%;
   margin-left: 2%;
-  border-style: solid;
 }
 
 .marketplacesWrapper .marketplaceWrapper .MarketplaceIcon {
@@ -74,5 +72,19 @@
 
 .loggedOut .userMessage {
   margin-top: 15%;
+}
+
+.MarketplaceIcon {
+  font-size: 200px;
+  color: #51ff00;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  cursor: pointer;
+}
+
+.MarketplaceIcon:hover {
+  color: #44d600;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
 }
 /*# sourceMappingURL=homepageStyling.css.map */
