@@ -3,8 +3,8 @@ import Footer from "../Footer/footer";
 import { ToastContainer } from "react-toastify";
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
-import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import AddIcon from '@mui/icons-material/Add';
 
 import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link} from '@mui/material'
 
@@ -61,10 +61,13 @@ function LoggedUser()
     return (
         <div className='wrapper'>
             <Navbar/>
+
+            <Button color="success" sx={{width: "94%", marginTop: 2, marginLeft: "3%"}}><strong>Add Marketplace</strong></Button> 
+
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
 
-                <Link href='/AddMarketplace' underline='none'>
+                {/* <Link href='/AddMarketplace' underline='none'>
                     <Card className='addMarketplaceWrapper' sx={{height: "240px", width: "240px"}}>
                         <CardActionArea>
                             <CardMedia>
@@ -75,8 +78,7 @@ function LoggedUser()
                             </CardContent>
                         </CardActionArea>
                     </Card>
-                </Link>
-
+                </Link> */}
                  {marketplaces.map(marketplace => {
                    
                         return(
