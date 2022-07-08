@@ -67,10 +67,12 @@ function LoggedUser()
                 </div>
                  {marketplaces.map(marketplace => {
                    
-                        return(<div class='marketplaceWrapper'>
-                            <StorefrontIcon className="MarketplaceIcon"/>      
-                            <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
-                        </div>)
+                        return(
+                            <div class='marketplaceWrapper' href={`marketplace/${marketplace._id}`}>
+                                <StorefrontIcon className="MarketplaceIcon"/>      
+                                <p class='MarketplaceCallToAction'>{marketplace.marketplaceName}</p>              
+                            </div>
+                        )
                     
                 })}
                
