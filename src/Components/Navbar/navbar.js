@@ -7,7 +7,9 @@ import Box from '@mui/material/Box';
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { List, ListItem, Divider, Container} from '@mui/material'
+import { List, ListItem, Divider, Container, TextField, InputAdornment} from '@mui/material'
+
+import SearchIcon from '@mui/icons-material/Search';
 
 import Axios from 'axios'
 import { toast } from "react-toastify";
@@ -82,32 +84,7 @@ function LoggedUserNavbar()
             <AppBar color="warning" position="static">
 
                   { isMobile ? (
-                    // <span style={{textAlign: 'center'}}>
 
-                    //     <IconButton onClick={(e) => handleMenuIconClick()}>
-                    //         <MenuIcon style={{color:"white"}} ></MenuIcon>
-                    //     </IconButton>
-                    //     <List class='dropdownMenu'>
-
-                    //         <ListItem class='dropdownOption'> 
-                    //             <a href='/home'>MarketPlace</a> 
-                    //         </ListItem>
-
-                    //         <ListItem class='dropdownOption'> 
-                    //             <a href='/buy'>Buy</a> 
-                    //         </ListItem>
-
-                    //         <ListItem class='dropdownOption'> 
-                    //             <a href='/sell'>Sell</a> 
-                    //         </ListItem>
-
-
-                    //         <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
-                    //             Logout 
-                    //         </ListItem>
-
-                    //     </List>
-                    // </span>
                     <span style={{textAlign: 'center'}}>
 
                         <IconButton onClick={(e) => handleMenuIconClick()}>
@@ -119,7 +96,6 @@ function LoggedUserNavbar()
                             <ListItem class='dropdownOption'> 
                                 <a href='/home'>MarketPlace</a> 
                             </ListItem>
-
                             
                             <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
                                 <a href='/profile'>My Profile</a> 
@@ -134,37 +110,40 @@ function LoggedUserNavbar()
 
                     ) 
                     :
-                    (
-                        // <Toolbar>
-
-                        //     <Typography variant="h5" sx={{marginLeft: 0}}>
-                        //         <a href='/home'> MarketPlace</a> 
-                        //     </Typography>
-
-                        //     <Typography variant="h5" sx={{marginLeft: 75}}>
-                        //         <a href='/buy'>Buy</a> 
-                        //     </Typography>
-
-                        //     <Typography variant="h5" sx={{marginLeft: 75}}>
-                        //         <a href='/sell'>Sell</a> 
-                        //     </Typography>
-
-                        //     <Typography variant="h5" sx={{marginLeft: 45}} onClick={() => handleLogout()}>
-                        //         <a href='#'>Logout</a>
-                        //     </Typography>
-                        // </Toolbar>
-                        
+                    ( 
                         <Toolbar>
 
                             <Typography variant="h5" sx={{marginLeft: 0}}>
                                 <a href='/home'> MarketPlace</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 180}}>
+                            <TextField 
+                                hiddenLabel
+                                variant="filled" 
+                                size="small"
+                                color="warning"
+                                sx={{
+                                    marginLeft: 10, 
+                                    marginRight: 20, 
+                                    width: 1200,
+                                    backgroundColor: "white",
+                                    borderRadius: 10,
+                                    borderStyle: 'none',
+                                    height: 40
+                                }}
+                                InputProps={{
+                                    endAdornment: (
+                                      <InputAdornment position="end">
+                                            <SearchIcon/>
+                                        </InputAdornment>)
+                                }}/>
+
+                            
+                            <Typography variant="h5" sx={{marginLeft: -7}}>
                                 <a href='/profile'> My profile</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 10}} onClick={() => handleLogout()}>
+                            <Typography variant="h5" sx={{marginLeft: 17}} onClick={() => handleLogout()}>
                                 <a href='#'>Logout</a>
                             </Typography>
                         </Toolbar>
