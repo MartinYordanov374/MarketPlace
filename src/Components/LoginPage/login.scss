@@ -6,11 +6,13 @@
 
 .formWrapper{
     display: grid; 
+
     
     @media screen and (max-width: 817px) {
         margin-top: 20%;
         width: 60%;
         margin-left: 20%;
+        margin-bottom: 40%;
         .loginButton{
             margin-top: 5%;
         }
@@ -19,6 +21,7 @@
     
     @media screen and (min-width: 818px) and (max-width: 1920px) {
         margin-top: 7%;
+        margin-bottom: 12%;
         width:25%;
         margin-left: 36.5%;
         .loginButton{

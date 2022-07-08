@@ -2,14 +2,13 @@ import { Box, Grid } from '@mui/material';
 import './footer.css'
 export default function Footer() {
     return (
-    <div>
         <Box>
-            <Grid container spacing={2}  
+            <Grid className='footer' container spacing={2}  
             style={{
                 borderStyle: 'solid', 
                 textAlign: 'center', 
-                position: 'absolute', 
-                // bottom: '0',
+                // position: 'absolute', 
+                bottom: '0',
                 marginTop: '2%',
                 backgroundColor: "#ed6c02", 
                 color: 'white', 
@@ -57,6 +56,6 @@ export default function Footer() {
 
 
         </Box>
-    </div>);
+    );
 }
   
