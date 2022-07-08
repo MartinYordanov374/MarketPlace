@@ -59,14 +59,24 @@ function LoggedUser()
         getData()
     }, [])
     return (
-        <div class='wrapper'>
+        <div className='wrapper'>
             <Navbar/>
-            <div class='marketplacesWrapper'>
+            <div className='marketplacesWrapper'>
                 <ToastContainer/>
-                <div class='addMarketplaceWrapper'>
-                    <AddBusinessIcon className="addMarketplaceIcon"/>      
-                    <p class='addMarketplaceCallToAction'>Add Marketplace</p>              
-                </div>
+
+                <Card className='addMarketplaceWrapper' href={`/AddMarketplace`} sx={{height: "240px", width: "240px"}}>
+                    
+
+                    <CardActionArea>
+                        <CardMedia>
+                            <AddBusinessIcon className="addMarketplaceIcon"/> 
+                        </CardMedia>
+                        <CardContent>
+                            <Typography className='addMarketplaceCallToAction'>Add Marketplace</Typography>
+                        </CardContent>
+                    </CardActionArea>
+                </Card>
+
                  {marketplaces.map(marketplace => {
                    
                         return(
