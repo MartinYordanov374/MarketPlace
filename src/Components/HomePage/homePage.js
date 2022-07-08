@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddIcon from '@mui/icons-material/Add';
 
-import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link} from '@mui/material'
+import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider} from '@mui/material'
 
 import './homepageStyling.css'
 
@@ -62,7 +62,19 @@ function LoggedUser()
         <div className='wrapper'>
             <Navbar/>
 
-            <Button color="success" sx={{width: "94%", marginTop: 2, marginLeft: "3%"}}><strong>Add Marketplace</strong></Button> 
+            <Link href='/AddMarketplace'>
+                <Button 
+                color="warning" 
+                sx={{
+                    width: "94%", 
+                    marginTop: 2,
+                    marginLeft: "3%"
+                }}
+                >
+                    <strong>Add Marketplace</strong>
+                </Button> 
+
+            </Link>
 
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
