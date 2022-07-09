@@ -1,6 +1,6 @@
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import Axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -9,6 +9,8 @@ import AddIcon from '@mui/icons-material/Add';
 import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
 
 import './homepageStyling.css'
+
+import 'react-toastify/dist/ReactToastify.css';
 
 Axios.defaults.withCrendentails = true
 
@@ -81,7 +83,24 @@ function LoggedUser()
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
         .then((res) => {
             const userID = res.data.user.id
-            Axios.post('http://localhost:3001/createMarketplace', {userID: userID, marketplaceDescription: marketplaceDescription, marketplaceName: marketplaceName, marketplaceTags: marketplaceTags}, {withCredentials: true})
+            Axios.post('http://localhost:3001/createMarketplace', 
+            {   
+                userID: userID, 
+                marketplaceDescription: marketplaceDescription, 
+                marketplaceName: marketplaceName, 
+                marketplaceTags: marketplaceTags
+            }, 
+            { withCredentials: true })
+            .then((res) => {
+                toast.success('Marketplace created successfully!')
+                setTimeout(() => {
+                    window.location.reload()
+                },6000)
+            })
+            .catch((err) => {
+                toast.warn('Marketplace creation failed!')
+
+            })
         })
     }
 
@@ -114,6 +133,8 @@ function LoggedUser()
     return (
         <div className='wrapper'>
             <Navbar/>
+                
+                <ToastContainer/>
                 <Button color="warning" sx={{ width: "94%", marginTop: 2, marginLeft: "3%" }} onClick={()=>openCreateMarketplaceModal()}>
                     <strong>Add Marketplace</strong>
                 </Button> 
