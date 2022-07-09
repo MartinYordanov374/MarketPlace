@@ -95,7 +95,7 @@ async function startServer(){
 
         if(loginResult.status == 200)
         {
-            req.session.user = username 
+            req.session.user = {username: username, id: loginResult.userData._id} 
             req.session.save(() => {
                 
             })
@@ -320,6 +320,10 @@ async function startServer(){
     app.get('/getAllMarketplaces', async (req,res) => {
         let result = await getAllMarketplaces()
         res.status(200).send(result)
+    })
+
+    app.get('/getCurrentUserSession', async(req,res) => {
+        res.send(req.session)
     })
     //#region endpoints
 

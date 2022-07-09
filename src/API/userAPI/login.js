@@ -6,7 +6,6 @@ const saltRounds = 9
 async function loginUser(username, notHashedPassword)
 {
     let exists = await checkUserExists(username)
-    
     if(exists != null)
     {
         try{
@@ -15,7 +14,7 @@ async function loginUser(username, notHashedPassword)
             if(hashedPasswordsMatch)
             {
                 
-                return { status: 200 }
+                return { status: 200, userData: exists }
             }
             else
             {
