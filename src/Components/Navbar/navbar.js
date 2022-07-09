@@ -134,7 +134,7 @@ function LoggedUserNavbar()
                                 InputProps={{
                                     endAdornment: (
                                       <InputAdornment position="end">
-                                            <SearchIcon class='SearchIcon'/>
+                                            <SearchIcon className='SearchIcon'/>
                                         </InputAdornment>)
                                 }}
                                 placeholder="Enter tags to search marketplaces by, e.g. Real Estate, Beauty..."/>
