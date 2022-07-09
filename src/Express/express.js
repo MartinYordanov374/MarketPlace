@@ -125,7 +125,8 @@ async function startServer(){
         let marketplaceTags = incomingData.marketplaceTags
 
         let splittedMarketplaceTags = marketplaceTags.split(',')
-
+        splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x != "")
+        splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x.trim() != '')
         let marketplaceName = incomingData.marketplaceName
         // TODO ADD CHECK IF USER EXISTS BEFORE CREATING MARKETPLACE
         try{
