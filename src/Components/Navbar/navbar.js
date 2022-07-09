@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef} from "react";
 import { List, ListItem, Divider, Container, TextField, InputAdornment} from '@mui/material'
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -80,6 +80,19 @@ function LoggedUserNavbar()
 {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+    const searchRef = useRef()
+    const [searchTags, setSearchTags] = useState('')
+
+    const searchMarketplaces = () => {
+        let searchTagsSplitted = searchTags.split(', ')
+        searchTagsSplitted = searchTagsSplitted.join(' ')
+        searchTagsSplitted = searchTagsSplitted.split(' ')
+        // searchTagsSplitted = searchTagsSplitted.filter((x) => !x.includes(" "))
+        // console.log(`searching for ${searchTagsSplitted}`)
+        console.log(searchTagsSplitted)
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar color="warning" position="static">
@@ -119,6 +132,9 @@ function LoggedUserNavbar()
                             </Typography>
 
                             <TextField 
+                                ref={searchRef}
+                                value={searchTags}
+                                onChange={(e) => setSearchTags(e.target.value)}
                                 hiddenLabel
                                 variant="outlined" 
                                 size="small"
@@ -134,7 +150,7 @@ function LoggedUserNavbar()
                                 InputProps={{
                                     endAdornment: (
                                       <InputAdornment position="end">
-                                            <SearchIcon className='SearchIcon'/>
+                                            <SearchIcon className='SearchIcon' onClick={() => searchMarketplaces()}/>
                                         </InputAdornment>)
                                 }}
                                 placeholder="Enter tags to search marketplaces by, e.g. Real Estate, Beauty..."/>
