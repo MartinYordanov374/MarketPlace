@@ -360,6 +360,10 @@ async function startServer(){
     app.get('/getCurrentUserSession', async(req,res) => {
         res.send(req.session)
     })
+
+    app.post('/searchMarketplacesByTags', async (req,res) => {
+
+    })
     //#region endpoints
 
 

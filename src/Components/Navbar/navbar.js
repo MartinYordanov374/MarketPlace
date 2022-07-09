@@ -88,9 +88,7 @@ function LoggedUserNavbar()
         let searchTagsSplitted = searchTags.split(', ')
         searchTagsSplitted = searchTagsSplitted.join(' ')
         searchTagsSplitted = searchTagsSplitted.split(' ')
-        // searchTagsSplitted = searchTagsSplitted.filter((x) => !x.includes(" "))
-        // console.log(`searching for ${searchTagsSplitted}`)
-        console.log(searchTagsSplitted)
+        
     }
 
     return (
