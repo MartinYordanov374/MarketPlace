@@ -2,7 +2,7 @@ import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
 import { ToastContainer } from "react-toastify";
 import Axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -50,6 +50,14 @@ function LoggedUser()
 
     let [createMarketplaceModalState, setCreateMarketplaceModalState] = useState(false)
 
+    const [marketplaceName, setMarketplaceName] = useState('')
+    const [marketplaceTags, setMarketplaceTags] = useState('')
+    const [marketplaceDescription, setMarketplaceDescription] = useState('')
+
+    const marketplaceNameRef = useRef()
+    const marketplaceTagsRef = useRef()
+    const marketplaceDescriptionRef = useRef()
+
     const getData = async () => {
         let res = await getMarketplaces()
 
@@ -62,13 +70,17 @@ function LoggedUser()
 
 
     const openCreateMarketplaceModal = () => {
-        console.log('showing modal')
         setCreateMarketplaceModalState(true)
     }
+    
     const closeCreateMarketplaceModal = () => {
         setCreateMarketplaceModalState(false)
     }
     
+    const createMarketplace = () => {
+        console.log(marketplaceName, marketplaceTags, marketplaceDescription)
+    }
+
     const ModalStyle = {
         position: 'absolute',
         top: '50%',
@@ -108,10 +120,10 @@ function LoggedUser()
                     <Fade in={createMarketplaceModalState}>
                         <Box sx= { ModalStyle } >
                             <Typography sx= { modalTitleStyle } >Create Marketplace Form</Typography>
-                            <Input sx = {modalInputStyle} placeholder="Enter Marketplace name"/>
-                            <Input sx = {modalInputStyle} placeholder="Enter some marketplace tags"/>
-                            <Input sx = {modalInputStyle} placeholder="Enter marketplace description"/>
-                            <Button sx = {modalSubmitButtonStyle} color='warning'>Create Marketplace</Button>
+                            <Input sx = {modalInputStyle} placeholder="Enter Marketplace name" value = { marketplaceName } ref = { marketplaceNameRef } onChange={ (e) => setMarketplaceName(e.target.value) } />
+                            <Input sx = {modalInputStyle} placeholder="Enter some marketplace tags" value = { marketplaceTags } ref = { marketplaceTagsRef } onChange={ (e) => setMarketplaceTags(e.target.value) } />
+                            <Input sx = {modalInputStyle} placeholder="Enter marketplace description" value = { marketplaceDescription } ref = { marketplaceDescriptionRef } onChange={ (e) => setMarketplaceDescription(e.target.value) } />
+                            <Button sx = {modalSubmitButtonStyle} color='warning' onClick={() => createMarketplace()}>Create Marketplace</Button>
                         </Box>
                     </Fade>
 
