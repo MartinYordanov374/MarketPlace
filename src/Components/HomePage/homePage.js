@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddIcon from '@mui/icons-material/Add';
 
-import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider} from '@mui/material'
+import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box} from '@mui/material'
 
 import './homepageStyling.css'
 
@@ -48,7 +48,8 @@ function LoggedUser()
 {   
     let [marketplaces, setMarketplaces] = useState([])
 
-    // let marketplaces = []
+    let [createMarketplaceModalState, setCreateMarketplaceModalState] = useState(false)
+
     const getData = async () => {
         let res = await getMarketplaces()
 
@@ -58,23 +59,32 @@ function LoggedUser()
     useEffect(() => {
         getData()
     }, [])
+
+
+    const openCreateMarketplaceModal = () => {
+        console.log('showing modal')
+        setCreateMarketplaceModalState(true)
+    }
+    const closeCreateMarketplaceModal = () => {
+        setCreateMarketplaceModalState(false)
+    }
     return (
         <div className='wrapper'>
             <Navbar/>
-
-            <Link href='/AddMarketplace'>
-                <Button 
-                color="warning" 
-                sx={{
-                    width: "94%", 
-                    marginTop: 2,
-                    marginLeft: "3%"
-                }}
-                >
+                <Button color="warning" sx={{ width: "94%", marginTop: 2, marginLeft: "3%" }} onClick={()=>openCreateMarketplaceModal()}>
                     <strong>Add Marketplace</strong>
                 </Button> 
 
-            </Link>
+
+                <Modal open={createMarketplaceModalState} onClose={closeCreateMarketplaceModal}>
+
+                    <Fade in={createMarketplaceModalState}>
+                        <Box>
+                            <Typography>Test</Typography>
+                        </Box>
+                    </Fade>
+
+                </Modal>
 
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
