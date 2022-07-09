@@ -1,0 +1,8 @@
+.SearchIcon {
+  cursor: pointer;
+}
+
+.SearchIcon:hover {
+  opacity: 0.5;
+}
+/*# sourceMappingURL=navbarStyles.css.map */

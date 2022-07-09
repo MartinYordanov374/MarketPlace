@@ -14,6 +14,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Axios from 'axios'
 import { toast } from "react-toastify";
 
+import './navbarStyles.css'
 
 
 function handleMenuIconClick(){
@@ -133,9 +134,10 @@ function LoggedUserNavbar()
                                 InputProps={{
                                     endAdornment: (
                                       <InputAdornment position="end">
-                                            <SearchIcon/>
+                                            <SearchIcon class='SearchIcon'/>
                                         </InputAdornment>)
-                                }}/>
+                                }}
+                                placeholder="Enter tags to search marketplaces by, e.g. Real Estate, Beauty..."/>
 
                             
                             <Typography variant="h5" sx={{marginLeft: -7}}>
