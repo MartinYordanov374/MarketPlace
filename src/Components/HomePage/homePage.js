@@ -78,7 +78,11 @@ function LoggedUser()
     }
     
     const createMarketplace = () => {
-        console.log(marketplaceName, marketplaceTags, marketplaceDescription)
+        Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
+        .then((res) => {
+            const userID = res.data.user.id
+            Axios.post('http://localhost:3001/createMarketplace', {userID: userID, marketplaceDescription: marketplaceDescription, marketplaceName: marketplaceName, marketplaceTags: marketplaceTags}, {withCredentials: true})
+        })
     }
 
     const ModalStyle = {
