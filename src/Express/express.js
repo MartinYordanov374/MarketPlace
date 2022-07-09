@@ -371,7 +371,7 @@ async function startServer(){
         let incomingData = req.body
         let tags = incomingData.tags
         let result = await getMarketplacesByTags(tags)
-        console.log(result)
+        res.status(200).send(result)
     })
     //#region endpoints
 

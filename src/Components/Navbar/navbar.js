@@ -43,10 +43,12 @@ function handleLogout()
     })
 }
 
-export default function Navbar() {
+export default function Navbar(props) {
 
         
     let [loginStatus, setLoginStatus] = useState('')
+
+ 
 
     useEffect(() => {
         Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
@@ -67,7 +69,7 @@ export default function Navbar() {
 
     if(loginStatus)
     {
-        return <LoggedUserNavbar/>
+        return <LoggedUserNavbar data = {props}/>
     }
     else
     {
@@ -76,7 +78,7 @@ export default function Navbar() {
 }
   
 
-function LoggedUserNavbar()
+function LoggedUserNavbar(props)
 {
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -84,20 +86,31 @@ function LoggedUserNavbar()
     const searchRef = useRef()
     const [searchTags, setSearchTags] = useState('')
 
-    const searchMarketplaces = () => {
-        let searchTagsSplitted = searchTags.split(', ')
-        searchTagsSplitted = searchTagsSplitted.join(' ')
-        searchTagsSplitted = searchTagsSplitted.split(' ')
-        searchTagsSplitted = searchTagsSplitted.map((tag) => tag.toLowerCase())
+    // const searchMarketplaces = () => {
+    //     let searchTagsSplitted = searchTags.split(', ')
+    //     searchTagsSplitted = searchTagsSplitted.join(' ')
+    //     searchTagsSplitted = searchTagsSplitted.split(' ')
+    //     searchTagsSplitted = searchTagsSplitted.map((tag) => tag.toLowerCase())
 
-        Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        }) 
-    }
+    //     Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
+    //     .then((res) => {
+    //         // setMarketplaces(res.data)
+    //         // setMarketplaces(res.data)
+    //         console.log(props)
+            
+    //     })
+    //     .catch((err) => {
+    //         console.log(err)
+    //     }) 
+    // }
+
+    // searchMarketplaces = () => {
+
+    // }
+
+    let searchMarketplaces = props.data.searchMarketplaces
+
+    
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -156,7 +169,8 @@ function LoggedUserNavbar()
                                 InputProps={{
                                     endAdornment: (
                                       <InputAdornment position="end">
-                                            <SearchIcon className='SearchIcon' onClick={() => searchMarketplaces()}/>
+                                            {/* <SearchIcon className='SearchIcon' onClick={() => searchMarketplaces()}/> */}
+                                            <SearchIcon className='SearchIcon' onClick={() => searchMarketplaces(searchTags)}/>
                                         </InputAdornment>)
                                 }}
                                 placeholder="Enter tags to search marketplaces by, e.g. Real Estate, Beauty..."/>

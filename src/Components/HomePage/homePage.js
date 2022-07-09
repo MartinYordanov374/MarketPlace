@@ -70,6 +70,25 @@ function LoggedUser()
         getData()
     }, [])
 
+    const checkSearchResults = () => {
+
+        if(localStorage.getItem('searchResult'))
+        {
+            console.log('searching')
+            let searchResults = localStorage.getItem('searchResult')
+            let parsedSearchResults = JSON.parse(searchResults)
+        
+            setMarketplaces(parsedSearchResults)
+            localStorage.clear()
+            searchResults = ''
+            parsedSearchResults = ''
+            window.location.reload()
+
+
+        }
+    }
+
+    
 
     const openCreateMarketplaceModal = () => {
         setCreateMarketplaceModalState(true)
@@ -105,6 +124,25 @@ function LoggedUser()
         })
     }
 
+    const searchMarketplaces = (tags) => {
+        console.log('searching marketplaces...')
+
+        let searchTagsSplitted = tags.split(', ')
+
+        searchTagsSplitted = searchTagsSplitted.join(' ')
+        searchTagsSplitted = searchTagsSplitted.split(' ')
+        searchTagsSplitted = searchTagsSplitted.map((tag) => tag.toLowerCase())
+        Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
+        .then((res) => {
+            setMarketplaces(res.data)
+        
+        })
+        .catch((err) => {
+            console.log(err)
+        }) 
+    }
+
+
     const ModalStyle = {
         position: 'absolute',
         top: '50%',
@@ -133,10 +171,10 @@ function LoggedUser()
     }
     return (
         <div className='wrapper'>
-            <Navbar/>
+            <Navbar searchMarketplaces = {searchMarketplaces}/>
                 
                 <ToastContainer/>
-                <Button color="warning" sx={{ width: "94%", marginTop: 2, marginLeft: "3%" }} onClick={()=>openCreateMarketplaceModal()}>
+                <Button color="warning" sx={{ width: "94%", marginTop: 2, marginLeft: "3%" }} onClick={() => openCreateMarketplaceModal()}>
                     <strong>Add Marketplace</strong>
                 </Button> 
 
