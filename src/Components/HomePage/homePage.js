@@ -132,7 +132,14 @@ function LoggedUser()
         searchTagsSplitted = searchTagsSplitted.map((tag) => tag.toLowerCase())
         Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
         .then((res) => {
-            setMarketplaces(res.data)
+            if(res.data.length >= 1)
+            {
+                setMarketplaces(res.data)
+            }
+            else
+            {
+                toast.warn('This search did not return any results. Hmm...')
+            }
         
         })
         .catch((err) => {
