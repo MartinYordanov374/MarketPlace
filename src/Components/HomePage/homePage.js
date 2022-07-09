@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddIcon from '@mui/icons-material/Add';
 
-import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box} from '@mui/material'
+import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
 
 import './homepageStyling.css'
 
@@ -68,6 +68,33 @@ function LoggedUser()
     const closeCreateMarketplaceModal = () => {
         setCreateMarketplaceModalState(false)
     }
+    
+    const ModalStyle = {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'white',
+        // border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
+    const modalTitleStyle = {
+        marginLeft: "27%",
+        marginBottom: "5%",
+        
+    }
+    const modalInputStyle = {
+        marginTop: "5%",
+        marginLeft: "23%",
+    }
+    const modalSubmitButtonStyle = {
+        marginTop: "5%",
+        marginLeft: "23%",
+        width: "220px"
+        
+    }
     return (
         <div className='wrapper'>
             <Navbar/>
@@ -79,8 +106,12 @@ function LoggedUser()
                 <Modal open={createMarketplaceModalState} onClose={closeCreateMarketplaceModal}>
 
                     <Fade in={createMarketplaceModalState}>
-                        <Box>
-                            <Typography>Test</Typography>
+                        <Box sx= { ModalStyle } >
+                            <Typography sx= { modalTitleStyle } >Create Marketplace Form</Typography>
+                            <Input sx = {modalInputStyle} placeholder="Enter Marketplace name"/>
+                            <Input sx = {modalInputStyle} placeholder="Enter some marketplace tags"/>
+                            <Input sx = {modalInputStyle} placeholder="Enter marketplace description"/>
+                            <Button sx = {modalSubmitButtonStyle} color='warning'>Create Marketplace</Button>
                         </Box>
                     </Fade>
 
