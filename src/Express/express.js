@@ -125,9 +125,14 @@ async function startServer(){
         let marketplaceTags = incomingData.marketplaceTags
 
         
-        let splittedMarketplaceTags = marketplaceTags.split(',')
-        splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x != "")
-        splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x.trim() != '')
+        // let splittedMarketplaceTags = marketplaceTags.split(',')
+        // splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x != "")
+        // splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x.trim() != '')
+
+        let marketplaceTagsSplitted = marketplaceTags.split(', ')
+        marketplaceTagsSplitted = marketplaceTagsSplitted.join(' ')
+        marketplaceTagsSplitted = marketplaceTagsSplitted.split(' ')
+        marketplaceTagsSplitted = marketplaceTagsSplitted.map((tag) => tag.toLowerCase())
         let marketplaceName = incomingData.marketplaceName
         // TODO ADD CHECK IF USER EXISTS BEFORE CREATING MARKETPLACE
 
@@ -138,7 +143,7 @@ async function startServer(){
                 {
                     throw new Error('Your marketplace description must be at least 10 symbols!')
                 }
-                if(splittedMarketplaceTags.length < 1)
+                if(marketplaceTagsSplitted.length < 1)
                 {
                     throw new Error('You must assign at least 1 tag to your marketplace!')
                 }
@@ -148,7 +153,7 @@ async function startServer(){
                 }
                 else
                 {
-                    let result = await createMarketplace(userID,description, splittedMarketplaceTags, marketplaceName)
+                    let result = await createMarketplace(userID,description, marketplaceTagsSplitted, marketplaceName)
 
                     if(result.status == 200)
                     {
