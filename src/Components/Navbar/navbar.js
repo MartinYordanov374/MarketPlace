@@ -88,7 +88,14 @@ function LoggedUserNavbar()
         let searchTagsSplitted = searchTags.split(', ')
         searchTagsSplitted = searchTagsSplitted.join(' ')
         searchTagsSplitted = searchTagsSplitted.split(' ')
-        
+
+        Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        }) 
     }
 
     return (

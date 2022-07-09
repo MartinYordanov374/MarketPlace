@@ -26,6 +26,7 @@ const { addProductReview } = require('../API/productAPI/addProductReview')
 let cookieParser = require('cookie-parser');
 let session = require('express-session');
 const { checkUserExistsById } = require('../API/userAPI/checkUserExistsById')
+const { getMarketplacesByTags } = require('../API/marketplaceAPI/getMarketplacesByTags')
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
 
@@ -362,7 +363,10 @@ async function startServer(){
     })
 
     app.post('/searchMarketplacesByTags', async (req,res) => {
-
+        let incomingData = req.body
+        let tags = incomingData.tags
+        let result = await getMarketplacesByTags(tags)
+        console.log(result)
     })
     //#region endpoints
 
