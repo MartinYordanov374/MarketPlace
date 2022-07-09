@@ -25,6 +25,7 @@ const { addProductReview } = require('../API/productAPI/addProductReview')
 
 let cookieParser = require('cookie-parser');
 let session = require('express-session');
+const { checkUserExistsById } = require('../API/userAPI/checkUserExistsById')
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
 
@@ -118,21 +119,53 @@ async function startServer(){
     app.post('/createMarketplace', async(req,res) => {
         let incomingData = req.body
         // TODO CHANGE THE USERNAME TO ID 
-        let username = incomingData.userID
+        let userID = incomingData.userID
         let description = incomingData.marketplaceDescription
+
         let marketplaceTags = incomingData.marketplaceTags
+
+        let splittedMarketplaceTags = marketplaceTags.split(',')
+
         let marketplaceName = incomingData.marketplaceName
         // TODO ADD CHECK IF USER EXISTS BEFORE CREATING MARKETPLACE
-        
-        let result = await createMarketplace(username,description, marketplaceTags, marketplaceName)
-        
-        if(result.status == 200)
-        {
-            res.status(200).send(result.msg)
+        try{
+            if(checkUserExistsById(userID) != false)
+            {
+                if(description == '' || description.length < 10)
+                {
+                    throw new Error('Your marketplace description must be at least 10 symbols!')
+                }
+                if(splittedMarketplaceTags.length <= 1)
+                {
+                    throw new Error('You must assign at least 1 tag to your marketplace!')
+                }
+                if(marketplaceName == '' || marketplaceName < 3)
+                {
+                    throw new Error('Your marketplace name is too short. It must be at least 3 symbols!')
+                }
+                else
+                {
+                    let result = await createMarketplace(userID,description, splittedMarketplaceTags, marketplaceName)
+
+                    if(result.status == 200)
+                    {
+                        res.status(200).send(result.msg)
+                    }
+                    else
+                    {
+                        res.status(402).send(result.msg)
+                    }
+    
+                }
+            }
+            else
+            {
+                throw new Error('The user trying to create the marketplace does not exist!')
+            }
         }
-        else
+        catch(err)
         {
-            res.status(402).send(result.msg)
+            res.status(402).send({ msg: err.message })
         }
     })
 

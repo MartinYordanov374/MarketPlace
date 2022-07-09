@@ -98,7 +98,8 @@ function LoggedUser()
                 },6000)
             })
             .catch((err) => {
-                toast.warn('Marketplace creation failed!')
+                let errorMessage = err.response.data.msg
+                toast.warn(errorMessage)
 
             })
         })
