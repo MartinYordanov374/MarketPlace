@@ -118,17 +118,18 @@ async function startServer(){
     
     app.post('/createMarketplace', async(req,res) => {
         let incomingData = req.body
-        // TODO CHANGE THE USERNAME TO ID 
         let userID = incomingData.userID
         let description = incomingData.marketplaceDescription
 
         let marketplaceTags = incomingData.marketplaceTags
 
+        
         let splittedMarketplaceTags = marketplaceTags.split(',')
         splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x != "")
         splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x.trim() != '')
         let marketplaceName = incomingData.marketplaceName
         // TODO ADD CHECK IF USER EXISTS BEFORE CREATING MARKETPLACE
+
         try{
             if(checkUserExistsById(userID) != false)
             {
@@ -136,7 +137,7 @@ async function startServer(){
                 {
                     throw new Error('Your marketplace description must be at least 10 symbols!')
                 }
-                if(splittedMarketplaceTags.length <= 1)
+                if(splittedMarketplaceTags.length < 1)
                 {
                     throw new Error('You must assign at least 1 tag to your marketplace!')
                 }
