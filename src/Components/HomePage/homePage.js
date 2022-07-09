@@ -125,8 +125,6 @@ function LoggedUser()
     }
 
     const searchMarketplaces = (tags) => {
-        console.log('searching marketplaces...')
-
         let searchTagsSplitted = tags.split(', ')
 
         searchTagsSplitted = searchTagsSplitted.join(' ')

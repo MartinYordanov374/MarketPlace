@@ -86,31 +86,7 @@ function LoggedUserNavbar(props)
     const searchRef = useRef()
     const [searchTags, setSearchTags] = useState('')
 
-    // const searchMarketplaces = () => {
-    //     let searchTagsSplitted = searchTags.split(', ')
-    //     searchTagsSplitted = searchTagsSplitted.join(' ')
-    //     searchTagsSplitted = searchTagsSplitted.split(' ')
-    //     searchTagsSplitted = searchTagsSplitted.map((tag) => tag.toLowerCase())
-
-    //     Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
-    //     .then((res) => {
-    //         // setMarketplaces(res.data)
-    //         // setMarketplaces(res.data)
-    //         console.log(props)
-            
-    //     })
-    //     .catch((err) => {
-    //         console.log(err)
-    //     }) 
-    // }
-
-    // searchMarketplaces = () => {
-
-    // }
-
     let searchMarketplaces = props.data.searchMarketplaces
-
-    
 
     return (
         <Box sx={{ flexGrow: 1 }}>
