@@ -27,6 +27,7 @@ let cookieParser = require('cookie-parser');
 let session = require('express-session');
 const { checkUserExistsById } = require('../API/userAPI/checkUserExistsById')
 const { getMarketplacesByTags } = require('../API/marketplaceAPI/getMarketplacesByTags')
+const { getMarketplaceById } = require('../API/marketplaceAPI/getMarketplaceByID')
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
 
@@ -372,6 +373,21 @@ async function startServer(){
         let tags = incomingData.tags
         let result = await getMarketplacesByTags(tags)
         res.status(200).send(result)
+    })
+    
+    app.post('/getMarketplaceById', async(req,res) => {
+        let incomingData = req.body
+        let marketplaceID = incomingData.marketplaceID
+
+        try{
+            let targetMarketplace = await getMarketplaceById(marketplaceID)
+            res.send(targetMarketplace)
+        }
+        catch(err)
+        {
+            res.send(err)
+        }
+
     })
     //#region endpoints
 
