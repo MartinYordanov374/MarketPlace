@@ -67,6 +67,7 @@ export default function Marketplace ()
                         </div>
 
                     </div>
+                    <Divider/>
                     
                     <div className="marketplaceProducts">
                     {
