@@ -54,6 +54,11 @@
 }
 
 .marketplaceProducts .marketplaceProduct .productCard .productPrice {
+  text-align: right;
+  margin-right: 3%;
+}
+
+.marketplaceProducts .marketplaceProduct .productCard .buyProductButton {
   float: right;
 }
 /*# sourceMappingURL=marketplaceStyles.css.map */

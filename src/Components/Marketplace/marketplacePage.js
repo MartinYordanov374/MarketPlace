@@ -79,8 +79,10 @@ export default function Marketplace ()
                                         </CardContent>
                                         
                                     </CardActionArea>
-
-                                    <Button className="productPrice"><strong>$ {prod.productPrice}</strong> <AddShoppingCartIcon/>  </Button>
+                                    <Divider/>
+                                    <p className="productPrice"><strong>$ {prod.productPrice}</strong></p>
+                                    <Divider/>
+                                    <Button className="buyProductButton" sx={{fontSize: 15}}> <strong> Add to cart </strong> <AddShoppingCartIcon/>  </Button>
                                 </Card>
                             </div>
                             )
