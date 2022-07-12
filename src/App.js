@@ -5,6 +5,8 @@ import  Login  from './Components/LoginPage/LoginPage'
 import  Error  from './Components/ErrorPage/ErrorPage'
 import  Home  from './Components/HomePage/homePage'
 import RegisterPage from './Components/RegisterPage/registerPage';
+import Marketplace from './Components/Marketplace/marketplacePage';
+
 // import {isAuthenticated} from './Express/express'
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/home' element={<Home/>}></Route>
+        <Route path='/marketplace/:id' element={<Marketplace/>}></Route>
 
         <Route path='/login' element={<Login/>}></Route>
         <Route path='/register' element={<RegisterPage/>}></Route>
