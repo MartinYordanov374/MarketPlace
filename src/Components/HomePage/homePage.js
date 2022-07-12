@@ -174,6 +174,7 @@ function LoggedUser()
         width: "220px"
         
     }
+
     return (
         <div className='wrapper'>
             <Navbar searchMarketplaces = {searchMarketplaces}/>

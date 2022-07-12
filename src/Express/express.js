@@ -381,7 +381,7 @@ async function startServer(){
 
         try{
             let targetMarketplace = await getMarketplaceById(marketplaceID)
-            res.send(targetMarketplace)
+            res.status(200).send(targetMarketplace)
         }
         catch(err)
         {
