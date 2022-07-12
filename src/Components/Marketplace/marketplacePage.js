@@ -3,6 +3,8 @@ import Footer from "../Footer/footer"
 import Axios from 'axios'
 import {useState, useEffect, useMemo} from 'react'
 import './marketplaceStyles.css'
+import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
+import StorefrontIcon from '@mui/icons-material/Storefront';
 
 export default function Marketplace ()
 {
@@ -61,9 +63,23 @@ export default function Marketplace ()
                         marketplaceData.marketplaceProducts.map( (prod) => {
                             return(
                             <div class='marketplaceProduct'>
-                                <h1>{prod.productName}</h1>
-                                <h1>{prod.productDescription}</h1>
-                                <h1>{prod.productPrice}</h1>
+                                <Card>
+                                    <CardActionArea>
+                                        <CardContent>
+                                            
+                                            <h1>{prod.productName}</h1>
+                                            <StorefrontIcon/>
+                                            <Divider/>
+
+                                            <h1>{prod.productDescription}</h1>
+                                            <Divider/>
+
+                                            <h1>{prod.productPrice}</h1>
+
+                                        </CardContent>
+                                        
+                                    </CardActionArea>
+                                </Card>
                             </div>
                             )
                         })
