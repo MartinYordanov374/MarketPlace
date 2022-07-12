@@ -5,6 +5,7 @@ import {useState, useEffect, useMemo} from 'react'
 import './marketplaceStyles.css'
 import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
 import StorefrontIcon from '@mui/icons-material/Storefront';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 export default function Marketplace ()
 {
@@ -79,7 +80,7 @@ export default function Marketplace ()
                                         
                                     </CardActionArea>
 
-                                    <Button className="productPrice">{prod.productPrice}</Button>
+                                    <Button className="productPrice"><strong>$ {prod.productPrice}</strong> <AddShoppingCartIcon/>  </Button>
                                 </Card>
                             </div>
                             )

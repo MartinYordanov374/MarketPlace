@@ -52,4 +52,8 @@
 .marketplaceProducts .marketplaceProduct .productCard .productName {
   text-align: center;
 }
+
+.marketplaceProducts .marketplaceProduct .productCard .productPrice {
+  float: right;
+}
 /*# sourceMappingURL=marketplaceStyles.css.map */
