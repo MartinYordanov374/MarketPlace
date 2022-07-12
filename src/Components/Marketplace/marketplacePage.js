@@ -19,6 +19,7 @@ export default function Marketplace ()
         setMarketplaceData(targetMarketplace.data)
     }
 
+    console.log(marketplaceData)
     return (
         <div>
             <Navbar/>
@@ -33,7 +34,11 @@ export default function Marketplace ()
                     <div className="marketplaceDetailsWrapper">
                         <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
                         <div className="marketplaceDescription"> {marketplaceData.marketplaceDescription} </div>
-                        <p className="marketplaceOwner"> {marketplaceData.marketplaceOwner.username} </p> 
+                        {/* <p className="marketplaceOwner"> {marketplaceData.marketplaceOwner.username} </p>  */}
+
+                    </div>
+
+                    <div className="marketplaceProducts">
 
                     </div>
                 </div>
