@@ -21,10 +21,35 @@
         }
         .marketplaceDescription{
             border-style: solid;
-            height: 175px;
+            height: 120px;
         }
         .marketplaceOwner{
+            margin-bottom: 1%;
             border-style: solid;
+        }
+        .marketplaceTagsWrapper{
+            margin-top: 1.7%;
+            display: flex;
+            .marketplaceTagWrapper{
+                margin-left: 2%;
+            }
+            .marketplaceTagWrapper:first-child{
+                margin-left: 0%;
+            }
+            .marketplaceTag{
+                border-style: solid;
+                padding: 6px 16px;
+                border-radius: 4px;
+                border-color: #406367;
+                border-width: 1px;
+                color: #406367;
+                cursor: pointer;
+                opacity: 0.8;
+                &:hover{
+                    color: black;
+                    border-color: black;
+                }
+            }
         }
     }
     

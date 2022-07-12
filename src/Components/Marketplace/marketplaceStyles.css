@@ -23,11 +23,43 @@
 
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceDescription {
   border-style: solid;
-  height: 175px;
+  height: 120px;
 }
 
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceOwner {
+  margin-bottom: 1%;
   border-style: solid;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceTagsWrapper {
+  margin-top: 1.7%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceTagsWrapper .marketplaceTagWrapper {
+  margin-left: 2%;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceTagsWrapper .marketplaceTagWrapper:first-child {
+  margin-left: 0%;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceTagsWrapper .marketplaceTag {
+  border-style: solid;
+  padding: 6px 16px;
+  border-radius: 4px;
+  border-color: #406367;
+  border-width: 1px;
+  color: #406367;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceTagsWrapper .marketplaceTag:hover {
+  color: black;
+  border-color: black;
 }
 
 .marketplaceProducts {

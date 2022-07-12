@@ -53,7 +53,17 @@ export default function Marketplace ()
 
                         <div className="marketplaceDetailsWrapper">
                             <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
+                            <div className="marketplaceOwner"> {marketplaceData.marketplaceOwner.username} </div>
                             <div className="marketplaceDescription"> {marketplaceData.marketplaceDescription} </div>
+                            <div className="marketplaceTagsWrapper">
+                                {marketplaceData.marketplaceTags.map((tag) => {
+                                    return ( 
+                                        <div className="marketplaceTagWrapper">
+                                            <span className="marketplaceTag">{tag}</span>
+                                        </div>
+                                    )
+                                })}
+                            </div>
                         </div>
 
                     </div>
