@@ -1,8 +1,8 @@
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer"
 import Axios from 'axios'
-
 import {useState, useEffect} from 'react'
+import './marketplaceStyles.css'
 
 export default function Marketplace ()
 {
@@ -29,10 +29,13 @@ export default function Marketplace ()
 
                         </div>
                     </div>
-                    <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
-                    <span className="marketplaceDescription"> {marketplaceData.marketplaceDescription} </span>
-                    <p className="marketplaceOwner"> {marketplaceData.marketplaceOwner} </p>
-                     
+
+                    <div className="marketplaceDetailsWrapper">
+                        <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
+                        <div className="marketplaceDescription"> {marketplaceData.marketplaceDescription} </div>
+                        <p className="marketplaceOwner"> {marketplaceData.marketplaceOwner} </p>
+
+                    </div>
                 </div>
             <Footer/>
         </div>

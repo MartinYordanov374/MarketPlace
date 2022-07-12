@@ -1,0 +1,32 @@
+.marketplaceWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-style: solid;
+}
+
+.marketplaceWrapper .marketplaceBannerWrapper {
+  border-style: solid;
+  width: 240px;
+  height: 240px;
+  margin: 2%;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper {
+  width: 100%;
+  margin: 1%;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceName {
+  border-style: solid;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceDescription {
+  border-style: solid;
+  height: 175px;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceOwner {
+  border-style: solid;
+}
+/*# sourceMappingURL=marketplaceStyles.css.map */
