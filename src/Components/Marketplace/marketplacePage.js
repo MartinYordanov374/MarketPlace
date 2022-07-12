@@ -33,7 +33,7 @@ export default function Marketplace ()
                     <div className="marketplaceDetailsWrapper">
                         <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
                         <div className="marketplaceDescription"> {marketplaceData.marketplaceDescription} </div>
-                        <p className="marketplaceOwner"> {marketplaceData.marketplaceOwner} </p>
+                        <p className="marketplaceOwner"> {marketplaceData.marketplaceOwner.username} </p> 
 
                     </div>
                 </div>
