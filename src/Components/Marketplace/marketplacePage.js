@@ -63,22 +63,23 @@ export default function Marketplace ()
                         marketplaceData.marketplaceProducts.map( (prod) => {
                             return(
                             <div class='marketplaceProduct'>
-                                <Card>
+                                <Card className='productCard'>
                                     <CardActionArea>
                                         <CardContent>
                                             
-                                            <h1>{prod.productName}</h1>
-                                            <StorefrontIcon/>
+                                            <StorefrontIcon className="productImage"/>
                                             <Divider/>
 
-                                            <h1>{prod.productDescription}</h1>
+                                            <h2 className="productName">{prod.productName}</h2>
                                             <Divider/>
 
-                                            <h1>{prod.productPrice}</h1>
+                                            <h3 className="productDescription">{prod.productDescription}</h3>
 
                                         </CardContent>
                                         
                                     </CardActionArea>
+
+                                    <Button className="productPrice">{prod.productPrice}</Button>
                                 </Card>
                             </div>
                             )

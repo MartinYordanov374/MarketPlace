@@ -29,4 +29,27 @@
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceOwner {
   border-style: solid;
 }
+
+.marketplaceProducts {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.marketplaceProducts .marketplaceProduct {
+  margin: 2%;
+  width: 400px;
+}
+
+.marketplaceProducts .marketplaceProduct .productCard .productImage {
+  width: 240px;
+  height: 240px;
+  margin-left: 23%;
+}
+
+.marketplaceProducts .marketplaceProduct .productCard .productName {
+  text-align: center;
+}
 /*# sourceMappingURL=marketplaceStyles.css.map */

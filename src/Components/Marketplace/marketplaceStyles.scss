@@ -27,4 +27,29 @@
             border-style: solid;
         }
     }
+    
+}
+.marketplaceProducts{
+    display: flex;
+    flex-wrap: wrap;
+    .marketplaceProduct{
+        margin: 2%;
+        width: 400px;
+        .productCard{
+            .productImage{
+                width: 240px;
+                height: 240px;
+                margin-left: 23%;
+            }
+            .productName{
+                text-align: center;
+            }
+            .productDescription{
+
+            }
+            .productPrice{
+
+            }
+        }
+    }
 }
