@@ -93,7 +93,7 @@ export default function Marketplace ()
                                     <Divider/>
                                     <p className="productPrice"><strong>$ {prod.productPrice}</strong></p>
                                     <Divider/>
-                                    <Button className="buyProductButton" sx={{fontSize: 15}}> <strong> Add to cart </strong> <AddShoppingCartIcon/>  </Button>
+                                    <Button className="buyProductButton" sx={{fontSize: 15}} color='warning'> <strong> Add to cart </strong> <AddShoppingCartIcon/>  </Button>
                                 </Card>
                             </div>
                             )
