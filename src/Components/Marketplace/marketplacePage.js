@@ -43,7 +43,9 @@ export default function Marketplace ()
         }
     }
 
-    const reviewNotHelpfulHandler = () => {
+    const reviewNotHelpfulHandler = (reviewID) => {
+
+        console.log(reviewID)
         Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
         .then((res) => {
             let userID = res.data
@@ -191,8 +193,8 @@ export default function Marketplace ()
                                             <Divider/>
                                             <span className="reviewQuestionnaire">
                                                 <p>Was this review helpful?</p>
-                                                <ThumbUpIcon className="reviewHelpfulIcon" onClick={() => reviewHelpfulHandler()}/>
-                                                <ThumbDownAltIcon className="reviewNotHelpfulIcon" onClick={() => reviewNotHelpfulHandler()}/>
+                                                <ThumbUpIcon className="reviewHelpfulIcon" onClick={() => reviewHelpfulHandler(review._id)}/>
+                                                <ThumbDownAltIcon className="reviewNotHelpfulIcon" onClick={() => reviewNotHelpfulHandler(review._id)}/>
 
                                             </span>
                                         </Card>
