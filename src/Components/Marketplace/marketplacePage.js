@@ -165,8 +165,8 @@ export default function Marketplace ()
                                             <span className="reviewGiver">
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
-                                            <span className="reviewRating">
-                                                <p>{review.reviewRating}</p>
+                                            <span className="reviewRatingWrapper">
+                                                <p className="reviewRating">{review.reviewRating} people found this review helpful!</p>
                                             </span>
                                             <Divider/>
                                             <span className="reviewContent">
