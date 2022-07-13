@@ -29,6 +29,9 @@ const { checkUserExistsById } = require('../API/userAPI/checkUserExistsById')
 const { getMarketplacesByTags } = require('../API/marketplaceAPI/getMarketplacesByTags')
 const { getMarketplaceById } = require('../API/marketplaceAPI/getMarketplaceByID')
 
+const {marketplaceHelpful} = require('../API/marketplaceAPI/marketplaceHelpful')
+const {marketplacNoteHelpful} = require('../API/marketplaceAPI/marketplaceHelpful')
+
 const mongoDB_Session = require('connect-mongodb-session')(session)
 
 
@@ -391,11 +394,29 @@ async function startServer(){
     })
 
     app.post('/marketplaceReviewHelpful', async(req,res) => {
+        let incomingData = req.body
+        let userID = incomingData.userID
+        let marketplaceID = incomingData.marketplaceID
 
+        let result = await marketplaceHelpful(userID, marketplaceID)
+        if(result.status == 200)
+        {
+            res.status(200).send('Helpful review feedback added successfully!')
+        }
+        res.send(result.msg)
     })
 
     app.post('/marketplaceReviewNotHelpful', async(req,res) => {
-        
+        let incomingData = req.body
+        let userID = incomingData.userID
+        let marketplaceID = incomingData.marketplaceID
+
+        let result = await marketplaceNotHelpful(userID, marketplaceID)
+        if(result.status == 200)
+        {
+            res.status(200).send('Not helpful review feedback added successfully!')
+        }
+        res.send(result.msg)
     })
     //#region endpoints
 

@@ -16,11 +16,11 @@ async function marketplaceNotHelpful(reviewerID, marketplaceID)
             await targetMarketplace.save()
         }
 
-        res.status(200).send('Helpful review feedback added successfully!')
+        return {status: 200}
     }
     catch(err)
     {
-        res.send(err)
+        return {msg: err}
     }
     
 }
