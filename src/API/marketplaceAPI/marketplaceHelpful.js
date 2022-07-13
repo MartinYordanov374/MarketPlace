@@ -1,5 +1,5 @@
-import {checkUserExistsById} from '../userAPI/checkUserExistsById'
-import {getMarketplaceByID} from '../marketplaceAPI/getMarketplaceByID'
+let checkUserExistsById = require('../userAPI/checkUserExistsById')
+let getMarketplaceByID = require('../marketplaceAPI/getMarketplaceByID')
 
 async function marketplaceHelpful(reviewerID, marketplaceID)
 {
@@ -12,6 +12,8 @@ async function marketplaceHelpful(reviewerID, marketplaceID)
     
         if(targetUser != undefined && targetMarketplace != undefined)
         {
+
+            // TODO : ADD CHECK IF THE USER HAS LIKED  BEFORE OR NOT
             targetMarketplace.positiveRatings.push(targetUserID)
             await targetMarketplace.save()
         }

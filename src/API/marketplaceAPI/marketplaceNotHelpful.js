@@ -1,5 +1,5 @@
-import {checkUserExistsById} from '../userAPI/checkUserExistsById'
-import {getMarketplaceByID} from '../marketplaceAPI/getMarketplaceByID'
+let checkUserExistsById = require('../userAPI/checkUserExistsById')
+let getMarketplaceByID = require('../marketplaceAPI/getMarketplaceByID')
 
 async function marketplaceNotHelpful(reviewerID, marketplaceID)
 {
@@ -12,6 +12,7 @@ async function marketplaceNotHelpful(reviewerID, marketplaceID)
     
         if(targetUser != undefined && targetMarketplace != undefined)
         {
+            // TODO : ADD CHECK IF THE USER HAS DISLIKED  BEFORE OR NOT
             targetMarketplace.negativeRatings.push(targetUserID)
             await targetMarketplace.save()
         }
