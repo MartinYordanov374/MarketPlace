@@ -16,13 +16,13 @@ let reviewSchema = new Schema({
     },
 
     positiveRatings:{
-        type: ObjectId,
+        type: [ObjectId],
         required: false,
         ref: 'user'
     },
 
     negativeRatings:{
-        type: ObjectId,
+        type: [ObjectId],
         required: false,
         ref: 'user'
     }
