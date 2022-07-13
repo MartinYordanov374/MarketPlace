@@ -43,6 +43,15 @@ export default function Marketplace ()
         }
     }
 
+    const reviewNotHelpfulHandler = () => {
+        console.log('review found unhelpful')
+    }
+
+    const reviewHelpfulHandler = () => {
+        console.log('review found helpful')
+
+    }
+
     if(isLoading)
     {
         return (
@@ -178,8 +187,8 @@ export default function Marketplace ()
                                             <Divider/>
                                             <span className="reviewQuestionnaire">
                                                 <p>Was this review helpful?</p>
-                                                <ThumbUpIcon className="reviewHelpfulIcon"/>
-                                                <ThumbDownAltIcon className="reviewNotHelpfulIcon"/>
+                                                <ThumbUpIcon className="reviewHelpfulIcon" onClick={() => reviewHelpfulHandler()}/>
+                                                <ThumbDownAltIcon className="reviewNotHelpfulIcon" onClick={() => reviewNotHelpfulHandler()}/>
 
                                             </span>
                                         </Card>
