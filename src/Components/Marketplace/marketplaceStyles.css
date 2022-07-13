@@ -16,18 +16,20 @@
   margin: 1%;
 }
 
-.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceName {
-  border-style: solid;
-}
-
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceDescription {
   border-style: solid;
+  border-color: #406367;
+  border-width: 1px;
+  border-radius: 4px;
   height: 120px;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceDescription .marketplaceDescriptionSpan {
+  margin-left: 1%;
 }
 
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceOwner {
   margin-bottom: 1%;
-  border-style: solid;
 }
 
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceTagsWrapper {

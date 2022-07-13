@@ -16,15 +16,21 @@
         width: 100%;
         margin: 1%;
         .marketplaceName{
-            border-style: solid;
+            
         }
         .marketplaceDescription{
             border-style: solid;
+            border-color: #406367;
+            border-width: 1px;
+            border-radius: 4px;
+
             height: 120px;
+            .marketplaceDescriptionSpan{
+                margin-left: 1%;
+            }
         }
         .marketplaceOwner{
             margin-bottom: 1%;
-            border-style: solid;
         }
         .marketplaceTagsWrapper{
             margin-top: 1.7%;
