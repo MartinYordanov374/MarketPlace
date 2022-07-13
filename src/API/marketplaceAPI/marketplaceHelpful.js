@@ -17,8 +17,20 @@ async function marketplaceHelpful(reviewerID, marketplaceID,reviewID)
         if(targetUser != undefined && targetMarketplace != undefined)
         {
             // TODO : ADD CHECK IF THE USER HAS DISLIKED  BEFORE OR NOT
-            targetReview.positiveRatings.push(targetUserID)
-            await targetReview.save()
+            if(targetReview.positiveRatings.includes(targetUserID))
+            {
+                targetReview.positiveRatings = targetReview.positiveRatings.filter((negativeFeedbackUserIDS) => negativeFeedbackUserIDS != targetUserID)
+                await targetReview.save()
+                return {status: 200}
+            }
+            else
+            {
+                targetReview.positiveRatings.push(targetUserID)
+                await targetReview.save()
+
+                return {status: 200}
+            }
+        
         }
 
         return {status: 200}
