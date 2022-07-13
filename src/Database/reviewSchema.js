@@ -15,10 +15,16 @@ let reviewSchema = new Schema({
         maxLength: 120
     },
 
-    reviewRating:{
-        type: Number,
-        default: 0,
-        required: false
+    positiveRatings:{
+        type: ObjectId,
+        required: false,
+        ref: 'user'
+    },
+
+    negativeRatings:{
+        type: ObjectId,
+        required: false,
+        ref: 'user'
     }
     
 })
