@@ -1,21 +1,24 @@
-let checkUserExistsById = require('../userAPI/checkUserExistsById')
-let getMarketplaceByID = require('../marketplaceAPI/getMarketplaceByID')
+let {checkUserExistsById} = require('../userAPI/checkUserExistsById')
+let {getMarketplaceById} = require('./getMarketplaceByID')
+const { getReviewById } = require('./getReviewById')
 
-async function marketplaceHelpful(reviewerID, marketplaceID)
+async function marketplaceHelpful(reviewerID, marketplaceID,reviewID)
 {
     let targetUserID = reviewerID
     let targetMarketplaceID = marketplaceID
+    let targetReviewID = reviewID
 
     try{
         let targetUser = await checkUserExistsById(targetUserID)
-        let targetMarketplace = await getMarketplaceByID(targetMarketplaceID)
+        let targetMarketplace = await getMarketplaceById(targetMarketplaceID)
+        let targetReview = await getReviewById(targetReviewID)
+
     
         if(targetUser != undefined && targetMarketplace != undefined)
         {
-
-            // TODO : ADD CHECK IF THE USER HAS LIKED  BEFORE OR NOT
-            targetMarketplace.positiveRatings.push(targetUserID)
-            await targetMarketplace.save()
+            // TODO : ADD CHECK IF THE USER HAS DISLIKED  BEFORE OR NOT
+            targetReview.positiveRatings.push(targetUserID)
+            await targetReview.save()
         }
 
         return {status: 200}

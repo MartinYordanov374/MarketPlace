@@ -45,7 +45,6 @@ export default function Marketplace ()
 
     const reviewNotHelpfulHandler = (reviewID) => {
 
-        console.log(reviewID)
         Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
         .then((res) => {
             let userID = res.data
@@ -53,9 +52,12 @@ export default function Marketplace ()
         })
     }
 
-    const reviewHelpfulHandler = () => {
-        console.log('review found helpful')
-
+    const reviewHelpfulHandler = (reviewID) => {
+        Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
+        .then((res) => {
+            let userID = res.data
+            Axios.post('http://localhost:3001/marketplaceReviewHelpful', {userID: userID, marketplaceID: marketplaceID, reviewID: reviewID}, {withCredentials: true})
+        })
     }
 
     if(isLoading)
