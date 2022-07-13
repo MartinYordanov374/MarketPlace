@@ -418,6 +418,10 @@ async function startServer(){
         }
         res.send(result.msg)
     })
+
+    app.get('/getSessionData', async(req,res) => {
+        res.status(200).send(req.session.user.id)
+    })
     //#region endpoints
 
 
