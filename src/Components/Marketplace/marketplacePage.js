@@ -52,6 +52,9 @@ export default function Marketplace ()
         .then((res) => {
             let userID = res.data
             Axios.post('http://localhost:3001/marketplaceReviewNotHelpful', {userID: userID, marketplaceID: marketplaceID, reviewID: reviewID}, {withCredentials: true})
+            .then((res) => {
+                toast.success(res.data)
+            })
         })
     }
 
@@ -60,6 +63,9 @@ export default function Marketplace ()
         .then((res) => {
             let userID = res.data
             Axios.post('http://localhost:3001/marketplaceReviewHelpful', {userID: userID, marketplaceID: marketplaceID, reviewID: reviewID}, {withCredentials: true})
+            .then((res) => {
+                toast.success(res.data)
+            })
         })
     }
 
