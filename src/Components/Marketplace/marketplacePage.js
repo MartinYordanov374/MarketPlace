@@ -6,6 +6,7 @@ import './marketplaceStyles.css'
 import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import SellIcon from '@mui/icons-material/Sell';
 
 export default function Marketplace ()
 {
@@ -65,7 +66,7 @@ export default function Marketplace ()
                                 {marketplaceData.marketplaceTags.map((tag) => {
                                     return ( 
                                         <div className="marketplaceTagWrapper">
-                                            <span className="marketplaceTag">{tag}</span>
+                                            <span className="marketplaceTag"> <SellIcon className='tagIcon'/> {tag}</span>
                                         </div>
                                     )
                                 })}
