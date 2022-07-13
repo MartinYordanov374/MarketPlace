@@ -118,6 +118,10 @@
     }
     .reviewGiver{
         display: flex;
+        .reviewGiverUsername
+        {
+            color: black !important;
+        }
         .reviewGiverIcon{
             width: 1rem;
             vertical-align: bottom;

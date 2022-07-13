@@ -136,6 +136,10 @@
   display: flex;
 }
 
+.marketplaceReviews .reviewGiver .reviewGiverUsername {
+  color: black !important;
+}
+
 .marketplaceReviews .reviewGiver .reviewGiverIcon {
   width: 1rem;
   vertical-align: bottom;

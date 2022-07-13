@@ -163,7 +163,7 @@ export default function Marketplace ()
                                     return (
                                         <Card className="marketplaceReview">
                                             <span className="reviewGiver">
-                                                <p>{review.reviewOwner.username}</p>
+                                                <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
                                             <span className="reviewRating">
                                                 <p>{review.reviewRating}</p>
@@ -173,8 +173,9 @@ export default function Marketplace ()
                                                 <p>{review.reviewContent}</p>
                                             </span>
 
+                                            <Divider/>
                                             <span className="reviewQuestionnaire">
-                                                <p>Is this review helpful to you?</p>
+                                                <p>Was this review helpful?</p>
                                                 <ThumbUpIcon className="reviewHelpfulIcon"/>
                                                 <ThumbDownAltIcon className="reviewNotHelpfulIcon"/>
 
