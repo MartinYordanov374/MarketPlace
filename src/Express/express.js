@@ -389,6 +389,14 @@ async function startServer(){
         }
 
     })
+
+    app.post('/reviewHelpful', async(req,res) => {
+
+    })
+
+    app.post('/reviewNotHelpful', async(req,res) => {
+        
+    })
     //#region endpoints
 
 
