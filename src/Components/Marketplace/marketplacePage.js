@@ -117,6 +117,8 @@ export default function Marketplace ()
                                 </div>
                             }
 
+                    {
+                    isUserOnProducts ? 
                     <div className="marketplaceProducts">
                     {
                         marketplaceData.marketplaceProducts.length >= 1 ?
@@ -150,6 +152,11 @@ export default function Marketplace ()
                         <h1>No products here</h1>
                     }
                     </div>
+                    :
+                    <div className="marketplaceReviews">
+                        <h1>Reviews</h1>
+                    </div>
+                    }
                 <Footer/>
             </div>
         )
