@@ -390,11 +390,11 @@ async function startServer(){
 
     })
 
-    app.post('/reviewHelpful', async(req,res) => {
+    app.post('/marketplaceReviewHelpful', async(req,res) => {
 
     })
 
-    app.post('/reviewNotHelpful', async(req,res) => {
+    app.post('/marketplaceReviewNotHelpful', async(req,res) => {
         
     })
     //#region endpoints
