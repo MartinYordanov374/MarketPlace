@@ -30,7 +30,7 @@ const { getMarketplacesByTags } = require('../API/marketplaceAPI/getMarketplaces
 const { getMarketplaceById } = require('../API/marketplaceAPI/getMarketplaceByID')
 
 const {marketplaceHelpful} = require('../API/marketplaceAPI/marketplaceHelpful')
-const {marketplacNoteHelpful} = require('../API/marketplaceAPI/marketplaceHelpful')
+const {marketplaceNotHelpful} = require('../API/marketplaceAPI/marketplaceNotHelpful')
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
 
@@ -127,11 +127,6 @@ async function startServer(){
         let description = incomingData.marketplaceDescription
 
         let marketplaceTags = incomingData.marketplaceTags
-
-        
-        // let splittedMarketplaceTags = marketplaceTags.split(',')
-        // splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x != "")
-        // splittedMarketplaceTags = splittedMarketplaceTags.filter((x) => x.trim() != '')
 
         let marketplaceTagsSplitted = marketplaceTags.split(', ')
         marketplaceTagsSplitted = marketplaceTagsSplitted.join(' ')
@@ -412,6 +407,7 @@ async function startServer(){
         let marketplaceID = incomingData.marketplaceID
 
         let result = await marketplaceNotHelpful(userID, marketplaceID)
+        console.log(result)
         if(result.status == 200)
         {
             res.status(200).send('Not helpful review feedback added successfully!')

@@ -19,11 +19,11 @@ export default function Marketplace ()
     const [isLoading, setIsLoading] = useState(true)
 
     const [isUserOnProducts, setIsUserOnProducts] = useState(true)
+    let marketplaceID = window.location.href.split('/')[4]
 
     useEffect(() => {
         async function getMarketplaceData()
         {
-            let marketplaceID = window.location.href.split('/')[4]
             let targetMarketplaceData = await Axios.post('http://localhost:3001/getMarketplaceById', {marketplaceID: marketplaceID}, {withCredentials: true})
             setMarketplaceData(targetMarketplaceData.data)
             setIsLoading(false)
@@ -44,7 +44,11 @@ export default function Marketplace ()
     }
 
     const reviewNotHelpfulHandler = () => {
-        console.log('review found unhelpful')
+        Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
+        .then((res) => {
+            let userID = res.data
+            Axios.post('http://localhost:3001/marketplaceReviewNotHelpful', {userID: userID, marketplaceID: marketplaceID}, {withCredentials: true})
+        })
     }
 
     const reviewHelpfulHandler = () => {
