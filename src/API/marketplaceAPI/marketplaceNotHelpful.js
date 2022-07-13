@@ -1,20 +1,22 @@
 let {checkUserExistsById} = require('../userAPI/checkUserExistsById')
 let {getMarketplaceById} = require('./getMarketplaceByID')
+const { getReviewById } = require('./getReviewById')
 
-async function marketplaceNotHelpful(reviewerID, marketplaceID)
+async function marketplaceNotHelpful(reviewerID, marketplaceID, reviewID)
 {
     let targetUserID = reviewerID
     let targetMarketplaceID = marketplaceID
+    let targetReviewID = reviewID
     try{
         let targetUser = await checkUserExistsById(targetUserID)
         let targetMarketplace = await getMarketplaceById(targetMarketplaceID)
+        let targetReview = await getReviewById(targetReviewID)
     
-        console.log(targetMarketplace)
         if(targetUser != undefined && targetMarketplace != undefined)
         {
             // TODO : ADD CHECK IF THE USER HAS DISLIKED  BEFORE OR NOT
-            targetMarketplace.negativeRatings.push(targetUserID)
-            await targetMarketplace.save()
+            targetReview.negativeRatings.push(targetUserID)
+            await targetReview.save()
         }
 
         return {status: 200}
