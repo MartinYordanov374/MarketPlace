@@ -168,7 +168,7 @@ export default function Marketplace ()
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
                                             <span className="reviewRatingWrapper">
-                                                <p className="reviewRating">{Math.abs(review.positiveRatings - review.negativeRatings)} people found this review helpful!</p>
+                                                <p className="reviewRating">{review.positiveRatings.length - review.negativeRatings.length} people found this review helpful!</p>
                                             </span>
                                             <Divider/>
                                             <span className="reviewContent">
