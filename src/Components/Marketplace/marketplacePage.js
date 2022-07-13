@@ -159,14 +159,16 @@ export default function Marketplace ()
                             
                             { marketplaceData.marketplaceReviews.length >= 1 ?
                                 marketplaceData.marketplaceReviews.map((review) => {
-                                    console.log(review)
                                     return (
                                         <Card className="marketplaceReview">
+                                            {/* TODO: ADD PROFILE PICTURE TO THE REVIEW POST */}
+                                            {/* TODO: ADD LIKE DISLIKE FOR THE REVIEW RATING */}
+
                                             <span className="reviewGiver">
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
                                             <span className="reviewRatingWrapper">
-                                                <p className="reviewRating">{review.reviewRating} people found this review helpful!</p>
+                                                <p className="reviewRating">{Math.abs(review.positiveRatings - review.negativeRatings)} people found this review helpful!</p>
                                             </span>
                                             <Divider/>
                                             <span className="reviewContent">
