@@ -17,6 +17,7 @@ let reviewSchema = new Schema({
 
     reviewRating:{
         type: Number,
+        default: 0,
         required: false
     }
     
