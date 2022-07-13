@@ -123,4 +123,48 @@
 .marketplaceViewOptions .ReviewsOption {
   width: 50%;
 }
+
+.marketplaceReviews .marketplaceReview {
+  margin-top: 1%;
+  width: 90%;
+  margin-left: 5%;
+}
+
+.marketplaceReviews .reviewGiver {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.marketplaceReviews .reviewGiver .reviewGiverIcon {
+  width: 1rem;
+  vertical-align: bottom;
+  font-size: 18px;
+}
+
+.marketplaceReviews .reviewQuestionnaire {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.marketplaceReviews .reviewQuestionnaire .reviewHelpfulIcon {
+  color: green;
+  height: 2em;
+}
+
+.marketplaceReviews .reviewQuestionnaire .reviewHelpfulIcon:hover {
+  color: #006800;
+  cursor: pointer;
+}
+
+.marketplaceReviews .reviewQuestionnaire .reviewNotHelpfulIcon {
+  height: 2em;
+  color: red;
+}
+
+.marketplaceReviews .reviewQuestionnaire .reviewNotHelpfulIcon:hover {
+  color: #c50000;
+  cursor: pointer;
+}
 /*# sourceMappingURL=marketplaceStyles.css.map */

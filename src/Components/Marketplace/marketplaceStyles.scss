@@ -109,3 +109,41 @@
         width: 50%;
     }
 }
+
+.marketplaceReviews{
+    .marketplaceReview{
+        margin-top: 1%;
+        width: 90%;
+        margin-left: 5%;
+    }
+    .reviewGiver{
+        display: flex;
+        .reviewGiverIcon{
+            width: 1rem;
+            vertical-align: bottom;
+            font-size: 18px;
+        }
+    }
+
+    .reviewQuestionnaire{
+        display: flex;
+        .reviewHelpfulIcon{
+            color: green;
+            height: 2em;
+            &:hover{
+                color: rgb(0, 104, 0);
+                cursor: pointer;
+
+            }
+        }
+        .reviewNotHelpfulIcon{
+            height: 2em;
+            color: red;
+            &:hover{
+                color: rgb(197, 0, 0);
+                cursor: pointer;
+            }
+
+        }
+    }
+}
