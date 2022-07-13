@@ -5,10 +5,7 @@
         width: 300px;
         height: 280px;
         margin: 2%;
-        &:hover{
-            background-color: gray;
-            opacity: 0.2;
-        }
+
         .marketplaceBanner{
 
         }
@@ -98,5 +95,16 @@
                 float: right;
             }
         }
+    }
+}
+
+.marketplaceViewOptions{
+    display: flex;
+    text-align: center;
+    .ProductsOption{
+        width:50%
+    }
+    .ReviewsOption{
+        width: 50%;
     }
 }

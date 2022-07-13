@@ -75,7 +75,19 @@ export default function Marketplace ()
 
                     </div>
                     <Divider/>
-                    
+                        <div className="marketplaceViewOptions">
+                            <Card className="ProductsOption">
+                                <CardActionArea>
+                                    <h1>Products</h1>
+                                </CardActionArea>
+                            </Card>
+                            <Card className="ReviewsOption">
+                                <CardActionArea>
+                                    <h1>Reviews</h1>
+                                </CardActionArea>
+                            </Card>
+                        </div>
+
                     <div className="marketplaceProducts">
                     {
                         marketplaceData.marketplaceProducts.length >= 1 ?
