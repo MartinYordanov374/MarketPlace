@@ -405,9 +405,10 @@ async function startServer(){
         let incomingData = req.body
         let userID = incomingData.userID
         let marketplaceID = incomingData.marketplaceID
+        let reviewID = incomingData.reviewID
 
-        let result = await marketplaceNotHelpful(userID, marketplaceID)
-        console.log(result)
+
+        let result = await marketplaceNotHelpful(userID, marketplaceID,reviewID)
         if(result.status == 200)
         {
             res.status(200).send('Not helpful review feedback added successfully!')

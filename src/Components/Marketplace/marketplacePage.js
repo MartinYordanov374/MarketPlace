@@ -49,7 +49,7 @@ export default function Marketplace ()
         Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
         .then((res) => {
             let userID = res.data
-            Axios.post('http://localhost:3001/marketplaceReviewNotHelpful', {userID: userID, marketplaceID: marketplaceID}, {withCredentials: true})
+            Axios.post('http://localhost:3001/marketplaceReviewNotHelpful', {userID: userID, marketplaceID: marketplaceID, reviewID: reviewID}, {withCredentials: true})
         })
     }
 
