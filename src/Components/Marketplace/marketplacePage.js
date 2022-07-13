@@ -16,6 +16,8 @@ export default function Marketplace ()
 
     const [isLoading, setIsLoading] = useState(true)
 
+    const [isUserOnProducts, setIsUserOnProducts] = useState(true)
+
     useEffect(() => {
         console.log('use effect')
         async function getMarketplaceData()
@@ -28,6 +30,17 @@ export default function Marketplace ()
 
         getMarketplaceData()
     }, [])
+
+    const handleMarketplaceView = () => {
+        if(isUserOnProducts == true)
+        {
+            setIsUserOnProducts(false)
+        }
+        else
+        {
+            setIsUserOnProducts(true)
+        }
+    }
 
     if(isLoading)
     {
@@ -75,18 +88,34 @@ export default function Marketplace ()
 
                     </div>
                     <Divider/>
-                        <div className="marketplaceViewOptions">
-                            <Card className="ProductsOption">
-                                <CardActionArea>
-                                    <h1>Products</h1>
-                                </CardActionArea>
-                            </Card>
-                            <Card className="ReviewsOption">
-                                <CardActionArea>
-                                    <h1>Reviews</h1>
-                                </CardActionArea>
-                            </Card>
-                        </div>
+                            {
+                                isUserOnProducts == true ?
+                                <div className="marketplaceViewOptions">
+                                    <Card className="ProductsOption">
+                                        <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
+                                            <h1>Products</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                    <Card className="ReviewsOption">
+                                        <CardActionArea onClick={() => handleMarketplaceView()}>
+                                            <h1>Reviews</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                </div>
+                                :
+                                <div className="marketplaceViewOptions">
+                                    <Card className="ProductsOption">
+                                        <CardActionArea onClick={() => handleMarketplaceView()}>
+                                            <h1>Products</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                    <Card className="ReviewsOption">
+                                        <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
+                                            <h1>Reviews</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                </div>
+                            }
 
                     <div className="marketplaceProducts">
                     {
