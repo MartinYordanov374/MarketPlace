@@ -10,6 +10,9 @@ import SellIcon from '@mui/icons-material/Sell';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 
+import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+
 export default function Marketplace ()
 {
     // let targetMarketplaceData = getMarketplaceData()
@@ -75,6 +78,7 @@ export default function Marketplace ()
             return (
             <div>
                 <Navbar/>
+                <ToastContainer/>
                     <div className="marketplaceWrapper">
                         <div className="marketplaceBannerWrapper">
                             {/* <img className="marketplaceBanner"></img> */}
@@ -179,7 +183,6 @@ export default function Marketplace ()
                                     return (
                                         <Card className="marketplaceReview">
                                             {/* TODO: ADD PROFILE PICTURE TO THE REVIEW POST */}
-                                            {/* TODO: ADD LIKE DISLIKE FOR THE REVIEW RATING */}
 
                                             <span className="reviewGiver">
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
