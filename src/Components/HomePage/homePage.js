@@ -172,9 +172,13 @@ function LoggedUser()
         marginTop: "5%",
         marginLeft: "23%",
         width: "220px"
-        
     }
 
+    const modalMarketplaceImageButton = {
+        marginTop: "5%",
+        marginLeft: "23%",
+        width: "220px"
+    }
     return (
         <div className='wrapper'>
             <Navbar searchMarketplaces = {searchMarketplaces}/>
@@ -193,7 +197,10 @@ function LoggedUser()
                             <Input sx = {modalInputStyle} placeholder="Enter Marketplace name" value = { marketplaceName } ref = { marketplaceNameRef } onChange={ (e) => setMarketplaceName(e.target.value) } />
                             <Input sx = {modalInputStyle} placeholder="Enter some marketplace tags" value = { marketplaceTags } ref = { marketplaceTagsRef } onChange={ (e) => setMarketplaceTags(e.target.value) } />
                             <Input sx = {modalInputStyle} placeholder="Enter marketplace description" value = { marketplaceDescription } ref = { marketplaceDescriptionRef } onChange={ (e) => setMarketplaceDescription(e.target.value) } />
-                            <Button sx = {modalSubmitButtonStyle} color='warning' onClick={() => createMarketplace()}>Create Marketplace</Button>
+                            
+                            <Button  variant="outlined" sx = {modalMarketplaceImageButton} color='warning' component="label"> upload image <input type="file" hidden/></Button>
+
+                            <Button variant="contained" sx = {modalSubmitButtonStyle} color='warning' onClick={() => createMarketplace()}>Create Marketplace</Button>
                         </Box>
                     </Fade>
 
