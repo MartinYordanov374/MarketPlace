@@ -177,7 +177,9 @@ function LoggedUser()
     const modalMarketplaceImageButton = {
         marginTop: "5%",
         marginLeft: "23%",
-        width: "220px"
+        width: "220px",
+        display: "inline-block"
+        
     }
     return (
         <div className='wrapper'>
@@ -200,7 +202,7 @@ function LoggedUser()
                             
                             <Button  variant="outlined" sx = {modalMarketplaceImageButton} color='warning' component="label"> 
                                 <UploadIcon className='uploadImageIcon'/>
-                                upload image 
+                                <span className="uploadImageButtonText">upload image</span> 
                                 <input type="file" hidden/>
                             </Button>
 

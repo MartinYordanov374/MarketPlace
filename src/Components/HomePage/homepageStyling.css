@@ -95,4 +95,12 @@
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
 }
+
+.uploadImageIcon {
+  vertical-align: middle;
+}
+
+.uploadImageButtonText {
+  margin-left: 14%;
+}
 /*# sourceMappingURL=homepageStyling.css.map */
