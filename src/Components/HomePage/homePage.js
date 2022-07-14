@@ -7,7 +7,7 @@ import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddIcon from '@mui/icons-material/Add';
 
 import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
-
+import UploadIcon from '@mui/icons-material/Upload';
 import './homepageStyling.css'
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -198,7 +198,11 @@ function LoggedUser()
                             <Input sx = {modalInputStyle} placeholder="Enter some marketplace tags" value = { marketplaceTags } ref = { marketplaceTagsRef } onChange={ (e) => setMarketplaceTags(e.target.value) } />
                             <Input sx = {modalInputStyle} placeholder="Enter marketplace description" value = { marketplaceDescription } ref = { marketplaceDescriptionRef } onChange={ (e) => setMarketplaceDescription(e.target.value) } />
                             
-                            <Button  variant="outlined" sx = {modalMarketplaceImageButton} color='warning' component="label"> upload image <input type="file" hidden/></Button>
+                            <Button  variant="outlined" sx = {modalMarketplaceImageButton} color='warning' component="label"> 
+                                <UploadIcon className='uploadImageIcon'/>
+                                upload image 
+                                <input type="file" hidden/>
+                            </Button>
 
                             <Button variant="contained" sx = {modalSubmitButtonStyle} color='warning' onClick={() => createMarketplace()}>Create Marketplace</Button>
                         </Box>
