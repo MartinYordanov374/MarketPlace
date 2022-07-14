@@ -29,7 +29,6 @@ async function marketplaceNotHelpful(reviewerID, marketplaceID, reviewID)
                 return {status: 200}
             }
         }
-
     }
     catch(err)
     {

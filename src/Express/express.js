@@ -33,7 +33,22 @@ const {marketplaceHelpful} = require('../API/marketplaceAPI/marketplaceHelpful')
 const {marketplaceNotHelpful} = require('../API/marketplaceAPI/marketplaceNotHelpful')
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
+const multer = require('multer')
 
+const storage = multer.diskStorage({
+    destination: function(req,file,cb){
+        cb(null, 'uploads')
+    },
+    filename: function(req,file,cb)
+    {
+        cb(null, Date.now() + file.originalname)
+    }
+})
+
+var upload = multer({ storage: storage });
+
+var fs = require('fs');
+var path = require('path');
 
 const corsOptions = {
     origin: 'http://localhost:3000', 
@@ -64,16 +79,15 @@ async function startServer(){
             },
         }))
 
-        
     app.use(cors(corsOptions))
     app.use(bodyParser.urlencoded({ extended: true }))
     app.use(bodyParser.json())
-
 
     await databaseConfig(app)
 
     //#endregion
     
+
     app.post('/register', async (req,res) => {
         let incomingData = req.body
         let username = incomingData.username
@@ -121,10 +135,15 @@ async function startServer(){
         
     })
     
-    app.post('/createMarketplace', async(req,res) => {
+    app.post('/createMarketplace', upload.single('marketplaceImage'), async(req,res) => {
         let incomingData = req.body
         let userID = incomingData.userID
         let description = incomingData.marketplaceDescription
+        let marketplaceImage = {
+			data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+			contentType: 'image/jpg'
+		}
+
 
         let marketplaceTags = incomingData.marketplaceTags
 
@@ -133,7 +152,6 @@ async function startServer(){
         marketplaceTagsSplitted = marketplaceTagsSplitted.split(' ')
         marketplaceTagsSplitted = marketplaceTagsSplitted.map((tag) => tag.toLowerCase())
         let marketplaceName = incomingData.marketplaceName
-        // TODO ADD CHECK IF USER EXISTS BEFORE CREATING MARKETPLACE
 
         try{
             if(checkUserExistsById(userID) != false)
@@ -152,7 +170,7 @@ async function startServer(){
                 }
                 else
                 {
-                    let result = await createMarketplace(userID,description, marketplaceTagsSplitted, marketplaceName)
+                    let result = await createMarketplace(userID,description, marketplaceTagsSplitted, marketplaceName, marketplaceImage)
 
                     if(result.status == 200)
                     {

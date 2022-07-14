@@ -37,6 +37,11 @@ let marketplaceSchema = new Schema({
     marketplaceReviews:{
         type: [ObjectId],
         ref: 'review'
+    },
+
+    marketplaceImage:{
+        data: Buffer,
+        contentType: String
     }
     
 })
