@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
 import UploadIcon from '@mui/icons-material/Upload';
 import './homepageStyling.css'
+import CircularProgress from '@mui/material/CircularProgress';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { Buffer } from 'buffer';
@@ -19,6 +20,7 @@ Axios.defaults.withCrendentails = true
 export default function Home() {
     
     let [loginStatus, setLoginStatus] = useState('')
+    
     useEffect(() => {
         Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
         .then((res)=>{
@@ -55,7 +57,9 @@ function LoggedUser()
     const [marketplaceName, setMarketplaceName] = useState('')
     const [marketplaceTags, setMarketplaceTags] = useState('')
     const [marketplaceDescription, setMarketplaceDescription] = useState('')
+    const [isLoading, setIsLoading] = useState(true)
     let [marketplaceImage, setMarketplaceImage] = useState('')
+
 
     const marketplaceNameRef = useRef()
     const marketplaceTagsRef = useRef()
@@ -66,6 +70,7 @@ function LoggedUser()
     const getData = async () => {
         let res = await getMarketplaces()
         setMarketplaces(res)
+        setIsLoading(false)
     }
 
     useEffect(() => {
@@ -190,6 +195,7 @@ function LoggedUser()
         display: "inline-block"
         
     }
+    
     return (
         <div className='wrapper'>
             <Navbar searchMarketplaces = {searchMarketplaces}/>
@@ -227,26 +233,34 @@ function LoggedUser()
 
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
-                 {marketplaces.map(marketplace => {
-                        return(
-                            <div class='marketplaceWrapper'>
-                             <Link href={`marketplace/${marketplace._id}`} underline='none'>
-                                <Card sx={{height: "260px", width: "240px"}}>
-                                    <CardActionArea>
-                                        <CardMedia>
-                                            <img className="MarketplaceIcon" src={`data:${marketplace.marketplaceImage.contentType};base64, ${Buffer.from(marketplace.marketplaceImage.data.data).toString('base64')}`}/>
-                                        </CardMedia>
-                                        <Divider/>
-                                        <CardContent>
-                                            <Typography>{marketplace.marketplaceName}</Typography>
-                                        </CardContent>
-                                    </CardActionArea>
-                                </Card>
-                             </Link>
-                            </div>
-                        )
-                    
-                })}
+                {isLoading ? 
+                        
+                        <div className="loadingCircleWrapper">
+                            <CircularProgress color="warning" />
+                            <h2>Loading data...</h2>
+                        </div>
+
+                        : marketplaces.map(marketplace => {
+                            return(
+                                <div class='marketplaceWrapper'>
+                                 <Link href={`marketplace/${marketplace._id}`} underline='none'>
+                                    <Card sx={{height: "260px", width: "240px"}}>
+                                        <CardActionArea>
+                                            <CardMedia>
+                                                <img className="MarketplaceIcon" src={`data:${marketplace.marketplaceImage.contentType};base64, ${Buffer.from(marketplace.marketplaceImage.data.data).toString('base64')}`}/>
+                                            </CardMedia>
+                                            <Divider/>
+                                            <CardContent>
+                                                <Typography>{marketplace.marketplaceName}</Typography>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
+                                 </Link>
+                                </div>
+                            )
+                        
+                    })} 
+
                
             </div>
             <Footer/>
