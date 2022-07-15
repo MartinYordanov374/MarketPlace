@@ -47,9 +47,6 @@
 
 .marketplacesWrapper .marketplaceWrapper {
   text-align: center;
-  -webkit-box-flex: 10%;
-      -ms-flex: 10%;
-          flex: 10%;
   margin-top: 2%;
   margin-left: 2%;
 }
