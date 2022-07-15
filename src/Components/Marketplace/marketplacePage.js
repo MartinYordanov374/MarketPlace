@@ -9,7 +9,7 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import SellIcon from '@mui/icons-material/Sell';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
-
+import CircularProgress from '@mui/material/CircularProgress';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 import { Buffer } from 'buffer';
@@ -75,7 +75,9 @@ export default function Marketplace ()
         return (
         <div>
             <Navbar/>
-                Loading Data...
+                <div className="loadingCircleWrapper">
+                    <CircularProgress color="warning" />
+                </div>
             <Footer/>
         </div>)
     }

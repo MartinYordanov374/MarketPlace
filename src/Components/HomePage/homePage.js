@@ -19,7 +19,6 @@ Axios.defaults.withCrendentails = true
 export default function Home() {
     
     let [loginStatus, setLoginStatus] = useState('')
-
     useEffect(() => {
         Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
         .then((res)=>{
