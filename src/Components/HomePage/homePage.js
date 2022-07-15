@@ -11,6 +11,7 @@ import UploadIcon from '@mui/icons-material/Upload';
 import './homepageStyling.css'
 
 import 'react-toastify/dist/ReactToastify.css';
+import { Buffer } from 'buffer';
 
 Axios.defaults.withCrendentails = true
 
@@ -65,7 +66,6 @@ function LoggedUser()
 
     const getData = async () => {
         let res = await getMarketplaces()
-
         setMarketplaces(res)
     }
 
@@ -229,15 +229,15 @@ function LoggedUser()
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
                  {marketplaces.map(marketplace => {
-                   
                         return(
                             <div class='marketplaceWrapper'>
                              <Link href={`marketplace/${marketplace._id}`} underline='none'>
                                 <Card sx={{height: "260px", width: "240px"}}>
                                     <CardActionArea>
                                         <CardMedia>
-                                            <StorefrontIcon className="MarketplaceIcon"/> 
+                                            {/* <StorefrontIcon className="MarketplaceIcon"/>  */}
                                             {/* // TODO LOAD IMAGES HERE */}
+                                            <img width="240px" height="240px" src={`data:${marketplace.marketplaceImage.contentType};base64, ${Buffer.from(marketplace.marketplaceImage.data.data).toString('base64')}`}/>
                                         </CardMedia>
                                         <Divider/>
                                         <CardContent>
