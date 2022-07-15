@@ -5,10 +5,14 @@
 }
 
 .marketplaceWrapper .marketplaceBannerWrapper {
-  border-style: solid;
   width: 300px;
   height: 280px;
   margin: 2%;
+}
+
+.marketplaceWrapper .marketplaceBannerWrapper .marketplaceBanner {
+  width: 300px;
+  height: 280px;
 }
 
 .marketplaceWrapper .marketplaceDetailsWrapper {

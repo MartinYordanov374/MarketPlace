@@ -12,6 +12,7 @@ import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
 
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
+import { Buffer } from 'buffer';
 
 export default function Marketplace ()
 {
@@ -87,7 +88,8 @@ export default function Marketplace ()
                 <ToastContainer/>
                     <div className="marketplaceWrapper">
                         <div className="marketplaceBannerWrapper">
-                            {/* <img className="marketplaceBanner"></img> */}
+                        <img className="marketplaceBanner" src={`data:${marketplaceData.marketplaceImage.contentType};base64, ${Buffer.from(marketplaceData.marketplaceImage.data.data).toString('base64')}`}/>
+
                             <div className="marketplaceBanner">
 
                             </div>
