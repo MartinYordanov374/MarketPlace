@@ -180,4 +180,10 @@
   color: #406367;
   font-size: 0.85rem;
 }
+
+.loadingCircleWrapper {
+  margin-top: 15%;
+  margin-bottom: 20%;
+  text-align: center;
+}
 /*# sourceMappingURL=marketplaceStyles.css.map */
