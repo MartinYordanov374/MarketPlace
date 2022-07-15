@@ -235,9 +235,7 @@ function LoggedUser()
                                 <Card sx={{height: "260px", width: "240px"}}>
                                     <CardActionArea>
                                         <CardMedia>
-                                            {/* <StorefrontIcon className="MarketplaceIcon"/>  */}
-                                            {/* // TODO LOAD IMAGES HERE */}
-                                            <img width="240px" height="240px" src={`data:${marketplace.marketplaceImage.contentType};base64, ${Buffer.from(marketplace.marketplaceImage.data.data).toString('base64')}`}/>
+                                            <img className="MarketplaceIcon" src={`data:${marketplace.marketplaceImage.contentType};base64, ${Buffer.from(marketplace.marketplaceImage.data.data).toString('base64')}`}/>
                                         </CardMedia>
                                         <Divider/>
                                         <CardContent>

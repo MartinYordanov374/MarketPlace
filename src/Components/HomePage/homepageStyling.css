@@ -85,6 +85,7 @@
 .MarketplaceIcon {
   font-size: 200px;
   color: #51ff00;
+  height: 20vh;
   -webkit-transition: 0.2s linear;
   transition: 0.2s linear;
   cursor: pointer;
