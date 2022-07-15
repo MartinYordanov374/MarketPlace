@@ -17,9 +17,7 @@ async function createMarketplace(marketplaceOwnerID, marketplaceDescription, mar
                 marketplaceTags: marketplaceTags,
                 marketplaceImage: marketplaceImage
             })
-            
-            console.log(newMarketplace)
-        
+                    
             await newMarketplace.save()
     
             await targetUser.marketplaces.push(newMarketplace._id)
