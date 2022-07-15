@@ -34,21 +34,22 @@ const {marketplaceNotHelpful} = require('../API/marketplaceAPI/marketplaceNotHel
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
 const multer = require('multer')
+const fs = require('fs')
+const path = require('path')
+
 
 const storage = multer.diskStorage({
-    destination: function(req,file,cb){
-        cb(null, 'uploads')
+    destination: function(req, file, cb)
+    {
+        cb(null,'./uploads')
     },
     filename: function(req,file,cb)
     {
-        cb(null, Date.now() + file.originalname)
+        cb(null, file.fieldname)
     }
 })
 
-var upload = multer({ storage: storage });
-
-var fs = require('fs');
-var path = require('path');
+var upload = multer({storage: storage});
 
 const corsOptions = {
     origin: 'http://localhost:3000', 
@@ -136,61 +137,67 @@ async function startServer(){
     })
     
     app.post('/createMarketplace', upload.single('marketplaceImage'), async(req,res) => {
+
+        console.log('creating')
+
         let incomingData = req.body
         let userID = incomingData.userID
         let description = incomingData.marketplaceDescription
-        let marketplaceImage = {
-			data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
-			contentType: 'image/jpg'
-		}
-
-
-        let marketplaceTags = incomingData.marketplaceTags
-
-        let marketplaceTagsSplitted = marketplaceTags.split(', ')
-        marketplaceTagsSplitted = marketplaceTagsSplitted.join(' ')
-        marketplaceTagsSplitted = marketplaceTagsSplitted.split(' ')
-        marketplaceTagsSplitted = marketplaceTagsSplitted.map((tag) => tag.toLowerCase())
-        let marketplaceName = incomingData.marketplaceName
-
         try{
-            if(checkUserExistsById(userID) != false)
-            {
-                if(description == '' || description.length < 10)
-                {
-                    throw new Error('Your marketplace description must be at least 10 symbols!')
-                }
-                if(marketplaceTagsSplitted.length < 1)
-                {
-                    throw new Error('You must assign at least 1 tag to your marketplace!')
-                }
-                if(marketplaceName == '' || marketplaceName < 3)
-                {
-                    throw new Error('Your marketplace name is too short. It must be at least 3 symbols!')
-                }
-                else
-                {
-                    let result = await createMarketplace(userID,description, marketplaceTagsSplitted, marketplaceName, marketplaceImage)
+            let marketplaceImage = {
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                contentType: 'image/jpg'
+            }
+            let marketplaceTags = incomingData.marketplaceTags
+            let marketplaceTagsSplitted = marketplaceTags.split(', ')
+            marketplaceTagsSplitted = marketplaceTagsSplitted.join(' ')
+            marketplaceTagsSplitted = marketplaceTagsSplitted.split(' ')
+            marketplaceTagsSplitted = marketplaceTagsSplitted.map((tag) => tag.toLowerCase())
+            let marketplaceName = incomingData.marketplaceName
 
-                    if(result.status == 200)
+            try{
+                if(checkUserExistsById(userID) != false)
+                {
+                    if(description == '' || description.length < 10)
                     {
-                        res.status(200).send(result.msg)
+                        throw new Error('Your marketplace description must be at least 10 symbols!')
+                    }
+                    if(marketplaceTagsSplitted.length < 1)
+                    {
+                        throw new Error('You must assign at least 1 tag to your marketplace!')
+                    }
+                    if(marketplaceName == '' || marketplaceName < 3)
+                    {
+                        throw new Error('Your marketplace name is too short. It must be at least 3 symbols!')
                     }
                     else
                     {
-                        res.status(402).send(result.msg)
-                    }
+                        let result = await createMarketplace(userID,description, marketplaceTagsSplitted, marketplaceName, marketplaceImage)
+
+                        if(result.status == 200)
+                        {
+                            res.status(200).send(result.msg)
+                        }
+                        else
+                        {
+                            res.status(402).send(result.msg)
+                        }
     
+                    }
+                }
+                else
+                {
+                    throw new Error('The user trying to create the marketplace does not exist!')
                 }
             }
-            else
+            catch(err)
             {
-                throw new Error('The user trying to create the marketplace does not exist!')
+                res.status(402).send({ msg: err.message })
             }
         }
         catch(err)
         {
-            res.status(402).send({ msg: err.message })
+            console.log(err)
         }
     })
 

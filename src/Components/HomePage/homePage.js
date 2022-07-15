@@ -55,10 +55,13 @@ function LoggedUser()
     const [marketplaceName, setMarketplaceName] = useState('')
     const [marketplaceTags, setMarketplaceTags] = useState('')
     const [marketplaceDescription, setMarketplaceDescription] = useState('')
+    let [marketplaceImage, setMarketplaceImage] = useState('')
 
     const marketplaceNameRef = useRef()
     const marketplaceTagsRef = useRef()
     const marketplaceDescriptionRef = useRef()
+    const marketplaceImageRef = useRef()
+
 
     const getData = async () => {
         let res = await getMarketplaces()
@@ -101,15 +104,22 @@ function LoggedUser()
     const createMarketplace = () => {
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
         .then((res) => {
+
+            marketplaceImage = marketplaceImage.replace('C:\\fakepath\\', '')
             const userID = res.data.user.id
-            Axios.post('http://localhost:3001/createMarketplace', 
-            {   
-                userID: userID, 
-                marketplaceDescription: marketplaceDescription, 
-                marketplaceName: marketplaceName, 
-                marketplaceTags: marketplaceTags
-            }, 
-            { withCredentials: true })
+
+            const marketplaceFormInput = document.querySelector('.uploadImageInput');
+
+
+            let formData = new FormData()
+            formData.append("userID", userID)
+            formData.append("marketplaceDescription", marketplaceDescription)
+            formData.append("marketplaceName", marketplaceName)
+            formData.append("marketplaceTags", marketplaceTags)
+            formData.append("marketplaceImage", marketplaceFormInput.files[0])
+            
+
+            Axios.post('http://localhost:3001/createMarketplace', formData)
             .then((res) => {
                 toast.success('Marketplace created successfully!')
                 setTimeout(() => {
@@ -189,28 +199,32 @@ function LoggedUser()
                 <Button color="warning" sx={{ width: "94%", marginTop: 2, marginLeft: "3%" }} onClick={() => openCreateMarketplaceModal()}>
                     <strong>Add Marketplace</strong>
                 </Button> 
+                
+                    <Modal open={createMarketplaceModalState} onClose={closeCreateMarketplaceModal}>
 
+                        <Fade in={createMarketplaceModalState}>
+                                <Box sx= { ModalStyle } >
+                                        <Typography sx= { modalTitleStyle } >Create Marketplace Form</Typography>
+                                        <Input sx = {modalInputStyle} name="marketplaceName" placeholder="Enter Marketplace name" value = { marketplaceName } ref = { marketplaceNameRef } onChange={ (e) => setMarketplaceName(e.target.value) } />
+                                        <Input sx = {modalInputStyle} name="marketplaceTags" placeholder="Enter some marketplace tags" value = { marketplaceTags } ref = { marketplaceTagsRef } onChange={ (e) => setMarketplaceTags(e.target.value) } />
+                                        <Input sx = {modalInputStyle} name="marketplaceDescription" placeholder="Enter marketplace description" value = { marketplaceDescription } ref = { marketplaceDescriptionRef } onChange={ (e) => setMarketplaceDescription(e.target.value) } />
 
-                <Modal open={createMarketplaceModalState} onClose={closeCreateMarketplaceModal}>
+                                        <Button  variant="outlined" sx = {modalMarketplaceImageButton} color='warning' component="label"> 
+                                            <UploadIcon className='uploadImageIcon'/>
+                                            <span className="uploadImageButtonText">upload image</span> 
+                                            <input type="file" className="uploadImageInput" name="marketplaceImage" hidden ref={ marketplaceImageRef } onChange = {(e) => {setMarketplaceImage(e.target.value[0])}}/>
+                                        </Button>
 
-                    <Fade in={createMarketplaceModalState}>
-                        <Box sx= { ModalStyle } >
-                            <Typography sx= { modalTitleStyle } >Create Marketplace Form</Typography>
-                            <Input sx = {modalInputStyle} placeholder="Enter Marketplace name" value = { marketplaceName } ref = { marketplaceNameRef } onChange={ (e) => setMarketplaceName(e.target.value) } />
-                            <Input sx = {modalInputStyle} placeholder="Enter some marketplace tags" value = { marketplaceTags } ref = { marketplaceTagsRef } onChange={ (e) => setMarketplaceTags(e.target.value) } />
-                            <Input sx = {modalInputStyle} placeholder="Enter marketplace description" value = { marketplaceDescription } ref = { marketplaceDescriptionRef } onChange={ (e) => setMarketplaceDescription(e.target.value) } />
-                            
-                            <Button  variant="outlined" sx = {modalMarketplaceImageButton} color='warning' component="label"> 
-                                <UploadIcon className='uploadImageIcon'/>
-                                <span className="uploadImageButtonText">upload image</span> 
-                                <input type="file" hidden/>
-                            </Button>
-
-                            <Button variant="contained" sx = {modalSubmitButtonStyle} color='warning' onClick={() => createMarketplace()}>Create Marketplace</Button>
-                        </Box>
-                    </Fade>
-
-                </Modal>
+                                        <Button variant="contained" sx = {modalSubmitButtonStyle} color='warning' 
+                                            onClick={() => createMarketplace()}
+                                            type="submit">
+                                                Create Marketplace
+                                        </Button> 
+                                </Box>
+                        </Fade>
+                    </Modal>   
+                 
+                
 
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
