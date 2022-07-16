@@ -5,11 +5,12 @@ const {getMarketplaceById} = require('./getMarketplaceByID')
 
 async function deleteMarketplace(userID, marketplaceID){
     let targetMarketplace = await getMarketplaceById(marketplaceID)
-    let targetMarketplaceOwnerID = targetMarketplace.marketplaceOwner
+    let targetMarketplaceOwnerID = targetMarketplace.marketplaceOwner._id
+
     if(userID == targetMarketplaceOwnerID)
     {
         try{
-            let deletedMarketplace = await marketplaceModel.findByIdAndDelete({_id: marketplaceID})
+            let deletedMarketplace = await marketplaceModel.findByIdAndDelete( marketplaceID )
 
             return {status: 200, msg: 'Marketplace Deleted Successfully'}
         }
