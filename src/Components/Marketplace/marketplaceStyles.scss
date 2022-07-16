@@ -66,6 +66,13 @@
                 }
             }
         }
+        .marketplaceControlButtons{
+            margin-top: 1%;
+        }
+        .marketplaceDeleteIcon{
+            height: 2vh;
+            margin-bottom: 2%;
+        }
     }
     
 }
@@ -162,4 +169,14 @@
     margin-top: 15%;
     margin-bottom: 20%;
     text-align: center;
+}
+
+.marketplaceSettingsWrapper{
+    margin-top: 2%;
+    .marketplaceSettingsIcon{
+        &:hover{
+            color: rgb(237, 108, 2);
+            cursor: pointer;
+        }
+    }
 }

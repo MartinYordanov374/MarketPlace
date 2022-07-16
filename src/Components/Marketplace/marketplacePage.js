@@ -13,8 +13,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 import { Buffer } from 'buffer';
-
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import NotLoggedUser from "../NotLoggedUser/notLogged";
+import SettingsIcon from '@mui/icons-material/Settings';
 
 export default function Marketplace ()
 {
@@ -257,8 +258,8 @@ export default function Marketplace ()
 
                         <div className="marketplaceDetailsWrapper">
                             <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
+                            
                             <div className="marketplaceOwner"> By: {marketplaceData.marketplaceOwner.username} </div>
-
 
                             <div className="marketplaceDescription"> 
                                 <span className="marketplaceDescriptionSpan">
@@ -275,6 +276,13 @@ export default function Marketplace ()
                                     )
                                 })}
                             </div>
+                            <div className="marketplaceControlButtons">
+                                <Button variant="outlined" color='warning' sx={{
+                                    color: 'red', borderColor: 'red'}}>  Delete Marketplace <DeleteOutlineIcon className="marketplaceDeleteIcon"/> </Button>
+                            </div>
+                        </div>
+                        <div className="marketplaceSettingsWrapper">
+                            <SettingsIcon className="marketplaceSettingsIcon"/>
                         </div>
 
                     </div>
@@ -292,7 +300,7 @@ export default function Marketplace ()
                                     <CardActionArea onClick={() => handleMarketplaceView()}>
                                         <h1>Reviews</h1>
                                     </CardActionArea>
-                                </Card>
+                                </Card> 
                             </div>
                             :
                             <div className="marketplaceViewOptions">

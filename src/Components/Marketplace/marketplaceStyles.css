@@ -79,6 +79,15 @@
   font-size: 18px;
 }
 
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceControlButtons {
+  margin-top: 1%;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceDeleteIcon {
+  height: 2vh;
+  margin-bottom: 2%;
+}
+
 .marketplaceProducts {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -185,5 +194,14 @@
   margin-top: 15%;
   margin-bottom: 20%;
   text-align: center;
+}
+
+.marketplaceSettingsWrapper {
+  margin-top: 2%;
+}
+
+.marketplaceSettingsWrapper .marketplaceSettingsIcon:hover {
+  color: #ed6c02;
+  cursor: pointer;
 }
 /*# sourceMappingURL=marketplaceStyles.css.map */
