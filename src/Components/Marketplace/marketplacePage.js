@@ -14,6 +14,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 import { Buffer } from 'buffer';
 
+import NotLoggedUser from "../NotLoggedUser/notLogged";
+
 export default function Marketplace ()
 {
     // let targetMarketplaceData = getMarketplaceData()
@@ -248,14 +250,7 @@ export default function Marketplace ()
         else
         {
             return (
-                <div>
-                    <Navbar/>
-                        <ToastContainer/>
-                        <div class='loggedOut'>
-                            <h1 class='userMessage'>Sorry, this page is accessible by registered users only.</h1>
-                        </div>
-                    <Footer/>
-                </div>
+                <NotLoggedUser/>
             )
         } 
     }
