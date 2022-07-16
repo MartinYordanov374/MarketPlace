@@ -117,6 +117,22 @@ export default function Marketplace ()
         setMarketplaceModalSettingsState(false)
         setDeleteMarketplaceConfirmationModalState(true)
 
+        // let userID = 
+        async function getUserData(){
+            let currentSession = await Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
+            let userID = currentSession.data.user.id
+            let targetMarketplaceID = marketplaceID
+
+            Axios.post('http://localhost:3001/deleteMarketplace', {userID: userID, marketplaceID: targetMarketplaceID})
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
+        getUserData()
+
     }
 
     const ModalStyle = {
