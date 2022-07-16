@@ -401,10 +401,23 @@ async function startServer(){
     app.post('/getMarketplaceById', async(req,res) => {
         let incomingData = req.body
         let marketplaceID = incomingData.marketplaceID
-
+        
         try{
             let targetMarketplace = await getMarketplaceById(marketplaceID)
-            res.status(200).send(targetMarketplace)
+            let currentUserID = req.session.user.id
+            let marketplaceOwnerID = targetMarketplace.marketplaceOwner._id
+
+            let isCurrentUserOwner = false
+            if(currentUserID.equals(marketplaceOwnerID))
+            {
+                isCurrentUserOwner = true
+            }
+            else
+            {
+                isCurrentUserOwner = false
+            }
+            
+            res.status(200).send({targetMarketplace: targetMarketplace, isCurrentUserOwner: isCurrentUserOwner})
         }
         catch(err)
         {

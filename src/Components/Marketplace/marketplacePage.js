@@ -27,16 +27,21 @@ export default function Marketplace ()
     const [isLoading, setIsLoading] = useState(true)
 
     const [isUserOnProducts, setIsUserOnProducts] = useState(true)
+
+    const [isUserOwner, setIsUserOwner] = useState(false)
+
     let marketplaceID = window.location.href.split('/')[4]
 
     useEffect(() => {
         async function getMarketplaceData()
         {
             let targetMarketplaceData = await Axios.post('http://localhost:3001/getMarketplaceById', {marketplaceID: marketplaceID}, {withCredentials: true})
-            setMarketplaceData(targetMarketplaceData.data)
+            setMarketplaceData(targetMarketplaceData.data.targetMarketplace)
             setIsLoading(false)
+            setIsUserOwner(targetMarketplaceData.data.isCurrentUserOwner)
         }
-
+        
+        
         Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
         .then((res)=>{
             if(res.data == true)
@@ -54,7 +59,7 @@ export default function Marketplace ()
 
         getMarketplaceData()
     }, [])
-
+    
     const handleMarketplaceView = () => {
         if(isUserOnProducts == true)
         {
@@ -110,18 +115,17 @@ export default function Marketplace ()
             <div>
                 <Navbar/>
                 <ToastContainer/>
+                {isUserOwner == false ? 
+                <div className="nonOwnerMarketplaceView">
                     <div className="marketplaceWrapper">
                         <div className="marketplaceBannerWrapper">
                         <img className="marketplaceBanner" src={`data:${marketplaceData.marketplaceImage.contentType};base64, ${Buffer.from(marketplaceData.marketplaceImage.data.data).toString('base64')}`}/>
-
-                            <div className="marketplaceBanner">
-
-                            </div>
                         </div>
 
                         <div className="marketplaceDetailsWrapper">
                             <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
                             <div className="marketplaceOwner"> By: {marketplaceData.marketplaceOwner.username} </div>
+
 
                             <div className="marketplaceDescription"> 
                                 <span className="marketplaceDescriptionSpan">
@@ -243,6 +247,140 @@ export default function Marketplace ()
                             }
                         </div>
                     }
+                </div>
+                :
+                <div className="ownerMarketplaceView">
+                    <div className="marketplaceWrapper">
+                        <div className="marketplaceBannerWrapper">
+                        <img className="marketplaceBanner" src={`data:${marketplaceData.marketplaceImage.contentType};base64, ${Buffer.from(marketplaceData.marketplaceImage.data.data).toString('base64')}`}/>
+                        </div>
+
+                        <div className="marketplaceDetailsWrapper">
+                            <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
+                            <div className="marketplaceOwner"> By: {marketplaceData.marketplaceOwner.username} </div>
+
+
+                            <div className="marketplaceDescription"> 
+                                <span className="marketplaceDescriptionSpan">
+                                    {marketplaceData.marketplaceDescription} 
+                                </span>
+                            </div>
+
+                            <div className="marketplaceTagsWrapper">
+                                {marketplaceData.marketplaceTags.map((tag) => {
+                                    return ( 
+                                        <div className="marketplaceTagWrapper">
+                                            <span className="marketplaceTag"> <SellIcon className='tagIcon'/> {tag}</span>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+
+                    </div>
+                    <Divider/>
+                    <div>
+                        {
+                            isUserOnProducts == true ?
+                            <div className="marketplaceViewOptions">
+                                <Card className="ProductsOption">
+                                    <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
+                                        <h1>Products</h1>
+                                    </CardActionArea>
+                                </Card>
+                                <Card className="ReviewsOption">
+                                    <CardActionArea onClick={() => handleMarketplaceView()}>
+                                        <h1>Reviews</h1>
+                                    </CardActionArea>
+                                </Card>
+                            </div>
+                            :
+                            <div className="marketplaceViewOptions">
+                                <Card className="ProductsOption">
+                                    <CardActionArea onClick={() => handleMarketplaceView()}>
+                                        <h1>Products</h1>
+                                    </CardActionArea>
+                                </Card>
+                                <Card className="ReviewsOption">
+                                    <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
+                                        <h1>Reviews</h1>
+                                    </CardActionArea>
+                                </Card>
+                            </div>
+                        }
+                    </div>
+                    {
+                        isUserOnProducts ? 
+                        <div className="marketplaceProducts">
+                        {
+                            marketplaceData.marketplaceProducts.length >= 1 ?
+                            marketplaceData.marketplaceProducts.map( (prod) => {
+                                return(
+                                <div class='marketplaceProduct'>
+                                    <Card className='productCard'>
+                                        <CardActionArea>
+                                            <CardContent>
+                                                
+                                                <StorefrontIcon className="productImage"/>
+                                                <Divider/>
+
+                                                <h2 className="productName">{prod.productName}</h2>
+                                                <Divider/>
+
+                                                <h3 className="productDescription">{prod.productDescription}</h3>
+
+                                            </CardContent>
+                                            
+                                        </CardActionArea>
+                                        <Divider/>
+                                        <p className="productPrice"><strong>$ {prod.productPrice}</strong></p>
+                                        <Divider/>
+                                        <Button className="buyProductButton" sx={{fontSize: 15}} color='warning'> <strong> Add to cart </strong> <AddShoppingCartIcon/>  </Button>
+                                    </Card>
+                                </div>
+                                )
+                            })
+                            :
+                            <h1>No products here</h1>
+                        }
+                        </div>
+                        :
+                        <div className="marketplaceReviews">
+                            
+                            { marketplaceData.marketplaceReviews.length >= 1 ?
+                                marketplaceData.marketplaceReviews.map((review) => {
+                                    return (
+                                        <Card className="marketplaceReview">
+                                            {/* TODO: ADD PROFILE PICTURE TO THE REVIEW POST */}
+
+                                            <span className="reviewGiver">
+                                                <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
+                                            </span>
+                                            <span className="reviewRatingWrapper">
+                                                <p className="reviewRating">{review.positiveRatings.length - review.negativeRatings.length} review rating</p>
+                                            </span>
+                                            <Divider/>
+                                            <span className="reviewContent">
+                                                <p>{review.reviewContent}</p>
+                                            </span>
+
+                                            <Divider/>
+                                            <span className="reviewQuestionnaire">
+                                                <p>Was this review helpful?</p>
+                                                <ThumbUpIcon className="reviewHelpfulIcon" onClick={() => reviewHelpfulHandler(review._id)}/>
+                                                <ThumbDownAltIcon className="reviewNotHelpfulIcon" onClick={() => reviewNotHelpfulHandler(review._id)}/>
+
+                                            </span>
+                                        </Card>
+                                        
+                                    )
+                                })
+                                :
+                                <h1>No reviews to show</h1>
+                            }
+                        </div>
+                    }
+                </div>}
                 <Footer/>
             </div>
         )
