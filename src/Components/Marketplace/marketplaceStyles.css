@@ -193,7 +193,11 @@
 .loadingCircleWrapper {
   margin-top: 15%;
   margin-bottom: 20%;
+}
+
+.loadingCircleWrapper .loadingCircle {
   text-align: center;
+  margin-left: 5%;
 }
 
 .marketplaceSettingsWrapper {

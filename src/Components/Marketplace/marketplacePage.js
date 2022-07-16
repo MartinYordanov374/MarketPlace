@@ -166,7 +166,7 @@ export default function Marketplace ()
         <div>
             <Navbar/>
                 <div className="loadingCircleWrapper">
-                    <CircularProgress color="warning" />
+                    <CircularProgress className="loadingCircle" color="warning" />
                     <h2>Loading data...</h2>
                 </div>
             <Footer/>
