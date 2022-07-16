@@ -16,6 +16,7 @@ import { Buffer } from 'buffer';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import NotLoggedUser from "../NotLoggedUser/notLogged";
 import SettingsIcon from '@mui/icons-material/Settings';
+import { textAlign } from "@mui/system";
 
 export default function Marketplace ()
 {
@@ -30,6 +31,9 @@ export default function Marketplace ()
     const [isUserOnProducts, setIsUserOnProducts] = useState(true)
 
     const [isUserOwner, setIsUserOwner] = useState(false)
+
+    let [marketplaceModalSettingsState, setMarketplaceModalSettingsState] = useState(false)
+
 
     let marketplaceID = window.location.href.split('/')[4]
 
@@ -94,6 +98,37 @@ export default function Marketplace ()
             })
         })
     }
+
+    const openSettingsModal = () => {
+        setMarketplaceModalSettingsState(true)
+    }
+    
+    const closeSettingsModal = () => {
+        setMarketplaceModalSettingsState(false)
+    }
+
+    const ModalStyle = {
+        position: 'absolute',
+        top: '35%',
+        left: '51%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'white',
+        // border: '2px solid #000',
+        boxShadow: 24,
+        p: 4,
+      };
+
+      const deleteMarketplaceButtonStyle = {
+        color: 'red', 
+        borderColor: 'red', 
+        marginTop: "2%",
+        marginLeft: "20%"
+      }
+
+      const marketplaceSettingsTitleStyle = {
+        marginLeft: "15%"
+      }
 
     if(isLoading)
     {
@@ -276,13 +311,25 @@ export default function Marketplace ()
                                     )
                                 })}
                             </div>
-                            <div className="marketplaceControlButtons">
-                                <Button variant="outlined" color='warning' sx={{
-                                    color: 'red', borderColor: 'red'}}>  Delete Marketplace <DeleteOutlineIcon className="marketplaceDeleteIcon"/> </Button>
-                            </div>
+
                         </div>
                         <div className="marketplaceSettingsWrapper">
-                            <SettingsIcon className="marketplaceSettingsIcon"/>
+                            <SettingsIcon className="marketplaceSettingsIcon" onClick={() => openSettingsModal()}/>
+
+                            <Modal open={marketplaceModalSettingsState} onClose={closeSettingsModal}>
+                                <Fade in = {marketplaceModalSettingsState}>
+                                    <Box sx={ModalStyle}>
+                                        <Typography sx={marketplaceSettingsTitleStyle} variant="h5"> Your marketplace settings</Typography>
+                                        <Divider/>
+                                        <div className="marketplaceSettings">
+                                            <Button variant="outlined" color='warning' sx={deleteMarketplaceButtonStyle}>  Delete Marketplace <DeleteOutlineIcon className="marketplaceDeleteIcon" />
+                                            </Button>
+
+                                        </div>
+                                    
+                                    </Box>
+                                </Fade>
+                            </Modal>
                         </div>
 
                     </div>
