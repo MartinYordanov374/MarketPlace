@@ -34,6 +34,7 @@ export default function Marketplace ()
 
     let [marketplaceModalSettingsState, setMarketplaceModalSettingsState] = useState(false)
 
+    let [deleteMarketplaceConfirmationModalState, setDeleteMarketplaceConfirmationModalState] = useState(false)
 
     let marketplaceID = window.location.href.split('/')[4]
 
@@ -107,6 +108,17 @@ export default function Marketplace ()
         setMarketplaceModalSettingsState(false)
     }
 
+    const closeDeleteMarketplaceModal = () => {
+        setDeleteMarketplaceConfirmationModalState(false)
+
+    }
+
+    const deleteMarketplace = () => {
+        setMarketplaceModalSettingsState(false)
+        setDeleteMarketplaceConfirmationModalState(true)
+
+    }
+
     const ModalStyle = {
         position: 'absolute',
         top: '35%',
@@ -128,6 +140,24 @@ export default function Marketplace ()
 
       const marketplaceSettingsTitleStyle = {
         marginLeft: "15%"
+      }
+
+      const deleteMarketplaceConfirmationTitleStyle = {
+        color: 'red',
+        fontSize: 35,
+        textAlign: 'center'
+      }
+      const deleteMarketplaceConfirmationMessageStyle = {
+        color: 'black',
+        fontSize: 20,
+        textAlign: 'center'
+      }
+
+      const confirmDeleteMarketplaceButtonStyle = {
+        color: 'red', 
+        borderColor: 'red', 
+        marginTop: "2%",
+        marginLeft: "10%"
       }
 
     if(isLoading)
@@ -322,7 +352,26 @@ export default function Marketplace ()
                                         <Typography sx={marketplaceSettingsTitleStyle} variant="h5"> Your marketplace settings</Typography>
                                         <Divider/>
                                         <div className="marketplaceSettings">
-                                            <Button variant="outlined" color='warning' sx={deleteMarketplaceButtonStyle}>  Delete Marketplace <DeleteOutlineIcon className="marketplaceDeleteIcon" />
+                                            <Button variant="outlined" color='warning' sx={deleteMarketplaceButtonStyle} onClick={() => deleteMarketplace()}>  Delete Marketplace 
+                                                <DeleteOutlineIcon className="marketplaceDeleteIcon"/>
+                                            </Button>
+
+                                        </div>
+                                    
+                                    </Box>
+                                </Fade>
+                            </Modal>
+
+                            <Modal open={deleteMarketplaceConfirmationModalState} onClose={closeDeleteMarketplaceModal}>
+                                <Fade in = {deleteMarketplaceConfirmationModalState}>
+                                    <Box sx={ModalStyle}>
+                                        <Typography variant="h6" sx={deleteMarketplaceConfirmationTitleStyle}> STOP! </Typography>
+                                        <br></br>
+                                        <Typography sx={deleteMarketplaceConfirmationMessageStyle}> All the data related to this marketplace will be lost! </Typography>
+                                        <Divider/>
+                                        <div className="marketplaceSettings">
+                                            <Button variant="outlined" color='warning' sx={confirmDeleteMarketplaceButtonStyle} onClick={() => deleteMarketplace()}>  Confirm Marketplace Deletion  
+                                                <DeleteOutlineIcon className="marketplaceDeleteIcon"/>
                                             </Button>
 
                                         </div>
