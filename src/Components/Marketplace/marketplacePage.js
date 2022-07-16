@@ -18,6 +18,8 @@ export default function Marketplace ()
 {
     // let targetMarketplaceData = getMarketplaceData()
 
+    let [loginStatus, setLoginStatus] = useState('')
+
     const [marketplaceData, setMarketplaceData] = useState([])
 
     const [isLoading, setIsLoading] = useState(true)
@@ -32,6 +34,21 @@ export default function Marketplace ()
             setMarketplaceData(targetMarketplaceData.data)
             setIsLoading(false)
         }
+
+        Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
+        .then((res)=>{
+            if(res.data == true)
+            {
+                setLoginStatus(true)
+            }
+            else
+            {
+                setLoginStatus(false)
+            }
+        })
+        .catch((error)=>{
+            // console.log(error)
+        })
 
         getMarketplaceData()
     }, [])
@@ -85,6 +102,8 @@ export default function Marketplace ()
 
     else
     {
+        if(loginStatus == true)
+        {
             return (
             <div>
                 <Navbar/>
@@ -225,6 +244,20 @@ export default function Marketplace ()
                 <Footer/>
             </div>
         )
+        } 
+        else
+        {
+            return (
+                <div>
+                    <Navbar/>
+                        <ToastContainer/>
+                        <div class='loggedOut'>
+                            <h1 class='userMessage'>Sorry, this page is accessible by registered users only.</h1>
+                        </div>
+                    <Footer/>
+                </div>
+            )
+        } 
     }
 }
 
