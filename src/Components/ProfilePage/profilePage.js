@@ -5,10 +5,13 @@ import {useEffect, useState} from 'react'
 import Axios from 'axios'
 
 import './profilePageStyling.css'
+import mongoose from "mongoose";
 export default function ProfilePage()
 {
 
     const [userData, setUserData] = useState('')
+
+    const URL_ID = window.location.href.split('/')[4]
 
     useEffect(() => {
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
@@ -27,6 +30,10 @@ export default function ProfilePage()
                 userDataObj.marketplaces = userMarketplaces
                 userDataObj.rating = userRating
                 userDataObj.reviews = userReviews
+                if(userID == URL_ID)
+                {
+                    userDataObj.isOwner = true
+                }
 
                 setUserData(userDataObj)
             })
@@ -43,7 +50,7 @@ export default function ProfilePage()
         <div>
             <Navbar/>
                 <div className="profilePageWrapper">
-
+                    {userData.isOwner ? <h1>Owner</h1> : <h1>Not Owner</h1>}
                     <div className="profileWrapper">
                         
                         <div className="coverPictureWrapper">
