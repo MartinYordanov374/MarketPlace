@@ -26,6 +26,18 @@ const UserSchema = new Schema({
     marketplaces:{
         type: [ObjectId],
         ref: 'marketplaces'
+    },
+
+    profilePicture:{
+        type: Buffer,
+        contentType: String,
+        required: false
+    },
+
+    covertPicture: {
+        type: Buffer,
+        contentType: String,
+        required: false
     }
 })
 

@@ -39,7 +39,6 @@ export default function ProfilePage()
         })
     }, [])
 
-    console.log(userData)
     return (
         <div>
             <Navbar/>
