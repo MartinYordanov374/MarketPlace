@@ -34,7 +34,7 @@ export default function ProfilePage()
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
         .then((res) => {
             let userID = res.data.user.id
-            let username = res.data.user.username
+
             let userDataObj = {
                 
             }
@@ -51,6 +51,7 @@ export default function ProfilePage()
                 userDataObj.reviews = userReviews
                 userDataObj.profilePicture = profilePicture
                 userDataObj.username = username
+                userDataObj.coverPicture = res.data.covertPicture
 
                 if(userID == URL_ID)
                 {
@@ -79,7 +80,7 @@ export default function ProfilePage()
 
     const changePFP = () =>
     {
-        let imgInputField = document.querySelector('.imageUploadButton')
+            let imgInputField = document.querySelector('.imageUploadButton')
 
             let newPFP = imgInputField.files[0]
             let formData = new FormData()
@@ -101,11 +102,29 @@ export default function ProfilePage()
         coverInputField.click()
     }
 
+    const changeCoverPicture = () => {
+        let coverInputField = document.querySelector('.coverUpload')
+        let newCoverPicture = coverInputField.files[0]
+
+        let formData = new FormData()
+        formData.append('userID', URL_ID)
+        formData.append('pfp', newCoverPicture)
+
+        Axios.post('http://localhost:3001/uploadCoverPicture', formData)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
     const viewPFP_modalEnlargement = {
         position: 'absolute',
         left: "36%",
         top: "18%"
     }
+
     return (
         <div>
             <Navbar/>
@@ -116,14 +135,20 @@ export default function ProfilePage()
                             <div className="profileWrapper">
                                 <div className="coverPictureWrapper">
                                     <LocalSeeIcon className='coverUploadButton' onClick={() => openCoverUploadField()}/>
-                                    <input type="file" className="coverUpload" hidden/>
+                                    <img className="coverPicture" 
+                                        src={
+                                            `data: image/jpg;base64,
+                                            ${Buffer.from(userData.coverPicture.data).toString('base64')}`
+                                            }/>
+
+                                    <input type="file" className="coverUpload" hidden onChange={() => changeCoverPicture()}/>
                                 </div>  
 
                                 { userData.profilePicture == undefined
                                     ? 
                                     <div className="profilePictureWrapper" onClick={() => openImageUploadField()}>
                                         <UploadFileIcon className="uploadPfpIcon"/>
-                                        <input type="file" className="imageUploadButton" hidden/>
+                                        <input type="file" className="imageUploadButton" hidden onChange={() => changePFP()}/>
                                     </div>
                                     :
                                     <div className="profilePictureWrapper" onClick={() => openImageUploadField()}>
@@ -146,7 +171,11 @@ export default function ProfilePage()
                         <div className="profileWrapper">
                             
                             <div className="coverPictureWrapper">
-
+                                {/* <img className="profilePicture" 
+                                    src={
+                                        `data: image/jpg;base64,
+                                        ${Buffer.from(userData.coverPicture.data).toString('base64')}`
+                                        }/> */}
                             </div>
 
                             { userData.profilePicture == undefined
