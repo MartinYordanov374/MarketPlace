@@ -21,22 +21,25 @@ export default function ProfilePage()
     useEffect(() => {
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
         .then((res) => {
-            let userID = res.data.user.id
+            let userID = URL_ID
             let username = res.data.user.username
             let userDataObj = {
-                username: username
+                
             }
-            Axios.post('http://localhost:3001/getUserById', {id: userID})
+            Axios.post('http://localhost:3001/getUserById', {id: URL_ID})
             .then((res) => {
                 let userMarketplaces = res.data.marketplaces
                 let userRating = res.data.rating
                 let userReviews = res.data.reviews
                 let profilePicture = res.data.profilePicture
+                let username = res.data.username
 
                 userDataObj.marketplaces = userMarketplaces
                 userDataObj.rating = userRating
                 userDataObj.reviews = userReviews
                 userDataObj.profilePicture = profilePicture
+                userDataObj.username = username
+
 
                 if(userID == URL_ID)
                 {
