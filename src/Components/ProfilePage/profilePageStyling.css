@@ -31,6 +31,17 @@
   cursor: pointer;
 }
 
+.profilePageWrapper .profileWrapper .profilePictureWrapper .profilePicture {
+  width: 240px;
+  height: 240px;
+  border-radius: 10%;
+}
+
+.profilePageWrapper .profileWrapper .profilePictureWrapper .profilePicture:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .profilePageWrapper .profileWrapper .coverPictureWrapper {
   height: 180px;
   background-color: orange;

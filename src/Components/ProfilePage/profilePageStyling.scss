@@ -20,6 +20,15 @@
                     cursor: pointer;
                 }
             }
+            .profilePicture{
+                width: 240px;
+                height: 240px;
+                border-radius: 10%;
+                &:hover{
+                    opacity: 0.8;
+                    cursor: pointer;
+                }
+            }
 
         }
         .coverPictureWrapper{

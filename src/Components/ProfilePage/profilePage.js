@@ -7,6 +7,9 @@ import Axios from 'axios'
 import './profilePageStyling.css'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
 import LocalSeeIcon from '@mui/icons-material/LocalSee';
+import { Buffer } from 'buffer';
+
+
 
 export default function ProfilePage()
 {
@@ -28,10 +31,13 @@ export default function ProfilePage()
                 let userMarketplaces = res.data.marketplaces
                 let userRating = res.data.rating
                 let userReviews = res.data.reviews
+                let profilePicture = res.data.profilePicture
 
                 userDataObj.marketplaces = userMarketplaces
                 userDataObj.rating = userRating
                 userDataObj.reviews = userReviews
+                userDataObj.profilePicture = profilePicture
+
                 if(userID == URL_ID)
                 {
                     userDataObj.isOwner = true
@@ -51,13 +57,26 @@ export default function ProfilePage()
     const openImageUploadField = () => {
         let imgInputField = document.querySelector('.imageUploadButton')
         imgInputField.click()
+
+        let newPFP = imgInputField.files[0]
+        let formData = new FormData()
+        formData.append('userID', URL_ID)
+        formData.append('pfp', newPFP)
+
+        Axios.post('http://localhost:3001/uploadProfilePicture', formData)
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
     
     const openCoverUploadField = () => {
         let coverInputField = document.querySelector('.coverUpload')
         coverInputField.click()
     }
-
+    console.log(userData)
     return (
         <div>
             <Navbar/>
@@ -78,9 +97,15 @@ export default function ProfilePage()
                                         <input type="file" className="imageUploadButton" hidden/>
                                     </div>
                                     :
-                                    <div className="profilePictureWrapper">
-                                    
-                                    </div>
+                                    <div className="profilePictureWrapper" onClick={() => openImageUploadField()}>
+                                        <img className="profilePicture" 
+                                            src={
+                                                `data: image/jpg;base64,
+                                                ${Buffer.from(userData.profilePicture.data).toString('base64')}`
+                                                }/>
+                                            <input type="file" className="imageUploadButton" hidden/>
+                                        </div>
+
                                 }
 
 

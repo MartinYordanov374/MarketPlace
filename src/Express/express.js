@@ -31,6 +31,7 @@ const { getMarketplaceById } = require('../API/marketplaceAPI/getMarketplaceByID
 
 const {marketplaceHelpful} = require('../API/marketplaceAPI/marketplaceHelpful')
 const {marketplaceNotHelpful} = require('../API/marketplaceAPI/marketplaceNotHelpful')
+const { updateProfilePicture } = require('../API/userAPI/updateProfilePicture')
 
 const mongoDB_Session = require('connect-mongodb-session')(session)
 const multer = require('multer')
@@ -463,6 +464,25 @@ async function startServer(){
     app.post('/getUserById', async(req,res) => {
         let result = await checkUserExistsById(req.body.id)
         res.status(200).send(result)
+    })
+
+    app.post('/uploadProfilePicture', upload.single('pfp'), async(req,res) => {
+        let targetUserID = req.body.userID
+        try{
+
+            let pfp = {
+                data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+                contentType: 'image/jpg'
+            }
+            let result = await updateProfilePicture(targetUserID, pfp)
+            // targetUser.profilePicture = pfp
+            // await targetUser.save()
+            // console.log(targetUser)
+        }
+        catch(err)
+        {
+            console.log(err)
+        }
     })
     //#region endpoints
 
