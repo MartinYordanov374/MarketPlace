@@ -5,7 +5,9 @@ import {useEffect, useState} from 'react'
 import Axios from 'axios'
 
 import './profilePageStyling.css'
-import mongoose from "mongoose";
+import UploadFileIcon from '@mui/icons-material/UploadFile';
+import LocalSeeIcon from '@mui/icons-material/LocalSee';
+
 export default function ProfilePage()
 {
 
@@ -46,34 +48,71 @@ export default function ProfilePage()
         })
     }, [])
 
+    const openImageUploadField = () => {
+        let imgInputField = document.querySelector('.imageUploadButton')
+        imgInputField.click()
+    }
+    
+    const openCoverUploadField = () => {
+        let coverInputField = document.querySelector('.coverUpload')
+        coverInputField.click()
+    }
+
     return (
         <div>
             <Navbar/>
                 <div className="profilePageWrapper">
-                    {userData.isOwner ? <h1>Owner</h1> : <h1>Not Owner</h1>}
-                    <div className="profileWrapper">
-                        
-                        <div className="coverPictureWrapper">
+                    {
+                        userData.isOwner 
+                        ?                     
+                            <div className="profileWrapper">
+                                <div className="coverPictureWrapper">
+                                    <LocalSeeIcon className='coverUploadButton' onClick={() => openCoverUploadField()}/>
+                                    <input type="file" className="coverUpload" hidden/>
+                                </div>  
 
-                        </div>
+                                { userData.profilePicture == undefined
+                                    ? 
+                                    <div className="profilePictureWrapper" onClick={() => openImageUploadField()}>
+                                        <UploadFileIcon className="uploadPfpIcon"/>
+                                        <input type="file" className="imageUploadButton" hidden/>
+                                    </div>
+                                    :
+                                    <div className="profilePictureWrapper">
+                                    
+                                    </div>
+                                }
 
-                        { userData.profilePicture == undefined
-                            ? 
-                            <div className="profilePictureWrapper">
+
+                                <div className="profileName">
+                                    <h1>{userData.username}</h1>
+                                </div>
+                            </div> 
+                        : 
+                        <div className="profileWrapper">
+                            
+                            <div className="coverPictureWrapper">
+
+                            </div>
+
+                            { userData.profilePicture == undefined
+                                ? 
+                                <div className="profilePictureWrapper">
+                                    
+                                </div>
+                                :
+                                <div className="profilePictureWrapper">
                                 
-                            </div>
-                            :
-                            <div className="profilePictureWrapper">
-                               
-                            </div>
-                        }
+                                </div>
+                            }
 
 
-                        <div className="profileName">
-                            <h1>{userData.username}</h1>
+                            <div className="profileName">
+                                <h1>{userData.username}</h1>
+                            </div>
+
                         </div>
-
-                    </div>
+                    }
                 </div>
             <Footer/>
         </div>
