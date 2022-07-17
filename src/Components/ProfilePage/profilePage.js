@@ -10,14 +10,25 @@ import PersonIcon from '@mui/icons-material/Person';
 import LocalSeeIcon from '@mui/icons-material/LocalSee';
 import { Buffer } from 'buffer';
 
-
+import {Modal, Fade, Box} from '@mui/material'
 
 export default function ProfilePage()
 {
 
     const [userData, setUserData] = useState('')
 
+    const [pfpModalState, setPfpModalState] = useState(false)
+
     let URL_ID = window.location.href.split('/')[4]
+
+
+    const openPFPModal = () => {
+        setPfpModalState(true)
+    }
+
+    const closePFPModal = () => {
+        setPfpModalState(false)
+    }
 
     useEffect(() => {
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
@@ -83,7 +94,12 @@ export default function ProfilePage()
         let coverInputField = document.querySelector('.coverUpload')
         coverInputField.click()
     }
-    console.log(userData)
+
+    const viewPFP_modalEnlargement = {
+        position: 'absolute',
+        left: "36%",
+        top: "18%"
+    }
     return (
         <div>
             <Navbar/>
@@ -133,14 +149,28 @@ export default function ProfilePage()
                                         <PersonIcon className="uploadPfpIcon"/>
                                     </div>
                                     :
-                                    <div className="profilePictureWrapper" >
-                                        <img className="profilePicture" 
-                                            src={
-                                                `data: image/jpg;base64,
-                                                ${Buffer.from(userData.profilePicture.data).toString('base64')}`
-                                                }/>
+                                    <div>
+                                        <div className="profilePictureWrapper" onClick={() => openPFPModal()}>
+                                            <img className="profilePicture" 
+                                                src={
+                                                    `data: image/jpg;base64,
+                                                    ${Buffer.from(userData.profilePicture.data).toString('base64')}`
+                                                    }/>
                                         </div>
-
+                                        <div>
+                                            <Modal open={pfpModalState} onClose={closePFPModal}>
+                                                <Fade in={pfpModalState}>
+                                                    <Box sx={viewPFP_modalEnlargement}>
+                                                        <img  width="480px" height="480px"
+                                                            src={
+                                                            `data: image/jpg;base64,
+                                                            ${Buffer.from(userData.profilePicture.data).toString('base64')}`
+                                                            }/>
+                                                    </Box>
+                                                </Fade>
+                                            </Modal>
+                                        </div>
+                                    </div>
                                 }
 
 
