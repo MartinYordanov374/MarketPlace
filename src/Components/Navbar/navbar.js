@@ -48,7 +48,6 @@ export default function Navbar(props) {
         
     let [loginStatus, setLoginStatus] = useState('')
 
- 
 
     useEffect(() => {
         Axios.get('http://localhost:3001/isUserLoggedIn', {withCredentials: true})
@@ -65,6 +64,7 @@ export default function Navbar(props) {
         .catch((error)=>{
             // console.log(error)
         })
+
     })
 
     if(loginStatus)
@@ -87,6 +87,18 @@ function LoggedUserNavbar(props)
     const [searchTags, setSearchTags] = useState('')
 
     let searchMarketplaces = props.data.searchMarketplaces
+
+    const [currUserId, setCurrUserId] = useState('')
+
+    useEffect(() => {
+        Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
+        .then((res) => {
+            setCurrUserId(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }, [])
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -153,7 +165,7 @@ function LoggedUserNavbar(props)
 
                             
                             <Typography variant="h5" sx={{marginLeft: -7}}>
-                                <a href='/profile'> My profile</a> 
+                                <a href={`/profile/${currUserId}`}> My profile</a> 
                             </Typography>
 
                             <Typography variant="h5" sx={{marginLeft: 17}} onClick={() => handleLogout()}>

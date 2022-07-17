@@ -462,7 +462,6 @@ async function startServer(){
 
     app.post('/getUserById', async(req,res) => {
         let result = await checkUserExistsById(req.body.id)
-
         res.status(200).send(result)
     })
     //#region endpoints

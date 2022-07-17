@@ -50,13 +50,20 @@ export default function ProfilePage()
 
                         </div>
 
-                        <div className="profilePictureWrapper">
-
-                        </div>
+                        { userData.profilePicture == undefined
+                            ? 
+                            <div className="profilePictureWrapper">
+                                
+                            </div>
+                            :
+                            <div className="profilePictureWrapper">
+                               
+                            </div>
+                        }
 
 
                         <div className="profileName">
-                            <h1>Username</h1>
+                            <h1>{userData.username}</h1>
                         </div>
 
                     </div>

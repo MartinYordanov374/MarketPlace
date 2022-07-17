@@ -31,13 +31,12 @@ const UserSchema = new Schema({
     profilePicture:{
         type: Buffer,
         contentType: String,
-        required: false
+        
     },
 
     covertPicture: {
         type: Buffer,
-        contentType: String,
-        required: false
+        contentType: String
     }
 })
 
