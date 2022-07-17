@@ -103,7 +103,8 @@
   margin-left: 14%;
 }
 
-.loadingCircleWrapper {
+.loadingCircleWrapperHome {
+  text-align: center;
   margin-top: 15%;
   margin-bottom: 20%;
   margin-left: 43%;

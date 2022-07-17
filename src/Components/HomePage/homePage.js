@@ -235,7 +235,7 @@ function LoggedUser()
                 <ToastContainer/>
                 {isLoading ? 
                         
-                        <div className="loadingCircleWrapper">
+                        <div className="loadingCircleWrapperHome">
                             <CircularProgress color="warning" />
                             <h2>Loading data...</h2>
                         </div>
