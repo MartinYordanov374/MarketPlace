@@ -16,12 +16,12 @@ export default function ProfilePage()
 
     const [userData, setUserData] = useState('')
 
-    const URL_ID = window.location.href.split('/')[4]
+    let URL_ID = window.location.href.split('/')[4]
 
     useEffect(() => {
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
         .then((res) => {
-            let userID = URL_ID
+            let userID = res.data.user.id
             let username = res.data.user.username
             let userDataObj = {
                 
@@ -40,10 +40,13 @@ export default function ProfilePage()
                 userDataObj.profilePicture = profilePicture
                 userDataObj.username = username
 
-
                 if(userID == URL_ID)
                 {
                     userDataObj.isOwner = true
+                }
+                else
+                {
+                    userDataObj.isOwner = false
                 }
 
                 setUserData(userDataObj)
@@ -124,15 +127,20 @@ export default function ProfilePage()
                             </div>
 
                             { userData.profilePicture == undefined
-                                ? 
-                                <div className="profilePictureWrapper">
-                                    
-                                </div>
-                                :
-                                <div className="profilePictureWrapper">
-                                
-                                </div>
-                            }
+                                    ? 
+                                    <div className="profilePictureWrapper" >
+                                        <UploadFileIcon className="uploadPfpIcon"/>
+                                    </div>
+                                    :
+                                    <div className="profilePictureWrapper" >
+                                        <img className="profilePicture" 
+                                            src={
+                                                `data: image/jpg;base64,
+                                                ${Buffer.from(userData.profilePicture.data).toString('base64')}`
+                                                }/>
+                                        </div>
+
+                                }
 
 
                             <div className="profileName">
