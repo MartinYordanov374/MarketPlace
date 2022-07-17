@@ -75,19 +75,25 @@ export default function ProfilePage()
     const openImageUploadField = () => {
         let imgInputField = document.querySelector('.imageUploadButton')
         imgInputField.click()
+    }
 
-        let newPFP = imgInputField.files[0]
-        let formData = new FormData()
-        formData.append('userID', URL_ID)
-        formData.append('pfp', newPFP)
+    const changePFP = () =>
+    {
+        let imgInputField = document.querySelector('.imageUploadButton')
 
-        Axios.post('http://localhost:3001/uploadProfilePicture', formData)
-        .then((res) => {
-            console.log(res)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            let newPFP = imgInputField.files[0]
+            let formData = new FormData()
+            formData.append('userID', URL_ID)
+            formData.append('pfp', newPFP)
+
+            Axios.post('http://localhost:3001/uploadProfilePicture', formData)
+            .then((res) => {
+                console.log(res)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        
     }
     
     const openCoverUploadField = () => {
@@ -126,7 +132,7 @@ export default function ProfilePage()
                                                 `data: image/jpg;base64,
                                                 ${Buffer.from(userData.profilePicture.data).toString('base64')}`
                                                 }/>
-                                            <input type="file" className="imageUploadButton" hidden/>
+                                            <input type="file" className="imageUploadButton" hidden onChange={() => changePFP()}/>
                                         </div>
 
                                 }
