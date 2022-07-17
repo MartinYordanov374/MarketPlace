@@ -459,6 +459,12 @@ async function startServer(){
     app.get('/getSessionData', async(req,res) => {
         res.status(200).send(req.session.user.id)
     })
+
+    app.post('/getUserById', async(req,res) => {
+        let result = await checkUserExistsById(req.body.id)
+
+        res.status(200).send(result)
+    })
     //#region endpoints
 
 

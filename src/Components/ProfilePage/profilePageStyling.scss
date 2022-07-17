@@ -1,0 +1,26 @@
+.profilePageWrapper{
+    border-style: solid;
+
+    .profileWrapper{
+        height: 400px;
+        .profilePictureWrapper{
+            position: absolute;
+            top: 15%;
+            left: 2%;
+            border-style: solid;
+            border-radius: 10%;
+            width: 240px;
+            height: 240px;
+        }
+        .coverPictureWrapper{
+            border-style: solid;
+            border-color: red;
+            height: 180px;
+        }
+        .profileName{
+            position: absolute;
+            top: 40%;
+            left: 2%;
+        }
+    }
+}

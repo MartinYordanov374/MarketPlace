@@ -1,0 +1,30 @@
+.profilePageWrapper {
+  border-style: solid;
+}
+
+.profilePageWrapper .profileWrapper {
+  height: 400px;
+}
+
+.profilePageWrapper .profileWrapper .profilePictureWrapper {
+  position: absolute;
+  top: 15%;
+  left: 2%;
+  border-style: solid;
+  border-radius: 10%;
+  width: 240px;
+  height: 240px;
+}
+
+.profilePageWrapper .profileWrapper .coverPictureWrapper {
+  border-style: solid;
+  border-color: red;
+  height: 180px;
+}
+
+.profilePageWrapper .profileWrapper .profileName {
+  position: absolute;
+  top: 40%;
+  left: 2%;
+}
+/*# sourceMappingURL=profilePageStyling.css.map */
