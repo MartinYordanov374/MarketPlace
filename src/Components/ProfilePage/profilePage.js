@@ -133,16 +133,24 @@ export default function ProfilePage()
                         userData.isOwner 
                         ?                     
                             <div className="profileWrapper">
-                                <div className="coverPictureWrapper">
-                                    <LocalSeeIcon className='coverUploadButton' onClick={() => openCoverUploadField()}/>
-                                    <img className="coverPicture" 
-                                        src={
-                                            `data: image/jpg;base64,
-                                            ${Buffer.from(userData.coverPicture.data).toString('base64')}`
-                                            }/>
+                                { userData.coverPicture != undefined ?
+                                
+                                    <div className="coverPictureWrapper">
+                                        <LocalSeeIcon className='coverUploadButton' onClick={() => openCoverUploadField()}/>
+                                        <img className="coverPicture" 
+                                            src={
+                                                `data: image/jpg;base64,
+                                                ${Buffer.from(userData.coverPicture.data).toString('base64')}`
+                                                }/>
 
-                                    <input type="file" className="coverUpload" hidden onChange={() => changeCoverPicture()}/>
+                                        <input type="file" className="coverUpload" hidden onChange={() => changeCoverPicture()}/>
+                                    </div>  
+                                    :
+                                        <div className="coverPictureWrapper">
+                                        <LocalSeeIcon className='coverUploadButton' onClick={() => openCoverUploadField()}/>
+                                        <input type="file" className="coverUpload" hidden onChange={() => changeCoverPicture()}/>
                                 </div>  
+                                }
 
                                 { userData.profilePicture == undefined
                                     ? 
@@ -171,11 +179,21 @@ export default function ProfilePage()
                         <div className="profileWrapper">
                             
                             <div className="coverPictureWrapper">
-                                {/* <img className="profilePicture" 
-                                    src={
-                                        `data: image/jpg;base64,
-                                        ${Buffer.from(userData.coverPicture.data).toString('base64')}`
-                                        }/> */}
+                                { userData.coverPicture != undefined ?
+                                    
+                                    <div className="coverPictureWrapper">
+                                        <img className="coverPicture" 
+                                            src={
+                                                `data: image/jpg;base64,
+                                                ${Buffer.from(userData.coverPicture.data).toString('base64')}`
+                                                }/>
+
+                                    </div>  
+                                    :
+                                        <div className="coverPictureWrapper">
+                                            
+                                        </div>  
+                                }
                             </div>
 
                             { userData.profilePicture == undefined
