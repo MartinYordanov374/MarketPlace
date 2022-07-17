@@ -6,6 +6,7 @@ import Axios from 'axios'
 
 import './profilePageStyling.css'
 import UploadFileIcon from '@mui/icons-material/UploadFile';
+import PersonIcon from '@mui/icons-material/Person';
 import LocalSeeIcon from '@mui/icons-material/LocalSee';
 import { Buffer } from 'buffer';
 
@@ -129,7 +130,7 @@ export default function ProfilePage()
                             { userData.profilePicture == undefined
                                     ? 
                                     <div className="profilePictureWrapper" >
-                                        <UploadFileIcon className="uploadPfpIcon"/>
+                                        <PersonIcon className="uploadPfpIcon"/>
                                     </div>
                                     :
                                     <div className="profilePictureWrapper" >
