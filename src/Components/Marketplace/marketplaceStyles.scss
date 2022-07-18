@@ -135,10 +135,17 @@
         display: flex;
         .reviewGiverUsername
         {
+            font-size: 18px;
+            margin-top: 0%;
             color: black !important;
         }
         .reviewGiverIcon{
             width: 1rem;
+            vertical-align: bottom;
+            font-size: 18px;
+        }
+        .reviewGiverPfp{
+            width: 3rem;
             vertical-align: bottom;
             font-size: 18px;
         }

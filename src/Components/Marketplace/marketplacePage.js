@@ -485,11 +485,12 @@ export default function Marketplace ()
                             
                             { marketplaceData.marketplaceReviews.length >= 1 ?
                                 marketplaceData.marketplaceReviews.map((review) => {
+                                    console.log(review)
                                     return (
                                         <Card className="marketplaceReview">
                                             {/* TODO: ADD PROFILE PICTURE TO THE REVIEW POST */}
-
                                             <span className="reviewGiver">
+                                                <img className='reviewGiverPfp' src={`data:image/jpg;base64, ${Buffer.from(review.reviewOwner.profilePicture).toString('base64')}`}></img>
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
                                             <span className="reviewRatingWrapper">

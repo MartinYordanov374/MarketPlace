@@ -162,11 +162,19 @@
 }
 
 .marketplaceReviews .reviewGiver .reviewGiverUsername {
+  font-size: 18px;
+  margin-top: 0%;
   color: black !important;
 }
 
 .marketplaceReviews .reviewGiver .reviewGiverIcon {
   width: 1rem;
+  vertical-align: bottom;
+  font-size: 18px;
+}
+
+.marketplaceReviews .reviewGiver .reviewGiverPfp {
+  width: 3rem;
   vertical-align: bottom;
   font-size: 18px;
 }
