@@ -17,6 +17,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import NotLoggedUser from "../NotLoggedUser/notLogged";
 import SettingsIcon from '@mui/icons-material/Settings';
 import { textAlign } from "@mui/system";
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
 export default function Marketplace ()
 {
@@ -488,11 +489,15 @@ export default function Marketplace ()
                                     console.log(review)
                                     return (
                                         <Card className="marketplaceReview">
-                                            {/* TODO: ADD PROFILE PICTURE TO THE REVIEW POST */}
                                             <span className="reviewGiver">
-                                                <a href={"/profile/" + review.reviewOwner._id}>
-                                                    <img className='reviewGiverPfp' src={`data:image/jpg;base64, ${Buffer.from(review.reviewOwner.profilePicture).toString('base64')}`}></img>
-                                                </a>
+                                                {review.reviewOwner.profilePicture != undefined 
+                                                    ?
+                                                    <a href={"/profile/" + review.reviewOwner._id}>
+                                                        <img className='reviewGiverPfp' src={`data:image/jpg;base64, ${Buffer.from(review.reviewOwner.profilePicture).toString('base64')}`}></img>
+                                                    </a>
+                                                    :
+                                                    <PersonOutlineIcon className="reviewGiverIcon"/>
+                                                }
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
                                             <span className="reviewRatingWrapper">
