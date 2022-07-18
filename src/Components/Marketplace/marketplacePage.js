@@ -21,7 +21,7 @@ import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
 export default function Marketplace ()
 {
-    // let targetMarketplaceData = getMarketplaceData()
+    // TODO SORT MARKERPLACE REVIEWS BY RATING
 
     let [loginStatus, setLoginStatus] = useState('')
 
@@ -411,7 +411,7 @@ export default function Marketplace ()
                                     )
                                 })
                                 :
-                                <h1>No reviews to show</h1>
+                                ""
                             }
                         </div>
                     }
