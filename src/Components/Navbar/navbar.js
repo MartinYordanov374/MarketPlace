@@ -7,6 +7,8 @@ import Box from '@mui/material/Box';
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import React, { useEffect, useState, useRef} from "react";
+import { Link, useNavigate } from "react-router-dom";
+
 import { List, ListItem, Divider, Container, TextField, InputAdornment} from '@mui/material'
 
 import SearchIcon from '@mui/icons-material/Search';
@@ -15,7 +17,6 @@ import Axios from 'axios'
 import { toast } from "react-toastify";
 
 import './navbarStyles.css'
-
 
 function handleMenuIconClick(){
     let dropdownMenu = document.querySelector('.dropdownMenu')
@@ -80,13 +81,14 @@ export default function Navbar(props) {
 
 function LoggedUserNavbar(props)
 {
+
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
     const searchRef = useRef()
     const [searchTags, setSearchTags] = useState('')
 
-    let searchMarketplaces = props.data.searchMarketplaces
+    // let searchMarketplaces = props.data.searchMarketplaces
 
     const [currUserId, setCurrUserId] = useState('')
 
@@ -99,6 +101,31 @@ function LoggedUserNavbar(props)
             console.log(err)
         })
     }, [])
+
+    const navigate = useNavigate()
+
+    const searchMarketplaces = (tags) => {
+        let searchTagsSplitted = tags.split(', ')
+
+        searchTagsSplitted = searchTagsSplitted.join(' ')
+        searchTagsSplitted = searchTagsSplitted.split(' ')
+        searchTagsSplitted = searchTagsSplitted.map((tag) => tag.toLowerCase())
+        Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
+        .then((res) => {
+            if(res.data.length >= 1)
+            {
+                navigate('/searchResults',{state: {searchResults: res.data}})
+            }
+            else
+            {
+                toast.warn('This search did not return any results. Hmm...')
+            }
+        
+        })
+        .catch((err) => {
+            console.log(err)
+        }) 
+    }
 
     return (
         <Box sx={{ flexGrow: 1 }}>

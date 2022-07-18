@@ -113,9 +113,12 @@ export default function Marketplace ()
 
     }
 
+    const openDeleteConfirmationModal = () => {
+        setDeleteMarketplaceConfirmationModalState(true)
+    }
+
     const deleteMarketplace = () => {
         setMarketplaceModalSettingsState(false)
-        setDeleteMarketplaceConfirmationModalState(true)
 
         // let userID = 
         async function getUserData(){
@@ -130,6 +133,8 @@ export default function Marketplace ()
             .catch((err) => {
                 console.log(err)
             })
+
+            console.log('deleting')
         }
         getUserData()
 
@@ -368,7 +373,7 @@ export default function Marketplace ()
                                         <Typography sx={marketplaceSettingsTitleStyle} variant="h5"> Your marketplace settings</Typography>
                                         <Divider/>
                                         <div className="marketplaceSettings">
-                                            <Button variant="outlined" color='warning' sx={deleteMarketplaceButtonStyle} onClick={() => deleteMarketplace()}>  Delete Marketplace 
+                                            <Button variant="outlined" color='warning' sx={deleteMarketplaceButtonStyle} onClick={() => openDeleteConfirmationModal()}>  Delete Marketplace 
                                                 <DeleteOutlineIcon className="marketplaceDeleteIcon"/>
                                             </Button>
 

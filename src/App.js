@@ -7,14 +7,15 @@ import  Home  from './Components/HomePage/homePage'
 import RegisterPage from './Components/RegisterPage/registerPage';
 import Marketplace from './Components/Marketplace/marketplacePage';
 import ProfilePage from './Components/ProfilePage/profilePage';
+import SearchResults from './Components/searchResultsPage/SearchResults';
 
-// import {isAuthenticated} from './Express/express'
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/home' element={<Home/>}></Route>
+        <Route path='/SearchResults' element={<SearchResults/>}></Route>
         <Route path='/marketplace/:id' element={<Marketplace/>}></Route>
         <Route path='/profile/:id' element={<ProfilePage/>}></Route>
 

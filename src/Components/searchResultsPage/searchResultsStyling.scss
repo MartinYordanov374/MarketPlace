@@ -1,0 +1,27 @@
+.marketplacesWrapper{
+    display: flex;
+    flex-wrap:wrap;
+    .marketplaceWrapper{
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 2%;
+        margin-left: 2%;
+        
+        .MarketplaceIcon{
+            font-size: 200px;
+            color: rgb(81, 255, 0);
+            transition: 0.2s linear;
+            cursor: pointer;
+            
+            &:hover{
+                color: rgb(68, 214, 0);
+                transition: 0.2s linear;
+            }
+        }
+        .MarketplaceCallToAction{
+            text-align: center;
+            margin-right: 10%;
+        }
+    }
+}

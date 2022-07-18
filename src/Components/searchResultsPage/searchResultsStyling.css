@@ -1,0 +1,38 @@
+.marketplacesWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.marketplacesWrapper .marketplaceWrapper {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 2%;
+  margin-left: 2%;
+}
+
+.marketplacesWrapper .marketplaceWrapper .MarketplaceIcon {
+  font-size: 200px;
+  color: #51ff00;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+  cursor: pointer;
+}
+
+.marketplacesWrapper .marketplaceWrapper .MarketplaceIcon:hover {
+  color: #44d600;
+  -webkit-transition: 0.2s linear;
+  transition: 0.2s linear;
+}
+
+.marketplacesWrapper .marketplaceWrapper .MarketplaceCallToAction {
+  text-align: center;
+  margin-right: 10%;
+}
+/*# sourceMappingURL=searchResultsStyling.css.map */

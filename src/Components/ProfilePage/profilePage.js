@@ -94,6 +94,7 @@ export default function ProfilePage()
             .catch((err) => {
                 console.log(err)
             })
+
         
     }
     

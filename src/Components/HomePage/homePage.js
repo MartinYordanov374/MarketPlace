@@ -138,28 +138,6 @@ function LoggedUser()
         })
     }
 
-    const searchMarketplaces = (tags) => {
-        let searchTagsSplitted = tags.split(', ')
-
-        searchTagsSplitted = searchTagsSplitted.join(' ')
-        searchTagsSplitted = searchTagsSplitted.split(' ')
-        searchTagsSplitted = searchTagsSplitted.map((tag) => tag.toLowerCase())
-        Axios.post('http://localhost:3001/searchMarketplacesByTags', ({tags: searchTagsSplitted}), {withCredentials: true})
-        .then((res) => {
-            if(res.data.length >= 1)
-            {
-                setMarketplaces(res.data)
-            }
-            else
-            {
-                toast.warn('This search did not return any results. Hmm...')
-            }
-        
-        })
-        .catch((err) => {
-            console.log(err)
-        }) 
-    }
 
 
     const ModalStyle = {
@@ -198,7 +176,7 @@ function LoggedUser()
     
     return (
         <div className='wrapper'>
-            <Navbar searchMarketplaces = {searchMarketplaces}/>
+            <Navbar />
                 
                 <ToastContainer/>
                 <Button color="warning" sx={{ width: "94%", marginTop: 2, marginLeft: "3%" }} onClick={() => openCreateMarketplaceModal()}>
