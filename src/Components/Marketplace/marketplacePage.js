@@ -1,7 +1,7 @@
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer"
 import Axios from 'axios'
-import {useState, useEffect, useMemo} from 'react'
+import {useState, useEffect, useMemo, useRef} from 'react'
 import './marketplaceStyles.css'
 import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField, TextareaAutosize} from '@mui/material'
 import StorefrontIcon from '@mui/icons-material/Storefront';
@@ -34,6 +34,10 @@ export default function Marketplace ()
     const [isUserOwner, setIsUserOwner] = useState(false)
 
     const [userData, setUserData] = useState('')
+
+    const [reviewModalState, setReviewModalState] = useState(false)
+
+    const [userReview, setUserReview] = useState('')
 
     let [marketplaceModalSettingsState, setMarketplaceModalSettingsState] = useState(false)
 
@@ -150,6 +154,33 @@ export default function Marketplace ()
         getUserData()
 
     }
+
+    const openReviewModal = () => {
+        setReviewModalState(true)
+    }
+
+    const closeReviewModal = () => {
+        setReviewModalState(false)
+    }
+
+    const addReview = () => {
+        let userID = userData.id
+        let marketplaceID = marketplaceData._id
+        let reviewContent = userReview
+
+        Axios.post('http://localhost:3001/addMarketplaceReview', {reviewerUserId: userID, reviewedMarketplaceId: marketplaceID, reviewContent: reviewContent})
+        .then((res) => {
+            console.log(res)
+            toast.success(res.data)
+            setTimeout(() => {
+                window.location.reload()
+            }, 6000)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+
     const ModalStyle = {
         position: 'absolute',
         top: '35%',
@@ -501,24 +532,27 @@ export default function Marketplace ()
                         </div>
                         :
                         <div className="marketplaceReviews">
-                            {/* TODO : SHOW ADD REVIEW ONLY IF YOU HAVEN'T ADDED ONE BEFORE ! */}
-                            {/* {console.log(marketplaceData.marketplaceReviews.some((reviewGiver) => reviewGiver._id == userData.id))}  */}
                             {marketplaceData.marketplaceReviews.some((review) => review.reviewOwner._id == userData.id) == false ?
                             <div>
                                 <div className='addReviewWrapper'>
                                     <Card className='addReviewCard'>
-                                        <Typography className='addReviewTitle' variant="h4">Add review</Typography>
-                                        <Divider/>
-                                        <TextareaAutosize className="addReviewInput"   
-                                            aria-label="minimum height"
-                                            minRows={3}
-                                            placeholder="Write your review here"
-                                            >
-
-                                        </TextareaAutosize>
-                                        <br></br>
-                                        <Button color='warning' className="addReviewButton"> Post Review </Button>
+                                        <Button color='warning' sx={{fontSize:30}} className="addReviewButton" onClick={() => openReviewModal()}> Add Review </Button>
                                     </Card>
+
+                                    <Modal open={reviewModalState} onClose={closeReviewModal} >
+                                        <Fade in={reviewModalState}>
+                                            <Box sx={ModalStyle}>
+                                                <Typography className='addReviewTitle' variant="h5">Share your thoughts:</Typography>
+                                                <TextareaAutosize 
+                                                    className="addReviewInput" 
+                                                    maxLength={120} 
+                                                    value = {userReview}
+                                                    onChange={(e) => setUserReview(e.target.value)}
+                                                />
+                                                <Button color='warning' className='addReviewButton' onClick={() => addReview()}>Submit</Button>
+                                            </Box>
+                                        </Fade>
+                                    </Modal>
                                 </div>
                                 <Divider/>    
                             </div>                        
