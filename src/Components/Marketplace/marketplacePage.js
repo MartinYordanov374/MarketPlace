@@ -564,7 +564,7 @@ export default function Marketplace ()
                                     )
                                 })
                                 :
-                                <h1>No reviews to show</h1>
+                                ""
                             }
                         </div>
                     }
