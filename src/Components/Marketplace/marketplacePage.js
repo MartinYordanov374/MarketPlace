@@ -314,6 +314,14 @@ export default function Marketplace ()
                                             {/* TODO: ADD PROFILE PICTURE TO THE REVIEW POST */}
 
                                             <span className="reviewGiver">
+                                                {review.reviewOwner.profilePicture != undefined 
+                                                    ?
+                                                    <a href={"/profile/" + review.reviewOwner._id}>
+                                                        <img className='reviewGiverPfp' src={`data:image/jpg;base64, ${Buffer.from(review.reviewOwner.profilePicture).toString('base64')}`}></img>
+                                                    </a>
+                                                    :
+                                                    <PersonOutlineIcon className="reviewGiverIcon"/>
+                                                }
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
                                             <span className="reviewRatingWrapper">
