@@ -490,7 +490,9 @@ export default function Marketplace ()
                                         <Card className="marketplaceReview">
                                             {/* TODO: ADD PROFILE PICTURE TO THE REVIEW POST */}
                                             <span className="reviewGiver">
-                                                <img className='reviewGiverPfp' src={`data:image/jpg;base64, ${Buffer.from(review.reviewOwner.profilePicture).toString('base64')}`}></img>
+                                                <a href={"/profile/" + review.reviewOwner._id}>
+                                                    <img className='reviewGiverPfp' src={`data:image/jpg;base64, ${Buffer.from(review.reviewOwner.profilePicture).toString('base64')}`}></img>
+                                                </a>
                                                 <a href={"/profile/" + review.reviewOwner._id} class="reviewGiverUsername">{review.reviewOwner.username}</a>
                                             </span>
                                             <span className="reviewRatingWrapper">
