@@ -206,7 +206,7 @@ export default function Marketplace ()
                 <div className="nonOwnerMarketplaceView">
                     <div className="marketplaceWrapper">
                         <div className="marketplaceBannerWrapper">
-                        <img className="marketplaceBanner" src={`data:${marketplaceData.marketplaceImage.contentType};base64, ${Buffer.from(marketplaceData.marketplaceImage.data.data).toString('base64')}`}/>
+                            <img className="marketplaceBanner" src={`data:${marketplaceData.marketplaceImage.contentType};base64, ${Buffer.from(marketplaceData.marketplaceImage.data.data).toString('base64')}`}/>
                         </div>
 
                         <div className="marketplaceDetailsWrapper">
@@ -486,7 +486,6 @@ export default function Marketplace ()
                             
                             { marketplaceData.marketplaceReviews.length >= 1 ?
                                 marketplaceData.marketplaceReviews.map((review) => {
-                                    console.log(review)
                                     return (
                                         <Card className="marketplaceReview">
                                             <span className="reviewGiver">
@@ -509,12 +508,15 @@ export default function Marketplace ()
                                             </span>
 
                                             <Divider/>
-                                            <span className="reviewQuestionnaire">
-                                                <p>Was this review helpful?</p>
-                                                <ThumbUpIcon className="reviewHelpfulIcon" onClick={() => reviewHelpfulHandler(review._id)}/>
-                                                <ThumbDownAltIcon className="reviewNotHelpfulIcon" onClick={() => reviewNotHelpfulHandler(review._id)}/>
-
-                                            </span>
+                                            {review.reviewOwner._id == marketplaceData.marketplaceOwner._id ? 
+                                                ""
+                                                :
+                                                <span className="reviewQuestionnaire">
+                                                    <p>Was this review helpful?</p>
+                                                    <ThumbUpIcon className="reviewHelpfulIcon" onClick={() => reviewHelpfulHandler(review._id)}/>
+                                                    <ThumbDownAltIcon className="reviewNotHelpfulIcon" onClick={() => reviewNotHelpfulHandler(review._id)}/>
+                                                </span>
+                                            }
                                         </Card>
                                         
                                     )
