@@ -347,7 +347,33 @@ export default function Marketplace ()
                         </div>
                         :
                         <div className="marketplaceReviews">
+                            {marketplaceData.marketplaceReviews.some((review) => review.reviewOwner._id == userData.id) == false ?
+                            <div>
+                                <div className='addReviewWrapper'>
+                                    <Card className='addReviewCard'>
+                                        <Button color='warning' sx={{fontSize:30}} className="addReviewButton" onClick={() => openReviewModal()}> Add Review </Button>
+                                    </Card>
 
+                                    <Modal open={reviewModalState} onClose={closeReviewModal} >
+                                        <Fade in={reviewModalState}>
+                                            <Box sx={ModalStyle}>
+                                                <Typography className='addReviewTitle' variant="h5">Share your thoughts:</Typography>
+                                                <TextareaAutosize 
+                                                    className="addReviewInput" 
+                                                    maxLength={120} 
+                                                    value = {userReview}
+                                                    onChange={(e) => setUserReview(e.target.value)}
+                                                />
+                                                <Button color='warning' className='addReviewButton' onClick={() => addReview()}>Submit</Button>
+                                            </Box>
+                                        </Fade>
+                                    </Modal>
+                                </div>
+                                <Divider/>    
+                            </div>                        
+                            :
+                            ""
+                            }
                             { marketplaceData.marketplaceReviews.length >= 1 ?
                                 marketplaceData.marketplaceReviews.map((review) => {
                                     return (
