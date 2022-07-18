@@ -350,7 +350,13 @@ export default function Marketplace ()
                         <div className="marketplaceDetailsWrapper">
                             <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
                             
-                            <div className="marketplaceOwner"> By: {marketplaceData.marketplaceOwner.username} </div>
+                            <div className="marketplaceOwner">                                
+                                <span>
+                                    By: &nbsp; <a className="marketplaceOwnerProfileLink" href={'/profile/' + marketplaceData.marketplaceOwner._id}> 
+                                        {marketplaceData.marketplaceOwner.username} 
+                                    </a>
+                                </span>  
+                            </div>
 
                             <div className="marketplaceDescription"> 
                                 <span className="marketplaceDescriptionSpan">
