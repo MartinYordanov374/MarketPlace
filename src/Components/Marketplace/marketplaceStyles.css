@@ -34,6 +34,18 @@
 
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceOwner {
   margin-bottom: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceOwner .marketplaceOwnerProfileLink {
+  color: black;
+  float: right;
+}
+
+.marketplaceWrapper .marketplaceDetailsWrapper .marketplaceOwner .marketplaceOwnerProfileLink:hover {
+  color: #be7c00;
 }
 
 .marketplaceWrapper .marketplaceDetailsWrapper .marketplaceTagsWrapper {

@@ -32,6 +32,14 @@
         }
         .marketplaceOwner{
             margin-bottom: 1%;
+            display: flex;
+            .marketplaceOwnerProfileLink{
+                color: black;
+                float: right;
+                &:hover{
+                    color: rgb(190, 124, 0);
+                }
+            }
         }
         .marketplaceTagsWrapper{
             margin-top: 1.7%;
