@@ -3,7 +3,7 @@ import Footer from "../Footer/footer"
 import Axios from 'axios'
 import {useState, useEffect, useMemo} from 'react'
 import './marketplaceStyles.css'
-import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
+import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField, TextareaAutosize} from '@mui/material'
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import SellIcon from '@mui/icons-material/Sell';
@@ -32,6 +32,8 @@ export default function Marketplace ()
     const [isUserOnProducts, setIsUserOnProducts] = useState(true)
 
     const [isUserOwner, setIsUserOwner] = useState(false)
+
+    const [userData, setUserData] = useState('')
 
     let [marketplaceModalSettingsState, setMarketplaceModalSettingsState] = useState(false)
 
@@ -62,6 +64,14 @@ export default function Marketplace ()
         })
         .catch((error)=>{
             // console.log(error)
+        })
+
+        Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
+        .then((res) => {
+            setUserData(res.data.user)
+        })
+        .catch((err) => {
+            console.log(err)
         })
 
         getMarketplaceData()
@@ -306,7 +316,7 @@ export default function Marketplace ()
                         </div>
                         :
                         <div className="marketplaceReviews">
-                            
+
                             { marketplaceData.marketplaceReviews.length >= 1 ?
                                 marketplaceData.marketplaceReviews.map((review) => {
                                     return (
@@ -491,7 +501,31 @@ export default function Marketplace ()
                         </div>
                         :
                         <div className="marketplaceReviews">
-                            
+                            {/* TODO : SHOW ADD REVIEW ONLY IF YOU HAVEN'T ADDED ONE BEFORE ! */}
+                            {/* {console.log(marketplaceData.marketplaceReviews.some((reviewGiver) => reviewGiver._id == userData.id))}  */}
+                            {marketplaceData.marketplaceReviews.some((review) => review.reviewOwner._id == userData.id) == false ?
+                            <div>
+                                <div className='addReviewWrapper'>
+                                    <Card className='addReviewCard'>
+                                        <Typography className='addReviewTitle' variant="h4">Add review</Typography>
+                                        <Divider/>
+                                        <TextareaAutosize className="addReviewInput"   
+                                            aria-label="minimum height"
+                                            minRows={3}
+                                            placeholder="Write your review here"
+                                            >
+
+                                        </TextareaAutosize>
+                                        <br></br>
+                                        <Button color='warning' className="addReviewButton"> Post Review </Button>
+                                    </Card>
+                                </div>
+                                <Divider/>    
+                            </div>                        
+                            :
+                            ""
+                            }
+
                             { marketplaceData.marketplaceReviews.length >= 1 ?
                                 marketplaceData.marketplaceReviews.map((review) => {
                                     return (
