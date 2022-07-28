@@ -222,15 +222,16 @@ async function startServer(){
         }
     })
 
-    app.post('/createProduct', async(req,res) => {
+    app.post('/createProductAbsolutely', async(req,res) => {
         let incomingData = req.body
         let creatorID = incomingData.creatorID
         let productName = incomingData.productName  
         let productDescription = incomingData.productDescription
         let productPrice = incomingData.productPrice
-        let productMarketplaceID = incomingData.productMarketplaceID
-
-        let result = await createProduct(creatorID,productName,productDescription,productPrice,productMarketplaceID)
+        let productImage = incomingData.productImage
+        
+        let result = await createProductAbsolutely(creatorID,productName,productDescription,productPrice)
+        console.log(result)
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
