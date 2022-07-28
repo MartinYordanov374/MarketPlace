@@ -6,6 +6,14 @@ import { toast, ToastContainer } from "react-toastify";
 
 export default function ReviewModal (props)
 {
+    const [reviewModalState, setReviewModalState] = useState(false)
+
+    const [userReview, setUserReview] = useState('')
+
+    const [marketplaceData, setMarketplaceData] = useState([])
+
+    const [userData, setUserData] = useState('')
+
     const closeReviewModal = () => {
         setReviewModalState(false)
     }
@@ -33,7 +41,6 @@ export default function ReviewModal (props)
     
         Axios.post('http://localhost:3001/addMarketplaceReview', {reviewerUserId: userID, reviewedMarketplaceId: marketplaceID, reviewContent: reviewContent})
         .then((res) => {
-            console.log(res)
             toast.success(res.data)
             setTimeout(() => {
                 window.location.reload()
@@ -43,14 +50,6 @@ export default function ReviewModal (props)
             console.log(err)
         })
     }
-
-    const [reviewModalState, setReviewModalState] = useState(false)
-
-    const [userReview, setUserReview] = useState('')
-
-    const [marketplaceData, setMarketplaceData] = useState([])
-
-    const [userData, setUserData] = useState('')
 
     useEffect(() => {
         setMarketplaceData(props.marketplaceData)
