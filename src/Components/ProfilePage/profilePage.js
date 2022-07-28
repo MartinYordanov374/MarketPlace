@@ -314,10 +314,17 @@ export default function ProfilePage()
                     </div>
 
                     <div>
+                        {userData.isOwner ?
+                        <Box textAlign="center">
+                            <CreateProductModal/>
+                        </Box>
+                        :
+                        ""}
                     {
                         
                             isUserOnProducts == true ?
                                 <div className="ProductsView view" onClick={ () => handleProductsView() }>
+
                                     {
                                         userData.products && 
                                         userData.products.length >= 1 ?
