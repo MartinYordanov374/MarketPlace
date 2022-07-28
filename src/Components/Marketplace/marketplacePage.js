@@ -18,6 +18,7 @@ import NotLoggedUser from "../NotLoggedUser/notLogged";
 import SettingsIcon from '@mui/icons-material/Settings';
 import ReviewModal from '../ReviewModal/reviewModal'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import MarketplaceProduct from "../MarketplaceProduct/MarketplaceProduct";
 
 export default function Marketplace ()
 {
@@ -34,10 +35,6 @@ export default function Marketplace ()
     const [isUserOwner, setIsUserOwner] = useState(false)
 
     const [userData, setUserData] = useState('')
-
-    const [reviewModalState, setReviewModalState] = useState(false)
-
-    const [userReview, setUserReview] = useState('')
 
     let [marketplaceModalSettingsState, setMarketplaceModalSettingsState] = useState(false)
 
@@ -154,7 +151,7 @@ export default function Marketplace ()
         getUserData()
 
     }
-    
+
     const ModalStyle = {
         position: 'absolute',
         top: '35%',
@@ -257,67 +254,48 @@ export default function Marketplace ()
                     <div>
                         {
                             isUserOnProducts == true ?
-                            <div className="marketplaceViewOptions">
-                                <Card className="ProductsOption">
-                                    <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
-                                        <h1>Products</h1>
-                                    </CardActionArea>
-                                </Card>
-                                <Card className="ReviewsOption">
-                                    <CardActionArea onClick={() => handleMarketplaceView()}>
-                                        <h1>Reviews</h1>
-                                    </CardActionArea>
-                                </Card>
-                            </div>
+                                <div className="marketplaceViewOptions">
+                                    <Card className="ProductsOption">
+                                        <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
+                                            <h1>Products</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                    
+                                    <Card className="ReviewsOption">
+                                        <CardActionArea onClick={() => handleMarketplaceView()}>
+                                            <h1>Reviews</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                </div>
                             :
-                            <div className="marketplaceViewOptions">
-                                <Card className="ProductsOption">
-                                    <CardActionArea onClick={() => handleMarketplaceView()}>
-                                        <h1>Products</h1>
-                                    </CardActionArea>
-                                </Card>
-                                <Card className="ReviewsOption">
-                                    <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
-                                        <h1>Reviews</h1>
-                                    </CardActionArea>
-                                </Card>
-                            </div>
+                                <div className="marketplaceViewOptions">
+                                    <Card className="ProductsOption">
+                                        <CardActionArea onClick={() => handleMarketplaceView()}>
+                                            <h1>Products</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                    <Card className="ReviewsOption">
+                                        <CardActionArea sx={{color: "orange"}} onClick={() => handleMarketplaceView()}>
+                                            <h1>Reviews</h1>
+                                        </CardActionArea>
+                                    </Card>
+                                </div>
                         }
                     </div>
+                    
                     {
                         isUserOnProducts ? 
                         <div className="marketplaceProducts">
-                        {
-                            marketplaceData.marketplaceProducts.length >= 1 ?
-                            marketplaceData.marketplaceProducts.map( (prod) => {
-                                return(
-                                <div class='marketplaceProduct'>
-                                    <Card className='productCard'>
-                                        <CardActionArea>
-                                            <CardContent>
-                                                
-                                                <StorefrontIcon className="productImage"/>
-                                                <Divider/>
-
-                                                <h2 className="productName">{prod.productName}</h2>
-                                                <Divider/>
-
-                                                <h3 className="productDescription">{prod.productDescription}</h3>
-
-                                            </CardContent>
-                                            
-                                        </CardActionArea>
-                                        <Divider/>
-                                        <p className="productPrice"><strong>$ {prod.productPrice}</strong></p>
-                                        <Divider/>
-                                        <Button className="buyProductButton" sx={{fontSize: 15}} color='warning'> <strong> Add to cart </strong> <AddShoppingCartIcon/>  </Button>
-                                    </Card>
-                                </div>
-                                )
-                            })
-                            :
-                            <h1>No products here</h1>
-                        }
+                            {
+                                marketplaceData.marketplaceProducts.length >= 1 ?
+                                marketplaceData.marketplaceProducts.map( (prod) => {
+                                    return(
+                                        <MarketplaceProduct prod={prod}/>
+                                    )
+                                })
+                                :
+                                <h1>No products here</h1>
+                            }
                         </div>
                         :
                         <div className="marketplaceReviews">
