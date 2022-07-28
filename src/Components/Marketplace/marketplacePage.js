@@ -154,33 +154,7 @@ export default function Marketplace ()
         getUserData()
 
     }
-
-    const openReviewModal = () => {
-        setReviewModalState(true)
-    }
-
-    const closeReviewModal = () => {
-        setReviewModalState(false)
-    }
-
-    const addReview = () => {
-        let userID = userData.id
-        let marketplaceID = marketplaceData._id
-        let reviewContent = userReview
-
-        Axios.post('http://localhost:3001/addMarketplaceReview', {reviewerUserId: userID, reviewedMarketplaceId: marketplaceID, reviewContent: reviewContent})
-        .then((res) => {
-            console.log(res)
-            toast.success(res.data)
-            setTimeout(() => {
-                window.location.reload()
-            }, 6000)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
+    
     const ModalStyle = {
         position: 'absolute',
         top: '35%',
