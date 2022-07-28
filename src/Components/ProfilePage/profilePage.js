@@ -14,7 +14,7 @@ import MarketplaceCard from "../marketplaceCard/marketplaceCard";
 import {Modal, Fade, Box, Button, Card, CardActionArea} from '@mui/material'
 import ViewOption from '../ViewOption/ViewOption'
 import CreateMarketplaceModal from "../createMarketplaceModal/CreateMarketplaceModal";
-import CreateProductModal from "../CreateProduct/CreateProduct";
+import CreateProductModal from "../CreateProductAbsolutely/CreateProductAbsolutely";
 export default function ProfilePage()
 {
 

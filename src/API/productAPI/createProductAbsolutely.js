@@ -33,4 +33,4 @@ async function createProductAbsolutely(creatorID, productName, productDescriptio
 
 }
 
-module.exports = {createProduct}
+module.exports = {createProductAbsolutely}

@@ -76,6 +76,7 @@ export default function CreateProductModal() {
             formData.append("productDescription", productDescription)
             formData.append("productPrice", productTags)
             formData.append("productImage", productFormInput.files[0])
+
     
             Axios.post('http://localhost:3001/createProductAbsolutely', formData)
             .then((res) => {

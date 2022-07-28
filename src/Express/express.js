@@ -11,7 +11,7 @@ const {loginUser} = require('../API/userAPI/login')
 
 const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
 const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
-const {createProduct} = require('../API/productAPI/createProduct')
+const {createProductAbsolutely} = require('../API/productAPI/createProductAbsolutely')
 const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace')
 const { deleteProductAbsolutely } = require('../API/productAPI/deleteProductAbsolutely')
 const { addUserReview } = require('../API/userAPI/addUserReview')
@@ -140,8 +140,6 @@ async function startServer(){
     
     app.post('/createMarketplace', upload.single('marketplaceImage'), async(req,res) => {
 
-        console.log('creating')
-
         let incomingData = req.body
         let userID = incomingData.userID
         let description = incomingData.marketplaceDescription
@@ -222,13 +220,16 @@ async function startServer(){
         }
     })
 
-    app.post('/createProductAbsolutely', async(req,res) => {
+    app.post('/createProductAbsolutely', upload.single('productImage'), async(req,res) => {
         let incomingData = req.body
         let creatorID = incomingData.creatorID
         let productName = incomingData.productName  
         let productDescription = incomingData.productDescription
         let productPrice = incomingData.productPrice
-        let productImage = incomingData.productImage
+        let productImage = {
+            data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+            contentType: 'image/jpg'
+        }
         
         let result = await createProductAbsolutely(creatorID,productName,productDescription,productPrice, productImage)
         console.log(result)

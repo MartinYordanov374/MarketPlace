@@ -13,7 +13,7 @@ let productSchema = new Schema({
     productMarketplaceID:{
         type: ObjectId,
         ref: 'marketplace',
-        required: true
+        required: false
     },
     productReviews:{
         type: [ObjectId],
