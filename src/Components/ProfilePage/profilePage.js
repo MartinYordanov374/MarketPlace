@@ -30,13 +30,6 @@ export default function ProfilePage()
 
     let URL_ID = window.location.href.split('/')[4]
 
-    const handleRating = (rate) => {
-        if(rate > 5)
-        {
-            rate = 5
-        }
-        setRating(rate)
-      }
     const openPFPModal = () => {
         setPfpModalState(true)
     }
@@ -70,6 +63,7 @@ export default function ProfilePage()
                 userDataObj.username = username
                 userDataObj.products = userProducts
                 userDataObj.coverPicture = res.data.covertPicture
+                userDataObj.id = userID
 
                 if(userID == URL_ID)
                 {
@@ -168,6 +162,40 @@ export default function ProfilePage()
         console.log(isUserOnMarketplaces)
     }
 
+    const handleRating = (rate) => {
+
+        switch(rate){
+            case 20:
+                rate = 1
+                break;
+            case 40:
+                rate = 2
+                break;
+            case 60:
+                rate = 3
+                break;
+            case 80:
+                rate = 4
+                break;
+            case 100:
+                rate = 5
+                break;
+        }
+        setRating(rate)
+
+        let ratingReceiverId = URL_ID
+        let ratingAdderId = userData.id
+        let ratingAmount =  rating
+        Axios.post('http://localhost:3001/addUserRating', {ratingReceiverId: ratingReceiverId, ratingAdderId: ratingAdderId, ratingAmount: ratingAmount})
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+        console.log(userData)
+      }
+
     return (
         <div>
             <Navbar/>
@@ -219,17 +247,14 @@ export default function ProfilePage()
                                 </div>
 
                                 <div className="userRating">
-                                    <h3>Rating: {userData.rating} / 5.00</h3>
+                                    <h3>Rating: {userData.rating.reduce((i,j) => {return i + j}) / userData.rating.length } / 5.00</h3>
                                     <Rating
-                                        onClick={()  => handleRating()}
+                                        initialValue={0}
+                                        transition
+                                        onClick={handleRating}
                                         ratingValue={rating}
                                         size={25}
-                                        label
-                                        transition
-                                        fillColor='orange'
-                                        emptyColor='gray'
-                                        className='foo' 
-                                    />
+    />
                                 </div>
                                 <div className="starRating">
                                 </div>
