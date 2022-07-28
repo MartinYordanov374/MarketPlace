@@ -70,4 +70,29 @@
   top: 40%;
   left: 2%;
 }
+
+.profilePageViewOptions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.profilePageViewOptions .ProductsOption {
+  width: 33.3%;
+}
+
+.marketplaceOptionsWrapper .marketplaceViews {
+  display: block;
+}
+
+.marketplaceOptionsWrapper .ProductsView {
+  display: none;
+}
+
+.marketplaceOptionsWrapper .ReviewsView {
+  display: none;
+}
 /*# sourceMappingURL=profilePageStyling.css.map */

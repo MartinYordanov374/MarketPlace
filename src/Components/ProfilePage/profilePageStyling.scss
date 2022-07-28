@@ -57,3 +57,24 @@
         }
     }
 }
+.profilePageViewOptions{
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    .ProductsOption{
+        width: 33.3%
+    }
+}
+.marketplaceOptionsWrapper{
+    .marketplaceViews{
+        display: block;
+    }
+    .ProductsView
+    {
+        display: none;
+    }
+    .ReviewsView{
+        display: none;
+    }
+    
+}

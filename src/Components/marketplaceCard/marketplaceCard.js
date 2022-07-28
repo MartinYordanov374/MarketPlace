@@ -3,10 +3,9 @@ import { Buffer } from 'buffer';
 
 export default function MarketplaceCard(marketplaceData)
 {
-    console.log(marketplaceData.TargetMarketplace)
     return(
         <div class='marketplaceWrapper'>
-            <Link href={`marketplace/${marketplaceData.TargetMarketplace._id}`} underline='none'>
+            <Link href={`/marketplace/${marketplaceData.TargetMarketplace._id}`} underline='none'>
                 <Card sx={{height: "260px", width: "240px"}}>
                     <CardActionArea>
                         <CardMedia>

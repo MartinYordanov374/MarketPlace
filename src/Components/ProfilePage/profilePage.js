@@ -9,11 +9,17 @@ import UploadFileIcon from '@mui/icons-material/UploadFile';
 import PersonIcon from '@mui/icons-material/Person';
 import LocalSeeIcon from '@mui/icons-material/LocalSee';
 import { Buffer } from 'buffer';
+import MarketplaceCard from "../marketplaceCard/marketplaceCard";
 
-import {Modal, Fade, Box} from '@mui/material'
+import {Modal, Fade, Box, Button, Card, CardActionArea} from '@mui/material'
+import ViewOption from '../ViewOption/ViewOption'
 
 export default function ProfilePage()
 {
+
+    const [isUserOnMarketplaces, setIsUserOnMarketplaces] = useState(true)
+    const [isUserOnProducts, setIsUserOnProducts] = useState(false)
+    const [isUserOnReviews, setIsUserOnReviews] = useState(false)
 
     const [userData, setUserData] = useState('')
 
@@ -29,7 +35,7 @@ export default function ProfilePage()
     const closePFPModal = () => {
         setPfpModalState(false)
     }
-
+    
     useEffect(() => {
         Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
         .then((res) => {
@@ -126,6 +132,34 @@ export default function ProfilePage()
         top: "18%"
     }
 
+    const handleMarketplacesView = () => {
+        if(isUserOnProducts == true && isUserOnMarketplaces == false && isUserOnReviews == false)
+        {
+            setIsUserOnProducts(true)
+            setIsUserOnMarketplaces(false)
+            setIsUserOnReviews(false)
+        }
+    }
+
+    const handleProductsView = () => {
+        if(isUserOnProducts == false && isUserOnMarketplaces == true && isUserOnReviews == false)
+        {
+            setIsUserOnProducts(false)
+            setIsUserOnMarketplaces(true)
+            setIsUserOnReviews(false)
+        }
+
+    }
+
+    const handleReviewsView = () => {
+        if(isUserOnProducts == false && isUserOnMarketplaces == false && isUserOnReviews == true)
+        {
+            setIsUserOnProducts(false)
+            setIsUserOnMarketplaces(false)
+            setIsUserOnReviews(true)
+        }
+
+    }
     return (
         <div>
             <Navbar/>
@@ -236,19 +270,64 @@ export default function ProfilePage()
                         </div>
                     }
                 </div>
+                
                 <div className="profilePageViewOptions">
-                    <div className="MarketplacesView">
-                        {userData.marketplaces.map((marketplace) => {
-                            <div className="marketplaceCardWrapper">
+                    <ViewOption optionName = "Marketplaces" clickAction = { handleMarketplacesView }/>
+
+                    <ViewOption optionName = "Products"  clickAction = { handleProductsView }/>
+
+                    <ViewOption optionName = "Reviews"  clickAction = { handleReviewsView }/>
+                </div>
+
+                <div className="marketplaceOptionsWrapper">
+
+                    <div className="marketplaceViews">
+                        <div className="marketplacesWrapper">
+                            {
+                                    userData.marketplaces && 
+                                    userData.marketplaces.length >= 1 ?
+                                    userData.marketplaces.map(( marketplace ) => {
+                                        return (
+                                            <MarketplaceCard TargetMarketplace = {marketplace} />
+                                        )
+                                    })
+                                    : 
+                                    <p>This user does not have any marketplaces yet</p>
+
+                            }
+                        </div>
+                    </div>
+
+                    <div className="ProductsView view" onClick={ () => handleProductsView() }>
+                        {
+                            userData.products && 
+                            userData.products.length >= 1 ?
+                             userData.products.map(( product ) => {
+                                //  return (
+                                //      <ProductCard TargetProduct = {product} />
+                                //  )
+                             })
+                             :
+                             <p>"This user does not have any products yet</p>
+                        }
+                    </div>
+                    <div className="ReviewsView view" onClick={ () => handleReviewsView() }>
+                        {
                                 
-                            </div>
-                        })}
-                    </div>
-                    <div className="ProductsView">
-                    </div>
-                    <div className="ReviewsView">
+                                userData.reviews &&
+                                userData.reviews.length >= 1 ?
+                                userData.reviews.map(( review ) => {
+                                    
+                                    // return (
+                                    //     <ReviewCard TargetReview = { review } />
+                                    // )
+                                })
+                                :
+                                <p> No reviews left yet</p>
+                        }
                     </div>
                 </div>
+
             <Footer/>
         </div>
     )
