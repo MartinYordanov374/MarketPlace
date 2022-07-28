@@ -6,6 +6,7 @@ async function createProductAbsolutely(creatorID, productName, productDescriptio
     try{
         let CurrentUser = await checkUserExistsById(creatorID)
         
+        console.log(CurrentUser)
 
         if(CurrentUser != null)
         {
@@ -19,7 +20,7 @@ async function createProductAbsolutely(creatorID, productName, productDescriptio
         
              await newProduct.save()
         
-             CurrentUser.marketplaceProducts.push(newProduct)
+             CurrentUser.products.push(newProduct)
              await CurrentUser.save()
     
              return {status: 200, msg: 'Product added successfully!'}
