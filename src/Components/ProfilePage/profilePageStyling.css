@@ -83,4 +83,8 @@
 .profilePageViewOptions .ProductsOption {
   width: 33.3%;
 }
+
+.marketplaceOptionsWrapper .notAvailableMessage {
+  text-align: center;
+}
 /*# sourceMappingURL=profilePageStyling.css.map */

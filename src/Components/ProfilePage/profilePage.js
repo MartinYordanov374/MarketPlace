@@ -293,7 +293,15 @@ export default function ProfilePage()
                                             )
                                         })
                                         : 
-                                        <p>This user does not have any marketplaces yet</p>
+                                        userData.isOwner ?
+                                        <div>
+                                            <h1 className="notAvailableMessage">You do not have any marketplaces yet.</h1>
+                                            <Box textAlign="center">
+                                                <Button color='warning' style={{fontSize: 40}}> Add marketplace. </Button>
+                                            </Box>
+                                        </div>
+                                        :
+                                        <h1 className="notAvailableMessage">This user does not have any marketplaces yet.</h1>
 
                                 }
                             </div>
@@ -315,7 +323,15 @@ export default function ProfilePage()
                                             //  )
                                         })
                                         :
-                                        <p>"This user does not have any products yet</p>
+                                        userData.isOwner ?
+                                        <div>
+                                            <h1 className="notAvailableMessage">You do not have any products yet.</h1>
+                                            <Box textAlign="center">
+                                                <Button color='warning' style={{fontSize: 40}}> Add Product </Button>
+                                            </Box>
+                                        </div>
+                                        :
+                                        <h1 className="notAvailableMessage">This user does not have any products yet.</h1>
                                     }
                                 </div>
                             : ""
@@ -336,7 +352,15 @@ export default function ProfilePage()
                                             // )
                                         })
                                         :
-                                        <p> No reviews left yet</p>
+                                        userData.isOwner ?
+                                        <h1 className="notAvailableMessage">You do not have any reviews yet.</h1>
+                                        :
+                                        <div>
+                                            <h1 className="notAvailableMessage">This user does not have any reviews yet.</h1>
+                                            <Box textAlign="center">
+                                                <Button color='warning' style={{fontSize: 40}}> Add your review? </Button>
+                                            </Box>
+                                        </div>
                                 }
                             </div>
                         : ""}
