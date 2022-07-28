@@ -14,7 +14,7 @@ import MarketplaceCard from "../marketplaceCard/marketplaceCard";
 import {Modal, Fade, Box, Button, Card, CardActionArea} from '@mui/material'
 import ViewOption from '../ViewOption/ViewOption'
 import CreateMarketplaceModal from "../createMarketplaceModal/CreateMarketplaceModal";
-
+import CreateProductModal from "../CreateProduct/CreateProduct";
 export default function ProfilePage()
 {
 
@@ -328,7 +328,7 @@ export default function ProfilePage()
                                         <div>
                                             <h1 className="notAvailableMessage">You do not have any products yet.</h1>
                                             <Box textAlign="center">
-                                                <Button color='warning' style={{fontSize: 40}}> Add Product </Button>
+                                                <CreateProductModal/>
                                             </Box>
                                         </div>
                                         :

@@ -230,7 +230,7 @@ async function startServer(){
         let productPrice = incomingData.productPrice
         let productImage = incomingData.productImage
         
-        let result = await createProductAbsolutely(creatorID,productName,productDescription,productPrice)
+        let result = await createProductAbsolutely(creatorID,productName,productDescription,productPrice, productImage)
         console.log(result)
         if(result.status == 200)
         {
