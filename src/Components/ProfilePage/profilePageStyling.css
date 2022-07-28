@@ -83,16 +83,4 @@
 .profilePageViewOptions .ProductsOption {
   width: 33.3%;
 }
-
-.marketplaceOptionsWrapper .marketplaceViews {
-  display: block;
-}
-
-.marketplaceOptionsWrapper .ProductsView {
-  display: none;
-}
-
-.marketplaceOptionsWrapper .ReviewsView {
-  display: none;
-}
 /*# sourceMappingURL=profilePageStyling.css.map */

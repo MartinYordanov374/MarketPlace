@@ -133,32 +133,30 @@ export default function ProfilePage()
     }
 
     const handleMarketplacesView = () => {
-        if(isUserOnProducts == true && isUserOnMarketplaces == false && isUserOnReviews == false)
-        {
-            setIsUserOnProducts(true)
-            setIsUserOnMarketplaces(false)
+
+            setIsUserOnMarketplaces(true)
+            setIsUserOnProducts(false)
             setIsUserOnReviews(false)
-        }
+        
+        console.log(isUserOnMarketplaces)
     }
 
     const handleProductsView = () => {
-        if(isUserOnProducts == false && isUserOnMarketplaces == true && isUserOnReviews == false)
-        {
-            setIsUserOnProducts(false)
-            setIsUserOnMarketplaces(true)
-            setIsUserOnReviews(false)
-        }
 
+            setIsUserOnProducts(true)
+            setIsUserOnMarketplaces(false)
+            setIsUserOnReviews(false)
+        
+        console.log(isUserOnMarketplaces)
     }
 
     const handleReviewsView = () => {
-        if(isUserOnProducts == false && isUserOnMarketplaces == false && isUserOnReviews == true)
-        {
+        
             setIsUserOnProducts(false)
             setIsUserOnMarketplaces(false)
             setIsUserOnReviews(true)
-        }
-
+        
+        console.log(isUserOnMarketplaces)
     }
     return (
         <div>
@@ -282,49 +280,66 @@ export default function ProfilePage()
                 <div className="marketplaceOptionsWrapper">
 
                     <div className="marketplaceViews">
-                        <div className="marketplacesWrapper">
-                            {
-                                    userData.marketplaces && 
-                                    userData.marketplaces.length >= 1 ?
-                                    userData.marketplaces.map(( marketplace ) => {
-                                        return (
-                                            <MarketplaceCard TargetMarketplace = {marketplace} />
-                                        )
-                                    })
-                                    : 
-                                    <p>This user does not have any marketplaces yet</p>
-
-                            }
-                        </div>
-                    </div>
-
-                    <div className="ProductsView view" onClick={ () => handleProductsView() }>
                         {
-                            userData.products && 
-                            userData.products.length >= 1 ?
-                             userData.products.map(( product ) => {
-                                //  return (
-                                //      <ProductCard TargetProduct = {product} />
-                                //  )
-                             })
-                             :
-                             <p>"This user does not have any products yet</p>
+                            isUserOnMarketplaces == true ?
+                        
+                            <div className="marketplacesWrapper">
+                                {
+                                        userData.marketplaces && 
+                                        userData.marketplaces.length >= 1 ?
+                                        userData.marketplaces.map(( marketplace ) => {
+                                            return (
+                                                <MarketplaceCard TargetMarketplace = {marketplace} />
+                                            )
+                                        })
+                                        : 
+                                        <p>This user does not have any marketplaces yet</p>
+
+                                }
+                            </div>
+                            :
+                            ""
                         }
                     </div>
-                    <div className="ReviewsView view" onClick={ () => handleReviewsView() }>
-                        {
-                                
-                                userData.reviews &&
-                                userData.reviews.length >= 1 ?
-                                userData.reviews.map(( review ) => {
-                                    
-                                    // return (
-                                    //     <ReviewCard TargetReview = { review } />
-                                    // )
-                                })
-                                :
-                                <p> No reviews left yet</p>
-                        }
+
+                    <div>
+                    {
+                            isUserOnProducts == true ?
+                                <div className="ProductsView view" onClick={ () => handleProductsView() }>
+                                    {
+                                        userData.products && 
+                                        userData.products.length >= 1 ?
+                                        userData.products.map(( product ) => {
+                                            //  return (
+                                            //      <ProductCard TargetProduct = {product} />
+                                            //  )
+                                        })
+                                        :
+                                        <p>"This user does not have any products yet</p>
+                                    }
+                                </div>
+                            : ""
+                    }
+                    </div>
+
+                    <div>
+                        {isUserOnReviews == true ?
+                            <div className="ReviewsView view" onClick={ () => handleReviewsView() }>
+                                {
+
+                                        userData.reviews &&
+                                        userData.reviews.length >= 1 ?
+                                        userData.reviews.map(( review ) => {
+
+                                            // return (
+                                            //     <ReviewCard TargetReview = { review } />
+                                            // )
+                                        })
+                                        :
+                                        <p> No reviews left yet</p>
+                                }
+                            </div>
+                        : ""}
                     </div>
                 </div>
 
