@@ -16,7 +16,7 @@ import { Buffer } from 'buffer';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import NotLoggedUser from "../NotLoggedUser/notLogged";
 import SettingsIcon from '@mui/icons-material/Settings';
-import { textAlign } from "@mui/system";
+import ReviewModal from '../ReviewModal/reviewModal'
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 
 export default function Marketplace ()
@@ -349,27 +349,8 @@ export default function Marketplace ()
                         <div className="marketplaceReviews">
                             {marketplaceData.marketplaceReviews.some((review) => review.reviewOwner._id == userData.id) == false ?
                             <div>
-                                <div className='addReviewWrapper'>
-                                    <Card className='addReviewCard'>
-                                        <Button color='warning' sx={{fontSize:30}} className="addReviewButton" onClick={() => openReviewModal()}> Add Review </Button>
-                                    </Card>
-
-                                    <Modal open={reviewModalState} onClose={closeReviewModal} >
-                                        <Fade in={reviewModalState}>
-                                            <Box sx={ModalStyle}>
-                                                <Typography className='addReviewTitle' variant="h5">Share your thoughts:</Typography>
-                                                <TextareaAutosize 
-                                                    className="addReviewInput" 
-                                                    maxLength={120} 
-                                                    value = {userReview}
-                                                    onChange={(e) => setUserReview(e.target.value)}
-                                                />
-                                                <Button color='warning' className='addReviewButton' onClick={() => addReview()}>Submit</Button>
-                                            </Box>
-                                        </Fade>
-                                    </Modal>
-                                </div>
-                                <Divider/>    
+                                    <ReviewModal userData={ userData } marketplaceData = { marketplaceData }/>
+                                    <Divider/>    
                             </div>                        
                             :
                             ""
