@@ -319,9 +319,9 @@ export default function ProfilePage()
                                         userData.products && 
                                         userData.products.length >= 1 ?
                                         userData.products.map(( product ) => {
-                                            //  return (
-                                            //      <ProductCard TargetProduct = {product} />
-                                            //  )
+                                            return (
+                                                <ProductCard TargetProduct = {product} />
+                                            )
                                         })
                                         :
                                         userData.isOwner ?
