@@ -283,7 +283,7 @@ export default function ProfilePage()
                         {
                             isUserOnMarketplaces == true ?
                         
-                            <div className="marketplacesWrapper">
+                            <div>
                                 {
                                         userData.marketplaces && 
                                         userData.marketplaces.length >= 1 ?
@@ -297,7 +297,7 @@ export default function ProfilePage()
                                         <div>
                                             <h1 className="notAvailableMessage">You do not have any marketplaces yet.</h1>
                                             <Box textAlign="center">
-                                                <Button color='warning' style={{fontSize: 40}}> Add marketplace. </Button>
+                                                <Button color='warning' style={{fontSize: 40}}> Add Marketplace? </Button>
                                             </Box>
                                         </div>
                                         :

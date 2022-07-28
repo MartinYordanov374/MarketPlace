@@ -87,16 +87,11 @@ function LoggedUser()
 
         }
     }
-
-    
     
     return (
         <div className='wrapper'>
             <Navbar />
-                
             <CreateMarketplaceModal/>
-                 
-                
 
             <div className='marketplacesWrapper'>
                 <ToastContainer/>
@@ -113,8 +108,6 @@ function LoggedUser()
                             )
                         
                     })} 
-
-               
             </div>
             <Footer/>
         </div>
