@@ -15,6 +15,7 @@ import {Modal, Fade, Box, Button, Card, CardActionArea} from '@mui/material'
 import ViewOption from '../ViewOption/ViewOption'
 import CreateMarketplaceModal from "../createMarketplaceModal/CreateMarketplaceModal";
 import CreateProductModal from "../CreateProductAbsolutely/CreateProductAbsolutely";
+import ProductCard from "../ProductCard/ProductCard";
 export default function ProfilePage()
 {
 
@@ -47,10 +48,13 @@ export default function ProfilePage()
             }
             Axios.post('http://localhost:3001/getUserById', {id: URL_ID})
             .then((res) => {
+                console.log(res.data)
                 let userMarketplaces = res.data.marketplaces
                 let userRating = res.data.rating
                 let userReviews = res.data.reviews
                 let profilePicture = res.data.profilePicture
+                let userProducts = res.data.products
+
                 let username = res.data.username
 
                 userDataObj.marketplaces = userMarketplaces
@@ -58,6 +62,7 @@ export default function ProfilePage()
                 userDataObj.reviews = userReviews
                 userDataObj.profilePicture = profilePicture
                 userDataObj.username = username
+                userDataObj.products = userProducts
                 userDataObj.coverPicture = res.data.covertPicture
 
                 if(userID == URL_ID)
@@ -139,7 +144,6 @@ export default function ProfilePage()
             setIsUserOnProducts(false)
             setIsUserOnReviews(false)
         
-        console.log(isUserOnMarketplaces)
     }
 
     const handleProductsView = () => {
@@ -147,8 +151,6 @@ export default function ProfilePage()
             setIsUserOnProducts(true)
             setIsUserOnMarketplaces(false)
             setIsUserOnReviews(false)
-        
-        console.log(isUserOnMarketplaces)
     }
 
     const handleReviewsView = () => {
@@ -159,6 +161,7 @@ export default function ProfilePage()
         
         console.log(isUserOnMarketplaces)
     }
+
     return (
         <div>
             <Navbar/>
@@ -313,6 +316,7 @@ export default function ProfilePage()
 
                     <div>
                     {
+                        
                             isUserOnProducts == true ?
                                 <div className="ProductsView view" onClick={ () => handleProductsView() }>
                                     {
@@ -320,7 +324,7 @@ export default function ProfilePage()
                                         userData.products.length >= 1 ?
                                         userData.products.map(( product ) => {
                                             return (
-                                                <ProductCard TargetProduct = {product} />
+                                                <ProductCard TargetProduct = { product } />
                                             )
                                         })
                                         :
