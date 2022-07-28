@@ -1,4 +1,4 @@
-export default function AddProduct()
+export default function CreateProduct()
 {
     return(
         <div>
