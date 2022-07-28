@@ -71,6 +71,12 @@
   left: 2%;
 }
 
+.profilePageWrapper .profileWrapper .userRating {
+  position: absolute;
+  top: 34%;
+  left: 90%;
+}
+
 .profilePageViewOptions {
   display: -webkit-box;
   display: -ms-flexbox;

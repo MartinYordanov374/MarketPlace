@@ -16,9 +16,10 @@ import ViewOption from '../ViewOption/ViewOption'
 import CreateMarketplaceModal from "../createMarketplaceModal/CreateMarketplaceModal";
 import CreateProductModal from "../CreateProductAbsolutely/CreateProductAbsolutely";
 import ProductCard from "../ProductCard/ProductCard";
+import {Rating} from 'react-simple-star-rating'   
 export default function ProfilePage()
 {
-
+    const [rating, setRating] = useState(0) 
     const [isUserOnMarketplaces, setIsUserOnMarketplaces] = useState(true)
     const [isUserOnProducts, setIsUserOnProducts] = useState(false)
     const [isUserOnReviews, setIsUserOnReviews] = useState(false)
@@ -29,7 +30,13 @@ export default function ProfilePage()
 
     let URL_ID = window.location.href.split('/')[4]
 
-
+    const handleRating = (rate) => {
+        if(rate > 5)
+        {
+            rate = 5
+        }
+        setRating(rate)
+      }
     const openPFPModal = () => {
         setPfpModalState(true)
     }
@@ -209,6 +216,22 @@ export default function ProfilePage()
 
                                 <div className="profileName">
                                     <h1>{userData.username}</h1>
+                                </div>
+
+                                <div className="userRating">
+                                    <h3>Rating: {userData.rating} / 5.00</h3>
+                                    <Rating
+                                        onClick={()  => handleRating()}
+                                        ratingValue={rating}
+                                        size={25}
+                                        label
+                                        transition
+                                        fillColor='orange'
+                                        emptyColor='gray'
+                                        className='foo' 
+                                    />
+                                </div>
+                                <div className="starRating">
                                 </div>
 
                             </div> 
