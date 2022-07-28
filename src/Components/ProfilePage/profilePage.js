@@ -314,39 +314,50 @@ export default function ProfilePage()
                     </div>
 
                     <div>
-                        {userData.isOwner ?
-                        <Box textAlign="center">
-                            <CreateProductModal/>
-                        </Box>
-                        :
-                        ""}
-                    {
-                        
-                            isUserOnProducts == true ?
-                                <div className="ProductsView view" onClick={ () => handleProductsView() }>
 
-                                    {
-                                        userData.products && 
-                                        userData.products.length >= 1 ?
-                                        userData.products.map(( product ) => {
-                                            return (
-                                                <ProductCard TargetProduct = { product } />
-                                            )
-                                        })
-                                        :
-                                        userData.isOwner ?
-                                        <div>
-                                            <h1 className="notAvailableMessage">You do not have any products yet.</h1>
-                                            <Box textAlign="center">
-                                                <CreateProductModal/>
-                                            </Box>
-                                        </div>
-                                        :
-                                        <h1 className="notAvailableMessage">This user does not have any products yet.</h1>
-                                    }
-                                </div>
-                            : ""
-                    }
+                        {isUserOnProducts == true ?
+                            <div className="ProductsView view" onClick={ () => handleProductsView() }>
+                                {
+                                    userData.products && 
+                                    userData.isOwner == false &&
+                                    userData.products.length >= 1 ?
+                                    userData.products.map(( product ) => {
+                                        return (
+                                            <ProductCard TargetProduct = { product } />
+                                        )
+                                    })
+                                    :
+                                    ""
+                                }
+                                { userData.isOwner == true ?
+                                    <div>
+                                        {userData.products.length < 1 ? 
+                                            <div>
+                                                <h1 className="notAvailableMessage">You do not have any products yet.</h1>
+                                                <Box textAlign="center">
+                                                    <CreateProductModal/>
+                                                </Box>
+                                            </div>
+                                            : 
+                                            <div>
+                                                <Box textAlign="center">
+                                                    <CreateProductModal/>
+                                                </Box>
+                                                {userData.products.map(( product ) => {
+                                                    return (
+                                                        <ProductCard TargetProduct = { product } />
+                                                        )
+                                                    })}
+                                            </div>
+                                        }   
+                                    </div>
+                                    : 
+                                    ""
+                                }
+                            </div>
+                            :
+                            ""
+                        }
                     </div>
 
                     <div>
