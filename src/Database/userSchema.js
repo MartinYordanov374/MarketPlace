@@ -25,7 +25,7 @@ const UserSchema = new Schema({
 
     marketplaces:{
         type: [ObjectId],
-        ref: 'marketplaces'
+        ref: 'marketplace'
     },
 
     profilePicture:{

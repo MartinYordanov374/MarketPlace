@@ -175,6 +175,7 @@ export default function ProfilePage()
                                 <div className="profileName">
                                     <h1>{userData.username}</h1>
                                 </div>
+
                             </div> 
                         : 
                         <div className="profileWrapper">
@@ -235,7 +236,21 @@ export default function ProfilePage()
                         </div>
                     }
                 </div>
+                <div className="profilePageViewOptions">
+                    <div className="MarketplacesView">
+                        {userData.marketplaces.map((marketplace) => {
+                            <div className="marketplaceCardWrapper">
+                                
+                            </div>
+                        })}
+                    </div>
+                    <div className="ProductsView">
+                    </div>
+                    <div className="ReviewsView">
+                    </div>
+                </div>
             <Footer/>
         </div>
     )
+    
 }

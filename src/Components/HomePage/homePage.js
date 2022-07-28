@@ -1,12 +1,14 @@
 import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer";
+import MarketplaceCard from "../marketplaceCard/marketplaceCard";
+
 import { toast, ToastContainer } from "react-toastify";
 import Axios from "axios";
 import React, { useEffect, useState, useRef } from "react";
 import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddIcon from '@mui/icons-material/Add';
 
-import {Card, CardActionArea, CardContent, CardMedia, Typography, Button, CardActions, Link, Divider, Modal, Fade, Box, Input, TextField} from '@mui/material'
+import { Typography, Button, Modal, Fade, Box, Input} from '@mui/material'
 import UploadIcon from '@mui/icons-material/Upload';
 import './homepageStyling.css'
 import CircularProgress from '@mui/material/CircularProgress';
@@ -220,21 +222,7 @@ function LoggedUser()
 
                         : marketplaces.map(marketplace => {
                             return(
-                                <div class='marketplaceWrapper'>
-                                 <Link href={`marketplace/${marketplace._id}`} underline='none'>
-                                    <Card sx={{height: "260px", width: "240px"}}>
-                                        <CardActionArea>
-                                            <CardMedia>
-                                                <img className="MarketplaceIcon" src={`data:${marketplace.marketplaceImage.contentType};base64, ${Buffer.from(marketplace.marketplaceImage.data.data).toString('base64')}`}/>
-                                            </CardMedia>
-                                            <Divider/>
-                                            <CardContent>
-                                                <Typography>{marketplace.marketplaceName}</Typography>
-                                            </CardContent>
-                                        </CardActionArea>
-                                    </Card>
-                                 </Link>
-                                </div>
+                                <MarketplaceCard TargetMarketplace = {marketplace} />
                             )
                         
                     })} 

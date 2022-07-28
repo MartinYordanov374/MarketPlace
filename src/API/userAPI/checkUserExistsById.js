@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 
 async function checkUserExistsById(userID)
 {
-    let userExists = await userModel.findById({_id: userID})
+    let userExists = await userModel.findById({_id: userID}).populate('marketplaces')
     if(userExists == null)
     {
         return false
