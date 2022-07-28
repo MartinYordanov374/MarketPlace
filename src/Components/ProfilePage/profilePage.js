@@ -48,7 +48,6 @@ export default function ProfilePage()
             }
             Axios.post('http://localhost:3001/getUserById', {id: URL_ID})
             .then((res) => {
-                console.log(res.data)
                 let userMarketplaces = res.data.marketplaces
                 let userRating = res.data.rating
                 let userReviews = res.data.reviews

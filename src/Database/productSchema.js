@@ -30,6 +30,11 @@ let productSchema = new Schema({
         type: ObjectId,
         ref: 'user',
         required: true
+    },
+    productImage:{
+        data: Buffer,
+        contentType: String,
+        required: false
     }
 })
 

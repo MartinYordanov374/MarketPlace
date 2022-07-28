@@ -2,9 +2,10 @@ import { Link, Card, CardActionArea, CardMedia, Divider, CardContent, Typography
 import { Buffer } from 'buffer';
 export default function ProductCard(productData)
 {
+    console.log(productData.TargetProduct)
     return(
             <div class='marketplaceWrapper'>
-                <Link href={`/marketplace/${productData.TargetProduct._id}`} underline='none'>
+                <Link href={`/product/${productData.TargetProduct._id}`} underline='none'>
                     <Card sx={{height: "260px", width: "240px"}}>
                         <CardActionArea>
                             <CardMedia>
@@ -12,7 +13,9 @@ export default function ProductCard(productData)
                             </CardMedia>
                             <Divider/>
                             <CardContent>
-                                <Typography>{productData.TargetProduct.marketplaceName}</Typography>
+                                <Typography>{productData.TargetProduct.productName}</Typography>
+                                <Typography>$ {productData.TargetProduct.productPrice}</Typography>
+
                             </CardContent>
                         </CardActionArea>
                     </Card>
