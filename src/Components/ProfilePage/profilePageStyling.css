@@ -84,7 +84,11 @@
   width: 33.3%;
 }
 
-.notAvailableMessage {
+.marketplaceOptionsWrapper .notAvailableMessage {
   text-align: center;
+}
+
+.ownerMarketplaceOptions button {
+  font-size: 30px !important;
 }
 /*# sourceMappingURL=profilePageStyling.css.map */

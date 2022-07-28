@@ -67,7 +67,12 @@
 }
 .marketplaceOptionsWrapper{
 
+    .notAvailableMessage{
+        text-align: center;
+    }
 }
-.notAvailableMessage{
-    text-align: center;
+.ownerMarketplaceOptions{
+    button{
+        font-size: 30px !important;
+    }
 }

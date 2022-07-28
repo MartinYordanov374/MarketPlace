@@ -13,6 +13,7 @@ import MarketplaceCard from "../marketplaceCard/marketplaceCard";
 
 import {Modal, Fade, Box, Button, Card, CardActionArea} from '@mui/material'
 import ViewOption from '../ViewOption/ViewOption'
+import CreateMarketplaceModal from "../createMarketplaceModal/CreateMarketplaceModal";
 
 export default function ProfilePage()
 {
@@ -294,10 +295,10 @@ export default function ProfilePage()
                                         })
                                         : 
                                         userData.isOwner ?
-                                        <div>
+                                        <div className="ownerMarketplaceOptions">
                                             <h1 className="notAvailableMessage">You do not have any marketplaces yet.</h1>
                                             <Box textAlign="center">
-                                                <Button color='warning' style={{fontSize: 40}}> Add Marketplace? </Button>
+                                                <CreateMarketplaceModal className="marketplaceModal"/>
                                             </Box>
                                         </div>
                                         :
