@@ -4,7 +4,7 @@ import Axios from 'axios'
 import { useEffect, useState } from "react"
 import './ProductPageStyling.css'
 import { Buffer } from 'buffer';
-import { Button,Divider } from '@mui/material'
+import { Button,CardActionArea,Divider } from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CircularProgress from '@mui/material/CircularProgress';
 import {Rating} from 'react-simple-star-rating'   
@@ -101,7 +101,16 @@ export default function ProductPage()
                             </div>
                             <div className="productReviewsWrapper">
                                 <h1>Reviews</h1>
+                                <Divider/>
+                                {targetProduct.productReviews.length < 1 ?
+                                <CardActionArea>
+                                    <p className="noReviewsMessage"> 
+                                        <strong> Be the first to leave a review for this product! </strong>
+                                    </p>
+                                </CardActionArea>
+                                :
                                 <h1>{targetProduct.productReviews}</h1>
+                                }
                             </div>
 
                             <div className="productRatingWrapper">

@@ -35,4 +35,14 @@
 .targetProductWrapper .productDescriptionWrapper .productDescription {
   height: 186px;
 }
+
+.targetProductWrapper .productReviewsWrapper {
+  margin-top: 2%;
+}
+
+.targetProductWrapper .productReviewsWrapper .noReviewsMessage {
+  color: #ed6c02;
+  font-size: large;
+  text-align: center;
+}
 /*# sourceMappingURL=ProductPageStyling.css.map */

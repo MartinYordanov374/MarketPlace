@@ -35,4 +35,12 @@
             height: 186px;
         }
     }
+    .productReviewsWrapper{
+        margin-top: 2%;
+        .noReviewsMessage{
+            color: #ed6c02;
+            font-size: large;
+            text-align: center;
+        }
+    }
 }
