@@ -4,10 +4,11 @@ import Axios from 'axios'
 import { useEffect, useState } from "react"
 import './ProductPageStyling.css'
 import { Buffer } from 'buffer';
-import { Button,CardActionArea,Divider } from '@mui/material'
+import { Button,CardActionArea,Divider,Card,Typography } from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CircularProgress from '@mui/material/CircularProgress';
 import {Rating} from 'react-simple-star-rating'   
+import AddProductReviewModal from "../AddProductReviewModal/AddProductReviewModal"
 
 export default function ProductPage()
 {
@@ -15,6 +16,7 @@ export default function ProductPage()
     const [targetProduct, setTargetProduct] = useState('')
     const [isLoading, setIsLoading] = useState(true)
     const [rating, setRating] = useState(0)
+    const [userData, setUserData] = useState('')
 
     useEffect(() => {
 
@@ -22,16 +24,25 @@ export default function ProductPage()
         {
             let res = await Axios.post('http://localhost:3001/getProductById', {TargetProductId: productID})
             .then((res) => {
-                console.log(res)
                 setTargetProduct(res.data)
             })
             .catch((err) => {
                 console.log(err)
             })
 
-            setIsLoading(false)
+            Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
+            .then((res) => {
+                setUserData(res.data.user)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
 
+            setIsLoading(false)
         }
+
+
+
         getProductData()
     }, [])
 
@@ -103,13 +114,19 @@ export default function ProductPage()
                                 <h1>Reviews</h1>
                                 <Divider/>
                                 {targetProduct.productReviews.length < 1 ?
-                                <CardActionArea>
-                                    <p className="noReviewsMessage"> 
-                                        <strong> Be the first to leave a review for this product! </strong>
-                                    </p>
-                                </CardActionArea>
+                                    <AddProductReviewModal productData = {targetProduct} userData = {userData}/>
                                 :
-                                <h1>{targetProduct.productReviews}</h1>
+                                    targetProduct.productReviews.map((review) => {
+                                        console.log(review)
+                                        return(
+                                            <Card>
+                                                <Typography>{review.reviewOwner.username}</Typography>
+
+                                                <Typography>{review.reviewContent}</Typography>
+
+                                            </Card>
+                                        )
+                                    })
                                 }
                             </div>
 

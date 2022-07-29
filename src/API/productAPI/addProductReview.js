@@ -19,7 +19,7 @@ async function addProductReview(reviewerUserId, reviewedProductId, reviewContent
 
             await newReview.save()
 
-            await reviewedProductExists.reviews.push(newReview._id)
+            await reviewedProductExists.productReviews.push(newReview._id)
             await reviewedProductExists.save()
 
             return {status: 200, msg: 'Review added successfully!'}

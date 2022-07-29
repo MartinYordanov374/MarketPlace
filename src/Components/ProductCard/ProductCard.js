@@ -2,7 +2,6 @@ import { Link, Card, CardActionArea, CardMedia, Divider, CardContent, Typography
 import { Buffer } from 'buffer';
 export default function ProductCard(productData)
 {
-    console.log(productData.TargetProduct)
     return(
             <div class='marketplaceWrapper'>
                 <Link href={`/product/${productData.TargetProduct._id}`} underline='none'>
