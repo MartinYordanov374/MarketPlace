@@ -347,26 +347,57 @@ export default function ProfilePage()
                             isUserOnMarketplaces == true ?
                         
                             <div>
-                                {
+                                    {
                                         userData.marketplaces && 
+                                        userData.isOwner == false &&
                                         userData.marketplaces.length >= 1 ?
                                         userData.marketplaces.map(( marketplace ) => {
                                             return (
                                                 <MarketplaceCard TargetMarketplace = {marketplace} />
                                             )
                                         })
-                                        : 
-                                        userData.isOwner ?
-                                        <div className="ownerMarketplaceOptions">
-                                            <h1 className="notAvailableMessage">You do not have any marketplaces yet.</h1>
-                                            <Box textAlign="center">
-                                                <CreateMarketplaceModal className="marketplaceModal"/>
-                                            </Box>
-                                        </div>
-                                        :
-                                        <h1 className="notAvailableMessage">This user does not have any marketplaces yet.</h1>
+                                        : ""
+                                    }
+                                    { 
+                                        userData.isOwner == true ?
+                                        
+                                            <div>
+                                                {userData.marketplaces.length < 1 ?
+                                                 <div>
+                                                    <h1 className="notAvailableMessage">You do not have any marketplaces yet.</h1>
+                                                    <Box textAlign="center">
+                                                        <CreateMarketplaceModal/>
+                                                    </Box>
+                                                </div>
+                                                :
+                                                <div>
+                                                    <Box textAlign="center">
+                                                        <CreateMarketplaceModal/>
+                                                    </Box>
+                                                    {userData.marketplaces.map(( marketplace ) => {
+                                                        return (
+                                                            <MarketplaceCard TargetMarketplace = {marketplace} />
+                                                        )
+                                                    })}
+                                                </div>
+                                                }
+                                            </div>
+                                            :
+                                            ""
+                                        
+                                        // userData.marketplaces && 
+                                        // userData.isOwner == true &&
+                                        // userData.marketplaces.length >= 1 ?
+                                        
+                                        // userData.marketplaces.map(( marketplace ) => {
+                                        //     return (
+                                        //         <MarketplaceCard TargetMarketplace = {marketplace} />
+                                        //     )
+                                        // })
+                                        // :
+                                        // <h1 className="notAvailableMessage">This user does not have any marketplaces yet.</h1>
 
-                                }
+                                    }
                             </div>
                             :
                             ""
