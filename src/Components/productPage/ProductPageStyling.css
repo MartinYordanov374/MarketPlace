@@ -1,30 +1,18 @@
 .targetProductWrapper {
-  border-style: solid;
+  overflow: hidden;
 }
 
-.targetProductWrapper .TargetProduct {
-  margin: auto;
-  width: 420px;
-  border-style: solid;
-}
-
-.targetProductWrapper .TargetProduct .MenusWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.targetProductWrapper .TargetProduct .MenusWrapper .leftSideMenu {
+.targetProductWrapper .leftSideMenu {
   float: left;
 }
 
-.targetProductWrapper .TargetProduct .MenusWrapper .rightSideMenu {
-  margin-left: 25%;
-  margin-top: 15%;
-  float: right;
+.targetProductWrapper .leftSideMenu .TargetProduct .ProductImageWrapper .productImage {
+  width: 300px;
+  height: 372px;
 }
 
-.targetProductWrapper .TargetProduct .MenusWrapper .rightSideMenu .productPriceWrapper .productPrice {
-  font-size: large;
+.targetProductWrapper .rightSideMenu {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  margin-left: 20%;
 }
 /*# sourceMappingURL=ProductPageStyling.css.map */

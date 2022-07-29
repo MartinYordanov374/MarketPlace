@@ -4,7 +4,7 @@ import Axios from 'axios'
 import { useEffect, useState } from "react"
 import './ProductPageStyling.css'
 import { Buffer } from 'buffer';
-import { Button } from '@mui/material'
+import { Button,Divider } from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import CircularProgress from '@mui/material/CircularProgress';
 
@@ -48,29 +48,35 @@ export default function ProductPage()
                         <div className="MenusWrapper">
 
                             <div className="leftSideMenu">
-                                <div className="ProductTitleWrapper">
-                                    <h1 className="productTitle">{targetProduct.productName}</h1>
-                                </div>
 
                                 <div className="ProductImageWrapper">
-                                    <img className="MarketplaceIcon" src={`data:${targetProduct.productImage.contentType};base64,
+                                    <img className="productImage" src={`data:${targetProduct.productImage.contentType};base64,
                                     ${Buffer.from(targetProduct.productImage.data.data).toString('base64')}`}/>
-
                                 </div>
+                                
                             </div>
 
                             <div className="rightSideMenu">
 
+                                <div className="ProductTitleWrapper">
+                                    <h1 className="productTitle">{targetProduct.productName}</h1>
+                                </div>
+                                <Divider/>
+                                
                                 <div className="productDescriptionWrapper">
                                     <p className="productDescription">{targetProduct.productDescription}</p>
                                 </div>
-                                <div className="productPriceWrapper">
-                                    <p className="productPrice">$ {targetProduct.productPrice.toFixed(2)}</p>
+                                <Divider/>
+                                <div className="productInteractionWrapper">
+                                    <div className="productPriceWrapper">
+                                        <p className="productPrice">$ {targetProduct.productPrice.toFixed(2)}</p>
+                                    </div>
+                                    <Button color='warning' variant='contained' className='addProductButton'> 
+                                        <AddShoppingCartIcon/> 
+                                        <strong> Add to cart </strong>
+                                    </Button>
+
                                 </div>
-                                <Button color='warning' variant='contained'> 
-                                    <AddShoppingCartIcon/> 
-                                    <strong> Add to cart </strong>
-                                </Button>
                             </div>
 
                         </div>

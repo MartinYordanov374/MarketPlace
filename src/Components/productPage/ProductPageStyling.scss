@@ -1,29 +1,25 @@
+
 .targetProductWrapper{
-    border-style: solid;
-    .TargetProduct{
-        margin: auto;
-        width: 420px;
-        border-style: solid;
-        .MenusWrapper{
-            display: flex;
-            .leftSideMenu{
-                float: left;
-                .ProductTitleWrapper{
-                    .productTitle{
-                        // text-align: center;
-                    }
+    overflow: hidden;
+    .leftSideMenu{
+        float: left;
+        .TargetProduct{
+            .ProductImageWrapper{
+                .productImage{
+                    width: 300px;
+                    height: 372px;
                 }
-            }
-            .rightSideMenu{
-                margin-left: 25%;
-                margin-top: 15%;
-                float:right;
-                .productPriceWrapper{
-                    .productPrice{
-                        font-size: large;
-                    }
-                }
+
             }
         }
+    }
+    .rightSideMenu{
+        border: 1px  solid rgba(0, 0, 0, 0.12);
+        margin-left: 20%;
+        // overflow: hidden;
+    }
+    .productInteractionWrapper{
+        // float: right;
+        // border-style: solid;
     }
 }
