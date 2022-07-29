@@ -1,0 +1,29 @@
+.targetProductWrapper{
+    border-style: solid;
+    .TargetProduct{
+        margin: auto;
+        width: 420px;
+        border-style: solid;
+        .MenusWrapper{
+            display: flex;
+            .leftSideMenu{
+                float: left;
+                .ProductTitleWrapper{
+                    .productTitle{
+                        // text-align: center;
+                    }
+                }
+            }
+            .rightSideMenu{
+                margin-left: 25%;
+                margin-top: 15%;
+                float:right;
+                .productPriceWrapper{
+                    .productPrice{
+                        font-size: large;
+                    }
+                }
+            }
+        }
+    }
+}

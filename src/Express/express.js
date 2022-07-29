@@ -3,7 +3,6 @@ const cors = require('cors')
 
 const databaseConfig = require('../Database/mongoose')
 const mongoose = require('mongoose')
-
 var bodyParser = require('body-parser')
 
 const {registerUser} = require('../API/userAPI/register')
@@ -12,7 +11,7 @@ const {loginUser} = require('../API/userAPI/login')
 const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
 const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
 const {createProduct} = require('../API/productAPI/createProduct')
-
+const {findProductById} = require('../API/productAPI/findProductById')
 const {createProductAbsolutely} = require('../API/productAPI/createProductAbsolutely')
 const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace')
 const { deleteProductAbsolutely } = require('../API/productAPI/deleteProductAbsolutely')
@@ -21,7 +20,6 @@ const { addUserRating } = require('../API/userAPI/addUserRating')
 const { addMarketplaceReview } = require('../API/marketplaceAPI/addMarketplaceReview')
 const { addMarketplaceRating } = require('../API/marketplaceAPI/addMarketplaceRating')
 const { getAllMarketplaces } = require('../API/marketplaceAPI/getAllMarketplaces')
-
 const { addProductRating } = require('../API/productAPI/addProductRating')
 const { addProductReview } = require('../API/productAPI/addProductReview')
 
@@ -525,6 +523,13 @@ async function startServer(){
         {
             console.log(err)
         }
+    })
+
+    app.post('/getProductById', async(req,res) => {
+        let incomingData = req.body
+        let targetProductId = incomingData.TargetProductId
+        let result = await findProductById(targetProductId)
+        res.send(result)
     })
     //#region endpoints
 
