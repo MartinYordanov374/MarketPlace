@@ -399,51 +399,56 @@ export default function Marketplace ()
                             </div>
                         }
                     </div>
-                    {
-                        isUserOnProducts ? 
-                        <div className="marketplaceProducts">
-                        <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/> 
-                        {/* TODO FIX THE MARGINS !!! */}
                         {
-                            marketplaceData.marketplaceProducts.length >= 1 ?
-                            marketplaceData.marketplaceProducts.map( (prod) => {
-                                return(
-                                    <MarketplaceProduct prod = { prod }/>
-                                )
-                            })
-                            :
-                            <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/>
-
-                        }
-                        </div>
-                        :
-                        <div className="marketplaceReviews">
-                            {marketplaceData.marketplaceReviews.some((review) => review.reviewOwner._id == userData.id) == false ?
                             <div>
-                                <div className='addReviewWrapper'>
-                                    <ReviewModal userData = { userData } marketplaceData = { marketplaceData }/>
-                                </div>
-                                <Divider/>    
-                            </div>                        
-                            :
-                            ""
-                            }
+                                <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/> 
 
-                            { marketplaceData.marketplaceReviews.length >= 1 ?
-                                marketplaceData.marketplaceReviews.map((review) => {
-                                    return (
-                                        <MarketplaceReview targetReview = { review } marketplaceData = { marketplaceData } /> 
-                                    )
-                                })
-                                :
-                                ""
-                            }
-                        </div>
-                    }
-                </div>}
-                <Footer/>
-            </div>
-            )
+                                { isUserOnProducts ? 
+                                    <div className="marketplaceProducts">
+                                    {/* TODO FIX THE MARGINS !!! */}
+                                    {
+                                        marketplaceData.marketplaceProducts.length >= 1 ?
+                                        marketplaceData.marketplaceProducts.map( (prod) => {
+                                            return(
+                                                <MarketplaceProduct prod = { prod }/>
+                                            )
+                                        })
+                                        :
+                                        <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/>
+
+                                    }
+                                    </div>
+                                    :
+                                    <div className="marketplaceReviews">
+                                        {marketplaceData.marketplaceReviews.some((review) => review.reviewOwner._id == userData.id) == false ?
+                                        <div>
+                                            <div className='addReviewWrapper'>
+                                                <ReviewModal userData = { userData } marketplaceData = { marketplaceData }/>
+                                            </div>
+                                            <Divider/>    
+                                        </div>                        
+                                        :
+                                        ""
+                                        }
+
+                                        { marketplaceData.marketplaceReviews.length >= 1 ?
+                                            marketplaceData.marketplaceReviews.map((review) => {
+                                                return (
+                                                    <MarketplaceReview targetReview = { review } marketplaceData = { marketplaceData } /> 
+                                                )
+                                            })
+                                            :
+                                            ""
+                                        }
+                                    </div>
+                                }
+                                
+                            </div>
+                        }
+                    </div>}
+                    <Footer/>
+                </div>
+                )
         }
         
         

@@ -1,14 +1,9 @@
-.userProductsWrapper {
-  text-align: center;
-}
-
 .userProductsWrapper .addProductButtonWrapper {
-  width: 20%;
-  margin-left: 40%;
-  margin-top: 2%;
+  margin-top: 0.5%;
 }
 
 .userProductsWrapper .addProductButtonWrapper .addProductButton {
-  width: 100%;
+  text-align: center;
+  width: 100% !important;
 }
 /*# sourceMappingURL=productsModalStyling.css.map */

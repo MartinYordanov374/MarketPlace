@@ -4,9 +4,7 @@ import Axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
 import { Buffer } from 'buffer';
-
-
-
+import './productsModalStyling.css'
 
 export default function ProductsModal (props)
 {
