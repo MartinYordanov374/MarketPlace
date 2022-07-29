@@ -270,4 +270,14 @@
   color: #ed6c02;
   cursor: pointer;
 }
+
+.addProductButtonWrapper {
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 2%;
+}
+
+.addProductButtonWrapper .addProductButton {
+  width: 100%;
+}
 /*# sourceMappingURL=marketplaceStyles.css.map */

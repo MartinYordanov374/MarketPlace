@@ -384,18 +384,7 @@ export default function ProfilePage()
                                             </div>
                                             :
                                             ""
-                                        
-                                        // userData.marketplaces && 
-                                        // userData.isOwner == true &&
-                                        // userData.marketplaces.length >= 1 ?
-                                        
-                                        // userData.marketplaces.map(( marketplace ) => {
-                                        //     return (
-                                        //         <MarketplaceCard TargetMarketplace = {marketplace} />
-                                        //     )
-                                        // })
-                                        // :
-                                        // <h1 className="notAvailableMessage">This user does not have any marketplaces yet.</h1>
+
 
                                     }
                             </div>

@@ -268,7 +268,10 @@ export default function Marketplace ()
                                     )
                                 })
                                 :
-                                <h1>No products here</h1>
+                                <Box textAlign="center">
+                                {/* <h1>No products here</h1> */}
+                                    <Button color='warning' style={{fontSize: 30, fontWeight: "bold"}}>Upload a product</Button>
+                                </Box>
                             }
                         </div>
                         :
@@ -409,7 +412,15 @@ export default function Marketplace ()
                                 )
                             })
                             :
-                            <h1>No products here</h1>
+                            <Card className='addProductButtonWrapper'>
+                                <Button 
+                                    color='warning' 
+                                    sx={{fontSize:30}} 
+                                    className="addProductButton" 
+                                > 
+                                    Add Product  
+                                </Button>
+                            </Card>
                         }
                         </div>
                         :
