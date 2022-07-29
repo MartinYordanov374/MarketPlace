@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,oBAAoB,CAAA;EAChB,UAAU,EAAE,MAAM;CASrB;;AAVD,AAEI,oBAFgB,CAEhB,wBAAwB,CAAA;EACpB,KAAK,EAAE,GAAG;EACV,WAAW,EAAE,GAAG;EAChB,UAAU,EAAE,EAAE;CAIjB;;AATL,AAMQ,oBANY,CAEhB,wBAAwB,CAIpB,iBAAiB,CAAA;EACb,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "productsModalStyling.scss"
+    ],
+    "names": [],
+    "file": "productsModalStyling.css"
+}
