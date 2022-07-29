@@ -8,7 +8,6 @@ import { Buffer } from 'buffer';
 
 export default function MarketplaceProduct (data)
 {
-    console.log(data)
     return(
         <div class='marketplaceProduct'>
             <Card className='productCard'>
