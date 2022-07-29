@@ -56,7 +56,7 @@ export default function ProductPage()
                                     <div className="ProductImageWrapper">
                                         <img className="productImage"
                                         width="330px"
-                                        height="394px"
+                                        height="470px"
                                         src={`data:${targetProduct.productImage.contentType};base64,
                                         ${Buffer.from(targetProduct.productImage.data.data).toString('base64')}`}/>
                                     </div>

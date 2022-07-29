@@ -8,8 +8,13 @@
 
 .targetProductWrapper .rightSideMenu {
   border: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: none;
   margin-left: 20%;
-  height: 393px;
+  height: 454px;
+}
+
+.targetProductWrapper .productInteractionWrapper {
+  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .targetProductWrapper .productDescriptionWrapper {
