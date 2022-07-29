@@ -251,7 +251,14 @@ async function startServer(){
         let productId = incomingData.productId
         let marketplaceId = incomingData.marketplaceId
         let result = await createProduct(creatorId, productId, marketplaceId)
-        console.log(result)
+        if(result.status == 401)
+        {
+            res.status(401).send(result.msg)
+        }
+        else if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
     })
 
     app.post('/deleteProductFromMarketplace', async(req,res) => {

@@ -22,9 +22,10 @@ export default function ProductsModal (props)
         Axios.post('http://localhost:3001/createProduct', {productCreatorID: productCreatorID, productId: productId, marketplaceId: marketplaceId})
         .then((res) => {
             console.log(res)
+            toast.success(res.data)
         })
         .catch((err)=>{
-            console.log(err)
+            toast.warn(err.response.data)
         })
     }
 
