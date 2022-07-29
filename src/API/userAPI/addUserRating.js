@@ -10,12 +10,12 @@ async function addUserRating(ratingAdderId, ratingReceiverId, ratingAmount)
         let ratingAdder = await checkUserExistsById(ratingAdderId)
         let ratingReceiver = await checkUserExistsById(ratingReceiverId)
         let res = await CheckUserHasGivenRating(ratingAdderId, ratingReceiverId)
-        if(res == true)
-        {
-            return {status: 409, message: "You have already rated that user!"}
-        }
-        else
-        {         
+        // if(res == true)
+        // {
+        //     return {status: 409, message: "You have already rated that user!"}
+        // }
+        // else
+        // {         
             if(ratingAdder != null && ratingReceiver != null)
             {
                 if(ratingAmount < 1)
@@ -37,7 +37,7 @@ async function addUserRating(ratingAdderId, ratingReceiverId, ratingAmount)
                 throw new Error('Either or both of the users provided does not exist.')
             }
         }
-    }
+    // }
     catch(e)
     {
         console.log(e)

@@ -197,7 +197,8 @@ export default function ProfilePage()
         .catch((err) => {
             toast.warn(err.response.data)
         })
-      }
+
+    }
 
     return (
         <div>
@@ -251,7 +252,9 @@ export default function ProfilePage()
                                 </div>
 
                                 <div className="userRating">
-                                    {/* <h3>Rating: {userData.rating.reduce((i,j) => {return i + j}) / userData.rating.length } / 5.00</h3> */}
+                                    {
+                                        <h3> Rating: {(userData.rating.reduce((a,b) =>  a + b.ratingAmount, 0) / userData.rating.length).toFixed(2)} / 5.00 </h3>
+                                    }
                                     <Rating
                                         initialValue={0}
                                         transition
