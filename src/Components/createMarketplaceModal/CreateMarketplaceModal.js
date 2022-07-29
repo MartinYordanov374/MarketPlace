@@ -113,7 +113,11 @@ export default function CreateMarketplaceModal() {
                                 <Button  variant="outlined" sx = {modalMarketplaceImageButton} color='warning' component="label"> 
                                     <UploadIcon className='uploadImageIcon'/>
                                     <span className="uploadImageButtonText">upload image</span> 
-                                    <input type="file" className="uploadImageInput" name="marketplaceImage" hidden ref={ marketplaceImageRef } onChange = {(e) => {setMarketplaceImage(e.target.value[0])}}/>
+                                    <input type="file" className="uploadImageInput" name="marketplaceImage" hidden ref={ marketplaceImageRef } onChange = {(e) => {
+                                        setMarketplaceImage(e.target.value[0])
+                                        let UploadSpanElement = document.querySelector('.uploadImageButtonText')
+                                        UploadSpanElement.innerHTML = "Uploaded !"
+                                    }}/>
                                 </Button>
 
                                 <Button variant="contained" sx = {modalSubmitButtonStyle} color='warning' 

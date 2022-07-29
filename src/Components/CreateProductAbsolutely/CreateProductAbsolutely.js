@@ -110,7 +110,11 @@ export default function CreateProductModal() {
                                 <Button  variant="outlined" sx = {modalProductImageStyle} color='warning' component="label"> 
                                     <UploadIcon className='uploadImageIcon'/>
                                     <span className="uploadImageButtonText">upload image</span> 
-                                    <input type="file" className="uploadImageInput" name="productImage" hidden ref={ productImageRef } onChange = {(e) => {setProductImage(e.target.value[0])}}/>
+                                    <input type="file" className="uploadImageInput" name="productImage" hidden ref={ productImageRef } onChange = {(e) => {
+                                        setProductImage(e.target.value[0])
+                                        let UploadSpanElement = document.querySelector('.uploadImageButtonText')
+                                        UploadSpanElement.innerHTML = "Uploaded !"
+                                    }}/>
                                 </Button>
 
                                 <Button variant="contained" sx = {modalSubmitButtonStyle} color='warning' 
