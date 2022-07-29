@@ -68,13 +68,14 @@ export default function ProductsModal (props)
                         <Typography className='addReviewTitle' variant="h5">Select the product you want to upload:</Typography>
                             {userData.products && userData.products.map(product => {
                                 return(
-                                    <Card sx={{marginTop: "4%", width: "180px", height: "23vh", display: "flex", float: "left", marginLeft: "4%"}}>
+                                    <Card sx={{marginTop: "4%", width: "180px",  display: "flex", float: "left", marginLeft: "4%"}}>
                                         <CardActionArea>
 
                                             <CardMedia >
                                                 <img className="MarketplaceIcon" src={`data:${product.productImage.contentType};base64, ${Buffer.from(product.productImage.data.data).toString('base64')}`}/>
                                             </CardMedia>
                                             <Typography variant="h6">{product.productName}</Typography>
+                                            <Typography variant="h6">$ {product.productPrice.toFixed(2)}</Typography>
                                         </CardActionArea>
                                     </Card>
                                 )
