@@ -50,7 +50,10 @@ export default function ProductPage()
                             <div className="leftSideMenu">
 
                                 <div className="ProductImageWrapper">
-                                    <img className="productImage" src={`data:${targetProduct.productImage.contentType};base64,
+                                    <img className="productImage"
+                                    width="330px"
+                                    height="372px"
+                                    src={`data:${targetProduct.productImage.contentType};base64,
                                     ${Buffer.from(targetProduct.productImage.data.data).toString('base64')}`}/>
                                 </div>
                                 

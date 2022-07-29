@@ -6,8 +6,8 @@
         .TargetProduct{
             .ProductImageWrapper{
                 .productImage{
-                    width: 300px;
-                    height: 372px;
+
+
                 }
 
             }
@@ -16,10 +16,17 @@
     .rightSideMenu{
         border: 1px  solid rgba(0, 0, 0, 0.12);
         margin-left: 20%;
+        height: 393px;
         // overflow: hidden;
     }
     .productInteractionWrapper{
-        // float: right;
+        // margin-top: 100%;
         // border-style: solid;
+    }
+    .productDescriptionWrapper{
+        overflow-y: auto;
+        .productDescription{
+            height: 186px;
+        }
     }
 }

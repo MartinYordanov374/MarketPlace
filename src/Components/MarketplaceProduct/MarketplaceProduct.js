@@ -25,8 +25,12 @@ export default function MarketplaceProduct (data)
                         <h2 className="productName">{data.prod.productName}</h2>
                         <Divider/>
 
-                        <h3 className="productDescription">{data.prod.productDescription}</h3>
-
+                        <h3 className="productDescription">{
+                            data.prod.productDescription.length >= 120 ?
+                        data.prod.productDescription.slice(0,120) + '...'
+                        :
+                        data.prod.productDescription
+                        }</h3>
                     </CardContent>
                     
                 </CardActionArea>
