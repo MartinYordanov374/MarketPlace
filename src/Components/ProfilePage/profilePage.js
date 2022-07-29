@@ -17,6 +17,10 @@ import CreateMarketplaceModal from "../createMarketplaceModal/CreateMarketplaceM
 import CreateProductModal from "../CreateProductAbsolutely/CreateProductAbsolutely";
 import ProductCard from "../ProductCard/ProductCard";
 import {Rating} from 'react-simple-star-rating'   
+
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function ProfilePage()
 {
     const [rating, setRating] = useState(0) 
@@ -188,17 +192,17 @@ export default function ProfilePage()
         let ratingAmount =  rating
         Axios.post('http://localhost:3001/addUserRating', {ratingReceiverId: ratingReceiverId, ratingAdderId: ratingAdderId, ratingAmount: ratingAmount})
         .then((res) => {
-            console.log(res)
+            console.log(res.message)
         })
         .catch((err) => {
-            console.log(err)
+            toast.warn(err.response.data)
         })
-        console.log(userData)
       }
 
     return (
         <div>
             <Navbar/>
+                <ToastContainer/>
                 <div className="profilePageWrapper">
                     {
                         userData.isOwner 

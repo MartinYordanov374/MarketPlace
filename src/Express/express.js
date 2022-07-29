@@ -289,6 +289,10 @@ async function startServer(){
         {
             res.status(200).send(result.msg)
         }
+        else if(result.status == 409)
+        {
+            res.status(409).send(result.message) 
+        }
         else if(result.status == 401)
         {
             res.status(401).send(result.msg.message)

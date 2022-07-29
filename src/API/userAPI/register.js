@@ -29,8 +29,7 @@ async function registerUser(username, notHashedPassword, confirmationPassword)
                     let hashedPass =  await bcrypt.hash(notHashedPassword.toString(), saltRounds)
                     let user = await userModel({
                         username: username,
-                        hashedPass: hashedPass,
-                        rating: 0
+                        hashedPass: hashedPass
                     })
 
                     let userData = await user.save()

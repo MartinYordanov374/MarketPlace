@@ -15,7 +15,8 @@ const UserSchema = new Schema({
 
     rating:{
         type: [Object],
-        required: false
+        required: false,
+        ref: 'user'
     },
 
     reviews:{
