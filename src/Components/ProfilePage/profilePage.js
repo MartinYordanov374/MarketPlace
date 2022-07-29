@@ -253,7 +253,12 @@ export default function ProfilePage()
 
                                 <div className="userRating">
                                     {
+                                        userData.rating.reduce((a,b) =>  a + b.ratingAmount, 0) / userData.rating.length >= 1 
+                                        ?
                                         <h3> Rating: {(userData.rating.reduce((a,b) =>  a + b.ratingAmount, 0) / userData.rating.length).toFixed(2)} / 5.00 </h3>
+                                        :
+                                        <h3> Rating: 0.00 / 5.00 </h3>
+
                                     }
                                     <Rating
                                         initialValue={0}
