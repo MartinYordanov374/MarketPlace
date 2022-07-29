@@ -399,13 +399,10 @@ export default function Marketplace ()
                             </div>
                         }
                     </div>
-                        {
-                            <div>
-                                <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/> 
-
-                                { isUserOnProducts ? 
+                        { isUserOnProducts ? 
                                     <div className="marketplaceProducts">
-                                    {/* TODO FIX THE MARGINS !!! */}
+                                        <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/> 
+
                                     {
                                         marketplaceData.marketplaceProducts.length >= 1 ?
                                         marketplaceData.marketplaceProducts.map( (prod) => {
@@ -442,9 +439,6 @@ export default function Marketplace ()
                                         }
                                     </div>
                                 }
-                                
-                            </div>
-                        }
                     </div>}
                     <Footer/>
                 </div>
