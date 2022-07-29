@@ -1,7 +1,7 @@
-let product = require('../../Database/productSchema')
+let productModel = require('../../Database/productSchema')
 const { getMarketplaceById } = require('../marketplaceAPI/getMarketplaceByID')
 const {checkUserExistsById} = require('../userAPI/checkUserExistsById')
-async function createProduct(creatorID, productName, productDescription, productPrice, productMarketplaceID)
+async function createProduct(creatorID, productId, productMarketplaceID)
 {
     try{
         let CurrentUser = await checkUserExistsById(creatorID)
@@ -10,17 +10,10 @@ async function createProduct(creatorID, productName, productDescription, product
 
         if(CurrentUser != null && CurrentMarketplace != null)
         {
-             let newProduct = await product({
-                 productName: productName,
-                 productDescription: productDescription,
-                 productPrice: productPrice,
-                 productCreator: CurrentUser._id,
-                 productMarketplaceID: productMarketplaceID
-             })
+             let product = await productModel.findById({_id: productId})
         
-             await newProduct.save()
         
-             CurrentMarketplace.marketplaceProducts.push(newProduct)
+             CurrentMarketplace.marketplaceProducts.push(product)
              await CurrentMarketplace.save()
     
              return {status: 200, msg: 'Product added successfully!'}

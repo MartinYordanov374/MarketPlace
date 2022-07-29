@@ -15,7 +15,17 @@ export default function ProductsModal (props)
     const [marketplaceData, setMarketplaceData] = useState('')
 
     const uploadProduct = (targetProduct) => {
-        console.log(targetProduct)
+        let productCreatorID = targetProduct.productCreator
+        let productId = targetProduct._id
+        let marketplaceId = marketplaceData._id
+
+        Axios.post('http://localhost:3001/createProduct', {productCreatorID: productCreatorID, productId: productId, marketplaceId: marketplaceId})
+        .then((res) => {
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 
     const closeProductsModal = () => {

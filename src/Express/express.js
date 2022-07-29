@@ -11,6 +11,8 @@ const {loginUser} = require('../API/userAPI/login')
 
 const {createMarketplace} = require('../API/marketplaceAPI/createMarketplace')
 const {deleteMarketplace} = require('../API/marketplaceAPI/deleteMarketplace')
+const {createProduct} = require('../API/productAPI/createProduct')
+
 const {createProductAbsolutely} = require('../API/productAPI/createProductAbsolutely')
 const {deleteProduct} = require('../API/productAPI/deleteProductFromMarketplace')
 const { deleteProductAbsolutely } = require('../API/productAPI/deleteProductAbsolutely')
@@ -241,6 +243,15 @@ async function startServer(){
         {
             res.status(401).send(result.msg)
         }
+    })
+
+    app.post('/createProduct', async(req,res) => {
+        let incomingData = req.body
+        let creatorId = incomingData.productCreatorID
+        let productId = incomingData.productId
+        let marketplaceId = incomingData.marketplaceId
+        let result = await createProduct(creatorId, productId, marketplaceId)
+        console.log(result)
     })
 
     app.post('/deleteProductFromMarketplace', async(req,res) => {
