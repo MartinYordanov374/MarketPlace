@@ -104,7 +104,7 @@ export default function CreateProductModal() {
                         <Box sx= { ModalStyle } >
                                 <Typography sx= { modalTitleStyle } >Create Product Form</Typography>
                                 <Input sx = {modalInputStyle} name="productName" placeholder="Enter product name" value = { productName } ref = { productNameRef } onChange={ (e) => setProductName(e.target.value) } />
-                                <Input sx = {modalInputStyle} name="productTags" placeholder="Enter some product tags" value = { productTags } ref = { productTagsRef } onChange={ (e) => setProductTags(e.target.value) } />
+                                <Input sx = {modalInputStyle} name="productTags" placeholder="Enter product price" value = { productTags } ref = { productTagsRef } onChange={ (e) => setProductTags(e.target.value) } />
                                 <Input sx = {modalInputStyle} name="productDescription" placeholder="Enter product description" value = { productDescription } ref = { productDescriptionRef } onChange={ (e) => setProductDescription(e.target.value) } />
 
                                 <Button  variant="outlined" sx = {modalProductImageStyle} color='warning' component="label"> 
