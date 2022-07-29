@@ -402,7 +402,8 @@ export default function Marketplace ()
                     {
                         isUserOnProducts ? 
                         <div className="marketplaceProducts">
-                        <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/>
+                        <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/> 
+                        {/* TODO FIX THE MARGINS !!! */}
                         {
                             marketplaceData.marketplaceProducts.length >= 1 ?
                             marketplaceData.marketplaceProducts.map( (prod) => {
