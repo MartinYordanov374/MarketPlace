@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AACI,CADH,AACI,MAAM,CAAA;EACH,KAAK,EAAE,KAAK;CACf",
+    "sources": [
+        "marketplaceProductStyling.scss"
+    ],
+    "names": [],
+    "file": "marketplaceProductStyling.css"
+}

@@ -5,13 +5,13 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import React from 'react'
 
 import { Buffer } from 'buffer';
-
+import './marketplaceProductStyling.css'
 export default function MarketplaceProduct (data)
 {
     return(
         <div class='marketplaceProduct'>
             <Card className='productCard'>
-                <CardActionArea>
+                <CardActionArea  href={`/product/${data.prod._id}`}>
                     <CardContent>
                         <CardMedia>
                             <img className="productIcon" 
