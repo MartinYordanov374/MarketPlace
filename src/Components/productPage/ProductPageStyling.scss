@@ -1,21 +1,23 @@
 
 .targetProductWrapper{
+    border: 1px  solid rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    .leftSideMenu{
-        float: left;
-        .TargetProduct{
-            .ProductImageWrapper{
-                .productImage{
-
+    .TargetProduct{
+        margin: 1%;
+        .leftSideMenu{
+            float: left;
+                .ProductImageWrapper{
+                    .productImage{
+                        border-radius: 10px;
+                    }
 
                 }
-
             }
         }
-    }
     .rightSideMenu{
         border: 1px  solid rgba(0, 0, 0, 0.12);
         border-bottom: none;
+        border-radius: 10px;
         margin-left: 20%;
         height: 454px;
         // overflow: hidden;
@@ -24,6 +26,8 @@
         // margin-top: 100%;
         // border-style: solid;
         border: 1px  solid rgba(0, 0, 0, 0.12);
+        border-radius: 10px;
+
     }
     .productDescriptionWrapper{
         overflow-y: auto;

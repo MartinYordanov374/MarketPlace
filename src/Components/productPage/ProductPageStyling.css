@@ -1,20 +1,31 @@
 .targetProductWrapper {
+  border: 1px solid rgba(0, 0, 0, 0.12);
   overflow: hidden;
 }
 
-.targetProductWrapper .leftSideMenu {
+.targetProductWrapper .TargetProduct {
+  margin: 1%;
+}
+
+.targetProductWrapper .TargetProduct .leftSideMenu {
   float: left;
+}
+
+.targetProductWrapper .TargetProduct .leftSideMenu .ProductImageWrapper .productImage {
+  border-radius: 10px;
 }
 
 .targetProductWrapper .rightSideMenu {
   border: 1px solid rgba(0, 0, 0, 0.12);
   border-bottom: none;
+  border-radius: 10px;
   margin-left: 20%;
   height: 454px;
 }
 
 .targetProductWrapper .productInteractionWrapper {
   border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
 }
 
 .targetProductWrapper .productDescriptionWrapper {
