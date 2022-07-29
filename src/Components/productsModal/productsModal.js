@@ -14,8 +14,8 @@ export default function ProductsModal (props)
     const [userData, setUserData] = useState(false)
     const [marketplaceData, setMarketplaceData] = useState('')
 
-    const uploadProduct = () => {
-        console.log('uploading product')
+    const uploadProduct = (targetProduct) => {
+        console.log(targetProduct)
     }
 
     const closeProductsModal = () => {
@@ -47,6 +47,14 @@ export default function ProductsModal (props)
         boxShadow: 24,
         p: 4,
       };
+
+    const cardStyle = {
+        marginTop: "4%", 
+        width: "180px",  
+        display: "flex", 
+        float: "left", 
+        marginLeft: "4%"
+    }
     return(
     <div className='userProductsWrapper'>
         <ToastContainer/>
@@ -68,11 +76,12 @@ export default function ProductsModal (props)
                         <Typography className='addReviewTitle' variant="h5">Select the product you want to upload:</Typography>
                             {userData.products && userData.products.map(product => {
                                 return(
-                                    <Card sx={{marginTop: "4%", width: "180px",  display: "flex", float: "left", marginLeft: "4%"}}>
+                                    <Card sx={cardStyle} onClick={() => uploadProduct(product)}>
                                         <CardActionArea>
 
                                             <CardMedia >
-                                                <img className="MarketplaceIcon" src={`data:${product.productImage.contentType};base64, ${Buffer.from(product.productImage.data.data).toString('base64')}`}/>
+                                                <img className="MarketplaceIcon" src={`data:${product.productImage.contentType};base64, 
+                                                ${Buffer.from(product.productImage.data.data).toString('base64')}`}/>
                                             </CardMedia>
                                             <Typography variant="h6">{product.productName}</Typography>
                                             <Typography variant="h6">$ {product.productPrice.toFixed(2)}</Typography>
@@ -80,7 +89,6 @@ export default function ProductsModal (props)
                                     </Card>
                                 )
                             })}
-                        <Button color='warning' className='addReviewButton' onClick={() => uploadProduct()}>Select</Button>
                     </Box>
                 </Fade>
         </Modal>
