@@ -49,7 +49,7 @@ export default function ProductsModal (props)
 
     const ModalStyle = {
         position: 'absolute',
-        top: '35%',
+        top: '45%',
         left: '51%',
         transform: 'translate(-50%, -50%)',
         width: 400,
