@@ -14,7 +14,7 @@ const UserSchema = new Schema({
     },
 
     rating:{
-        type: [Number],
+        type: [Object],
         required: false
     },
 

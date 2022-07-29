@@ -247,7 +247,7 @@ export default function ProfilePage()
                                 </div>
 
                                 <div className="userRating">
-                                    <h3>Rating: {userData.rating.reduce((i,j) => {return i + j}) / userData.rating.length } / 5.00</h3>
+                                    {/* <h3>Rating: {userData.rating.reduce((i,j) => {return i + j}) / userData.rating.length } / 5.00</h3> */}
                                     <Rating
                                         initialValue={0}
                                         transition

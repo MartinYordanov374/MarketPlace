@@ -21,7 +21,7 @@ async function addUserRating(ratingAdderId, ratingReceiverId, ratingAmount)
                 ratingAmount = 5
             }
 
-            await ratingReceiver.rating.push(ratingAmount)
+            await ratingReceiver.rating.push({ratingAdder, ratingAmount})
             await ratingReceiver.save()
 
             return {status: 200, msg: 'Rating successfully added'}
