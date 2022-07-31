@@ -341,10 +341,15 @@ async function startServer(){
         let ratingAmount = incomingData.ratingAmount
 
         let result = await addMarketplaceRating(ratingAdderId, ratingReceiverId,ratingAmount)
+        console.log(result)
 
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
+        }
+        else if(result.status == 409)
+        {
+            res.status(409).send(result.message) 
         }
         else{
             res.status(401).send('Something went wrong.')
@@ -357,7 +362,7 @@ async function startServer(){
         let ratingReceiverId = incomingData.ratingReceiverId
         let ratingAmount = incomingData.ratingAmount
 
-        let result = await addProductRating(ratingAdderId, ratingReceiverId, ratingAmount)
+        let result = await addPaddMarketplaceRatingroductRating(ratingAdderId, ratingReceiverId, ratingAmount)
         if(result.status == 200)
         {
             res.status(200).send(result.msg)

@@ -3,7 +3,6 @@ const {findProductById} = require('./findProductById')
 const {CheckUserHasGivenProductRating} = require('../userAPI/CheckUserHasGivenProductRating')
 async function addProductRating(ratingAdderId, ratingReceiverId, ratingAmount)
 {
-    console.log(ratingAmount)
     try{
         let ratingAdder = await checkUserExistsById(ratingAdderId)
         let ratingReceiver = await findProductById(ratingReceiverId)

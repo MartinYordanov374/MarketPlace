@@ -17,9 +17,12 @@ import ReviewModal from '../ReviewModal/reviewModal'
 import MarketplaceProduct from "../MarketplaceProduct/MarketplaceProduct";
 import MarketplaceReview from "../MarketplaceReview/MarketplaceReview";
 import ProductsModal from "../productsModal/productsModal";
+import {Rating} from 'react-simple-star-rating'   
+
 export default function Marketplace ()
 {
     // TODO SORT MARKERPLACE REVIEWS BY RATING
+    // TODO ADD STAR RATING TO ALL VIEWS (OWNER, NON-OWNER ETC.)
 
     let [loginStatus, setLoginStatus] = useState('')
 
@@ -75,6 +78,39 @@ export default function Marketplace ()
         getMarketplaceData()
     }, [])
     
+    const handleRating = (rate) => {
+
+        switch(rate){
+            case 20:
+                rate = 1
+                break;
+            case 40:
+                rate = 2
+                break;
+            case 60:
+                rate = 3
+                break;
+            case 80:
+                rate = 4
+                break;
+            case 100:
+                rate = 5
+                break;
+        }
+        let ratingReceiverId = marketplaceID
+        let ratingAdderId = userData.id
+        let ratingAmount =  rate
+
+        Axios.post('http://localhost:3001/addMarketplaceRating', {ratingAdderId: ratingAdderId, ratingReceiverId: ratingReceiverId, ratingAmount: ratingAmount})
+        .then((res) => {
+            toast.success(res.data)
+        })
+        .catch((err) => {
+            toast.warn(err.response.data)
+        })
+        
+    }
+
     const handleMarketplaceView = () => {
         if(isUserOnProducts == true)
         {
@@ -188,7 +224,8 @@ export default function Marketplace ()
             <div>
                 <Navbar/>
                 <ToastContainer/>
-                {isUserOwner == false ? 
+                {isUserOwner == false 
+                ? 
                 <div className="nonOwnerMarketplaceView">
                     <div className="marketplaceWrapper">
                         <div className="marketplaceBannerWrapper">
@@ -200,7 +237,7 @@ export default function Marketplace ()
                             <div className="marketplaceOwner"> 
                                <span>
                                     By: &nbsp; <a className="marketplaceOwnerProfileLink" href={'/profile/' + marketplaceData.marketplaceOwner._id}> 
-                                        {marketplaceData.marketplaceOwner.username} 
+                                        {marketplaceData.marketplaceOwner.username}
                                     </a>
                                 </span> 
                             </div>
@@ -303,7 +340,11 @@ export default function Marketplace ()
 
                         <div className="marketplaceDetailsWrapper">
                             <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
-                            
+                            <Rating
+                                transition
+                                onClick={handleRating}
+                                size={25}
+                            />
                             <div className="marketplaceOwner">                                
                                 <span>
                                     By: &nbsp; <a className="marketplaceOwnerProfileLink" href={'/profile/' + marketplaceData.marketplaceOwner._id}> 
