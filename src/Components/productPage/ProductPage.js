@@ -73,7 +73,7 @@ export default function ProductPage()
         setRating(rate)
         let ratingReceiverId = URL_ID
         let ratingAdderId = userData.id
-        let ratingAmount =  rating    
+        let ratingAmount =  rate
 
         Axios.post('http://localhost:3001/addProductRating', {ratingAdderId: ratingAdderId, ratingReceiverId: ratingReceiverId, ratingAmount: ratingAmount})
         .then((res) => {
@@ -116,7 +116,6 @@ export default function ProductPage()
                                         <Rating
                                             transition
                                             onClick={handleRating}
-                                            ratingValue={rating}
                                             size={25}
                                         />
                                         {

@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 
 async function addUserRating(ratingAdderId, ratingReceiverId, ratingAmount)
 {
-    console.log(ratingAmount)
     try{
 
         let ratingAdder = await checkUserExistsById(ratingAdderId)
