@@ -167,7 +167,6 @@ export default function ProfilePage()
     }
 
     const handleRating = (rate) => {
-
         switch(rate){
             case 20:
                 rate = 1
@@ -181,15 +180,15 @@ export default function ProfilePage()
             case 80:
                 rate = 4
                 break;
-            case 100:
+                case 100:
                 rate = 5
                 break;
-        }
+            }
         setRating(rate)
 
         let ratingReceiverId = URL_ID
         let ratingAdderId = userData.id
-        let ratingAmount =  rating
+        let ratingAmount =  rate
         Axios.post('http://localhost:3001/addUserRating', {ratingReceiverId: ratingReceiverId, ratingAdderId: ratingAdderId, ratingAmount: ratingAmount})
         .then((res) => {
             console.log(res.message)
@@ -261,10 +260,8 @@ export default function ProfilePage()
 
                                     }
                                     <Rating
-                                        initialValue={0}
                                         transition
                                         onClick={handleRating}
-                                        ratingValue={rating}
                                         size={25}
     />
                                 </div>
