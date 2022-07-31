@@ -108,7 +108,7 @@ export default function Marketplace ()
         .catch((err) => {
             toast.warn(err.response.data)
         })
-        
+
     }
 
     const handleMarketplaceView = () => {
@@ -234,6 +234,11 @@ export default function Marketplace ()
 
                         <div className="marketplaceDetailsWrapper">
                             <h1 className="marketplaceName"> {marketplaceData.marketplaceName} </h1>
+                            <Rating
+                                transition
+                                onClick={handleRating}
+                                size={25}
+                            />
                             <div className="marketplaceOwner"> 
                                <span>
                                     By: &nbsp; <a className="marketplaceOwnerProfileLink" href={'/profile/' + marketplaceData.marketplaceOwner._id}> 
