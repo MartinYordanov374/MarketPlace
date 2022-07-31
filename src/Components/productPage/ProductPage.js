@@ -12,6 +12,7 @@ import AddProductReviewModal from "../AddProductReviewModal/AddProductReviewModa
 
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import MarketplaceReview from "../MarketplaceReview/MarketplaceReview";
 
 export default function ProductPage()
 {
@@ -158,12 +159,7 @@ export default function ProductPage()
                                 :
                                     targetProduct.productReviews.map((review) => {
                                         return(
-                                            <Card>
-                                                <Typography>{review.reviewOwner.username}</Typography>
-
-                                                <Typography>{review.reviewContent}</Typography>
-
-                                            </Card>
+                                            <MarketplaceReview targetReview = { review } marketplaceData = { targetProduct } /> 
                                         )
                                     })
                                 }

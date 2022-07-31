@@ -6,7 +6,6 @@ import { toast, ToastContainer } from "react-toastify";
 
 export default function AddProductReviewModal (props)
 {
-    console.log(props)
     const [reviewModalState, setReviewModalState] = useState(false)
 
     const [userReview, setUserReview] = useState('')
@@ -36,7 +35,6 @@ export default function AddProductReviewModal (props)
       };
 
     const addReview = () => {
-        // TODO CHANGE THE MARKETPLACE ENDPOINT TO PRODUCT ENDPOINT
         let userID = userData.id
         let reviewedProductId = productData._id
         let reviewContent = userReview
@@ -56,6 +54,7 @@ export default function AddProductReviewModal (props)
         setProductData(props.productData)
         setUserData(props.userData)
     },[])
+
 
     
     return (

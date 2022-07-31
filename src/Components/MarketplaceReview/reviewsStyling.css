@@ -1,0 +1,65 @@
+.marketplaceReview {
+  margin-top: 1%;
+  width: 50%;
+  margin-left: 28%;
+}
+
+.reviewGiver {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.reviewGiver .reviewGiverUsername {
+  font-size: 18px;
+  margin-top: 0%;
+  color: black !important;
+}
+
+.reviewGiver .reviewGiverIcon {
+  width: 3rem;
+  height: 40px;
+  border-radius: 10px;
+  vertical-align: bottom;
+  font-size: 18px;
+}
+
+.reviewGiver .reviewGiverPfp {
+  width: 3rem;
+  height: 40px;
+  border-radius: 10px;
+  vertical-align: bottom;
+  font-size: 18px;
+}
+
+.reviewQuestionnaire {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.reviewQuestionnaire .reviewHelpfulIcon {
+  color: green;
+  height: 2em;
+}
+
+.reviewQuestionnaire .reviewHelpfulIcon:hover {
+  color: #006800;
+  cursor: pointer;
+}
+
+.reviewQuestionnaire .reviewNotHelpfulIcon {
+  height: 2em;
+  color: red;
+}
+
+.reviewQuestionnaire .reviewNotHelpfulIcon:hover {
+  color: #c50000;
+  cursor: pointer;
+}
+
+.reviewRatingWrapper .reviewRating {
+  color: #406367;
+  font-size: 0.85rem;
+}
+/*# sourceMappingURL=reviewsStyling.css.map */

@@ -377,7 +377,7 @@ async function startServer(){
         let reviewerUserId = incomingData.reviewerUserId
         let reviewedProductId = incomingData.reviewedProductId
         let reviewContent = incomingData.reviewContent
-
+        console.log(incomingData)
         let result = await addProductReview(reviewerUserId, reviewedProductId,reviewContent)
         if(result.status == 200)
         {

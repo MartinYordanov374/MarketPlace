@@ -7,8 +7,9 @@ import {Card, Divider} from '@mui/material'
 import Axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from "react-toastify";
+import { Buffer } from 'buffer';
 
-
+import './reviewsStyling.css'
 
 export default function MarketplaceReview(reviewData, marketplaceData) {
     const reviewNotHelpfulHandler = (reviewID) => {
