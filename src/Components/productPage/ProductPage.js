@@ -10,6 +10,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import {Rating} from 'react-simple-star-rating'   
 import AddProductReviewModal from "../AddProductReviewModal/AddProductReviewModal"
 
+import {toast, ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function ProductPage()
 {
     const productID = window.location.href.split('/')[4]
@@ -17,6 +20,8 @@ export default function ProductPage()
     const [isLoading, setIsLoading] = useState(true)
     const [rating, setRating] = useState(0)
     const [userData, setUserData] = useState('')
+
+    const URL_ID = window.location.href.split('/')[4]
 
     useEffect(() => {
 
@@ -65,12 +70,23 @@ export default function ProductPage()
                 break;
         }
         setRating(rate)
-        console.log(rating)
+        let ratingReceiverId = URL_ID
+        let ratingAdderId = userData.id
+        let ratingAmount =  rating    
+
+        Axios.post('http://localhost:3001/addProductRating', {ratingAdderId: ratingAdderId, ratingReceiverId: ratingReceiverId, ratingAmount: ratingAmount})
+        .then((res) => {
+            toast.success(res.data)
+        })
+        .catch((err) => {
+            toast.warn(err.response.data)
+        })
     }
 
     return (
         <div>
             <Navbar/>
+            <ToastContainer/>
                 {
                     isLoading == true ?
                     <CircularProgress className="loadingCircle" color="warning" /> 
@@ -102,11 +118,18 @@ export default function ProductPage()
                                             ratingValue={rating}
                                             size={25}
                                         />
-                                        {targetProduct.productRating.length < 1 ?
-                                            <p>Rating: 0.00 / 5.00</p>
-                                            :
-                                            <p>Rating: {targetProduct.productRating} / 5.00</p>
+                                        {
+                                        targetProduct.productRating.reduce((a,b) =>  a + b.ratingAmount, 0) / targetProduct.productRating.length >= 1 
+                                        ?
+                                        <h3> Rating: {(targetProduct.productRating.reduce((a,b) =>  a + b.ratingAmount, 0) / userData.rating.length).toFixed(2)} / 5.00 </h3>
+                                        :
+                                        <h3> Rating: 0.00 / 5.00 </h3>
+
                                         }
+                                        {
+                                            console.log(targetProduct.productRating.reduce((a,b) =>  a + b.ratingAmount, 0))
+                                        }
+                                        {/* ADD MESSAGE TO THE PRODUCT MODAL WHENEVER THERE ARE NO PRODUCTS ADDED ! */}
                                     </div>
                                     <Divider/>
                                     
@@ -134,7 +157,6 @@ export default function ProductPage()
                                     <AddProductReviewModal productData = {targetProduct} userData = {userData}/>
                                 :
                                     targetProduct.productReviews.map((review) => {
-                                        console.log(review)
                                         return(
                                             <Card>
                                                 <Typography>{review.reviewOwner.username}</Typography>

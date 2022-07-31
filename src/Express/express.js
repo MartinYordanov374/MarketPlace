@@ -357,7 +357,6 @@ async function startServer(){
         let ratingAmount = incomingData.ratingAmount
 
         let result = await addProductRating(ratingAdderId, ratingReceiverId, ratingAmount)
-
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
