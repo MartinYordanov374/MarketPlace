@@ -46,8 +46,26 @@ export default function ProductPage()
         getProductData()
     }, [])
 
-    const handleRating = () => {
-
+    const handleRating = (rate) => {
+        switch(rate){
+            case 20:
+                rate = 1
+                break;
+            case 40:
+                rate = 2
+                break;
+            case 60:
+                rate = 3
+                break;
+            case 80:
+                rate = 4
+                break;
+            case 100:
+                rate = 5
+                break;
+        }
+        setRating(rate)
+        console.log(rating)
     }
 
     return (
@@ -79,7 +97,6 @@ export default function ProductPage()
                                     <div className="ProductTitleWrapper">
                                         <h1 className="productTitle">{targetProduct.productName}</h1>
                                         <Rating
-                                            initialValue={0}
                                             transition
                                             onClick={handleRating}
                                             ratingValue={rating}

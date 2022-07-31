@@ -20,7 +20,9 @@ let productSchema = new Schema({
         ref: 'review'
     },
     productRating:{
-        type: [Number],
+        type: [Object],
+        required: false,
+        ref: 'user'
     },
     productPrice:{
         type: Number,
