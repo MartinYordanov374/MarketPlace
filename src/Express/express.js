@@ -301,6 +301,7 @@ async function startServer(){
         let ratingAmount = incomingData.ratingAmount
 
         let result = await addUserRating(ratingAdderId, ratingReceiverId, ratingAmount)
+
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
@@ -360,6 +361,10 @@ async function startServer(){
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
+        }
+        else if(result.status == 409)
+        {
+            res.status(409).send(result.message) 
         }
         else if(result.status == 401)
         {

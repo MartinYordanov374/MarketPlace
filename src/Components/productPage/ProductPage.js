@@ -121,13 +121,13 @@ export default function ProductPage()
                                         {
                                         targetProduct.productRating.reduce((a,b) =>  a + b.ratingAmount, 0) / targetProduct.productRating.length >= 1 
                                         ?
-                                        <h3> Rating: {(targetProduct.productRating.reduce((a,b) =>  a + b.ratingAmount, 0) / userData.rating.length).toFixed(2)} / 5.00 </h3>
+                                        <h3> Rating: {(targetProduct.productRating.reduce((a,b) =>  a + b.ratingAmount, 0) / targetProduct.productRating.length).toFixed(2)} / 5.00 </h3>
                                         :
                                         <h3> Rating: 0.00 / 5.00 </h3>
 
                                         }
                                         {
-                                            console.log(targetProduct.productRating.reduce((a,b) =>  a + b.ratingAmount, 0))
+                                            console.log(targetProduct.productRating)
                                         }
                                         {/* ADD MESSAGE TO THE PRODUCT MODAL WHENEVER THERE ARE NO PRODUCTS ADDED ! */}
                                     </div>
@@ -169,9 +169,9 @@ export default function ProductPage()
                                 }
                             </div>
 
-                            <div className="productRatingWrapper">
+                            {/* <div className="productRatingWrapper">
                                 <h1>{targetProduct.productRating}</h1>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 }

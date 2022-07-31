@@ -11,7 +11,7 @@ async function addProductRating(ratingAdderId, ratingReceiverId, ratingAmount)
 
         if(res == true)
         {
-            return {status: 409, message: "You have already rated that user!"}
+            return {status: 409, message: "You have already rated that product!"}
         }
         else
         {     
@@ -27,7 +27,7 @@ async function addProductRating(ratingAdderId, ratingReceiverId, ratingAmount)
                     ratingAmount = 5
                 }
 
-                await ratingReceiver.productRating.push(ratingAmount)
+                await ratingReceiver.productRating.push({ratingAdderId, ratingAmount})
                 await ratingReceiver.save()
 
                 return {status: 200, msg: 'Rating successfully added'}
