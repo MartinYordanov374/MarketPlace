@@ -1,7 +1,7 @@
 import {Button, Card, CardActionArea, CardContent, Divider, CardMedia} from '@mui/material'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-import React from 'react'
+import React, {useState} from 'react'
 import { Buffer } from 'buffer';
 import './marketplaceProductStyling.css'
 export default function MarketplaceProduct (data)
