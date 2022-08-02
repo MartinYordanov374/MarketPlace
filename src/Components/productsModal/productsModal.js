@@ -64,6 +64,8 @@ export default function ProductsModal (props)
         float: "left", 
         marginLeft: "4%"
     }
+    // TODO ADD CUSTOM MESSAGE FOR WHEN THERE ARE NO PRODUCTS ADDED
+    // TODO ADD DELETE AND EDIT PRODUCT OPTION
     return(
     <div className='userProductsWrapper'>
         <ToastContainer/>

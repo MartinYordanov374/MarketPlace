@@ -302,7 +302,6 @@ export default function Marketplace ()
                     {
                         isUserOnProducts ? 
                         <div className="marketplaceProducts">
-                            {/* <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/> */}
                             {
                                 marketplaceData.marketplaceProducts.length >= 1 ?
                                 marketplaceData.marketplaceProducts.map( (prod) => {
@@ -447,8 +446,6 @@ export default function Marketplace ()
                     </div>
                         { isUserOnProducts ? 
                                     <div className="marketplaceProducts">
-                                        {/* <ProductsModal MarketplaceData = { marketplaceData } UserData = { userData }/>  */}
-
                                     {
                                         marketplaceData.marketplaceProducts.length >= 1 ?
                                         marketplaceData.marketplaceProducts.map( (prod) => {
