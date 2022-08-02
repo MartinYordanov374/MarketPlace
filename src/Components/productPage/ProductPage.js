@@ -87,9 +87,16 @@ export default function ProductPage()
     }
     const addProductToCart = (targetProduct) => {
 
-        setProductsInCart(curr => [...curr, targetProduct])
-
-        localStorage.setItem('productsInCart', JSON.stringify(productsInCart))
+        let targetProductID = targetProduct._id
+        let UserID = userData.id
+        
+        Axios.post('http://localhost:3001/addProductToCart', {targetProductID: targetProductID, userID: UserID})
+        .then((res) => {
+            toast.success(res.data)
+        })
+        .catch((err) => {
+            toast.warn(err.response.data)
+        })
     }
 
     return (
@@ -134,9 +141,7 @@ export default function ProductPage()
                                         <h3> Rating: 0.00 / 5.00 </h3>
 
                                         }
-                                        {
-                                            console.log(targetProduct.productRating)
-                                        }
+                 
                                         {/* ADD MESSAGE TO THE PRODUCT MODAL WHENEVER THERE ARE NO PRODUCTS ADDED ! */}
                                     </div>
                                     <Divider/>

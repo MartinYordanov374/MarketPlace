@@ -17,17 +17,9 @@ export default function CartComponent() {
 
     const removeProductFromCart = (targetProductID) => {
 
-        if( items.length > 1)
-        {
-            items = items.splice(targetProductID,1)
-            localStorage.setItem('productsInCart', JSON.stringify(items))
-        }
-        else
-        {
-            items = []
-            localStorage.clear()
-        }
-        console.log(items)
+        let newItems = items.splice(targetProductID, 1)
+        localStorage.setItem('productsInCart', JSON.stringify(newItems))
+ 
     }
 
     const productLeftMenuStyle = {

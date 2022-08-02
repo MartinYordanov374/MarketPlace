@@ -41,6 +41,10 @@ const UserSchema = new Schema({
     covertPicture: {
         type: Buffer,
         contentType: String
+    },
+    productsInCart:{
+        type: [ObjectId],
+        ref: 'product'
     }
 })
 

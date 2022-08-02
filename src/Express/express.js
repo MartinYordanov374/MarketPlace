@@ -22,6 +22,7 @@ const { addMarketplaceRating } = require('../API/marketplaceAPI/addMarketplaceRa
 const { getAllMarketplaces } = require('../API/marketplaceAPI/getAllMarketplaces')
 const { addProductRating } = require('../API/productAPI/addProductRating')
 const { addProductReview } = require('../API/productAPI/addProductReview')
+const { AddProductToCart } = require('../API/userAPI/addProductToCart')
 
 let cookieParser = require('cookie-parser');
 let session = require('express-session');
@@ -553,6 +554,23 @@ async function startServer(){
         let newProductPrice = incomingData.newProductPrice
 
         let result = await EditProduct( editorID, productID, newProductName, newProductDescription, newProductPrice)
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
+        }
+    })
+
+    app.post('/addProductToCart', async(req,res) => {
+        const incomingData = req.body
+
+        let targetProductID = incomingData.targetProductID
+        let userID = incomingData.userID
+        
+        let result = await AddProductToCart(targetProductID, userID)
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
