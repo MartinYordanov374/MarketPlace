@@ -1,3 +1,5 @@
+$primary-color: #ed6c02;
+
 .MyCartContent{
     margin-top: 2%;
     margin-left: 2%;
@@ -7,6 +9,16 @@
     border-radius: 4px;
     box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
     width: 70%;
+    .MyCartProducts{
+        margin-top: 2%;
+        margin-left: 2%;
+        color: $primary-color;
+    }
+    .NoProductsMessage{
+        text-align: center;
+        margin-top: 15%;
+        color: $primary-color;
+    }
 }
 
 .CheckoutSummary{
@@ -17,7 +29,7 @@
     width: 24%;
     .CheckoutSUmmaryTitle{
         margin-left: 25%;
-        color: #ed6c02
+        color: $primary-color;
     }
     .totalPriceIndicator{
         margin-top: 5%;
@@ -43,4 +55,3 @@
         margin-left: 35%;
     }
 }
-

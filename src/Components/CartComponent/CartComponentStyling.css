@@ -10,6 +10,18 @@
   width: 70%;
 }
 
+.MyCartContent .MyCartProducts {
+  margin-top: 2%;
+  margin-left: 2%;
+  color: #ed6c02;
+}
+
+.MyCartContent .NoProductsMessage {
+  text-align: center;
+  margin-top: 15%;
+  color: #ed6c02;
+}
+
 .CheckoutSummary {
   position: absolute;
   top: 10.5%;

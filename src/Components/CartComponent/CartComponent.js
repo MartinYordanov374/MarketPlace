@@ -6,7 +6,13 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import './CartComponentStyling.css'
 export default function CartComponent() {
 
-    const items = JSON.parse(localStorage.getItem('productsInCart'))
+    let items = JSON.parse(localStorage.getItem('productsInCart'))
+    
+    if ( items == null)
+    {
+        items = []
+    }
+
     const productLeftMenuStyle = {
 
     }
@@ -38,42 +44,50 @@ export default function CartComponent() {
         <Box className="MyCartWrapper">
             <Navbar/>
                 <div className="MyCartContent">
-                    {items && items.map((product) => {
-                        return (
-                        <Box className="shoppingCartProductWrapper" sx = { CartContentWrapperStyle }>
+                    <Typography variant='h4' className = 'MyCartProducts'> My cart's products: </Typography>
+                    <Divider/>
+                    {
+                        items && items.length >= 1 
+                        ?
+                            items && items.map((product) => {
+                                return (
+                                <Box className="shoppingCartProductWrapper" sx = { CartContentWrapperStyle }>
+                                    <Card className="productLeftMenu" sx = { productLeftMenuStyle }>
+                                        <img
+                                            src={
+                                                `data: image/jpg;base64,
+                                                ${Buffer.from(product.productImage.data).toString('base64')}`
+                                            }
+                                            width="140px"
+                                        />
 
-                            <Card className="productLeftMenu" sx = { productLeftMenuStyle }>
-                                <img
-                                    src={
-                                        `data: image/jpg;base64,
-                                        ${Buffer.from(product.productImage.data).toString('base64')}`
-                                    }
-                                    width="140px"
-                                />
+                                        <Typography variant="h6">
+                                            {"$ " + product.productPrice.toFixed(2)}
+                                        </Typography>
 
-                                <Typography variant="h6">
-                                    {"$ " + product.productPrice.toFixed(2)}
-                                </Typography>
+                                        <Divider/>
+                                    </Card>
 
-                                <Divider/>
-                            </Card>
+                                    <Card className="productRightMenu" sx = { productRightMenuStyle }>
+                                        <Typography variant="h6" sx = { productNameStyle }>
+                                            {product.productName}
+                                        </Typography>
+                                        <Divider/>
+                                        <Typography variant="h6" sx = { productDescriptionStyle }>
+                                        {product.productDescription.length >= 120 ?
+                                            product.productDescription.slice(0,120) + '...'
+                                            :
+                                            product.productDescription}
+                                        </Typography>
+                                    </Card>
 
-                            <Card className="productRightMenu" sx = { productRightMenuStyle }>
-                                <Typography variant="h6" sx = { productNameStyle }>
-                                    {product.productName}
-                                </Typography>
-                                <Divider/>
-                                <Typography variant="h6" sx = { productDescriptionStyle }>
-                                {product.productDescription.length >= 120 ?
-                                     product.productDescription.slice(0,120) + '...'
-                                    :
-                                    product.productDescription}
-                                </Typography>
-                            </Card>
-
-                        </Box>)
-                    })}
+                                </Box>)
+                            })
+                        :
+                        <h1 className = "NoProductsMessage" >There are no products in your cart yet.</h1>
+                    }
                 </div>
+
                 <Card className="CheckoutSummary">
                     <Typography variant = 'h2' className = 'CheckoutSUmmaryTitle'>Summary</Typography>
 
@@ -84,8 +98,12 @@ export default function CartComponent() {
                     <Typography variant = 'h4' className = 'deliveryIndicator'> $ 10.00 </Typography>
                     <Divider/>
                     <Typography variant = 'h4' className = 'finalPrice'>{"$ " + (Number(items.reduce((a,b) => a + b.productPrice, 0) + 10).toFixed(2))} </Typography>
-
-                    <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn'> <strong> Submit Order </strong> </Button>
+                    {items && items.length >= 1 
+                        ?
+                            <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn'> <strong> Submit Order </strong> </Button>
+                        :
+                            <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn' disabled = {true}> <strong> Submit Order </strong> </Button>
+                    }
                 </Card>
             <Footer/>
         </Box>
