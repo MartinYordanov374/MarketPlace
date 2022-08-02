@@ -145,13 +145,18 @@ function LoggedUserNavbar(props)
                                 <a href='/home'>MarketPlace</a> 
                             </ListItem>
                             
-                            <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
-                                    <a href={`/profile/${currUserId}`}> My profile</a> 
+                            <ListItem class='dropdownOption'> 
+                                <a href={`/profile/${currUserId}`}> My profile</a> 
+                            </ListItem>
+
+                            <ListItem class = 'dropdownOption'>
+                                <a href={`/profile/${currUserId}`}> My shopping cart</a> 
                             </ListItem>
 
                             <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
                                 Logout 
                             </ListItem>
+
 
                         </List>
                     </span>
@@ -191,11 +196,16 @@ function LoggedUserNavbar(props)
                                 placeholder="Enter tags to search marketplaces by, e.g. Real Estate, Beauty..."/>
 
                             
-                            <Typography variant="h5" sx={{marginLeft: -7}}>
+                            <Typography variant="h5" sx={{marginLeft: -14}}>
                                 <a href={`/profile/${currUserId}`}> My profile</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 17}} onClick={() => handleLogout()}>
+                            <Typography variant="h5" sx={{marginLeft: 6}}>
+                            <a href={`/MyCart`}> My Cart</a> 
+                                {/* <ShoppingCartIcon/> */}
+                            </Typography>
+
+                            <Typography variant="h5" sx={{marginLeft: 8}} onClick={() => handleLogout()}>
                                 <a href='#'>Logout</a>
                             </Typography>
                         </Toolbar>
