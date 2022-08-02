@@ -1,0 +1,54 @@
+.MyCartContent {
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  overflow-y: scroll;
+  height: 60vh;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+          box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  width: 70%;
+}
+
+.CheckoutSummary {
+  position: absolute;
+  top: 10.5%;
+  left: 75%;
+  height: 60vh;
+  width: 24%;
+}
+
+.CheckoutSummary .CheckoutSUmmaryTitle {
+  margin-left: 25%;
+  color: #ed6c02;
+}
+
+.CheckoutSummary .totalPriceIndicator {
+  margin-top: 5%;
+  margin-left: 25%;
+}
+
+.CheckoutSummary .totalPrice {
+  margin-top: 5%;
+  margin-left: 35%;
+}
+
+.CheckoutSummary .plusSign {
+  margin-left: 47%;
+}
+
+.CheckoutSummary .deliveryIndicator {
+  margin-left: 35%;
+  margin-bottom: 5%;
+}
+
+.CheckoutSummary .finalPrice {
+  margin-top: 5%;
+  margin-left: 35%;
+}
+
+.CheckoutSummary .submitOrderBtn {
+  margin-top: 10%;
+  margin-left: 35%;
+}
+/*# sourceMappingURL=CartComponentStyling.css.map */

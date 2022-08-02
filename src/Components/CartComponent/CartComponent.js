@@ -2,6 +2,8 @@ import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer"
 import { Buffer } from 'buffer';
 import {Card, CardActionArea, Typography, Button, Divider, Box} from '@mui/material'
+import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import './CartComponentStyling.css'
 export default function CartComponent() {
 
     const items = JSON.parse(localStorage.getItem('productsInCart'))
@@ -10,31 +12,32 @@ export default function CartComponent() {
     }
 
     const productRightMenuStyle = {
-        width: "20%"
+        width: "50% "
 
     }
 
     const CartContentWrapperStyle = {
         display: "flex",
-        marginLeft: "5%",
+        marginLeft: "30%",
         marginTop: "5%",
-        marginBottom: "5%"
+        marginBottom: "5%",
     }
     const productNameStyle = {
-        marginLeft: "10%",
-        marginRight: "5%",
+        marginLeft: "2%",
+        marginRight: "1%",
         marginTop: "2%",
     }
 
     const productDescriptionStyle = {
-        marginLeft: "10%",
+        marginLeft: "2%",
         marginRight: "5%",
-        marginTop: "5%",
+        marginTop: "3%",
     }
+
     return (
         <Box className="MyCartWrapper">
             <Navbar/>
-                <Box className="MyCartContent">
+                <div className="MyCartContent">
                     {items && items.map((product) => {
                         return (
                         <Box className="shoppingCartProductWrapper" sx = { CartContentWrapperStyle }>
@@ -70,7 +73,20 @@ export default function CartComponent() {
 
                         </Box>)
                     })}
-                </Box>
+                </div>
+                <Card className="CheckoutSummary">
+                    <Typography variant = 'h2' className = 'CheckoutSUmmaryTitle'>Summary</Typography>
+
+                    <Divider/>
+                    <Typography variant = 'h3' className = "totalPriceIndicator" >Total Price: </Typography>
+                    <Typography variant = 'h4' className = 'totalPrice'> {"$ " + items.reduce((a,b) => a + b.productPrice, 0).toFixed(2)} </Typography>
+                    <Typography variant = 'h2' className = 'plusSign'> + </Typography>
+                    <Typography variant = 'h4' className = 'deliveryIndicator'> $ 10.00 </Typography>
+                    <Divider/>
+                    <Typography variant = 'h4' className = 'finalPrice'>{"$ " + (Number(items.reduce((a,b) => a + b.productPrice, 0) + 10).toFixed(2))} </Typography>
+
+                    <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn'> <strong> Submit Order </strong> </Button>
+                </Card>
             <Footer/>
         </Box>
 
