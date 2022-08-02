@@ -37,6 +37,9 @@ const { updateCoverPicture } = require('../API/userAPI/updateCoverPicture')
 
 const { EditProduct } = require('../API/productAPI/editProduct')
 const { getProductsInCard } = require('../API/userAPI/getProductsInCart')
+
+const { RemoveProductFromCart } = require('../API/userAPI/removeProductFromCart')
+
 const mongoDB_Session = require('connect-mongodb-session')(session)
 const multer = require('multer')
 const fs = require('fs')
@@ -588,6 +591,25 @@ async function startServer(){
         
         let result = await getProductsInCard(userID)
 
+        console.log(incomingData)
+
+        if(result.status == 200)
+        {
+            res.status(200).send(result.data)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
+        }
+    })
+
+    app.post('/removeProductFromCart', async(req,res) => {
+        const incomingData = req.body
+
+        let userID = incomingData.userID
+        let productID = incomingData.productID
+        
+        let result = await RemoveProductFromCart(userID, productID)
 
         if(result.status == 200)
         {
