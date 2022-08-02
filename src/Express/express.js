@@ -362,7 +362,7 @@ async function startServer(){
         let ratingReceiverId = incomingData.ratingReceiverId
         let ratingAmount = incomingData.ratingAmount
 
-        let result = await addPaddMarketplaceRatingroductRating(ratingAdderId, ratingReceiverId, ratingAmount)
+        let result = await addProductRating(ratingAdderId, ratingReceiverId, ratingAmount)
         if(result.status == 200)
         {
             res.status(200).send(result.msg)
@@ -382,8 +382,9 @@ async function startServer(){
         let reviewerUserId = incomingData.reviewerUserId
         let reviewedProductId = incomingData.reviewedProductId
         let reviewContent = incomingData.reviewContent
-        console.log(incomingData)
+
         let result = await addProductReview(reviewerUserId, reviewedProductId,reviewContent)
+
         if(result.status == 200)
         {
             res.status(200).send(result.msg)

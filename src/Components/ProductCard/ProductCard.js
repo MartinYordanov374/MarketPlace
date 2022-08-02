@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
 import { Buffer } from 'buffer';
-
+import EditModal from '../EditModal/EditModal';
 import Axios from 'axios'
 
 export default function ProductCard(productData)
@@ -41,6 +41,8 @@ export default function ProductCard(productData)
     }
     
     const editProductHandler = ( product ) => {
+        // SHOW EDIT MODAL
+        // SAVE CHANGES
         console.log('editing')
     }
     return(
@@ -64,8 +66,9 @@ export default function ProductCard(productData)
                     </Link>
                     :
                     <div>
-                    <DeleteIcon sx = {deleteProductIconStyle} onClick = { () => deleteProductHandler(productData.TargetProduct) }/>  
-                    <EditIcon sx={editProductIconStyle} onClick = { () => editProductHandler(productData.TargetProduct) }/> 
+                    <DeleteIcon sx = {deleteProductIconStyle} onClick = { () => deleteProductHandler(productData.TargetProduct) }/>
+                    <EditModal TargetProduct = { productData.TargetProduct }/>
+                    {/* <EditIcon sx={editProductIconStyle} onClick = { () => editProductHandler(productData.TargetProduct) }/>  */}
                     <Link href={`/product/${productData.TargetProduct._id}`} underline='none'>
                         <Card sx={{height: "260px", width: "240px"}}>
                             <CardActionArea>

@@ -4,6 +4,7 @@ let review = require('../../Database/reviewSchema')
 
 async function addProductReview(reviewerUserId, reviewedProductId, reviewContent)
 {
+    console.log(reviewerUserId, reviewedProductId, reviewContent)
     // check if both users exist
     try{
         let reviewerUserExists = await checkUserExistsById(reviewerUserId)
