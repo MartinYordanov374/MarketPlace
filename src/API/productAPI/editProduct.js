@@ -13,7 +13,7 @@ async function EditProduct(editorID, productId, newProductName, newProductDescri
         if(productOwnerID.equals(userID))
         {
             product.productName = newProductName
-            product.newProductDescription = newProductDescription
+            product.productDescription = newProductDescription
             product.productPrice = newProductPrice
 
             await product.save()

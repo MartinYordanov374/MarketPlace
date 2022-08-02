@@ -5,7 +5,6 @@ import {Card, CardActionArea, Typography, Button, Divider, Box} from '@mui/mater
 export default function CartComponent() {
 
     const items = JSON.parse(localStorage.getItem('productsInCart'))
-
     const productLeftMenuStyle = {
 
     }
@@ -17,7 +16,20 @@ export default function CartComponent() {
 
     const CartContentWrapperStyle = {
         display: "flex",
-        marginLeft: "25%"
+        marginLeft: "5%",
+        marginTop: "5%",
+        marginBottom: "5%"
+    }
+    const productNameStyle = {
+        marginLeft: "10%",
+        marginRight: "5%",
+        marginTop: "2%",
+    }
+
+    const productDescriptionStyle = {
+        marginLeft: "10%",
+        marginRight: "5%",
+        marginTop: "5%",
     }
     return (
         <Box className="MyCartWrapper">
@@ -44,11 +56,15 @@ export default function CartComponent() {
                             </Card>
 
                             <Card className="productRightMenu" sx = { productRightMenuStyle }>
-                                <Typography variant="h6">
+                                <Typography variant="h6" sx = { productNameStyle }>
                                     {product.productName}
                                 </Typography>
-                                <Typography variant="h6">
-                                    {product.productDescription}
+                                <Divider/>
+                                <Typography variant="h6" sx = { productDescriptionStyle }>
+                                {product.productDescription.length >= 120 ?
+                                     product.productDescription.slice(0,120) + '...'
+                                    :
+                                    product.productDescription}
                                 </Typography>
                             </Card>
 
