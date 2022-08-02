@@ -34,6 +34,8 @@ const {marketplaceNotHelpful} = require('../API/marketplaceAPI/marketplaceNotHel
 const { updateProfilePicture } = require('../API/userAPI/updateProfilePicture')
 const { updateCoverPicture } = require('../API/userAPI/updateCoverPicture')
 
+const { EditProduct } = require('../API/productAPI/editProduct')
+
 const mongoDB_Session = require('connect-mongodb-session')(session)
 const multer = require('multer')
 const fs = require('fs')
@@ -540,6 +542,25 @@ async function startServer(){
         let targetProductId = incomingData.TargetProductId
         let result = await findProductById(targetProductId)
         res.send(result)
+    })
+
+    app.post('/UpdateProduct', async(req,res) => {
+        let incomingData = req.body
+        let editorID = incomingData.editorID
+        let productID = incomingData.productID
+        let newProductName = incomingData.newProductName
+        let newProductDescription = incomingData.newProductDescription
+        let newProductPrice = incomingData.newProductPrice
+
+        let result = await EditProduct( editorID, productID, newProductName, newProductDescription, newProductPrice)
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
+        }
     })
     //#region endpoints
 

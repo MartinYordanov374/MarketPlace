@@ -10,10 +10,15 @@ import EditIcon from '@mui/icons-material/Edit';
 export default function EditModal(targetEditObject){
 
     let targetProduct = targetEditObject.TargetProduct
-    console.log(targetProduct)
-    let [productImage, setProductImage] = useState('')
+    let UserData = targetEditObject.UserData
 
     const [editModalState, setEditModalState] = useState(false)
+
+    const [updatedProductName, setUpdatedProductName] = useState('')
+    const [updatedProductPrice, setUpdatedProductPrice] = useState('')
+    const [updatedProductDescription, setUpdatedProductDescription] = useState('')
+
+    // TODO add regex for the price
 
     const openEditModal = () => {
         setEditModalState(true)
@@ -36,8 +41,6 @@ export default function EditModal(targetEditObject){
         p: 4,
       };
 
-
-
     const cardStyle = {
         marginTop: "4%", 
         width: "180px",  
@@ -49,11 +52,34 @@ export default function EditModal(targetEditObject){
         marginLeft: "23%",
         width: "220px"
     }
+
+    const editProduct = ( ) => {
+        let newProductName = updatedProductName
+        let newProductPrice = updatedProductPrice
+        let newProductDescription = updatedProductDescription
+        let productID = targetProduct._id
+        let userID = UserData.id
+
+
+        Axios.post('http://localhost:3001/updateProduct', {
+            editorID: userID, 
+            productID: productID, 
+            newProductName: newProductName, 
+            newProductDescription: newProductDescription, 
+            newProductPrice: newProductPrice
+        })
+        .then((res) => {
+          toast.success(res.data)
+        })
+        .catch((err) => {
+            toast.warn(err.response)
+        })
+    }
     return(
         <div className='editModalWrapper'>
             <ToastContainer/>
             
-            <EditIcon onClick = { () => openEditModal()}/>
+            <EditIcon onClick = { () => openEditModal() }/>
 
             <Modal open={editModalState} onClose={closeEditModal}>
                 <Fade in={editModalState}>
@@ -63,25 +89,36 @@ export default function EditModal(targetEditObject){
 
                             <Card sx = {cardStyle}>
                                 <CardActionArea>
-                                    <Input placeholder={targetProduct.productName}/>
+                                    <Input 
+                                    placeholder = { targetProduct.productName }
+                                    onChange = { (e) => setUpdatedProductName(e.target.value) }
+                                    />
                                 </CardActionArea>
                             </Card>
 
                             <Card sx = {cardStyle}>
                                 <CardActionArea>
-                                    <Input placeholder={'$ ' + targetProduct.productPrice.toFixed(2)}/>
+                                    <Input 
+                                    placeholder = { '$ ' + targetProduct.productPrice.toFixed( 2 ) }
+                                    onChange = { (e) => setUpdatedProductPrice( e.target.value ) }/> 
                                 </CardActionArea>
                             </Card>
 
                             <Card sx = {cardStyle}>
                                 <CardActionArea>
-                                    <Input multiline={true} placeholder={targetProduct.productDescription}/>
+                                    <Input multiline={ true } 
+                                    placeholder={ targetProduct.productDescription }
+                                    onChange = { (e) => setUpdatedProductDescription( e.target.value ) }/>
 
                                 </CardActionArea>
                             </Card>
 
 
-                        <Button variant='contained'  color='warning' sx = { buttonStyle }> Edit Product</Button>
+                        <Button 
+                        variant = 'contained'  
+                        color = 'warning' 
+                        sx = { buttonStyle }
+                        onClick = { () => editProduct() }> Edit Product</Button>
                     </Box>
                 </Fade>
             </Modal>

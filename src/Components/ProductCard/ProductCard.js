@@ -67,7 +67,7 @@ export default function ProductCard(productData)
                     :
                     <div>
                     <DeleteIcon sx = {deleteProductIconStyle} onClick = { () => deleteProductHandler(productData.TargetProduct) }/>
-                    <EditModal TargetProduct = { productData.TargetProduct }/>
+                    <EditModal TargetProduct = { productData.TargetProduct } UserData = { userData } />
                     {/* <EditIcon sx={editProductIconStyle} onClick = { () => editProductHandler(productData.TargetProduct) }/>  */}
                     <Link href={`/product/${productData.TargetProduct._id}`} underline='none'>
                         <Card sx={{height: "260px", width: "240px"}}>
