@@ -9,22 +9,24 @@ import Marketplace from './Components/Marketplace/marketplacePage';
 import ProfilePage from './Components/ProfilePage/profilePage';
 import SearchResults from './Components/searchResultsPage/SearchResults';
 import ProductPage from './Components/productPage/ProductPage';
+import CartComponent from './Components/CartComponent/CartComponent';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/home' element={<Home/>}></Route>
-        <Route path='/SearchResults' element={<SearchResults/>}></Route>
-        <Route path='/marketplace/:id' element={<Marketplace/>}></Route>
-        <Route path='/profile/:id' element={<ProfilePage/>}></Route>
-        <Route path='/product/:id' element={<ProductPage/>}></Route>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/SearchResults' element={<SearchResults/>}/>
+        <Route path='/marketplace/:id' element={<Marketplace/>}/>
+        <Route path='/profile/:id' element={<ProfilePage/>}/>
+        <Route path='/product/:id' element={<ProductPage/>}/>
+        <Route path='/MyCart' element={<CartComponent/>}/>
 
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/register' element={<RegisterPage/>}></Route>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<RegisterPage/>}/>
 
-        <Route path='*' element={<Error/>}></Route>
+        <Route path='*' element={<Error/>}/>
 
       </Routes>
     </Router>
