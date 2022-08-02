@@ -239,6 +239,14 @@ export default function Marketplace ()
                                 onClick={handleRating}
                                 size={25}
                             />
+                            {
+                                marketplaceData.marketplaceRating.reduce((a,b) =>  a + b.ratingAmount, 0) / marketplaceData.marketplaceRating.length >= 1 
+                                ?
+                                <h3> Rating: {(marketplaceData.marketplaceRating.reduce((a,b) =>  a + b.ratingAmount, 0) / marketplaceData.marketplaceRating.length).toFixed(2)} / 5.00 </h3>
+                                :
+                                <h3> Rating: 0.00 / 5.00 </h3>
+
+                            }
                             <div className="marketplaceOwner"> 
                                <span>
                                     By: &nbsp; <a className="marketplaceOwnerProfileLink" href={'/profile/' + marketplaceData.marketplaceOwner._id}> 
