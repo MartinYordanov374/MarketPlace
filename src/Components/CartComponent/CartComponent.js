@@ -2,15 +2,32 @@ import Navbar from "../Navbar/navbar";
 import Footer from "../Footer/footer"
 import { Buffer } from 'buffer';
 import {Card, CardActionArea, Typography, Button, Divider, Box} from '@mui/material'
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import ClearIcon from '@mui/icons-material/Clear';
 import './CartComponentStyling.css'
 export default function CartComponent() {
 
     let items = JSON.parse(localStorage.getItem('productsInCart'))
     
+    console.log(items)
+
     if ( items == null)
     {
         items = []
+    }
+
+    const removeProductFromCart = (targetProductID) => {
+
+        if( items.length > 1)
+        {
+            items = items.splice(targetProductID,1)
+            localStorage.setItem('productsInCart', JSON.stringify(items))
+        }
+        else
+        {
+            items = []
+            localStorage.clear()
+        }
+        console.log(items)
     }
 
     const productLeftMenuStyle = {
@@ -40,6 +57,10 @@ export default function CartComponent() {
         marginTop: "3%",
     }
 
+    // TODO Add options to :
+    //  -- clear cart
+    //  -- remove a specific element from cart
+
     return (
         <Box className="MyCartWrapper">
             <Navbar/>
@@ -49,9 +70,9 @@ export default function CartComponent() {
                     {
                         items && items.length >= 1 
                         ?
-                            items && items.map((product) => {
+                            items && items.map((product, index) => {
                                 return (
-                                <Box className="shoppingCartProductWrapper" sx = { CartContentWrapperStyle }>
+                                <Box className="shoppingCartProductWrapper" sx = { CartContentWrapperStyle } id = {index}>
                                     <Card className="productLeftMenu" sx = { productLeftMenuStyle }>
                                         <img
                                             src={
@@ -71,6 +92,7 @@ export default function CartComponent() {
                                     <Card className="productRightMenu" sx = { productRightMenuStyle }>
                                         <Typography variant="h6" sx = { productNameStyle }>
                                             {product.productName}
+                                            <ClearIcon className = 'RemoveProductButton' onClick = { (e) => removeProductFromCart(index) }/>
                                         </Typography>
                                         <Divider/>
                                         <Typography variant="h6" sx = { productDescriptionStyle }>

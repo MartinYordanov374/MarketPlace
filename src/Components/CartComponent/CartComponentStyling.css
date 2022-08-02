@@ -22,6 +22,15 @@
   color: #ed6c02;
 }
 
+.MyCartContent .shoppingCartProductWrapper .RemoveProductButton {
+  margin-left: 80%;
+}
+
+.MyCartContent .shoppingCartProductWrapper .RemoveProductButton:hover {
+  color: red;
+  cursor: pointer;
+}
+
 .CheckoutSummary {
   position: absolute;
   top: 10.5%;

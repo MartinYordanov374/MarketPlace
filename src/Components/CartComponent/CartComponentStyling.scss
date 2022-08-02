@@ -19,6 +19,15 @@ $primary-color: #ed6c02;
         margin-top: 15%;
         color: $primary-color;
     }
+    .shoppingCartProductWrapper{
+        .RemoveProductButton{
+            margin-left: 80%;
+            &:hover{
+                color: red;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .CheckoutSummary{
