@@ -31,6 +31,7 @@ export default function EditModal(targetEditObject){
         width: 400,
         bgcolor: 'white',
         // border: '2px solid #000',
+        borderRadius: '2%',
         boxShadow: 24,
         p: 4,
       };
