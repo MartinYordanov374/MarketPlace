@@ -40,11 +40,6 @@ export default function ProductCard(productData)
         console.log('deleting')
     }
     
-    const editProductHandler = ( product ) => {
-        // SHOW EDIT MODAL
-        // SAVE CHANGES
-        console.log('editing')
-    }
     return(
         
             <div class='marketplaceWrapper'>
@@ -68,7 +63,6 @@ export default function ProductCard(productData)
                     <div>
                     <DeleteIcon sx = {deleteProductIconStyle} onClick = { () => deleteProductHandler(productData.TargetProduct) }/>
                     <EditModal TargetProduct = { productData.TargetProduct } UserData = { userData } />
-                    {/* <EditIcon sx={editProductIconStyle} onClick = { () => editProductHandler(productData.TargetProduct) }/>  */}
                     <Link href={`/product/${productData.TargetProduct._id}`} underline='none'>
                         <Card sx={{height: "260px", width: "240px"}}>
                             <CardActionArea>

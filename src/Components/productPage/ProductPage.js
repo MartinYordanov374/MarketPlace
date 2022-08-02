@@ -22,6 +22,8 @@ export default function ProductPage()
     const [rating, setRating] = useState(0)
     const [userData, setUserData] = useState('')
 
+    const [productsInCart, setProductsInCart] = useState([])
+
     const URL_ID = window.location.href.split('/')[4]
 
     useEffect(() => {
@@ -83,6 +85,12 @@ export default function ProductPage()
             toast.warn(err.response.data)
         })
     }
+    const addProductToCart = (targetProduct) => {
+
+        setProductsInCart(curr => [...curr, targetProduct])
+
+        localStorage.setItem('productsInCart', JSON.stringify(productsInCart))
+    }
 
     return (
         <div>
@@ -141,7 +149,7 @@ export default function ProductPage()
                                         <div className="productPriceWrapper">
                                             <p className="productPrice">$ {targetProduct.productPrice.toFixed(2)}</p>
                                         </div>
-                                        <Button color='warning' variant='contained' className='addProductButton'> 
+                                        <Button color='warning' variant='contained' className='addProductButton' onClick = { () => addProductToCart(targetProduct)}> 
                                             <AddShoppingCartIcon/> 
                                             <strong> Add to cart </strong>
                                         </Button>

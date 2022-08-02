@@ -2,11 +2,19 @@ import {Button, Card, CardActionArea, CardContent, Divider, CardMedia} from '@mu
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import React from 'react'
-
 import { Buffer } from 'buffer';
 import './marketplaceProductStyling.css'
 export default function MarketplaceProduct (data)
 {
+    
+    
+    const [productsInCart, setProductsInCart] = useState([])
+    const addProductToCart = (targetProduct) => {
+        setProductsInCart(curr => [...curr, targetProduct])
+
+        localStorage.setItem('productsInCart', JSON.stringify(productsInCart))
+    }
+    
     return(
         <div class='marketplaceProduct'>
 
@@ -37,7 +45,7 @@ export default function MarketplaceProduct (data)
                 <Divider/>
                 <p className="productPrice"><strong>$ {data.prod.productPrice}</strong></p>
                 <Divider/>
-                <Button className="buyProductButton" sx={{fontSize: 15}} color='warning'> <strong> Add to cart </strong> <AddShoppingCartIcon/>  </Button>
+                <Button className="buyProductButton" sx={{fontSize: 15}} color='warning' onClick = { () => {addProductToCart(data.prod)}}> <strong> Add to cart </strong> <AddShoppingCartIcon/>  </Button>
             </Card>
         </div>
     )
