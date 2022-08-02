@@ -6,7 +6,6 @@ async function createProduct(creatorID, productId, productMarketplaceID)
     try{
         let CurrentUser = await checkUserExistsById(creatorID)
         let CurrentMarketplace = await getMarketplaceById(productMarketplaceID)
-        // TODO CHECK IF THE PRODUCT ALREADY EXISTS
 
         if(CurrentUser != null && CurrentMarketplace != null)
         {

@@ -9,7 +9,6 @@ const product = require('../../Database/productSchema')
 async function deleteProductAbsolutely(userID, productID)
 {
     try{
-        // TODO Add checks for the product's existence and if it doesn't exist, throw an exception
         let targetUser = await checkUserExistsById(userID)
         let targetProduct = await findProductById(productID)
         
