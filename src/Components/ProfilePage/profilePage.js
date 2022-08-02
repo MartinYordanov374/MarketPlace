@@ -400,7 +400,7 @@ export default function ProfilePage()
                                     userData.products.length >= 1 ?
                                     userData.products.map(( product ) => {
                                         return (
-                                            <ProductCard TargetProduct = { product } />
+                                            <ProductCard TargetProduct = { product } UserData = { userData } />
                                         )
                                     })
                                     :
@@ -422,7 +422,7 @@ export default function ProfilePage()
                                                 </Box>
                                                 {userData.products.map(( product ) => {
                                                     return (
-                                                        <ProductCard TargetProduct = { product } />
+                                                        <ProductCard TargetProduct = { product } UserData = { userData } />
                                                         )
                                                     })}
                                             </div>

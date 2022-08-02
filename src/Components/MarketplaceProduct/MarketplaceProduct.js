@@ -1,5 +1,4 @@
 import {Button, Card, CardActionArea, CardContent, Divider, CardMedia} from '@mui/material'
-import StorefrontIcon from '@mui/icons-material/Storefront';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 import React from 'react'
@@ -10,6 +9,7 @@ export default function MarketplaceProduct (data)
 {
     return(
         <div class='marketplaceProduct'>
+
             <Card className='productCard'>
                 <CardActionArea  href={`/product/${data.prod._id}`}>
                     <CardContent>

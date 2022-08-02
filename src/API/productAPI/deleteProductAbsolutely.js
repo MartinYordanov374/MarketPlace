@@ -8,6 +8,7 @@ const product = require('../../Database/productSchema')
 
 async function deleteProductAbsolutely(userID, productID)
 {
+    // TODO DELETE PRODUCT FROM USER PRODUCTS !
     try{
         let targetUser = await checkUserExistsById(userID)
         let targetProduct = await findProductById(productID)
