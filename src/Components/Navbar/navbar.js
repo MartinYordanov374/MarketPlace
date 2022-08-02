@@ -10,7 +10,7 @@ import React, { useEffect, useState, useRef} from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { List, ListItem, Divider, Container, TextField, InputAdornment} from '@mui/material'
-
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 
 import Axios from 'axios'
@@ -146,7 +146,7 @@ function LoggedUserNavbar(props)
                             </ListItem>
                             
                             <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
-                                <a href='/profile'>My Profile</a> 
+                                    <a href={`/profile/${currUserId}`}> My profile</a> 
                             </ListItem>
 
                             <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
