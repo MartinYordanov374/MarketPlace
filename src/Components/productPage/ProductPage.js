@@ -164,9 +164,6 @@ export default function ProductPage()
                                 }
                             </div>
 
-                            {/* <div className="productRatingWrapper">
-                                <h1>{targetProduct.productRating}</h1>
-                            </div> */}
                         </div>
                     </div>
                 }

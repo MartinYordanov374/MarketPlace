@@ -263,9 +263,7 @@ export default function ProfilePage()
                                         transition
                                         onClick={handleRating}
                                         size={25}
-    />
-                                </div>
-                                <div className="starRating">
+                                    />
                                 </div>
 
                             </div> 
@@ -324,7 +322,20 @@ export default function ProfilePage()
                             <div className="profileName">
                                 <h1>{userData.username}</h1>
                             </div>
-
+                            <div className="userRating">
+                                    {
+                                        userData && userData.rating.reduce((a,b) =>  a + b.ratingAmount, 0) / userData.rating.length >= 1 
+                                            ?
+                                        <h3> Rating: {(userData.rating.reduce((a,b) =>  a + b.ratingAmount, 0) / userData.rating.length).toFixed(2)} / 5.00 </h3>
+                                            :
+                                        <h3> Rating: 0.00 / 5.00 </h3>
+                                    }
+                                    <Rating
+                                        transition
+                                        onClick={handleRating}
+                                        size={25}
+                                    />
+                                </div>
                         </div>
                     }
                 </div>
