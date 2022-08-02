@@ -4,23 +4,34 @@ import { Buffer } from 'buffer';
 import {Card, CardActionArea, Typography, Button, Divider, Box} from '@mui/material'
 import ClearIcon from '@mui/icons-material/Clear';
 import './CartComponentStyling.css'
+import Axios from 'axios'
+import { useEffect, useState } from "react";
 export default function CartComponent() {
 
-    let items = JSON.parse(localStorage.getItem('productsInCart'))
-    
-    console.log(items)
+    // let cartProducts = await Axios.post('getCartcartProducts', )
+    // get UserID
 
-    if ( items == null)
-    {
-        items = []
+    let [userID, setUserID] = useState('')
+    let [cartProducts, setCartProducts] = useState([])
+    useEffect(() => {
+        Axios.get('http://localhost:3001/getCurrentUserSession', {withCredentials: true})
+        .then((res) => {
+            setUserID(res.data.user.id)
+        })
+
+        Axios.post('http://localhost:3001/getProductsInCart', {userID: userID})
+        .then((res) => {
+            setCartProducts(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    })
+
+    const removeProductFromCart = () => {
+        
     }
-
-    const removeProductFromCart = (targetProductID) => {
-
-        let newItems = items.splice(targetProductID, 1)
-        localStorage.setItem('productsInCart', JSON.stringify(newItems))
- 
-    }
+   
 
     const productLeftMenuStyle = {
 
@@ -60,9 +71,9 @@ export default function CartComponent() {
                     <Typography variant='h4' className = 'MyCartProducts'> My cart's products: </Typography>
                     <Divider/>
                     {
-                        items && items.length >= 1 
+                        cartProducts && cartProducts.length >= 1 
                         ?
-                            items && items.map((product, index) => {
+                            cartProducts && cartProducts.map((product, index) => {
                                 return (
                                 <Box className="shoppingCartProductWrapper" sx = { CartContentWrapperStyle } id = {index}>
                                     <Card className="productLeftMenu" sx = { productLeftMenuStyle }>
@@ -73,14 +84,11 @@ export default function CartComponent() {
                                             }
                                             width="140px"
                                         />
-
                                         <Typography variant="h6">
                                             {"$ " + product.productPrice.toFixed(2)}
                                         </Typography>
-
                                         <Divider/>
                                     </Card>
-
                                     <Card className="productRightMenu" sx = { productRightMenuStyle }>
                                         <Typography variant="h6" sx = { productNameStyle }>
                                             {product.productName}
@@ -94,25 +102,22 @@ export default function CartComponent() {
                                             product.productDescription}
                                         </Typography>
                                     </Card>
-
                                 </Box>)
                             })
                         :
                         <h1 className = "NoProductsMessage" >There are no products in your cart yet.</h1>
                     }
                 </div>
-
                 <Card className="CheckoutSummary">
                     <Typography variant = 'h2' className = 'CheckoutSUmmaryTitle'>Summary</Typography>
-
                     <Divider/>
                     <Typography variant = 'h3' className = "totalPriceIndicator" >Total Price: </Typography>
-                    <Typography variant = 'h4' className = 'totalPrice'> {"$ " + items.reduce((a,b) => a + b.productPrice, 0).toFixed(2)} </Typography>
+                    <Typography variant = 'h4' className = 'totalPrice'> {"$ " + cartProducts.reduce((a,b) => a + b.productPrice, 0).toFixed(2)} </Typography>
                     <Typography variant = 'h2' className = 'plusSign'> + </Typography>
                     <Typography variant = 'h4' className = 'deliveryIndicator'> $ 10.00 </Typography>
                     <Divider/>
-                    <Typography variant = 'h4' className = 'finalPrice'>{"$ " + (Number(items.reduce((a,b) => a + b.productPrice, 0) + 10).toFixed(2))} </Typography>
-                    {items && items.length >= 1 
+                    <Typography variant = 'h4' className = 'finalPrice'>{"$ " + (Number(cartProducts.reduce((a,b) => a + b.productPrice, 0) + 10).toFixed(2))} </Typography>
+                    {cartProducts && cartProducts.length >= 1 
                         ?
                             <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn'> <strong> Submit Order </strong> </Button>
                         :
@@ -121,7 +126,6 @@ export default function CartComponent() {
                 </Card>
             <Footer/>
         </Box>
-
-
     )
+    
 }
