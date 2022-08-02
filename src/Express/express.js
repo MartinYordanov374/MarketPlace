@@ -591,7 +591,6 @@ async function startServer(){
         
         let result = await getProductsInCard(userID)
 
-        console.log(incomingData)
 
         if(result.status == 200)
         {
@@ -613,7 +612,7 @@ async function startServer(){
 
         if(result.status == 200)
         {
-            res.status(200).send(result.data)
+            res.status(200).send(result.msg)
         }
         else
         {

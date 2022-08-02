@@ -6,6 +6,9 @@ import ClearIcon from '@mui/icons-material/Clear';
 import './CartComponentStyling.css'
 import Axios from 'axios'
 import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function CartComponent() {
 
     // let cartProducts = await Axios.post('getCartcartProducts', )
@@ -36,7 +39,7 @@ export default function CartComponent() {
     const removeProductFromCart = (productID) => {
         Axios.post('http://localhost:3001/removeProductFromCart', {userID: userID, productID: productID})
         .then((res) => {
-            console.log(res)
+            toast.success(res.data)
         })
         .catch((err) => {
             console.log(err)
@@ -79,6 +82,7 @@ export default function CartComponent() {
 
         <Box className="MyCartWrapper">
             <Navbar/>
+            <ToastContainer/>
             {isLoading == false ?
                 <div className="InsideWrapper">
                     
