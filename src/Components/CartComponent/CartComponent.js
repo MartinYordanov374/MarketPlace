@@ -45,11 +45,11 @@ export default function CartComponent() {
     }
    
     const finishOrder = () => {
-        console.log('Finished order')
+        toast.success('Your order was successfull!')
+        Axios.post('http://localhost:3001/clearCart', {userID: userID})
     }
 
     const clearCart = () => {
-        console.log('clearing')
         Axios.post('http://localhost:3001/clearCart', {userID: userID})
         .then((res) => {
             toast.success(res.data)
