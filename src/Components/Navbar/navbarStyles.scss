@@ -4,3 +4,35 @@
         opacity: 0.5;
     }
 }
+.cartProductsWrapper{
+    .cartProductsAmountIndicator{
+
+        border: 2px solid #fff;
+        background-color: #ed6c02;
+        border-radius: 10px;
+        width: 30px;
+        height: 21px;
+        line-height: 17px;
+        font-size: 15px;
+        font-weight: bold;
+        z-index: 10;
+        color: black;
+        float: left;
+        text-align: center;
+        position: absolute;
+        left: 87.7%;
+        top: 11%;
+    }
+    .cartProductsAmountIndicatorIcon{
+        display: flex;
+        justify-content: center;    
+        float: left;
+        font-size:larger;
+        color: white;
+
+    }
+
+    .MyCartListItem{
+        line-height: 20px;
+    }
+}

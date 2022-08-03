@@ -92,6 +92,10 @@ function LoggedUserNavbar(props)
 
     const [currUserId, setCurrUserId] = useState('')
 
+    const [cartProductsAmount, setCartProductsAmount] = useState([])
+
+    
+
     useEffect(() => {
         Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
         .then((res) => {
@@ -100,7 +104,16 @@ function LoggedUserNavbar(props)
         .catch((err) => {
             console.log(err)
         })
-    }, [])
+
+
+            Axios.post('http://localhost:3001/getProductsInCart', {userID: currUserId})
+            .then((res) => {
+                setCartProductsAmount(res.data)
+            })
+        
+        
+    }, [currUserId])
+
 
     const navigate = useNavigate()
 
@@ -150,7 +163,7 @@ function LoggedUserNavbar(props)
                             </ListItem>
 
                             <ListItem class = 'dropdownOption'>
-                                <a href={`/profile/${currUserId}`}> My shopping cart</a> 
+                                <a href={`/profile/${currUserId}`}> My shopping cart </a> 
                             </ListItem>
 
                             <ListItem class='dropdownOption' onClick={() => handleLogout()}> 
@@ -196,13 +209,15 @@ function LoggedUserNavbar(props)
                                 placeholder="Enter tags to search marketplaces by, e.g. Real Estate, Beauty..."/>
 
                             
-                            <Typography variant="h5" sx={{marginLeft: -14}}>
+                            <Typography variant="h5" sx={{marginLeft: -10}}>
                                 <a href={`/profile/${currUserId}`}> My profile</a> 
                             </Typography>
 
-                            <Typography variant="h5" sx={{marginLeft: 6}}>
-                            <a href={`/MyCart`}> My Cart</a> 
-                                {/* <ShoppingCartIcon/> */}
+                            <Typography variant="h5" sx={{marginLeft: 6}} className = 'cartProductsWrapper'>
+                                <a href={`/MyCart`}>
+                                    <Typography variant="span" className = 'cartProductsAmountIndicator'> {cartProductsAmount.length} </Typography>  
+                                    <ShoppingCartIcon className = 'cartProductsAmountIndicatorIcon'/>
+                                </a> 
                             </Typography>
 
                             <Typography variant="h5" sx={{marginLeft: 8}} onClick={() => handleLogout()}>
