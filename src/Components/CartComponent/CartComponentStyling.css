@@ -31,6 +31,20 @@
   cursor: pointer;
 }
 
+.MyCartContent .clearCartButton .ClearCartIcon {
+  margin-top: 1%;
+  margin-left: 3%;
+}
+
+.MyCartContent .clearCartButton .ClearCartText {
+  margin-left: 1%;
+}
+
+.MyCartContent .clearCartButton:hover {
+  color: red;
+  cursor: pointer;
+}
+
 .CheckoutSummary {
   position: absolute;
   top: 10.5%;

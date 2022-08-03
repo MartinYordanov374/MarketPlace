@@ -8,6 +8,7 @@ import Axios from 'axios'
 import { useEffect, useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 
 export default function CartComponent() {
 
@@ -33,9 +34,6 @@ export default function CartComponent() {
 
     }, [])
 
-
-
-
     const removeProductFromCart = (productID) => {
         Axios.post('http://localhost:3001/removeProductFromCart', {userID: userID, productID: productID})
         .then((res) => {
@@ -46,6 +44,9 @@ export default function CartComponent() {
         })
     }
    
+    const finishOrder = () => {
+        console.log('Finished order')
+    }
 
     const productLeftMenuStyle = {
 
@@ -90,6 +91,11 @@ export default function CartComponent() {
                     <div className="MyCartContent">
                         <Typography variant='h4' className = 'MyCartProducts'> My cart's products: </Typography>
                         <Divider/>
+                        <span className="clearCartButton">
+                            <DeleteOutlineOutlinedIcon className = 'ClearCartIcon'/>
+                            <br></br>
+                            <Typography variant = 'p' className = 'ClearCartText'> Clear Cart </Typography>
+                        </span>
                         {
                             cartProducts && cartProducts.length >= 1 
                             ?
@@ -139,7 +145,7 @@ export default function CartComponent() {
                         <Typography variant = 'h4' className = 'finalPrice'>{"$ " + (Number(cartProducts.reduce((a,b) => a + b.productPrice, 0) + 10).toFixed(2))} </Typography>
                         {cartProducts && cartProducts.length >= 1 
                             ?
-                                <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn'> <strong> Submit Order </strong> </Button>
+                                <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn' onClick = {() => finishOrder()}> <strong> Submit Order </strong> </Button>
                             :
                                 <Button variant = 'contained' color = 'warning' className = 'submitOrderBtn' disabled = {true}> <strong> Submit Order </strong> </Button>
                         }
