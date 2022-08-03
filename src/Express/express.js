@@ -39,7 +39,7 @@ const { EditProduct } = require('../API/productAPI/editProduct')
 const { getProductsInCard } = require('../API/userAPI/getProductsInCart')
 
 const { RemoveProductFromCart } = require('../API/userAPI/removeProductFromCart')
-
+const {ClearCart} = require('../API/userAPI/clearCart')
 const mongoDB_Session = require('connect-mongodb-session')(session)
 const multer = require('multer')
 const fs = require('fs')
@@ -625,7 +625,7 @@ async function startServer(){
 
         let userID = incomingData.userID
         
-        let result = await ClearCart(userID, productID)
+        let result = await ClearCart(userID)
 
         if(result.status == 200)
         {
