@@ -619,6 +619,23 @@ async function startServer(){
             res.status(401).send(result.msg)
         }
     })
+
+    app.post('/clearCart', async(req,res) => {
+        const incomingData = req.body
+
+        let userID = incomingData.userID
+        
+        let result = await ClearCart(userID, productID)
+
+        if(result.status == 200)
+        {
+            res.status(200).send(result.msg)
+        }
+        else
+        {
+            res.status(401).send(result.msg)
+        }
+    })
     //#region endpoints
 
 
