@@ -99,12 +99,17 @@ export default function CartComponent() {
                     <div className="MyCartContent">
                         <Typography variant='h4' className = 'MyCartProducts'> My cart's products: </Typography>
                         <Divider/>
-                        <span className="clearCartButton" onClick = { () => clearCart() }>
-                            <DeleteOutlineOutlinedIcon className = 'ClearCartIcon'/>
-                            <br></br>
-                            <Typography variant = 'p' className = 'ClearCartText'> Clear Cart </Typography>
-                        </span>
-                        {
+                        {cartProducts && cartProducts.length >= 1 
+                            ?
+                                <span className="clearCartButton" onClick = { () => clearCart() }>
+                                    <DeleteOutlineOutlinedIcon className = 'ClearCartIcon'/>
+                                    <br></br>
+                                    <Typography variant = 'p' className = 'ClearCartText'> Clear Cart </Typography>
+                                </span>
+                            :
+                            ""
+                        }
+                       {
                             cartProducts && cartProducts.length >= 1 
                             ?
                                 cartProducts && cartProducts.map((product) => {
