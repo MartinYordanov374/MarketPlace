@@ -48,6 +48,14 @@ export default function CartComponent() {
         console.log('Finished order')
     }
 
+    const clearCart = () => {
+        console.log('clearing')
+        Axios.post('http://localhost:3001/clearCart', {userID: userID})
+        .then((res) => {
+            toast.success(res.data)
+        })
+    }
+
     const productLeftMenuStyle = {
 
     }
@@ -91,7 +99,7 @@ export default function CartComponent() {
                     <div className="MyCartContent">
                         <Typography variant='h4' className = 'MyCartProducts'> My cart's products: </Typography>
                         <Divider/>
-                        <span className="clearCartButton">
+                        <span className="clearCartButton" onClick = { () => clearCart() }>
                             <DeleteOutlineOutlinedIcon className = 'ClearCartIcon'/>
                             <br></br>
                             <Typography variant = 'p' className = 'ClearCartText'> Clear Cart </Typography>
