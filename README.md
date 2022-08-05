@@ -1,70 +1,88 @@
-# Getting Started with Create React App
+# Marketplace
+This project is created by me for the SoftUni React Course. 
+It represents a mixture between social media and an online marketplace, where users can create and delete marketplaces, where other users can sell orbuy products. 
+## Pages restricted for non-registered users
+<ul>
+    <li> <strong>Dynamic Home Page</strong> ( You can access or create marketplaces here ).
+    <li> <strong>Dynamic Profile Page </strong> ( You can change your profile and cover picture. You can see other people's marketplaces and products. You can give rating and reviews for other users. You can do all sorts of CRUD operations relating to your products or marketplaces).
+    <li> <strong>Dynamic Marketplace Page</strong> ( You can give rating and leave a review for the marketplace. You can add or remove your products from the marketplace).
+    <li> <strong>Dynamic Product Page </strong>( You can give rating or leave review for a product. You can edit or delete your products.)
+    <li> <strong>Dynamic Cart / Checkout Page </strong>( You can control the products in your cart before finishing your order.)
+</ul>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Pages not restricted for non-registered users
 
-## Available Scripts
+<ul>
+    <li> Login Page </li>
+    <li> Register Page </li>
+</ul>
+<br></br>
 
-In the project directory, you can run:
+# Backend Structure
 
-### `npm start`
+The project's backend is hosted on a local node + express server. I utilized MongoDB for my database. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Database Structure
+<ul>
+    <li> Marketplace Schema </li>
+    <li> Product Schema </li>
+    <li> User Schema </li>
+    <li> Review Schema </li>
+</ul>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Services 
+<ul>
+    <li> Marketplace Services ( CRUD operations related to the marketplaces ) </li>
+    <li> Product Services ( CRUD operations related to the products ) </li>
+    <li> User Services ( CRUD operations related to the users ) </li>
+</ul>
+<br></br>
 
-### `npm test`
+# Profile Page
+## The profile page includes 3 sections:
+<ul>
+    <li> Products </li>
+    <li> Reviews </li>
+    <li> Marketplaces </li>
+</ul>
+In addition to those sections, you can also rate other users using the stars on the right side of the profile page username.
+If you're visitng your profile page you can change your profile and cover picture.
+<br></br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Marketplace Page
+## The marketplace page includes 2 sections:
+<ul>
+    <li> Products </li>
+    <li> Reviews </li>
+</ul>
+You can add and rate reviews about the specified marketplace. In addition, you can also rate other users' reviews about the marketplace.
+<br></br>
 
-### `npm run build`
+# Product Page
+Here you can see details about the product you've selected - its price, description, the user that created and uploaded it, etc.
+You can also leave reviews about the product and also give it a rating using the star rating system !
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Checkout Page / Cart page
+Here you can see and control your cart:
+<ul>
+    <li> 
+        You can remove a product from your cart or remove them all at once. 
+    </li>
+    <li>
+        You can see how much money your order will cost
+    </li>
+    <li> You can finish your order all with a single button click. </li>
+</ul>  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Technology Stack
+<ul>
+    <li> Material UI </li>
+    <li> React </li>
+    <li> HTML, CSS, JS</li>
+    <li> SCSS </li>
+    <li> NodeJS, ExpressJS </li>
+    <li> MongoDB, Mongoose </li>
+    <li> Bcrypt </li>
+    <li> Axios </li>
+    <li> Multer </li>
+</ul>
