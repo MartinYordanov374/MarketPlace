@@ -22,11 +22,7 @@ export default function Footer() {
                         <h3>Directions</h3>
                         <div className="Directions">
                             <ul>
-                                <a href='/buy'>Buy</a>
-                                <a href='/sell'>Sell</a>
                                 <a href='/'>Home</a>
-                                <a href='/register'>Register</a>
-                                <a href='/explore'>Explore Marketplaces</a>
                             </ul>
                         </div>
                     </div>

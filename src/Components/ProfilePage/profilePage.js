@@ -18,6 +18,9 @@ import CreateProductModal from "../CreateProductAbsolutely/CreateProductAbsolute
 import ProductCard from "../ProductCard/ProductCard";
 import {Rating} from 'react-simple-star-rating'   
 
+import AddUserReviewModal from "../AddUserReviewModal/UserReviewModal";
+import ReviewCard from '../ReviewUserCard/ReviewCard'
+
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,6 +34,8 @@ export default function ProfilePage()
     const [userData, setUserData] = useState('')
 
     const [pfpModalState, setPfpModalState] = useState(false)
+
+    const [userReview, setUserReview] = useState('')
 
     let URL_ID = window.location.href.split('/')[4]
 
@@ -162,9 +167,7 @@ export default function ProfilePage()
             setIsUserOnProducts(false)
             setIsUserOnMarketplaces(false)
             setIsUserOnReviews(true)
-        
-        console.log(isUserOnMarketplaces)
-    }
+        }
 
     const handleRating = (rate) => {
         switch(rate){
@@ -197,6 +200,15 @@ export default function ProfilePage()
             toast.warn(err.response.data)
         })
 
+    }
+
+    const addUserReview = async () => {
+        console.log('adding review')
+        let currUserId = userData.id
+        let reviewedUserId = URL_ID
+
+        console.log(currUserId, reviewedUserId)
+        // let reviewContent = userReview
     }
 
     return (
@@ -457,9 +469,9 @@ export default function ProfilePage()
                                         userData.reviews.length >= 1 ?
                                         userData.reviews.map(( review ) => {
 
-                                            // return (
-                                            //     <ReviewCard TargetReview = { review } />
-                                            // )
+                                            return (
+                                                <ReviewCard targetReview = { review } />
+                                            )
                                         })
                                         :
                                         userData.isOwner ?
@@ -467,9 +479,7 @@ export default function ProfilePage()
                                         :
                                         <div>
                                             <h1 className="notAvailableMessage">This user does not have any reviews yet.</h1>
-                                            <Box textAlign="center">
-                                                <Button color='warning' style={{fontSize: 40}}> Add your review? </Button>
-                                            </Box>
+                                            <AddUserReviewModal ReviewerUserId = { userData.id } ReviewedUserId = {URL_ID}/>
                                         </div>
                                 }
                             </div>
