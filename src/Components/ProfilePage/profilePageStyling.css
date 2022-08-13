@@ -93,4 +93,17 @@
 .ownerMarketplaceOptions button {
   font-size: 30px !important;
 }
+
+.ProductsView {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 2%;
+}
+
+.marketplaceWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
 /*# sourceMappingURL=profilePageStyling.css.map */

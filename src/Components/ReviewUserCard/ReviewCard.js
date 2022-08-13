@@ -12,29 +12,7 @@ import { Buffer } from 'buffer';
 // import './reviewsStyling.css'
 
 export default function UserReview(reviewData) {
-    console.log(reviewData)
-    const reviewNotHelpfulHandler = (reviewID) => {
-    
-        // Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
-        // .then((res) => {
-        //     let userID = res.data
-        //     // Axios.post('http://localhost:3001/marketplaceReviewNotHelpful', {userID: userID, marketplaceID: marketplaceData.marketplaceID, reviewID: reviewID}, {withCredentials: true})
-        //     // .then((res) => {
-        //     //     toast.success(res.data)
-        //     // })
-        // })
-    }
-    
-    // const reviewHelpfulHandler = (reviewID) => {
-    //     Axios.get('http://localhost:3001/getSessionData', {withCredentials: true})
-    //     .then((res) => {
-    //         let userID = res.data
-    //         Axios.post('http://localhost:3001/marketplaceReviewHelpful', {userID: userID, marketplaceID: marketplaceData.marketplaceID, reviewID: reviewID}, {withCredentials: true})
-    //         .then((res) => {
-    //             toast.success(res.data)
-    //         })
-    //     })
-    // }
+
     return (
         <div>
             <ToastContainer/>

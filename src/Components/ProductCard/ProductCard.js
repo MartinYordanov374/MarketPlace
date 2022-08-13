@@ -42,7 +42,7 @@ export default function ProductCard(productData)
     
     return(
         
-            <div class='marketplaceWrapper'>
+            <div class='marketplaceWrapper' style = {{marginLeft: "2%", marginTop: "2%"}}>
                 {isUserOwner == false ?
                     <Link href={`/product/${productData.TargetProduct._id}`} underline='none'>
                         <Card sx={{height: "260px", width: "240px"}}>

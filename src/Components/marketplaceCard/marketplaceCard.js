@@ -4,7 +4,7 @@ import { Buffer } from 'buffer';
 export default function MarketplaceCard(marketplaceData)
 {
     return(
-        <div class='marketplaceWrapper'>
+        <div class='marketplaceWrapper' style = {{marginLeft: "2%", marginTop: "2%"}}>
             <Link href={`/marketplace/${marketplaceData.TargetMarketplace._id}`} underline='none'>
                 <Card sx={{height: "260px", width: "240px"}}>
                     <CardActionArea>
